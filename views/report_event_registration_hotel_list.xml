@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+<data>
+<template id="report_registration_hotel_document">
+
+        <t t-call="report.internal_layout">
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.lang.code})" />
+        <div class="page">
+            <div class="oe_structure"/>
+                <h3>Hotel Report</h3>
+                <row>
+                    <div t-if="doc.name" class="col-xs-6">
+                        <strong>Subject:</strong>
+                        <span t-field="doc.name"/>
+                    </div>
+                    <div t-if="doc.venue" class="col-xs-3">
+                        <strong>Venue:</strong>
+                        <span t-field="doc.venue"/>
+                    </div>
+                </row>
+                <row>
+                    <div t-if="doc.date_begin" class="col-xs-6">
+                        <strong>Start Date:</strong>
+                        <span t-field="doc.date_begin"/>
+                    </div>
+                </row>
+
+            <br/>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-left">Region</th>
+                        <th class="text-left">City</th>
+                        <th class="text-left">Hospital</th>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Start Date</th>
+                        <th class="text-left">Days</th>
+                        <th class="text-left">Hotel</th>
+                        <th class="text-left">Room</th>
+                        <th class="text-left">Comments</th>
+                    </tr>
+               </thead>
+               <tbody >
+                    <t t-foreach="doc.hotel" t-as="l" >
+                        <tr >
+                            <td>
+                               <t t-esc='l_index + 1' />
+                            </td>
+                            <td>
+                               <span t-field="l.partner.team_id"/>
+                            </td>
+                            <td>
+                               <span t-field="l.partner.city"/>
+                            </td>
+                            <td>
+                               <span t-field="l.partner.parent_id.name"/>
+                            </td>
+                            <td>
+                               <span t-field="l.partner.name"/>
+                            </td>
+                            <td>
+                               <span t-field="l.hotel_reservation_start_date"/>
+                            </td>
+                            <td>
+                               <span t-field="l.reversed_days"/>
+                            </td>
+                            <td>
+                               <span t-field="l.hotel_address"/>
+                            </td>
+                            <td>
+                               <span t-field="l.hotel_room"/>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+
+<template id="report_registration_hotel">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="event_profile.report_registration_hotel_document" t-lang="doc.lang.code"/>
+        </t>
+    </t>
+</template>
+
+</data>
+</openerp>

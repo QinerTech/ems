@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+<data>
+<template id="report_registration_sponsorship_document">
+
+        <t t-call="report.external_layout">
+        <t t-set="doc" t-value="doc.with_context({'lang': doc.partner_id.lang})" />
+        <div class="page">
+            <div class="oe_structure"/>
+                <h3 align="center"><strong>AbbVie Sponsorship Letter</strong></h3>
+
+<p></p>
+
+<p><strong>Date: <span t-field="doc.event_id.date_begin"/> ~ <span t-field="doc.event_id.date_end"/> </strong></p>
+
+<p><strong>Name: <span t-field="doc.partner_id.name"/> </strong></p>
+
+<p><strong>Institution/Hospital: <span t-field="doc.partner_id.parent_id"/> </strong></p>
+
+<p><strong>Address: <span t-field="doc.partner_id.contact_address"/>  </strong></p>
+
+<p></p>
+
+<p>Dear <strong><span t-field="doc.partner_id.name"/></strong> Doctor/Professor: </p>
+
+<p></p>
+
+<p>It's our honor to invite you to attend<strong><u> <span t-field="doc.event_id"/>  on <span t-field="doc.event_id.date_begin"/> ~ <span t-field="doc.event_id.date_end"/> in <span t-field="doc.event_id.address_id.city"/></u></strong><u> .</u></p>
+
+<p></p>
+
+<p>This event's subject is <span t-field="doc.event_id"/> . AbbVie China will sponsor you.</p>
+
+<p></p>
+
+<p>We hope that you will get your visa prepared. (If applicable)</p>
+
+<p></p>
+
+<p> Sincerely!</p>
+
+<p></p>
+
+<p>AbbVie Employee Name:   <span t-field="doc.event_id.user_id.name"/></p>
+
+<p>Position:  <span t-field="doc.event_id.user_id.function"/></p>
+
+<p>Department:  <span t-field="doc.event_id.user_id.department"/></p>
+
+<p>AbbVie China</p>
+
+<p></p>
+
+<p></p>
+
+<table align="left" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td height="8"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p>Before accept please confirm terms below: </p>
+
+<p></p>
+
+<p>"I confirm that I already got the approval from my related institute or no need to approval on this sponsorship."</p>
+
+<p></p>
+
+<p></p>
+
+<p>Sign here:  _____________________________________</p>
+
+<p></p>
+
+<p></p>
+
+<p>______________________</p>
+
+<p>Stamped here</p>
+
+<p>(Only for International event)</p>
+
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+
+<template id="report_registration_sponsorship">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="event_profile.report_registration_sponsorship_document" t-lang="doc.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+
+</data>
+</openerp>

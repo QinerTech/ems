@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="report_event_registration_signin"
+            string="Registration Sign-in Sheet"
+            model="event.event"
+            report_type="qweb-pdf"
+            file="event.report_registration_signin_sheet"
+            name="event_profile.report_registration_signin_sheet"
+        />
+        <report
+            id="report_event_track_contract"
+            string="Service Contract Report"
+            model="event.event"
+            report_type="qweb-pdf"
+            file="event.report_service_contract"
+            name="event_profile.report_track_contract"
+        />
+        <report
+            id="report_event_registration_travel"
+            string="Travel Report"
+            model="event.event"
+            report_type="qweb-pdf"
+            file="event.report_registration_travel"
+            name="event_profile.report_registration_travel"
+        />
+        <report
+            id="report_event_registration_hotel"
+            string="Hotel Report"
+            model="event.event"
+            report_type="qweb-pdf"
+            file="event.report_registration_hotel"
+            name="event_profile.report_registration_hotel"
+        />
+        <report
+            id="report_event_registration_sponsorship"
+            string="Sponsorship Letter"
+            model="event.registration"
+            report_type="qweb-pdf"
+            file="event.report_registration_sponsorship"
+            name="event_profile.report_registration_sponsorship"
+        />
+        <report
+            id="report_event_service_contract"
+            string="Service Contract"
+            model="event.track"
+            report_type="qweb-pdf"
+            file="event.report_service_contract"
+            name="event_profile.report_service_contract"
+        />
+    </data>
+</openerp>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <openerp>
+        <data>
+            <!-- EVENT.TYPE VIEWS -->
+            <record model="ir.ui.view" id="view_event_type_form_extend">
+                <field name="name">event.type.extended.form</field>
+                <field name="model">event.type</field>
+                <field name="inherit_id" ref="event.view_event_type_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='name']" position="after">
+                        <field name="level" />
+                    </xpath>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_event_form_extend_event">
+                <field name="name">event.event.extended.form</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="event.view_event_form" />
+                <field name="arch" type="xml">
+                    <!-- add state field in header -->
+                    <xpath expr="//field[@name='name']" position="before">
+                        <field name="event_code" placeholder="Event ID" />
+                    </xpath>
+                    <xpath expr="//field[@name='date_tz']" position="before">
+                        <field name="lang" />
+                    </xpath>
+                    <xpath expr="//field[@name='event_type_id']" position="after">
+                        <field name="departments" widget="many2many_tags"/>
+                        <field name="brands" widget="many2many_tags"/>
+                    </xpath>
+                    <xpath expr="//field[@name='address_id']" position="before">
+                        <field name="venue" />
+                    </xpath>
+                    <xpath expr="//notebook" position="inside">
+<!--                         <page string="Supported Brand">
+                            <field name='brand'>
+                                <tree editable="bottom">
+                                    <field name='brand_name' />
+                                    <field name='brand_type' />
+                                </tree>
+                            </field>
+                        </page> -->
+                        <page string="Sponsored Travel">
+                            <field name='travel' attrs="{'readonly':1}">
+                                <tree editable="bottom">
+                                    <field name='registration' />
+                                    <field name='travel_departure_date' />
+                                    <field name='travel_departure' />
+                                    <field name='travel_destionation' />
+                                    <field name='travel_method' />
+                                    <field name='fleight_ticket_no' />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Sponsored Hotel">
+                            <field name='hotel' attrs="{'readonly':1}">
+                                <tree editable="bottom">
+                                    <field name='registration' />
+                                    <field name='hotel_address' />
+                                    <field name='hotel_room' />
+                                    <field name='hotel_reservation_start_date' />
+                                    <field name='reversed_days' />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Service Items">
+                            <field name='contract' attrs="{'readonly':1}">
+                                <tree editable="bottom">
+                                    <field name='speaker' />
+                                    <field name='event_track' />
+                                    <field name='service_type' />
+                                    <field name='service_fee' />
+                                    <field name='serivce_deliverable' />
+                                    <field name='resonable_requirement' />
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="view_event_form_extend_website_event">
+                <field name="name">event.event.website.extend.form</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="website_event.view_event_sale_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//button[@name='website_publish_button']" position="replace" > </xpath>
+                    <xpath expr="//field[@name='twitter_hashtag']" position="replace" > </xpath> </field>
+            </record>
+
+            <record model="ir.ui.view" id="view_event_form_website_tracks_extend">
+                <field name="name">Event Tracks</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="website_event_track.view_event_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='show_menu']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='show_tracks']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='show_track_proposal']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//label[@for='show_track_proposal']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//label[@for='show_tracks']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//label[@for='show_menu']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//button[last()]" position="replace">
+
+                    </xpath>
+
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_event_registration_form">
+                <field name="name">event.registration.form.extended</field>
+                <field name="model">event.registration</field>
+                <field name="inherit_id" ref="event.view_event_registration_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//sheet" position="inside">
+                        <group name="sponsorship" string="Sponsorship Information">
+                            <field name='hotel_budget' />
+                            <field name='travel_budget' />
+                            <field name='hotel'>
+                                <tree editable="bottom">
+                                    <!-- <field name='partner' /> -->
+                                    <field name='hotel_reservation_start_date' />
+                                    <field name='reversed_days' />
+                                    <field name='hotel_address' />
+                                    <field name='hotel_room' />
+                                </tree>
+                            </field>
+                            <field name='travel'>
+                                <tree editable="bottom">
+                                    <!-- <field name='partner' /> -->
+                                    <field name='travel_departure_date' />
+                                    <field name='travel_departure' />
+                                    <field name='travel_destionation' />
+                                    <field name='travel_method' />
+                                    <field name='fleight_ticket_no' />
+                                </tree>
+                            </field>
+                        </group>
+                    </xpath>
+                    <xpath expr="//field[@name='partner_id']" position="replace">
+                    </xpath>
+                    <xpath expr="//field[@name='name']" position="before">
+                        <field name='partner_id'/>
+                    </xpath>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_event_track_form_extend">
+                <field name="name">event.track.form.extended</field>
+                <field name="inherit_id" ref="website_event_track.view_event_track_form" />
+                <field name="model">event.track</field>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='speaker_ids']" position="replace">
+                        <field name="speaker_id" />
+                    </xpath>
+                    <xpath expr="//button[@name='website_publish_button']" position="replace" ></xpath>
+                    <xpath expr="//sheet" position="inside">
+                        <notebook>
+                            <page string="Contract terms" name="contract_terms">
+                                <field name="event_track_contract">
+                                    <tree editable="bottom">
+                                        <field name="service_type" />
+                                        <field name="service_fee" />
+                                        <field name="serivce_deliverable" />
+                                        <field name="resonable_requirement" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </xpath>
+                </field>
+            </record>
+
+ <!-- EVENTS/CONFIGURATION/EVENT department -->
+        <record model="ir.ui.view" id="view_event_department_form">
+            <field name="name">Event Department</field>
+            <field name="model">event.department</field>
+            <field name="arch" type="xml">
+                <form string="Event department">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_event_department_tree">
+            <field name="name">Event Department</field>
+            <field name="model">event.department</field>
+            <field name="arch" type="xml">
+                <tree string="Event department">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_event_department">
+            <field name="name">Event Departments</field>
+            <field name="res_model">event.department</field>
+        </record>
+        <menuitem name="Departments" id="menu_event_department"
+            action="action_event_department" parent="event.menu_event_configuration"/>
+
+         <!-- EVENTS/CONFIGURATION/EVENT brand -->
+        <record model="ir.ui.view" id="view_event_brand_form">
+            <field name="name">Event Brand</field>
+            <field name="model">event.brand</field>
+            <field name="arch" type="xml">
+                <form string="Event brand">
+                    <sheet>
+                        <group>
+                            <field name="brand_name"/>
+                            <field name="brand_type"/>
+                            <field name="image_medium"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_event_brand_tree">
+            <field name="name">Event Brand</field>
+            <field name="model">event.brand</field>
+            <field name="arch" type="xml">
+                <tree string="Event brand">
+                   <field name="brand_name"/>
+                   <field name="brand_type"/>
+                   <field name="image_medium"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_event_brand">
+            <field name="name">Event Brands</field>
+            <field name="res_model">event.brand</field>
+        </record>
+        <menuitem name="Brands" id="menu_event_brand"
+            action="action_event_brand" parent="event.menu_event_configuration"/>
+
+        </data>
+    </openerp>
