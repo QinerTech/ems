@@ -118,7 +118,7 @@ class event_event(models.Model):
     )
 
     lang = fields.Many2one(
-        string='Languag',
+        string='Language',
         required=True,
         readonly=False,
         index=False,
@@ -158,7 +158,7 @@ class event_registration(models.Model):
 class event_brand(models.Model):
     _name = "event.brand"
 
-    brand_name = fields.Char(
+    name = fields.Char(
         string='Brand Name',
         required=False,
         readonly=False,

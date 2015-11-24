@@ -56,10 +56,10 @@
                             <field name='hotel' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='registration' />
-                                    <field name='hotel_address' />
-                                    <field name='hotel_room' />
                                     <field name='hotel_reservation_start_date' />
                                     <field name='reversed_days' />
+                                    <field name='hotel_address' />
+                                    <field name='hotel_room' />
                                 </tree>
                             </field>
                         </page>
@@ -85,7 +85,8 @@
                 <field name="inherit_id" ref="website_event.view_event_sale_form" />
                 <field name="arch" type="xml">
                     <xpath expr="//button[@name='website_publish_button']" position="replace" > </xpath>
-                    <xpath expr="//field[@name='twitter_hashtag']" position="replace" > </xpath> </field>
+                    <xpath expr="//field[@name='twitter_hashtag']" position="replace" > </xpath>
+                </field>
             </record>
 
             <record model="ir.ui.view" id="view_event_form_website_tracks_extend">
@@ -218,9 +219,9 @@
                 <form string="Event brand">
                     <sheet>
                         <group>
-                            <field name="brand_name"/>
+                            <field name="name"/>
                             <field name="brand_type"/>
-                            <field name="image_medium"/>
+                            <field name="image_medium"   widget="image"/>
                         </group>
                     </sheet>
                 </form>
@@ -231,7 +232,7 @@
             <field name="model">event.brand</field>
             <field name="arch" type="xml">
                 <tree string="Event brand">
-                   <field name="brand_name"/>
+                   <field name="name"/>
                    <field name="brand_type"/>
                    <field name="image_medium"/>
                 </tree>
