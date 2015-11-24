@@ -18,18 +18,26 @@
                 <field name="inherit_id" ref="event.view_event_form" />
                 <field name="arch" type="xml">
                     <!-- add state field in header -->
+                    <xpath expr="//field[@name='user_id']" position="replace">
+                    </xpath>
+                    <xpath expr="//field[@name='event_type_id']" position="replace">
+                    </xpath>
                     <xpath expr="//field[@name='name']" position="before">
                         <field name="event_code" placeholder="Event ID" />
                     </xpath>
                     <xpath expr="//field[@name='date_tz']" position="before">
                         <field name="lang" />
                     </xpath>
-                    <xpath expr="//field[@name='event_type_id']" position="after">
-                        <field name="departments" widget="many2many_tags"/>
-                        <field name="brands" widget="many2many_tags"/>
-                    </xpath>
                     <xpath expr="//field[@name='address_id']" position="before">
+                        <field name="event_type_id" />
                         <field name="venue" />
+                    </xpath>
+                    <xpath expr="//field[@name='organizer_id']" position="after">
+                        <field name="user_id" />
+                    </xpath>
+                    <xpath expr="//field[@name='date_begin']" position="before">
+                        <field name="brands" widget="many2many_tags"/>
+                        <field name="departments" widget="many2many_tags"/>
                     </xpath>
                     <xpath expr="//notebook" position="inside">
 <!--                         <page string="Supported Brand">
@@ -40,7 +48,7 @@
                                 </tree>
                             </field>
                         </page> -->
-                        <page string="Sponsored Travel">
+                        <page string="Travel Info">
                             <field name='travel' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='registration' />
@@ -52,7 +60,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Sponsored Hotel">
+                        <page string="Hotel Info">
                             <field name='hotel' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='registration' />
@@ -112,10 +120,8 @@
                     <xpath expr="//label[@for='show_menu']" position="attributes">
                         <attribute name="invisible">True</attribute>
                     </xpath>
-                    <xpath expr="//button[last()]" position="replace">
-
+                    <xpath expr="//div[@name='button_box']/button[last()]" position="replace">
                     </xpath>
-
                 </field>
             </record>
             <record model="ir.ui.view" id="view_event_registration_form">
@@ -160,8 +166,14 @@
                 <field name="model">event.registration</field>
                 <field name="inherit_id" ref="event_sale.view_event_registration_ticket_form" />
                 <field name="arch" type="xml">
-                    <xpath expr="//group[@name='event']" position="replace">
+                    <xpath expr="//group[last()]" position="replace">
                     </xpath>
+          <!--           <xpath expr="//field[@name='sale_order_id']" position="replace">
+                    </xpath>
+                    <xpath expr="//field[@name='origin']" position="replace">
+                    </xpath>
+                    <xpath expr="//field[@name='sale_order_line_id']" position="replace">
+                    </xpath> -->
                 </field>
             </record>
             <record model="ir.ui.view" id="view_event_track_form_extend">
@@ -252,6 +264,8 @@
         </record>
         <menuitem name="Brands" id="menu_event_brand"
             action="action_event_brand" parent="event.menu_event_configuration"/>
+
+        <delete model="ir.ui.menu" id="website_event_track.menu_event_sponsor_type"/>
 
         </data>
     </openerp>
