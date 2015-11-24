@@ -142,6 +142,8 @@ class event_event(models.Model):
         states={'done': [('readonly', True)], 'confirm': [('readonly', True) ]}
     )
 
+    count_tracks = fields.Integer(string='Topics')
+
     _defaults = {
         'show_menu': True,
         'show_tracks': True,
