@@ -155,6 +155,15 @@
                     </xpath>
                 </field>
             </record>
+            <record model="ir.ui.view" id="view_event_registration_ticket_form_extend">
+                 <field name="name">event.registration.ticket.form.extend</field>
+                <field name="model">event.registration</field>
+                <field name="inherit_id" ref="event_sale.view_event_registration_ticket_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//group[@name='event']" position="replace">
+                    </xpath>
+                </field>
+            </record>
             <record model="ir.ui.view" id="view_event_track_form_extend">
                 <field name="name">event.track.form.extended</field>
                 <field name="inherit_id" ref="website_event_track.view_event_track_form" />
@@ -219,9 +228,9 @@
                 <form string="Event brand">
                     <sheet>
                         <group>
+                            <field name="image_medium"   widget="image"/>
                             <field name="name"/>
                             <field name="brand_type"/>
-                            <field name="image_medium"   widget="image"/>
                         </group>
                     </sheet>
                 </form>
@@ -234,7 +243,6 @@
                 <tree string="Event brand">
                    <field name="name"/>
                    <field name="brand_type"/>
-                   <field name="image_medium"/>
                 </tree>
             </field>
         </record>
