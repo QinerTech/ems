@@ -468,7 +468,7 @@ class event_registration_travel(models.Model):
         selection=[('air', 'Air'), ('train', 'Train'), ('bus', 'Bus'), ('drive', 'Drive')]
     )
 
-    travel_departure_date = fields.Date(
+    travel_departure_date = fields.Datetime(
         string='Departure Date',
         required=False,
         readonly=False,

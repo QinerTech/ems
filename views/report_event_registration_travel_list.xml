@@ -22,7 +22,7 @@
                 <row>
                     <div t-if="doc.date_begin" class="col-xs-6">
                         <strong>Start Date:</strong>
-                        <span t-field="doc.date_begin"/>
+                        <span t-field="doc.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />
                     </div>
                 </row>
 
@@ -63,7 +63,7 @@
                                <span t-field="l.partner.name"/>
                             </td>
                             <td>
-                               <span t-field="l.travel_departure_date"/>
+                               <span t-field="l.travel_departure_date"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />
                             </td>
                             <td>
                                <span t-field="l.travel_departure"/>
