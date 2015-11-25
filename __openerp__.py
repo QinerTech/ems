@@ -30,6 +30,7 @@
         'views/partner_view.xml',
         'views/event_report.xml',
         'views/report_event_registration_signin_sheet.xml',
+        'views/report_event_registration_sponsorship_application.xml',
         'views/report_event_registration_sponsorship_letter.xml',
         'views/report_event_registration_travel_list.xml',
         'views/report_event_registration_hotel_list.xml',
