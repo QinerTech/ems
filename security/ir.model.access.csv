@@ -1,1 +1,16 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+id,name,model_id/id,group_id/id,perm_create,perm_read,perm_write,perm_unlink
+access_event_brand_manager,event.brand_manager,event_profile.model_event_brand,event.group_event_manager,1,1,1,1
+access_event_brand__public,event.brand public,event_profile.model_event_brand,,0,1,0,0
+access_event_brand__user,event.brand_user,event_profile.model_event_brand,event.group_event_user,1,1,0,0
+access_event_department__public,event.department_public,event_profile.model_event_department,,0,1,0,0
+access_event_department_manager,event.department_manager,event_profile.model_event_department,event.group_event_manager,1,1,1,1
+access_event_department__user,event.department_user,event_profile.model_event_department,event.group_event_user,1,1,0,0
+access_event_registration_hotel_manager,event.registration.hotel_manager,event_profile.model_event_registration_hotel,event.group_event_manager,1,1,1,1
+access_event_registration_hotel__public,event.registration.hotel public,event_profile.model_event_registration_hotel,,0,1,0,0
+access_event_registration_hotel__user,event.registration.hotel_user,event_profile.model_event_registration_hotel,event.group_event_user,1,1,0,0
+access_event_registration_travel_manager,event.registration.travel_manager,event_profile.model_event_registration_travel,event.group_event_manager,1,1,1,1
+access_event_registration_travel__public,event.registration.travel public,event_profile.model_event_registration_travel,,0,1,0,0
+access_event_registration_travel__user,event.registration.travel_user,event_profile.model_event_registration_travel,event.group_event_user,1,1,0,0
+access_event_track_contract_manager,event.track.contract_manager,event_profile.model_event_track_contract,event.group_event_manager,1,1,1,1
+access_event_track_contract__public,event.track.contract public,event_profile.model_event_track_contract,,0,1,0,0
+access_event_track_contract__user,event.track.contract_user,event_profile.model_event_track_contract,event.group_event_user,1,1,0,0

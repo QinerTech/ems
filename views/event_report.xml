@@ -40,6 +40,7 @@
             report_type="qweb-pdf"
             file="event.report_registration_sponsorship"
             name="event_profile.report_registration_sponsorship"
+            groups="event.group_event_manager"
         />
         <report
             id="report_event_service_contract"
@@ -48,6 +49,7 @@
             report_type="qweb-pdf"
             file="event.report_service_contract"
             name="event_profile.report_service_contract"
+            groups="event.group_event_manager"
         />
         <report
             id="report_event_registration_sponsorship_application"
@@ -56,6 +58,7 @@
             report_type="qweb-pdf"
             file="event.report_sponsorship_applicatin"
             name="event_profile.report_sponsorship_applicatin"
+            groups="event.group_event_manager"
         />
     </data>
 </openerp>
