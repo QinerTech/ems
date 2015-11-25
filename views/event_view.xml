@@ -97,6 +97,18 @@
                 </field>
             </record>
 
+            <record model="ir.ui.view" id="view_event_form_inherit_ticket_extend">
+                <field name="name">view_event_form_inherit_tichet.extend</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="event_sale.view_event_form_inherit_ticket" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='price']" position="replace" > </xpath>
+                    <xpath expr="//page" position="attributes" >
+                        <attribute name="string">Attendence</attribute>
+                    </xpath>
+                </field>
+            </record>
+
             <record model="ir.ui.view" id="view_event_form_website_tracks_extend">
                 <field name="name">Event Tracks</field>
                 <field name="model">event.event</field>
