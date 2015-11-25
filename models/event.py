@@ -23,7 +23,8 @@ class event_type(models.Model):
             ('medical_society_regional', 'Mediacal Society Regional [3rd Partner]'),
             ('medical_society_city', 'Mediacal Society City [3rd Partner]'),
             ('international', 'International'),
-            ('international_other', 'International [3rd Partner]'), ]
+            ('international_other', 'International [3rd Partner]'), ],
+        default='hospital',
         )
 
 
