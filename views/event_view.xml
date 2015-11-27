@@ -104,7 +104,7 @@
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='price']" position="replace" > </xpath>
                     <xpath expr="//page" position="attributes" >
-                        <attribute name="string">Attendence</attribute>
+                        <attribute name="string">Attendance</attribute>
                     </xpath>
                 </field>
             </record>
