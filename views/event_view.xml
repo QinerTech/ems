@@ -94,6 +94,8 @@
                 <field name="arch" type="xml">
                     <xpath expr="//button[@name='website_publish_button']" position="replace" > </xpath>
                     <xpath expr="//field[@name='twitter_hashtag']" position="replace" > </xpath>
+                    <xpath expr="//button[@states='confirm']" position="replace" > </xpath>
+                    <xpath expr="//button[@states='done']" position="replace" > </xpath>
                 </field>
             </record>
 
@@ -143,8 +145,8 @@
                 <field name="arch" type="xml">
                     <xpath expr="//sheet" position="inside">
                         <group name="sponsorship" string="Sponsorship Information">
-                            <field name='hotel_budget' />
-                            <field name='travel_budget' />
+                            <field name='hotel_budget' invisible='True'/>
+                            <field name='travel_budget' invisible='True'/>
                             <field name='hotel'>
                                 <tree editable="bottom">
                                     <!-- <field name='partner' /> -->
@@ -277,7 +279,13 @@
         <menuitem name="Brands" id="menu_event_brand"
             action="action_event_brand" parent="event.menu_event_configuration"/>
 
+    </data>
+
+    <data noupdate="1">
+
         <delete model="ir.ui.menu" id="website_event_track.menu_event_sponsor_type"/>
 
-        </data>
-    </openerp>
+        <delete model="ir.actions.report.xml" id="event.report_event_registration_badge"/>
+
+    </data>
+</openerp>

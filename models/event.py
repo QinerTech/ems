@@ -27,6 +27,14 @@ class event_type(models.Model):
         default='hospital',
         )
 
+    @api.multi
+    @api.depends('name', 'level')
+    def name_get(self):
+        result = []
+        for etype in self:
+            result.append((etype.id, '%s (%s)' % (etype.name, etype.level)))
+        return result
+
 
 class event_event(models.Model):
     _inherit = "event.event"

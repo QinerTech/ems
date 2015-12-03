@@ -60,5 +60,6 @@
             name="event_profile.report_sponsorship_applicatin"
             groups="event.group_event_manager"
         />
+
     </data>
 </openerp>
