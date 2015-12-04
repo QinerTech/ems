@@ -25,6 +25,7 @@
 
     # always loaded
     'data': [
+        'data/event_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/event_view.xml',
