@@ -1,0 +1,979 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* event_profile
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-04 15:40+0800\n"
+"PO-Revision-Date: 2015-12-04 15:40+0800\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: \n"
+"Language: zh_CN\n"
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid ""
+"\"I confirm that I already got the approval from my related institute or no "
+"need to approval on this sponsorship.\""
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "(Only for International event)"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid ""
+"(hotel)\n"
+"                               <br/>\n"
+"                               Total:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "(travel) /"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "*  如果是提供赞助出国，向商业行为办公室(OEC)确认是否满足额外得要求。"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "* 批准权限见CFP11批准权限表"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid ". AbbVie China will sponsor you."
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  AbbVie Contact</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  AbbVie Sign here</strong>  :"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  AbbVie</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Agree on the terms above</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Business trip</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Contract</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Date and Deadline</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Deadline</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Details</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Effective Date</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Other arrangement</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Other cost(Meal)</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Reasonable Requirements</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Service Amount</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Service Provider</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Service provider sign here</strong>  :"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Service</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "<strong>  Two Parties</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "<strong>AbbVie Sponsorship Letter</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "<strong>Start Date:</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "<strong>Subject:</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "<strong>Venue:</strong>"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "AbbVie (Shanghai)Co.,Ltd."
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "AbbVie China"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "AbbVie Employee Name:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Address:"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.registration.travel,travel_method:0
+msgid "Air"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_inherit_ticket_extend
+msgid "Attendance"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_registration
+msgid "Attendee"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_partner
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_partner
+msgid "Audience"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Audience:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Bank Account:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Before accept please confirm terms below:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_name
+msgid "Brand Name"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_brand_type
+msgid "Brand Type"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.menu,name:event_profile.menu_event_brand
+msgid "Brands"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.registration.travel,travel_method:0
+msgid "Bus"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "City"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Comments"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_contract
+msgid "Contract"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+msgid "Contract terms"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "Control Site: CEC - International (CIT DRC)"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_department_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_create_date
+#: model:ir.model.fields,field_description:event_profile.field_event_department_create_date
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_create_date
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_create_date
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Date:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+msgid "Days"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Dear"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_department
+msgid "Department"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Department:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.menu,name:event_profile.menu_event_department
+msgid "Departments"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_departure
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Departure"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_departure_date
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Departure Date"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Destination"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_destionation
+msgid "Destionation"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_display_name
+#: model:ir.model.fields,field_description:event_profile.field_event_department_display_name
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_display_name
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_display_name
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Doctor/Professor:"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.registration.travel,travel_method:0
+msgid "Drive"
+msgstr ""
+
+#. module: event_profile
+#: model:res.groups,name:event_profile.group_event_admin
+msgid "EMS Administrator"
+msgstr ""
+
+#. module: event_profile
+#: model:res.groups,name:event_profile.group_event_user
+msgid "EMS User"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Effective on Effective date, terminated on"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_event
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_event
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_event
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event
+#: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
+msgid "Event"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_event_brand
+msgid "Event Brands"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_event_department
+msgid "Event Departments"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Event Detail: （Pls provide the info below or input as \"N/A\" ）"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_event_code
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Event ID"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_type_level
+msgid "Event Level"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Event Name:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Event Schedule:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_event_ticket
+msgid "Event Ticket"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_track
+msgid "Event Track"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_track_contract
+msgid "Event Track Contract"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_type
+msgid "Event Type"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Event Venue:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_brand_form
+#: model:ir.ui.view,arch_db:event_profile.view_event_brand_tree
+msgid "Event brand"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_department_form
+#: model:ir.ui.view,arch_db:event_profile.view_event_department_tree
+msgid "Event department"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_registration_sponsorship
+msgid "Event registration sponsorship"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_registration_hotel
+msgid "Event registration sponsorship hotel"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_registration_travel
+msgid "Event registration travel"
+msgstr ""
+
+#. module: event_profile
+#: selection:res.partner,gender:0
+msgid "Female"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_gender
+msgid "Gender"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Hospital"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_hotel
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_address
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+msgid "Hotel"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_budget
+msgid "Hotel Budget"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Hotel Info"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_registration_hotel
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+msgid "Hotel Report"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Hours"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_id
+#: model:ir.model.fields,field_description:event_profile.field_event_department_id
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_id
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_id
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_id
+msgid "ID"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Identity ID:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Institute:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Institution/Hospital:"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "International"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "International [3rd Partner]"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_speaker
+msgid "Is a Speaker"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "It's our honor to invite you to attend"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_lang
+msgid "Language"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand___last_update
+#: model:ir.model.fields,field_description:event_profile.field_event_department___last_update
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel___last_update
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel___last_update
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_department_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_write_date
+#: model:ir.model.fields,field_description:event_profile.field_event_department_write_date
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_write_date
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_write_date
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_brand_image_medium
+msgid "Logo"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.brand,brand_type:0
+msgid "Main"
+msgstr ""
+
+#. module: event_profile
+#: selection:res.partner,gender:0
+msgid "Male"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "Mediacal Society City [3rd Partner]"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "Mediacal Society National [3rd Partner]"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "Mediacal Society Regional [3rd Partner]"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_department_name
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Name"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Name and Position:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Name:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Name:________________________Date:____________________"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "National"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Organizer:"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.brand,brand_type:0
+msgid "Other"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Planned Event duration:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Planned Service duration:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Position:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "RMB"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Region"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.type,level:0
+msgid "Regional"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
+msgid "Registration"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_registration_signin
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+msgid "Registration Sign-in Sheet"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_departments
+msgid "Related Departments"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_reversed_days
+msgid "Reserved Days"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_resonable_requirement
+msgid "Resonable Requirement"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_room
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+msgid "Room"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_serivce_deliverable
+msgid "Serivce Deliverable"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_service_contract
+msgid "Service Contract"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_track_contract
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Service Contract Report"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Service Description:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_fee
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Service Fee"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Service Items"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_type
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Service Type"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Service deliverables:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Sign here:  _____________________________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+msgid "Signature"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "Signature:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Sincerely!"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_speaker
+#: model:ir.model.fields,field_description:event_profile.field_event_track_speaker_id
+msgid "Speaker"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_registration_sponsorship_application
+msgid "Sponsorship Application"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
+msgid "Sponsorship Information"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_registration_sponsorship
+msgid "Sponsorship Letter"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "Stamped here"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_reservation_start_date
+#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+msgid "Start Date"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_brands
+msgid "Supported Brands"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "The signing date"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "This event's subject is"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_fleight_ticket_no
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Ticket No"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event_track
+#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+msgid "Track"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.registration.travel,travel_method:0
+msgid "Train"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_travel
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel
+msgid "Travel"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_budget
+msgid "Travel Budget"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Travel Info"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_method
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Travel Method"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_registration_travel
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Travel Report"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_venue
+msgid "Venue"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "Version 5.0, Approved"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "We hope that you will get your visa prepared. (If applicable)"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "_________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "______________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_event_track_contract
+msgid "contract for Event track"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_brand
+msgid "event.brand"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model,name:event_profile.model_event_department
+msgid "event.department"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "for"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+#: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
+msgid "in"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "on"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid ""
+"会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的"
+"理由："
+"_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "批准日期: _________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+msgid "赞助的估计费用(RMB)"
+msgstr ""
