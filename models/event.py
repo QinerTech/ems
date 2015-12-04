@@ -166,6 +166,25 @@ class event_registration(models.Model):
     event_ticket_id = fields.Many2one(required=True)
     partner_id = fields.Many2one(required=True)
 
+class event_ticket(models.Model):
+    _inherit = 'event.event.ticket'
+
+    deadline = fields.Date(string="Nomination End")
+
+    @api.multi
+    @api.depends('name', 'product_id')
+    def name_get(self):
+        result = []
+        for ticket in self:
+            result.append((ticket.id, '%s (%s)' % (ticket.name, ticket.product_id.name)))
+        return result
+
+    _defaults = {
+        'name': 'Audience',
+
+    }
+
+
 class event_brand(models.Model):
     _name = "event.brand"
 
