@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <openerp>
         <data noupdate="0">
-            <record id="product_product_event" model="product.product">
+            <record id="event_sale.product_product_event" model="product.product">
                 <field name="list_price">0.0</field>
                 <field name="event_ok" eval="True" />
                 <field name="standard_price">0.0</field>
