@@ -29,7 +29,7 @@ class Partner(models.Model):
          index=False,
          help=False,
          selection=[('male', 'Male'), ('female', 'Female')]
-     )
+        )
 
     speaker = fields.Boolean(
         string='Is a Speaker',
@@ -39,3 +39,6 @@ class Partner(models.Model):
         default=False,
         help=False
     )
+
+    property_account_receivable_id = fields.Many2one(required=False)
+    property_account_payable_id = fields.Many2one(required=False)

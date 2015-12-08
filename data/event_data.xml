@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <openerp>
-        <data noupdate="1">
+        <data noupdate="0">
             <record id="product_product_event" model="product.product">
                 <field name="list_price">0.0</field>
                 <field name="event_ok" eval="True" />
@@ -18,7 +18,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">东</field>
+                <field name="name">东-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -29,7 +29,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">南</field>
+                <field name="name">南-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -40,7 +40,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">西</field>
+                <field name="name">西-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -51,7 +51,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">北</field>
+                <field name="name">北-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -62,7 +62,62 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">中</field>
+                <field name="name">中-Audience</field>
+                <field name="categ_id" ref="product.product_category_all" />
+                <field name="type">service</field>
+                <field name="event_type_id" ref="event_sale.event_type" />
+            </record>
+            <record id="product_product_event6" model="product.product">
+                <field name="list_price">0.0</field>
+                <field name="event_ok" eval="True" />
+                <field name="standard_price">0.0</field>
+                <field name="uom_id" ref="product.product_uom_unit" />
+                <field name="uom_po_id" ref="product.product_uom_unit" />
+                <field name="name">东-Speaker</field>
+                <field name="categ_id" ref="product.product_category_all" />
+                <field name="type">service</field>
+                <field name="event_type_id" ref="event_sale.event_type" />
+            </record>
+            <record id="product_product_event7" model="product.product">
+                <field name="list_price">0.0</field>
+                <field name="event_ok" eval="True" />
+                <field name="standard_price">0.0</field>
+                <field name="uom_id" ref="product.product_uom_unit" />
+                <field name="uom_po_id" ref="product.product_uom_unit" />
+                <field name="name">南-Speaker</field>
+                <field name="categ_id" ref="product.product_category_all" />
+                <field name="type">service</field>
+                <field name="event_type_id" ref="event_sale.event_type" />
+            </record>
+            <record id="product_product_event8" model="product.product">
+                <field name="list_price">0.0</field>
+                <field name="event_ok" eval="True" />
+                <field name="standard_price">0.0</field>
+                <field name="uom_id" ref="product.product_uom_unit" />
+                <field name="uom_po_id" ref="product.product_uom_unit" />
+                <field name="name">西-Speaker</field>
+                <field name="categ_id" ref="product.product_category_all" />
+                <field name="type">service</field>
+                <field name="event_type_id" ref="event_sale.event_type" />
+            </record>
+            <record id="product_product_event9" model="product.product">
+                <field name="list_price">0.0</field>
+                <field name="event_ok" eval="True" />
+                <field name="standard_price">0.0</field>
+                <field name="uom_id" ref="product.product_uom_unit" />
+                <field name="uom_po_id" ref="product.product_uom_unit" />
+                <field name="name">北-Speaker</field>
+                <field name="categ_id" ref="product.product_category_all" />
+                <field name="type">service</field>
+                <field name="event_type_id" ref="event_sale.event_type" />
+            </record>
+            <record id="product_product_event10" model="product.product">
+                <field name="list_price">0.0</field>
+                <field name="event_ok" eval="True" />
+                <field name="standard_price">0.0</field>
+                <field name="uom_id" ref="product.product_uom_unit" />
+                <field name="uom_po_id" ref="product.product_uom_unit" />
+                <field name="name">中-Speaker</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />

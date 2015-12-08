@@ -21,7 +21,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['website_event_sale', 'website_event_track'],
+    'depends': ['website_event_sale', 'website_event_track', 'web_m2x_options'],
 
     # always loaded
     'data': [

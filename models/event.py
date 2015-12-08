@@ -49,6 +49,7 @@ class event_event(models.Model):
         states={'done': [('readonly', True)], 'confirm': [('readonly', True) ]}
     )
 
+    name = fields.Char(translate=False)
     hotel = fields.One2many(
         string='Hotel',
         required=False,
@@ -338,7 +339,7 @@ class event_track(models.Model):
         limit=None
     )
 
-    speaker_id = fields.Many2one('res.partner', string='Speaker', required=True,)
+    speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]" )
 
 
 class event_registration_hotel(models.Model):

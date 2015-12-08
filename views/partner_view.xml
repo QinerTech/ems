@@ -33,6 +33,19 @@
                             </group>
                         </page>
                     </xpath>
+                    <xpath expr="//page[@name='sales_purchases']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_partner_property_form_extend">
+                <field name="name">res.partner.property.form.inherit.extend</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="account.view_partner_property_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//page[@name='accounting']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
                 </field>
             </record>
         </data>
