@@ -282,6 +282,39 @@
         <menuitem name="Brands" id="menu_event_brand"
             action="action_event_brand" parent="event.menu_event_configuration"/>
 
+        <menuitem name="Users"
+          id="event_menu_users"
+          parent="event.menu_event_configuration"
+          sequence="90"
+          action="base.action_res_users"/>
+
+        <record model="ir.ui.menu" id="event.menu_event_global_settings">
+           <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_system')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="website.menu_website_configuration">
+           <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_system')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="base.menu_administration">
+           <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_system')])]"/>
+        </record>
+
+        <record model="ir.model.access" id="base.access_ir_module_category_group_user">
+           <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.config_parameter" id="web_m2x_options_create">
+            <field name="key">web_m2x_options.create</field>
+            <field name="value">False</field>
+        </record>
+        <record model="ir.config_parameter" id="web_base_url_freeze">
+            <field name="key">web.base.url.freeze</field>
+            <field name="value">True</field>
+        </record>
     </data>
 
     <data noupdate="1">
