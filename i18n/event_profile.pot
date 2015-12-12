@@ -2,26 +2,24 @@
 # This file contains the translation of the following modules:
 # 	* event_profile
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-12 21:38+0800\n"
-"PO-Revision-Date: 2015-12-12 22:09+0800\n"
+"PO-Revision-Date: 2015-12-12 11:00+0000\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: \n"
 "X-Generator: Poedit 1.8.6\n"
-"Last-Translator: \n"
-"Language: zh_CN\n"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
-msgid ""
-"\"I confirm that I already got the approval from my related institute or no "
-"need to approval on this sponsorship.\""
+msgid "\"I confirm that I already got the approval from my related institute or no need to approval on this sponsorship.\""
 msgstr ""
 
 #. module: event_profile
@@ -210,43 +208,43 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Address:"
-msgstr "地址："
+msgstr ""
 
 #. module: event_profile
 #: selection:event.registration.travel,travel_method:0
 msgid "Air"
-msgstr "飞机"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_inherit_ticket_extend
 msgid "Attendance"
-msgstr "出席人数"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_registration
 msgid "Attendee"
-msgstr "出席者"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_partner
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_partner
 msgid "Audience"
-msgstr "听众"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Audience:"
-msgstr "听众："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_bank_account_count
 msgid "Bank"
-msgstr "银行"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Bank Account:"
-msgstr "银行账户："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
@@ -256,22 +254,22 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_name
 msgid "Brand Name"
-msgstr "品牌名称"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_brand_type
 msgid "Brand Type"
-msgstr "品牌类型"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.menu_event_brand
 msgid "Brands"
-msgstr "品牌"
+msgstr ""
 
 #. module: event_profile
 #: selection:event.registration.travel,travel_method:0
 msgid "Bus"
-msgstr "大巴"
+msgstr ""
 
 #. module: event_profile
 #: selection:event.type,level:0
@@ -280,14 +278,14 @@ msgstr "大巴"
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "City"
-msgstr "城市"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Comments"
-msgstr "备注"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_ref_company_ids
@@ -297,18 +295,18 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_contract
 msgid "Contract"
-msgstr "合同"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
 msgid "Contract terms"
-msgstr "合同条款"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_contract_ids
 #: model:ir.model.fields,field_description:event_profile.field_res_users_contracts_count
 msgid "Contracts"
-msgstr "合同"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
@@ -367,39 +365,39 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_department
 #: model:ir.model.fields,field_description:event_profile.field_res_users_department
 msgid "Department"
-msgstr "科室"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Department:"
-msgstr "科室："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.menu_event_department
 msgid "Departments"
-msgstr "科室"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_departure
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Departure"
-msgstr "出发"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_departure_date
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Departure Date"
-msgstr "出发日期"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Destination"
-msgstr "到达"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_destionation
 msgid "Destionation"
-msgstr "达到"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_display_name
@@ -418,7 +416,7 @@ msgstr ""
 #. module: event_profile
 #: selection:event.registration.travel,travel_method:0
 msgid "Drive"
-msgstr "自驾"
+msgstr ""
 
 #. module: event_profile
 #: model:res.groups,name:event_profile.group_event_admin
@@ -442,22 +440,22 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event
 #: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
 msgid "Event"
-msgstr "活动"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_event_brand
 msgid "Event Brands"
-msgstr "活动品牌"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_department
 msgid "Event Department"
-msgstr "活动科室"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_event_department
 msgid "Event Departments"
-msgstr "活动科室"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -473,54 +471,54 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_type_level
 msgid "Event Level"
-msgstr "活动级别"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Event Name:"
-msgstr "活动名称："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Event Schedule:"
-msgstr "活动安排"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_event_ticket
 msgid "Event Ticket"
-msgstr "活动入场券"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_track
 msgid "Event Track"
-msgstr "活动专场"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_track_contract
 msgid "Event Track Contract"
-msgstr "活动专场合同"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_type
 msgid "Event Type"
-msgstr "活动类型"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Event Venue:"
-msgstr "活动场地："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_brand_form
 #: model:ir.ui.view,arch_db:event_profile.view_event_brand_tree
 msgid "Event brand"
-msgstr "活动品牌"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_department_form
 #: model:ir.ui.view,arch_db:event_profile.view_event_department_tree
 msgid "Event department"
-msgstr "活动科室"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_registration_hotel
@@ -535,7 +533,7 @@ msgstr ""
 #. module: event_profile
 #: selection:res.partner,gender:0
 msgid "Female"
-msgstr "女"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_property_account_position_id
@@ -546,7 +544,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_gender
 #: model:ir.model.fields,field_description:event_profile.field_res_users_gender
 msgid "Gender"
-msgstr "性别"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_has_unreconciled_entries
@@ -560,7 +558,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Hospital"
-msgstr "医院"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_hotel
@@ -568,23 +566,23 @@ msgstr "医院"
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_address
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 msgid "Hotel"
-msgstr "酒店"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_budget
 msgid "Hotel Budget"
-msgstr "酒店预算"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
 msgid "Hotel Info"
-msgstr "酒店信息"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_registration_hotel
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 msgid "Hotel Report"
-msgstr "酒店报告"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -608,22 +606,22 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Institute:"
-msgstr "机构："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Institution/Hospital:"
-msgstr "机构/医院："
+msgstr ""
 
 #. module: event_profile
 #: selection:event.type,level:0
 msgid "International"
-msgstr "国际"
+msgstr ""
 
 #. module: event_profile
 #: selection:event.type,level:0
 msgid "International [3rd Partner]"
-msgstr "国际【第三方】"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_invoice_ids
@@ -634,7 +632,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_speaker
 #: model:ir.model.fields,field_description:event_profile.field_res_users_speaker
 msgid "Is a Speaker"
-msgstr "是讲者"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
@@ -650,7 +648,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_lang
 msgid "Language"
-msgstr "语言"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand___last_update
@@ -686,10 +684,7 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_last_time_entries_checked
-msgid ""
-"Last time the invoices & payments matching was performed for this partner. "
-"It is set either if there's not at least an unreconciled debit and an "
-"unreconciled credit or if you click the \"Done\" button."
+msgid "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
 msgstr ""
 
 #. module: event_profile
@@ -705,12 +700,12 @@ msgstr ""
 #. module: event_profile
 #: selection:event.brand,brand_type:0
 msgid "Main"
-msgstr "主要"
+msgstr ""
 
 #. module: event_profile
 #: selection:res.partner,gender:0
 msgid "Male"
-msgstr "男"
+msgstr ""
 
 #. module: event_profile
 #: selection:event.type,level:0
@@ -794,7 +789,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Position:"
-msgstr "职位："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -807,45 +802,45 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Region"
-msgstr "区域"
+msgstr ""
 
 #. module: event_profile
 #: selection:event.type,level:0
 msgid "Regional"
-msgstr "区域"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
 msgid "Registration"
-msgstr "登记"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_registration_signin
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 msgid "Registration Sign-in Sheet"
-msgstr "登记签到表"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_departments
 msgid "Related Departments"
-msgstr "相关科室"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_reversed_days
 msgid "Reserved Days"
-msgstr "预定天数"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_resonable_requirement
 msgid "Resonable Requirement"
-msgstr "合理要求"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_room
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 msgid "Room"
-msgstr "房间"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_sale_order_ids
@@ -855,45 +850,45 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_serivce_deliverable
 msgid "Serivce Deliverable"
-msgstr "服务交付"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_service_contract
 msgid "Service Contract"
-msgstr "服务合同"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_track_contract
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Service Contract Report"
-msgstr "服务合同报告"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Service Description:"
-msgstr "服务说明："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_fee
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Service Fee"
-msgstr "服务费"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
 msgid "Service Items"
-msgstr "服务项目"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_type
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Service Type"
-msgstr "服务类型"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Service deliverables:"
-msgstr "服务交付："
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
@@ -919,7 +914,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_speaker
 #: model:ir.model.fields,field_description:event_profile.field_event_track_speaker_id
 msgid "Speaker"
-msgstr "讲者"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_registration_sponsorship_application
@@ -945,24 +940,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_reservation_start_date
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 msgid "Start Date"
-msgstr "开始日期"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_brands
 msgid "Supported Brands"
-msgstr "支持品牌"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_property_account_position_id
-msgid ""
-"The fiscal position will determine taxes and accounts used for the partner."
+msgid "The fiscal position will determine taxes and accounts used for the partner."
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_has_unreconciled_entries
-msgid ""
-"The partner has at least one unreconciled debit and credit since last time "
-"the invoices & payments matching was performed."
+msgid "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
 msgstr ""
 
 #. module: event_profile
@@ -972,16 +964,12 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_property_account_payable_id
-msgid ""
-"This account will be used instead of the default one as the payable account "
-"for the current partner"
+msgid "This account will be used instead of the default one as the payable account for the current partner"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_property_account_receivable_id
-msgid ""
-"This account will be used instead of the default one as the receivable "
-"account for the current partner"
+msgid "This account will be used instead of the default one as the receivable account for the current partner"
 msgstr ""
 
 #. module: event_profile
@@ -991,23 +979,19 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_property_supplier_payment_term_id
-msgid ""
-"This payment term will be used instead of the default one for purchase "
-"orders and vendor bills"
+msgid "This payment term will be used instead of the default one for purchase orders and vendor bills"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,help:event_profile.field_res_users_property_payment_term_id
-msgid ""
-"This payment term will be used instead of the default one for sale orders "
-"and customer invoices"
+msgid "This payment term will be used instead of the default one for sale orders and customer invoices"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_fleight_ticket_no
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Ticket No"
-msgstr "票号"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_total_invoiced
@@ -1038,40 +1022,40 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event_track
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Track"
-msgstr "专场"
+msgstr ""
 
 #. module: event_profile
 #: selection:event.registration.travel,travel_method:0
 msgid "Train"
-msgstr "火车"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_travel
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel
 msgid "Travel"
-msgstr "差旅"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_budget
 msgid "Travel Budget"
-msgstr "差旅预算"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
 msgid "Travel Info"
-msgstr "差旅信息"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_method
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Travel Method"
-msgstr "差旅方式"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_registration_travel
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Travel Report"
-msgstr "差旅报告"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_res_users
@@ -1092,7 +1076,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_venue
 msgid "Venue"
-msgstr "场地"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
@@ -1122,7 +1106,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_brand
 msgid "event.brand"
-msgstr "活动品牌"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -1166,10 +1150,7 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
-msgid ""
-"会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的"
-"理由："
-"_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+msgid "会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的理由：_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
 msgstr ""
 
 #. module: event_profile
