@@ -37,9 +37,9 @@
             <td colspan="3" style="width:485px;border:0.5px solid black;">
             <p style="font-size:12px;line-height:10px ">  Name and Position: <span t-field="doc.speaker_id.function"/>    </p>
 
-            <p style="font-size:12px;line-height:10px ">  Identity ID: <span t-field="doc.speaker_id.ref"/>   </p>
+            <p style="font-size:12px;line-height:10px ">  Identity ID: <span t-field="doc.identifier_id"/>   </p>
 
-            <p style="font-size:12px;line-height:10px ">  Bank Account: <span t-field="doc.speaker_id.bank_ids"/>   </p>
+            <p style="font-size:12px;line-height:10px ">  Bank Account: <span t-field="doc.bank_account"/>   </p>
 
             <p style="font-size:12px;line-height:10px ">  Institute: <span t-field="doc.speaker_id.parent_name"/>   </p>
 

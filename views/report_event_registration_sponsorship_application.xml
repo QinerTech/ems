@@ -5,11 +5,11 @@
 <template id="report_sponsorship_applicatin_document">
 
         <t t-call="report.internal_layout">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.lang.code})" />
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
 
-            <h3>艾伯维中国赞助申请表_团体</h3>
+            <h3>AbbVie China Sponsorship Application Form_for Group</h3>
 <br/>
 
 
@@ -22,27 +22,27 @@
     <tbody>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">申请人</td>
+            <td style="width:100px;border:1px solid black;">Requestor</td>
             <td style="width:100px;border:1px solid black;"><span t-field="doc.user_id.name"/></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">批准人</td>
+            <td style="width:100px;border:1px solid black;">Approvor</td>
             <td style="width:100px;border:1px solid black;"></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">会议名称</td>
+            <td style="width:100px;border:1px solid black;">Event name</td>
             <td  style="width:100px;border:1px solid black;"><span t-field="doc.name"/></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">会议地点</td>
+            <td style="width:100px;border:1px solid black;">Event Venue</td>
             <td style="width:100px;border:1px solid black;"><span t-field="doc.venue"/></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">活动日期</td>
+            <td style="width:100px;border:1px solid black;">Event Schedule</td>
             <td style="width:100px;border:1px solid black;"><span t-field="doc.date_begin" t-field-options='{"format": "yyyy/MM/dd"}'/></td>
         </tr>
     </tbody>
@@ -55,12 +55,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th class="text-left">被赞助人姓名</th>
-                        <th class="text-left">机构/协会名称</th>
-                        <th class="text-left">职位</th>
-                        <th class="text-left">专业领域</th>
-                        <th class="text-left">赞助的估计费用(RMB)</th>
-                        <th class="text-left">赞助与会人士的目的</th>
+                        <th class="text-left">Speaker and external Audience name</th>
+                        <th class="text-left">Institution</th>
+                        <th class="text-left">Position</th>
+                        <th class="text-left">Department</th>
+                        <th class="text-left">Sponsor Amount(RMB)</th>
+                        <th class="text-left">Sponsor Reason</th>
                     </tr>
                </thead>
                <tbody >
@@ -109,7 +109,7 @@
     <tbody>
         <tr height="20">
             <td height="20" style="height:20px;width:31px;"></td>
-            <td style="width:101px;">确认以下:</td>
+            <td style="width:101px;">Pls check to confirm below:</td>
             <td style="width:219px;"></td>
             <td style="width:96px;"></td>
             <td style="width:63px;"></td>
@@ -195,9 +195,9 @@
         </tr>
         <tr height="21">
             <td height="21" style="height:21px;"></td>
-            <td>一级经理批准：</td>
+            <td>1st line manger approval</td>
             <td>_________________</td>
-            <td colspan="3">批准日期: _________________</td>
+            <td colspan="3">Approval Date: _________________</td>
             <td></td>
         </tr>
         <tr height="21">
@@ -211,9 +211,9 @@
         </tr>
         <tr height="21">
             <td height="21" style="height:21px;"></td>
-            <td>二级经理批准：</td>
+            <td>2nd line manger approval</td>
             <td>_________________</td>
-            <td colspan="3">批准日期: _________________</td>
+            <td colspan="3">Approval Date: _________________</td>
             <td style="width:49px;"></td>
         </tr>
         <tr height="20">
@@ -259,7 +259,7 @@
 <template id="report_sponsorship_applicatin">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="event_profile.report_sponsorship_applicatin_document" t-lang="doc.lang.code"/>
+            <t t-call="event_profile.report_sponsorship_applicatin_document" t-lang="doc.lang"/>
         </t>
     </t>
 </template>

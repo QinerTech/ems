@@ -5,7 +5,7 @@
 <template id="report_track_contract_document">
 
         <t t-call="report.internal_layout">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.lang.code})" />
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
                 <h3>Service Contract Report</h3>
@@ -85,7 +85,7 @@
 <template id="report_track_contract">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="event_profile.report_track_contract_document" t-lang="doc.lang.code"/>
+            <t t-call="event_profile.report_track_contract_document" t-lang="doc.lang"/>
         </t>
     </t>
 </template>

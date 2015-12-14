@@ -5,6 +5,16 @@ from openerp.tools.translate import _
 from openerp.addons.website.models.website import slug
 
 
+@api.model
+def _lang_get(self):
+    languages = self.env['res.lang'].search([])
+    return [(language.code, language.name) for language in languages]
+
+@api.model
+def _organizer_get(self):
+    partners = self.env['res.partner'].search([('organizer','=',True)])
+    return [(partner.id, partner.name) for partner in partners]
+
 class event_type(models.Model):
     _inherit = "event.type"
 
@@ -46,10 +56,13 @@ class event_event(models.Model):
         index=False,
         help=False,
         size=50,
-        states={'done': [('readonly', True)], 'confirm': [('readonly', True) ]}
+        states={'done': [('readonly', True)], 'confirm': [('readonly', True)]}
     )
 
     name = fields.Char(translate=False)
+
+    organizer_id = fields.Selection( _organizer_get, string='Organizer',)
+
     hotel = fields.One2many(
         string='Hotel',
         required=False,
@@ -127,18 +140,10 @@ class event_event(models.Model):
         limit=None
     )
 
-    lang = fields.Many2one(
+    lang = fields.Selection(_lang_get,
         string='Language',
         required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='res.lang',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        states={'done': [('readonly', True)], 'confirm': [('readonly', True) ]}
+        default=lambda self: self.env.user.lang
     )
 
     venue = fields.Char(
@@ -148,8 +153,7 @@ class event_event(models.Model):
         index=False,
         default=None,
         help=False,
-        size=50,
-        states={'done': [('readonly', True)], 'confirm': [('readonly', True) ]}
+        size=50
     )
 
     count_tracks = fields.Integer(string='Topics')
@@ -164,12 +168,14 @@ class event_event(models.Model):
 class event_registration(models.Model):
     _inherit = 'event.registration'
 
-    event_ticket_id = fields.Many2one(required=True)
+    event_ticket_id = fields.Many2one(required=True,string="Territory")
     partner_id = fields.Many2one(required=True)
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
 
+    name = fields.Char(string="Territory")
+    product_id = fields.Many2one(string="Type")
     deadline = fields.Date(string="Nomination End")
 
     @api.multi
@@ -230,6 +236,8 @@ class event_department(models.Model):
 class event_track_contract(models.Model):
     _name = "event.track.contract"
     _description = 'Event Track Contract'
+
+    location_id = fields.Char('Room')
 
     event_track = fields.Many2one(
         string='Track',
@@ -325,7 +333,7 @@ class event_track(models.Model):
     _inherit = "event.track"
 
     event_track_contract = fields.One2many(
-        string='contract for Event track',
+        string='service contract',
         required=False,
         readonly=False,
         index=False,
@@ -339,15 +347,20 @@ class event_track(models.Model):
         limit=None
     )
 
-    speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]" )
+    speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]")
 
+    identifier_id = fields.Char(
+        string='Identifier ID')
+
+    bank_account = fields.Char(
+        string='Bank Account')
 
 class event_registration_hotel(models.Model):
     _name = "event.registration.hotel"
-    _description = 'Event registration sponsorship hotel'
+    _description = 'registration hotel'
 
     registration = fields.Many2one(
-        string='Registration',
+        string='Attendee',
         required=False,
         readonly=False,
         index=False,
@@ -377,7 +390,7 @@ class event_registration_hotel(models.Model):
     )
 
     partner = fields.Many2one(
-        string='Audience',
+        string='Attendee',
         required=False,
         readonly=False,
         index=False,
@@ -392,7 +405,7 @@ class event_registration_hotel(models.Model):
         store=True
     )
 
-    hotel_address = fields.Many2one(
+    hotel_address = fields.Char(
         string='Hotel',
         required=False,
         readonly=False,
@@ -400,18 +413,19 @@ class event_registration_hotel(models.Model):
         default=None,
         help=False,
         comodel_name='res.partner',
-        domain=[],
+        domain="[('hotel', '=', 'True')]",
         context={},
         ondelete='cascade',
         auto_join=False
     )
 
-    hotel_room = fields.Char(
-        string='Room',
+    hotel_room = fields.Selection(
+        [('single','Signle Bed'),(('double','Double Bed'))],
+        string='Room Type',
         required=False,
         readonly=False,
         index=False,
-        default=None,
+        default='single',
         help=False,
         size=50,
         translate=True
@@ -439,10 +453,10 @@ class event_registration_hotel(models.Model):
 class event_registration_travel(models.Model):
     _name = "event.registration.travel"
 
-    _description = 'Event registration travel'
+    _description = 'registration travel'
 
     registration = fields.Many2one(
-        string='Registration',
+        string='Attendee',
         required=False,
         readonly=False,
         index=False,
@@ -472,7 +486,7 @@ class event_registration_travel(models.Model):
     )
 
     partner = fields.Many2one(
-        string='Audience',
+        string='Attendee',
         required=False,
         readonly=False,
         index=False,
@@ -528,15 +542,16 @@ class event_registration_travel(models.Model):
         translate=True
     )
 
-    fleight_ticket_no = fields.Char(
-        string='Ticket No',
+    freight = fields.Char(
+        string='Flight/Trian',
         required=False,
         readonly=False,
         index=False,
         default=None,
         help=False,
         size=50,
-        translate=True
+        translate=True,
+        oldname='fleight_ticket_no'
     )
 
 
@@ -548,7 +563,7 @@ class event_registration(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=0.0,
+        default=1500.0,
         digits=(16, 2),
         help=False
     )
@@ -558,7 +573,7 @@ class event_registration(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=0.0,
+        default=2000.0,
         digits=(16, 2),
         help=False
     )

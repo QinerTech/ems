@@ -988,7 +988,7 @@ msgid "This payment term will be used instead of the default one for sale orders
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_fleight_ticket_no
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_freight
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Ticket No"
 msgstr ""

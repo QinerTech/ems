@@ -49,6 +49,15 @@ class Partner(models.Model):
         help=False
     )
 
+    organizer = fields.Boolean(
+        string='Is a Organizer',
+        required=False,
+        readonly=False,
+        index=False,
+        default=False,
+        help=False
+    )
+
 
     property_account_receivable_id = fields.Many2one(required=False)
     property_account_payable_id = fields.Many2one(required=False)

@@ -28,7 +28,7 @@
                     <xpath expr="//page[@name='internal_notes']" position="after">
                         <page name='event' string="Event">
                             <group string="Event" name="event">
-                                <field name="hotel" />
+                                <field name="organizer" />
                                 <field name="speaker" />
                                 <field name="team_id" />
                             </group>
@@ -61,6 +61,5 @@
 
                 </field>
             </record>
-
         </data>
     </openerp>

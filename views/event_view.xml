@@ -32,6 +32,8 @@
                         <field name="event_type_id" />
                         <field name="venue" />
                     </xpath>
+                    <xpath expr="//field[@name='address_id']" position="replace">
+                    </xpath>
                     <xpath expr="//field[@name='organizer_id']" position="after">
                         <field name="user_id" />
                     </xpath>
@@ -56,7 +58,7 @@
                                     <field name='travel_departure' />
                                     <field name='travel_destionation' />
                                     <field name='travel_method' />
-                                    <field name='fleight_ticket_no' />
+                                    <field name='freight' />
                                 </tree>
                             </field>
                         </page>
@@ -65,9 +67,9 @@
                                 <tree editable="bottom">
                                     <field name='registration' />
                                     <field name='hotel_reservation_start_date' />
-                                    <field name='reversed_days' />
-                                    <field name='hotel_address' />
                                     <field name='hotel_room' />
+                                    <field name='reversed_days' />
+                                    <!-- <field name='hotel_address'  /> -->
                                 </tree>
                             </field>
                         </page>
@@ -154,9 +156,9 @@
                                 <tree editable="bottom">
                                     <!-- <field name='partner' /> -->
                                     <field name='hotel_reservation_start_date' />
-                                    <field name='reversed_days' />
-                                    <field name='hotel_address' />
                                     <field name='hotel_room' />
+                                    <field name='reversed_days' />
+                                    <!-- <field name='hotel_address'  context="{'search_default_hotel':1, 'default_hotel':1}"/> -->
                                 </tree>
                             </field>
                             <field name='travel'>
@@ -166,7 +168,7 @@
                                     <field name='travel_departure' />
                                     <field name='travel_destionation' />
                                     <field name='travel_method' />
-                                    <field name='fleight_ticket_no' />
+                                    <field name='freight' />
                                 </tree>
                             </field>
                         </group>
@@ -199,7 +201,12 @@
                 <field name="model">event.track</field>
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='speaker_ids']" position="replace">
-                        <field name="speaker_id" />
+                        <field name="speaker_id"  context="{'search_default_speaker':1, 'default_speaker':1}"  />
+                        <field name="identifier_id" password="True"/>
+                        <field name="bank_account" password="True"/>
+                    </xpath>
+                    <xpath expr="//field[@name='location_id']" position="replace">
+
                     </xpath>
                     <xpath expr="//button[@name='website_publish_button']" position="replace" ></xpath>
                     <xpath expr="//sheet" position="inside">
@@ -293,6 +300,11 @@
                    eval="[(6,0,[ref('base.group_system')])]"/>
         </record>
 
+        <record model="ir.ui.menu" id="website.menu_website">
+           <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_system')])]"/>
+        </record>
+
         <record model="ir.ui.menu" id="website.menu_website_configuration">
            <field name="groups_id"
                    eval="[(6,0,[ref('base.group_system')])]"/>
@@ -305,6 +317,21 @@
 
         <record model="ir.model.access" id="base.access_ir_module_category_group_user">
            <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.model.access" id="sale.access_sale_order">
+           <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.model.access" id="sale.access_sale_order_line">
+           <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.model.access" id="access_account_journal">
+            <field name="name">group.user.access.account.journal</field>
+            <field name="model_id" ref='account.model_account_journal' />
+            <field name="group_id" ref='base.group_user' />
+            <field name="perm_read" eval="1"/>
         </record>
 
         <!-- <record model="ir.config_parameter" id="web_m2x_options_create">
@@ -322,6 +349,11 @@
         <delete model="ir.ui.menu" id="website_event_track.menu_event_sponsor_type"/>
 
         <delete model="ir.actions.report.xml" id="event.report_event_registration_badge"/>
+
+    </data>
+    <data noupdate="1">
+
+        <delete model="ir.ui.menu" id="website_event_track.menu_event_track_location"/>
 
     </data>
 </openerp>
