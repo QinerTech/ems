@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-14 20:51+0800\n"
-"PO-Revision-Date: 2015-12-14 20:54+0800\n"
+"POT-Creation-Date: 2015-12-15 16:15+0800\n"
+"PO-Revision-Date: 2015-12-15 16:25+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -250,9 +250,7 @@ msgstr "出席人数"
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_registration
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_partner
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_partner
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
 msgid "Attendee"
 msgstr "出席者"
@@ -288,11 +286,6 @@ msgid "Brand Name"
 msgstr "品牌名称"
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_brand_brand_type
-msgid "Brand Type"
-msgstr "品牌类型"
-
-#. module: event_profile
 #: model:ir.ui.menu,name:event_profile.menu_event_brand
 msgid "Brands"
 msgstr "品牌"
@@ -324,14 +317,18 @@ msgid "Companies that refers to partner"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
+#: model:ir.actions.act_window,name:event_profile.action_contacts_institution
+#: model:ir.actions.act_window,name:event_profile.action_contacts_organizer
+#: model:ir.actions.act_window,name:event_profile.action_contacts_speaker
+#: model:ir.ui.menu,name:event_profile.contact_main_menu
+msgid "Contacts"
+msgstr "联系人"
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_contract
 msgid "Contract"
 msgstr "合同"
-
-#. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
-msgid "Contract terms"
-msgstr "合同条款"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_contract_ids
@@ -376,6 +373,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_users_property_payment_term_id
 msgid "Customer Payment Term"
 msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.menu,name:event_profile.contact_menu_customer
+msgid "Customers"
+msgstr "客户"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
@@ -475,7 +477,6 @@ msgstr "本协议的期限自生效日期起，"
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_event
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_event
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event
-#: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
 msgid "Event"
 msgstr "活动"
 
@@ -648,7 +649,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_identifier_id
 msgid "Identifier ID"
-msgstr ""
+msgstr "证件号码"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -663,12 +664,17 @@ msgstr "机构："
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Institution"
-msgstr ""
+msgstr "机构"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Institution/Hospital:"
 msgstr "机构/医院："
+
+#. module: event_profile
+#: model:ir.ui.menu,name:event_profile.contact_menu_institution
+msgid "Institutions"
+msgstr "机构"
 
 #. module: event_profile
 #: selection:event.type,level:0
@@ -689,13 +695,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_hotel
 #: model:ir.model.fields,field_description:event_profile.field_res_users_hotel
 msgid "Is a Hotel"
-msgstr ""
+msgstr "是酒店"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_organizer
 #: model:ir.model.fields,field_description:event_profile.field_res_users_organizer
 msgid "Is a Organizer"
-msgstr ""
+msgstr "是组织者"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_speaker
@@ -770,9 +776,9 @@ msgid "Logo"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.brand,brand_type:0
-msgid "Main"
-msgstr "主要"
+#: model:ir.model.fields,field_description:event_profile.field_event_event_main_brand
+msgid "Main Brand"
+msgstr "主要品牌"
 
 #. module: event_profile
 #: selection:res.partner,gender:0
@@ -829,12 +835,15 @@ msgid "Organizer:"
 msgstr "组织者："
 
 #. module: event_profile
-#: selection:event.brand,brand_type:0
-msgid "Other"
-msgstr "其他"
+#: model:ir.ui.menu,name:event_profile.contact_menu_organizer
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
+msgid "Organizers"
+msgstr "组织者"
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_res_partner
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_partner
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_partner
 msgid "Partner"
 msgstr "合作伙伴"
 
@@ -866,7 +875,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Position"
-msgstr ""
+msgstr "职称"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
@@ -962,6 +971,7 @@ msgstr "服务费"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
 msgid "Service Items"
 msgstr "服务项目"
 
@@ -1013,6 +1023,12 @@ msgstr "讲者"
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Speaker and external Audience name"
 msgstr "被赞助人姓名"
+
+#. module: event_profile
+#: model:ir.ui.menu,name:event_profile.contact_menu_speaker
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
+msgid "Speakers"
+msgstr "讲者"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
@@ -1112,6 +1128,16 @@ msgid "Ticket No"
 msgstr "票号"
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_inherit_ticket_extend
+msgid "Tickets"
+msgstr "入场券"
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event_track
+msgid "Topic"
+msgstr "主题"
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_total_invoiced
 msgid "Total Invoiced"
 msgstr ""
@@ -1137,7 +1163,6 @@ msgid "Total amount you have to pay to this vendor."
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event_track
 #: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Track"
 msgstr "专场"
@@ -1224,18 +1249,23 @@ msgstr "活动品牌"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "for"
+msgstr "为"
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+msgid "hours [最小单位时间为15分钟]"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "in"
-msgstr ""
+msgstr "在"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "on"
-msgstr ""
+msgstr "在"
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_registration_hotel
@@ -1319,6 +1349,18 @@ msgstr ""
 #: model:product.template,name:event_profile.product_product_event8_product_template
 msgid "西-Speaker"
 msgstr ""
+
+#~ msgid "Brand Type"
+#~ msgstr "品牌类型"
+
+#~ msgid "Contract terms"
+#~ msgstr "合同条款"
+
+#~ msgid "Main"
+#~ msgstr "主要"
+
+#~ msgid "Other"
+#~ msgstr "其他"
 
 #~ msgid "Fleight/Ticket No"
 #~ msgstr "飞机票/车次"

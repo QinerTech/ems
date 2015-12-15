@@ -8,6 +8,10 @@ from openerp.addons.website.models.website import slug
 class Partner(models.Model):
     _inherit = "res.partner"
 
+    team_id = fields.Many2one(
+        string='Territory',
+    )
+
     department = fields.Many2one(
         string='Department',
         required=False,

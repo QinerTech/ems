@@ -12,7 +12,7 @@ def _lang_get(self):
 
 @api.model
 def _organizer_get(self):
-    partners = self.env['res.partner'].search([('organizer','=',True)])
+    partners = self.env['res.partner'].search([('organizer', '=', True)])
     return [(partner.id, partner.name) for partner in partners]
 
 class event_type(models.Model):
@@ -61,7 +61,7 @@ class event_event(models.Model):
 
     name = fields.Char(translate=False)
 
-    organizer_id = fields.Selection( _organizer_get, string='Organizer',)
+    organizer_id = fields.Selection(_organizer_get, string='Organizer',)
 
     hotel = fields.One2many(
         string='Hotel',
@@ -108,9 +108,22 @@ class event_event(models.Model):
         limit=None
     )
 
+    main_brand = fields.Many2one(
+        string='Main Brand',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='event.brand',
+        domain=[],
+        context={},
+        limit=None
+    )
+
     brands = fields.Many2many(
         string='Supported Brands',
-        required=True,
+        required=False,
         readonly=False,
         index=False,
         default=None,
@@ -163,19 +176,21 @@ class event_event(models.Model):
         'show_tracks': True,
         'show_track_proposal': False,
         'date_tz': 'Asia/Shanghai',
+        'event_ticket_ids': None,
     }
 
 class event_registration(models.Model):
     _inherit = 'event.registration'
+    _description = 'Nomination'
 
-    event_ticket_id = fields.Many2one(required=True,string="Territory")
+    event_ticket_id = fields.Many2one(required=True, string="Region")
     partner_id = fields.Many2one(required=True)
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
+    _description = 'Nomination'
 
-    name = fields.Char(string="Territory")
-    product_id = fields.Many2one(string="Type")
+    product_id = fields.Many2one(string="Region")
     deadline = fields.Date(string="Nomination End")
 
     @api.multi
@@ -207,15 +222,15 @@ class event_brand(models.Model):
     )
     # event_id = fields.Many2one('event.event', 'Event', required=True)
     image_medium = fields.Binary(string='Logo', store=True, attachment=True)
-    brand_type = fields.Selection(
-        string='Brand Type',
-        required=False,
-        readonly=False,
-        index=False,
-        default=False,
-        help=False,
-        selection=[('main', 'Main'), ('other', 'Other')]
-    )
+    # brand_type = fields.Selection(
+    #     string='Brand Type',
+    #     required=False,
+    #     readonly=False,
+    #     index=False,
+    #     default=False,
+    #     help=False,
+    #     selection=[('main', 'Main'), ('other', 'Other')]
+    # )
 
 class event_department(models.Model):
     _name = "event.department"
@@ -240,7 +255,7 @@ class event_track_contract(models.Model):
     location_id = fields.Char('Room')
 
     event_track = fields.Many2one(
-        string='Track',
+        string='Topic',
         required=False,
         readonly=False,
         index=False,
@@ -332,6 +347,8 @@ class event_track_contract(models.Model):
 class event_track(models.Model):
     _inherit = "event.track"
 
+    date = fields.Datetime('Topic Date')
+
     event_track_contract = fields.One2many(
         string='service contract',
         required=False,
@@ -354,6 +371,20 @@ class event_track(models.Model):
 
     bank_account = fields.Char(
         string='Bank Account')
+
+    partner_name = fields.Char('Name')
+    partner_email = fields.Char('Email')
+    partner_phone = fields.Char('Phone')
+
+    @api.onchange('speaker_id')
+    def _onchange_partner(self):
+        if self.speaker_id:
+            contact_id = self.speaker_id.address_get().get('contact', False)
+            if contact_id:
+                contact = self.env['res.partner'].browse(contact_id)
+                self.partner_name = self.partner_name or contact.name
+                self.partner_email = self.partner_email or contact.email
+                self.partner_phone = self.partner_phone or contact.phone
 
 class event_registration_hotel(models.Model):
     _name = "event.registration.hotel"
@@ -390,7 +421,7 @@ class event_registration_hotel(models.Model):
     )
 
     partner = fields.Many2one(
-        string='Attendee',
+        string='Partner',
         required=False,
         readonly=False,
         index=False,
@@ -420,7 +451,7 @@ class event_registration_hotel(models.Model):
     )
 
     hotel_room = fields.Selection(
-        [('single','Signle Bed'),(('double','Double Bed'))],
+        [('single', 'Signle Bed'), (('double', 'Double Bed'))],
         string='Room Type',
         required=False,
         readonly=False,
@@ -486,7 +517,7 @@ class event_registration_travel(models.Model):
     )
 
     partner = fields.Many2one(
-        string='Attendee',
+        string='Partner',
         required=False,
         readonly=False,
         index=False,

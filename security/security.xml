@@ -55,5 +55,42 @@ EMS User</field>
             <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
         </record>
 
+        <record model="ir.model.access" id="base.access_ir_module_category_group_user">
+           <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.model.access" id="sale.access_sale_order">
+           <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.model.access" id="sale.access_sale_order_line">
+           <field name="group_id" ref='base.group_user' />
+        </record>
+
+        <record model="ir.model.access" id="access_account_journal">
+            <field name="name">group.user.access.account.journal</field>
+            <field name="model_id" ref='account.model_account_journal' />
+            <field name="group_id" ref='base.group_user' />
+            <field name="perm_read" eval="1"/>
+        </record>
+
+        <record model="ir.model.access" id="access_website_menu">
+            <field name="name">group.user.access_website_menu</field>
+            <field name="model_id" ref='website.model_website_menu' />
+            <field name="group_id" ref='base.group_user' />
+            <field name="perm_read" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+
+        </record>
+        <record model="ir.model.access" id="base.access_ir_ui_view_group_user">
+            <field name="group_id" ref='base.group_user' />
+            <field name="perm_read" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+
+        </record>
+
+
     </data>
 </openerp>
