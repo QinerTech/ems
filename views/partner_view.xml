@@ -27,6 +27,7 @@
                         <field name="gender" attrs="{'invisible': [('is_company','=', True)]}" />
                     </xpath>
                     <xpath expr="//field[@name='website']" position="after">
+                        <field name="employee" attrs="{'invisible': [('is_company','=', True)]}" />
                         <field name="organizer" attrs="{'invisible': [('is_company','=', True)]}" />
                         <field name="speaker" attrs="{'invisible': [('is_company','=', True)]} "/>
                     </xpath>
@@ -82,7 +83,16 @@
                 <field name="res_model">res.partner</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">kanban,tree,form</field>
-                <field name="context">{'search_default_organizer': 1,'default_organizer': 1,'default_supplier': 0,'default_speaker': 0}</field>
+                <field name="context">{'search_default_organizer': 1,'default_organizer': 1,'default_supplier': 0,'default_speaker': 0,'default_customer':0}</field>
+                <field name="search_view_id" ref="base.view_res_partner_filter" />
+            </record>
+            <record id="action_contacts_employee" model="ir.actions.act_window">
+                <field name="name">Contacts</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">res.partner</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">kanban,tree,form</field>
+                <field name="context">{'search_default_employee': 1,'default_employee': 1,'default_supplier': 0,'default_speaker': 0,'default_customer':0}</field>
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
             <record id="action_contacts_customer_" model="ir.actions.act_window">
@@ -100,12 +110,13 @@
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
 
-            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="16"/>
+            <menuitem id="contact_menu_organizer" name="Organizers" parent="mail.menu_contacts" action="action_contacts_organizer" sequence="12"/>
 
-            <menuitem id="contact_menu_organizer" name="Organizers" parent="mail.menu_contacts" action="action_contacts_organizer" sequence="21"/>
+            <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="13"/>
 
-            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="26"/>
+            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="14"/>
 
+            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="15"/>
 
 
         </data>

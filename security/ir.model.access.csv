@@ -5,6 +5,9 @@ access_event_brand__user,event.brand_user,event_profile.model_event_brand,event.
 access_event_department__public,event.department_public,event_profile.model_event_department,,0,1,0,0
 access_event_department_manager,event.department_manager,event_profile.model_event_department,event.group_event_manager,1,1,1,1
 access_event_department__user,event.department_user,event_profile.model_event_department,event.group_event_user,1,1,0,0
+access_event_service_type__public,event.service.type_public,event_profile.model_event_service_type,,0,1,0,0
+access_event_service_type_manager,event.service.type_manager,event_profile.model_event_service_type,event.group_event_manager,1,1,1,1
+access_event_service_type__user,event.service.type_user,event_profile.model_event_service_type,event.group_event_user,1,1,0,0
 access_event_registration_hotel_manager,event.registration.hotel_manager,event_profile.model_event_registration_hotel,event.group_event_manager,1,1,1,1
 access_event_registration_hotel__public,event.registration.hotel public,event_profile.model_event_registration_hotel,,0,1,0,0
 access_event_registration_hotel__user,event.registration.hotel_user,event_profile.model_event_registration_hotel,event.group_event_user,1,1,0,0

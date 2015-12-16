@@ -25,16 +25,10 @@ class event_type(models.Model):
         index=False,
         help=False,
         selection=[
-            ('national', 'National'),
-            ('regional', 'Regional'),
-            ('city', 'City'),
-            ('hospital', 'Hospital'),
-            ('medical_society_national', 'Mediacal Society National [3rd Partner]'),
-            ('medical_society_regional', 'Mediacal Society Regional [3rd Partner]'),
-            ('medical_society_city', 'Mediacal Society City [3rd Partner]'),
-            ('international', 'International'),
-            ('international_other', 'International [3rd Partner]'), ],
-        default='hospital',
+            ('abbvie', 'Abbvie'),
+            ('other', '3rd Partner'),
+            ],
+        default='abbvie',
         )
 
     @api.multi
@@ -48,6 +42,21 @@ class event_type(models.Model):
 
 class event_event(models.Model):
     _inherit = "event.event"
+
+    level = fields.Selection(
+        string='Event Level',
+        required=True,
+        readonly=False,
+        index=False,
+        help=False,
+        selection=[
+            ('hospital', 'Hospital'),
+            ('city', 'City'),
+            ('regional', 'Regional'),
+            ('national', 'National'),
+            ('international', 'International'), ],
+        default='hospital',
+    )
 
     event_code = fields.Char(
         string='Event ID',
@@ -171,12 +180,32 @@ class event_event(models.Model):
 
     count_tracks = fields.Integer(string='Topics')
 
+    @api.model
+    def _default_tickets(self):
+        try:
+            products = self.env['product.product'].search([('event_ok','=',True)])
+            return [{
+                'product_id': product.id,
+                'price': 0,
+            }  for product  in products ]
+        except ValueError:
+            return self.env['event.event.ticket']
+
+    @api.multi
+    @api.depends('name', 'event_code')
+    def name_get(self):
+        result = []
+        for event in self:
+            name = super(event_event, self).name_get()[0][1]
+            result.append((event.id, '[%s] %s ' % (event.event_code, name )))
+        return result
+
+
     _defaults = {
         'show_menu': True,
         'show_tracks': True,
         'show_track_proposal': False,
         'date_tz': 'Asia/Shanghai',
-        'event_ticket_ids': None,
     }
 
 class event_registration(models.Model):
@@ -185,20 +214,30 @@ class event_registration(models.Model):
 
     event_ticket_id = fields.Many2one(required=True, string="Region")
     partner_id = fields.Many2one(required=True)
+    venue = fields.Char(
+        string='Venue',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        related='event_id.venue',
+    )
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
     _description = 'Nomination'
 
-    product_id = fields.Many2one(string="Region")
+    product_id = fields.Many2one(string="Attendee Region")
     deadline = fields.Date(string="Nomination End")
 
     @api.multi
-    @api.depends('name', 'product_id')
+    @api.depends('product_id')
     def name_get(self):
         result = []
         for ticket in self:
-            result.append((ticket.id, '%s (%s)' % (ticket.name, ticket.product_id.name)))
+            result.append((ticket.id, '%s' % (ticket.product_id.name)))
         return result
 
     _defaults = {
@@ -247,6 +286,26 @@ class event_department(models.Model):
         translate=True
     )
 
+
+class event_service_type(models.Model):
+    _name = "event.service.type"
+    _description = 'Service Type'
+
+    name = fields.Char(
+        string='Name',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+@api.model
+def _service_type_get(self):
+    svc_types = self.env['event.service.type'].search([])
+    return [(svc_type.id, svc_type.name) for svc_type in svc_types]
 
 class event_track_contract(models.Model):
     _name = "event.track.contract"
@@ -300,15 +359,11 @@ class event_track_contract(models.Model):
         store=True
     )
 
-    service_type = fields.Char(
+    service_type = fields.Selection(
+        _service_type_get,
         string='Service Type',
         required=False,
         readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        translate=True
     )
 
     service_fee = fields.Float(
@@ -347,7 +402,39 @@ class event_track_contract(models.Model):
 class event_track(models.Model):
     _inherit = "event.track"
 
+
+    state = fields.Selection([
+        ('draft', 'Proposal'), ('confirmed', 'Confirmed'), ('refused', 'Refused'), ('cancel', 'Cancelled')],
+        'Status', default='draft', required=True, copy=False, track_visibility='onchange')
+
     date = fields.Datetime('Topic Date')
+
+    nbr_hour = fields.Integer(
+        string='Duration',
+        required=False,
+        readonly=False,
+        index=False,
+        default=1,
+        help=False
+    )
+
+    nbr_minute = fields.Selection(
+        [('0', '00'), ('15', '15'), ('30', '30'), ('45', '45')],
+        string='Minutes',
+        required=False,
+        readonly=False,
+        index=False,
+        help=False,
+        default='0'
+    )
+
+    @api.multi
+    @api.depends('nbr_hour', 'nbr_minute')
+    def _compute_duration(self):
+        if self.nbr_hour and self.nbr_minute:
+            self.duration =  float(self.nbr_hour) + float(self.nbr_minute)/60
+
+    duration = fields.Float('Hours', digits=(16, 2), compute= '_compute_duration')
 
     event_track_contract = fields.One2many(
         string='service contract',
@@ -451,7 +538,7 @@ class event_registration_hotel(models.Model):
     )
 
     hotel_room = fields.Selection(
-        [('single', 'Signle Bed'), (('double', 'Double Bed'))],
+        [('single', 'Single'), ('standard', 'Standard')],
         string='Room Type',
         required=False,
         readonly=False,
@@ -559,29 +646,26 @@ class event_registration_travel(models.Model):
         default=None,
         help=False,
         size=50,
-        translate=True
     )
 
     travel_destionation = fields.Char(
-        string='Destionation',
+        string='Destination',
         required=False,
         readonly=False,
         index=False,
         default=None,
         help=False,
         size=50,
-        translate=True
     )
 
     freight = fields.Char(
-        string='Flight/Trian',
+        string='Flight/Trian No.',
         required=False,
         readonly=False,
         index=False,
         default=None,
         help=False,
         size=50,
-        translate=True,
         oldname='fleight_ticket_no'
     )
 
@@ -638,3 +722,11 @@ class event_registration(models.Model):
         auto_join=False,
         limit=None
     )
+
+    @api.multi
+    @api.depends('name', 'event_id')
+    def name_get(self):
+        result = []
+        for attendee in self:
+            result.append((attendee.id, '%s (%s)' % (attendee.name, attendee.event_id.name)))
+        return result
