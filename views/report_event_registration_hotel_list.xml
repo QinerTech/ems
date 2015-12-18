@@ -29,52 +29,52 @@
 
             <br/>
 
-            <table class="table table-condensed">
+            <table class="table table-condensed" style="border: 1px solid black;">
                 <thead>
-                    <tr>
+                    <tr style="border: 0.5px solid black;">
                         <th>#</th>
-                        <th class="text-left">Region</th>
-                        <th class="text-left">City</th>
-                        <th class="text-left">Hospital</th>
-                        <th class="text-left">Name</th>
-                        <th class="text-left">Start Date</th>
-                        <th class="text-left">Days</th>
-                        <th class="text-left">Hotel</th>
-                        <th class="text-left">Room</th>
-                        <th class="text-left">Comments</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Region</th>
+                        <th class="text-left" style="border: 0.5px solid black;">City</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Name</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Start Date</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Days</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Hotel</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Room</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Comments</th>
                     </tr>
                </thead>
                <tbody >
                     <t t-foreach="doc.hotel" t-as="l" >
-                        <tr >
-                            <td>
+                        <tr style="border: 0.5px solid black;" >
+                            <td style="border: 0.5px solid black;"  >
                                <t t-esc='l_index + 1' />
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.team_id"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.city"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.parent_id.name"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.name"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.hotel_reservation_start_date"  t-field-options='{"format": "yyyy/MM/dd"}' />
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.reversed_days"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.hotel_address"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.hotel_room"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                             </td>
                         </tr>
                     </t>

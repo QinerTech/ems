@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+<data>
+<template id="report_track_document">
+
+        <t t-call="report.internal_layout">
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.lang})" />
+        <div class="page">
+            <div class="oe_structure"/>
+                <h3>Speaker List</h3>
+                <row>
+                    <div t-if="doc.name" class="col-xs-6">
+                        <strong>Subject:</strong>
+                        <span t-field="doc.name"/>
+                    </div>
+                    <div t-if="doc.venue" class="col-xs-3">
+                        <strong>Venue:</strong>
+                        <span t-field="doc.venue"/>
+                    </div>
+                </row>
+                <row>
+                    <div t-if="doc.date_begin" class="col-xs-6">
+                        <strong>Start Date:</strong>
+                        <span t-field="doc.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />
+                    </div>
+                </row>
+
+            <br/>
+
+            <table class="table table-condensed" style="border: 1px solid black;">
+                <thead>
+                    <tr style="border: 0.5px solid black;" >
+                        <th style="border: 0.5px solid black;" >#</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Name</th>
+                        <th class="text-left" style="border: 0.5px solid black;">City</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Department</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Position</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Bank Account</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Attended ?</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Comments</th>
+                    </tr>
+               </thead>
+               <tbody >
+                    <t t-foreach="doc.track_ids" t-as="l" >
+                        <tr style="border: 0.5px solid black;">
+                            <td style="border: 0.5px solid black;">
+                               <t t-esc='l_index + 1' />
+                            </td>
+                            <td style="border: 0.5px solid black;">
+                               <span t-field="l.speaker_id.name"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
+                               <span t-field="l.speaker_id.city"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
+                               <span t-field="l.speaker_id.parent_id.name"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
+                               <span t-field="l.speaker_id.department"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
+                               <span t-field="l.speaker_id.function"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
+                               <span t-field="l.bank_account"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
+
+                            </td>
+                            <td style="border: 0.5px solid black;">
+
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+
+<template id="report_track">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="event_profile.report_track_document" t-lang="doc.lang"/>
+        </t>
+    </t>
+</template>
+
+</data>
+</openerp>

@@ -82,11 +82,8 @@
                                <span t-field="l.partner_id.department"/>
                             </td>
                             <td>
-                               <!-- <span t-field="l.travel_departure_date"/> -->
-                               <span t-field="l.travel_budget"/>(travel) /
-                               <span t-field="l.hotel_budget"/>(hotel)
-                               <br/>
-                               Total: <span t-esc="l.travel_budget + l.hotel_budget"/>
+                               <span t-field="l.sponsorship_amount"/>
+
                             </td>
                             <td>
                                <span t-field="l.event_id.name"/>

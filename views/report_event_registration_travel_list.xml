@@ -28,56 +28,56 @@
 
             <br/>
 
-            <table class="table table-condensed">
+            <table class="table table-condensed" style="border: 1px solid black;">
                 <thead>
-                    <tr>
+                    <tr style="border: 0.5px solid black;">
                         <th>#</th>
-                        <th class="text-left">Region</th>
-                        <th class="text-left">City</th>
-                        <th class="text-left">Hospital</th>
-                        <th class="text-left">Name</th>
-                        <th class="text-left">Departure Date</th>
-                        <th class="text-left">Departure</th>
-                        <th class="text-left">Destination</th>
-                        <th class="text-left">Travel Method</th>
-                        <th class="text-left">Ticket No</th>
-                        <th class="text-left">Comments</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Region</th>
+                        <th class="text-left" style="border: 0.5px solid black;">City</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Name</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Departure Date</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Departure</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Destination</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Travel Method</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Ticket No</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Comments</th>
                     </tr>
                </thead>
                <tbody >
                     <t t-foreach="doc.travel" t-as="l" >
-                        <tr >
-                            <td>
+                        <tr style="border: 0.5px solid black;">
+                            <td style="border: 0.5px solid black;"  >
                                <t t-esc='l_index + 1' />
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.team_id"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.city"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.parent_id.name"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.name"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.travel_departure_date"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.travel_departure"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.travel_destionation"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.travel_method"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.freight"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;"  >
                             </td>
                         </tr>
                     </t>

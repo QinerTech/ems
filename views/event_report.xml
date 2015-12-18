@@ -3,7 +3,7 @@
     <data>
         <report
             id="report_event_registration_signin"
-            string="Registration Sign-in Sheet"
+            string="Sign-in Sheet"
             model="event.event"
             report_type="qweb-pdf"
             file="event.report_registration_signin_sheet"
@@ -11,11 +11,11 @@
         />
         <report
             id="report_event_track_contract"
-            string="Service Contract Report"
+            string="Speaker List"
             model="event.event"
             report_type="qweb-pdf"
-            file="event.report_service_contract"
-            name="event_profile.report_track_contract"
+            file="event.report_topic"
+            name="event_profile.report_track"
         />
         <report
             id="report_event_registration_travel"
