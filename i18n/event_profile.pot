@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * event_profile
+#	* event_profile
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-16 07:38+0000\n"
-"PO-Revision-Date: 2015-12-16 07:38+0000\n"
+"POT-Creation-Date: 2015-12-18 01:37+0000\n"
+"PO-Revision-Date: 2015-12-18 01:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,18 +28,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "(Only for International event)"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
-msgid "(hotel)\n"
-"                               <br/>\n"
-"                               Total:"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
-msgid "(travel) /"
 msgstr ""
 
 #. module: event_profile
@@ -68,6 +56,12 @@ msgid "15"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_report_to
+#: model:ir.model.fields,field_description:event_profile.field_res_users_report_to
+msgid "1st Line Manager"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "1st line manger approval"
 msgstr ""
@@ -80,11 +74,6 @@ msgstr ""
 #. module: event_profile
 #: selection:event.track,nbr_minute:0
 msgid "30"
-msgstr ""
-
-#. module: event_profile
-#: selection:event.type,level:0
-msgid "3rd Partner"
 msgstr ""
 
 #. module: event_profile
@@ -191,7 +180,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "<strong>Start Date:</strong>"
 msgstr ""
 
@@ -199,7 +188,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "<strong>Subject:</strong>"
 msgstr ""
 
@@ -207,7 +196,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "<strong>Venue:</strong>"
 msgstr ""
 
@@ -229,11 +218,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "AbbVie Employee Name:"
-msgstr ""
-
-#. module: event_profile
-#: selection:event.type,level:0
-msgid "Abbvie"
 msgstr ""
 
 #. module: event_profile
@@ -273,6 +257,16 @@ msgid "Attendance"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
+msgid "Attended"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
+msgid "Attended ?"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model,name:event_profile.model_event_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
@@ -285,12 +279,18 @@ msgid "Audience:"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_name
+msgid "BU Name"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_users_bank_account_count
 msgid "Bank"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_bank_account
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Bank Account"
 msgstr ""
 
@@ -320,18 +320,43 @@ msgid "Bus"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model,name:event_profile.model_partner_bu
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_unit
+#: model:ir.model.fields,field_description:event_profile.field_res_users_unit
+#: model:ir.ui.menu,name:event_profile.menu_partner_bu
+msgid "Business Unit"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Cancel Event"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
+msgid "Cancel Registration"
+msgstr ""
+
+#. module: event_profile
 #: selection:event.event,level:0
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "City"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_code
+#: model:ir.model.fields,field_description:event_profile.field_res_users_code
+#: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
+msgid "Code"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Comments"
 msgstr ""
 
@@ -341,10 +366,19 @@ msgid "Companies that refers to partner"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
+msgid "Confirm"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Confirm Event"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
 #: model:ir.actions.act_window,name:event_profile.action_contacts_employee
 #: model:ir.actions.act_window,name:event_profile.action_contacts_institution
-#: model:ir.actions.act_window,name:event_profile.action_contacts_organizer
 #: model:ir.actions.act_window,name:event_profile.action_contacts_speaker
 #: model:ir.ui.menu,name:event_profile.contact_main_menu
 msgid "Contacts"
@@ -374,20 +408,24 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_department_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_department_create_date
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_date
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_create_date
 msgid "Created on"
 msgstr ""
 
@@ -425,6 +463,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_department
 #: model:ir.model.fields,field_description:event_profile.field_res_users_department
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Department"
 msgstr ""
 
@@ -457,13 +496,25 @@ msgid "Destination"
 msgstr ""
 
 #. module: event_profile
+#: selection:event.event,event_purpose:0
+msgid "Disease Awareness"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_department_display_name
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_display_name
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_name
+msgid "Divison Name"
 msgstr ""
 
 #. module: event_profile
@@ -487,17 +538,13 @@ msgid "EMS Administrator"
 msgstr ""
 
 #. module: event_profile
-#: model:res.groups,name:event_profile.group_event_user
-msgid "EMS User"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Effective on Effective date, terminated on"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.contact_menu_employee
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Employees"
 msgstr ""
 
@@ -537,13 +584,33 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_level
-#: model:ir.model.fields,field_description:event_profile.field_event_type_level
 msgid "Event Level"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Event Name:"
+msgstr ""
+
+#. module: event_profile
+#: model:res.groups,name:event_profile.group_event_user_nominator
+msgid "Event Nominator"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_event_organizer
+#: model:ir.model,name:event_profile.model_event_organizer
+msgid "Event Organizer"
+msgstr ""
+
+#. module: event_profile
+#: model:res.groups,name:event_profile.group_event_user
+msgid "Event Owner"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_event_purpose
+msgid "Event Purpose"
 msgstr ""
 
 #. module: event_profile
@@ -579,11 +646,6 @@ msgid "Event Track Contract"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model,name:event_profile.model_event_type
-msgid "Event Type"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Event Venue"
 msgstr ""
@@ -594,8 +656,17 @@ msgid "Event Venue:"
 msgstr ""
 
 #. module: event_profile
+#: model:res.groups,name:event_profile.group_event_user_readonly
+msgid "Event Viewer"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_brand_form
 #: model:ir.ui.view,arch_db:event_profile.view_event_brand_tree
+#: model:ir.ui.view,arch_db:event_profile.view_event_organizer_form
+#: model:ir.ui.view,arch_db:event_profile.view_event_organizer_tree
+#: model:ir.ui.view,arch_db:event_profile.view_partner_bu_form
+#: model:ir.ui.view,arch_db:event_profile.view_partner_bu_tree
 msgid "Event brand"
 msgstr ""
 
@@ -611,8 +682,18 @@ msgid "Event name"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.menu,name:event_profile.menu_event_type
+msgid "Events Category"
+msgstr ""
+
+#. module: event_profile
 #: selection:res.partner,gender:0
 msgid "Female"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Finish Event"
 msgstr ""
 
 #. module: event_profile
@@ -641,7 +722,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Hospital"
 msgstr ""
 
@@ -677,10 +758,12 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_id
 #: model:ir.model.fields,field_description:event_profile.field_event_department_id
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_id
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_id
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_id
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_id
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_id
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_id
 msgid "ID"
 msgstr ""
 
@@ -711,6 +794,7 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.contact_menu_institution
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Institutions"
 msgstr ""
 
@@ -728,12 +812,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_hotel
 #: model:ir.model.fields,field_description:event_profile.field_res_users_hotel
 msgid "Is a Hotel"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_partner_organizer
-#: model:ir.model.fields,field_description:event_profile.field_res_users_organizer
-msgid "Is a Organizer"
 msgstr ""
 
 #. module: event_profile
@@ -761,10 +839,12 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_department___last_update
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract___last_update
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu___last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -776,20 +856,24 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_department_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_department_write_date
+#: model:ir.model.fields,field_description:event_profile.field_event_organizer_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_date
+#: model:ir.model.fields,field_description:event_profile.field_partner_bu_write_date
 msgid "Last Updated on"
 msgstr ""
 
@@ -825,11 +909,10 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_department_name
-#: model:ir.model.fields,field_description:event_profile.field_event_service_type_name
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Name"
 msgstr ""
 
@@ -859,9 +942,15 @@ msgid "Organizer:"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.menu,name:event_profile.contact_menu_organizer
-#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
+#: model:ir.ui.menu,name:event_profile.menu_event_organizer
 msgid "Organizers"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_oversea
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_oversea
+#: model:ir.model.fields,field_description:event_profile.field_res_users_oversea
+msgid "Oversea"
 msgstr ""
 
 #. module: event_profile
@@ -869,6 +958,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_partner
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_partner
 msgid "Partner"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_partner_bu
+msgid "Partner Business Unit"
 msgstr ""
 
 #. module: event_profile
@@ -898,12 +992,18 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Position"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Position:"
+msgstr ""
+
+#. module: event_profile
+#: selection:event.event,event_purpose:0
+msgid "Promotional"
 msgstr ""
 
 #. module: event_profile
@@ -915,19 +1015,12 @@ msgstr ""
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Region"
 msgstr ""
 
 #. module: event_profile
 #: selection:event.event,level:0
 msgid "Regional"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.actions.report.xml,name:event_profile.report_event_registration_signin
-#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
-msgid "Registration Sign-in Sheet"
 msgstr ""
 
 #. module: event_profile
@@ -948,6 +1041,12 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_resonable_requirement
 msgid "Resonable Requirement"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_ticket_user_id
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_user_id
+msgid "Responsible"
 msgstr ""
 
 #. module: event_profile
@@ -977,19 +1076,12 @@ msgid "Service Contract"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.actions.report.xml,name:event_profile.report_event_track_contract
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
-msgid "Service Contract Report"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Service Description:"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_fee
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Service Fee"
 msgstr ""
 
@@ -1003,7 +1095,6 @@ msgstr ""
 #: model:ir.model,name:event_profile.model_event_service_type
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_type
 #: model:ir.ui.menu,name:event_profile.menu_event_service_type
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
 msgid "Service Type"
 msgstr ""
 
@@ -1013,8 +1104,24 @@ msgid "Service deliverables:"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Set To Draft"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
+msgid "Set To Unconfirmed"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Sign here:  _____________________________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_registration_signin
+#: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
+msgid "Sign-in Sheet"
 msgstr ""
 
 #. module: event_profile
@@ -1044,6 +1151,12 @@ msgid "Speaker"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.actions.report.xml,name:event_profile.report_event_track_contract
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
+msgid "Speaker List"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Speaker and external Audience name"
 msgstr ""
@@ -1062,6 +1175,16 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Sponsor Reason"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_organizer
+msgid "Sponsored By"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_sponsorship_amount
+msgid "Sponsorship Amount"
 msgstr ""
 
 #. module: event_profile
@@ -1181,11 +1304,6 @@ msgid "Total amount you have to pay to this vendor."
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_track_contract_document
-msgid "Track"
-msgstr ""
-
-#. module: event_profile
 #: selection:event.registration.travel,travel_method:0
 msgid "Train"
 msgstr ""
@@ -1216,6 +1334,11 @@ msgstr ""
 #: model:ir.actions.report.xml,name:event_profile.report_event_registration_travel
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Travel Report"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_service_type_name
+msgid "Type Name"
 msgstr ""
 
 #. module: event_profile
