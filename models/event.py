@@ -10,34 +10,64 @@ def _lang_get(self):
     languages = self.env['res.lang'].search([])
     return [(language.code, language.name) for language in languages]
 
-@api.model
-def _organizer_get(self):
-    partners = self.env['res.partner'].search([('organizer', '=', True)])
-    return [(partner.id, partner.name) for partner in partners]
+class event_organizer(models.Model):
+    _name = "event.organizer"
+    _description = 'Event Organizer'
 
-class event_type(models.Model):
-    _inherit = "event.type"
-
-    level = fields.Selection(
-        string='Event Level',
+    name = fields.Char(
+        string='Divison Name',
         required=True,
         readonly=False,
         index=False,
+        default=None,
         help=False,
-        selection=[
-            ('abbvie', 'Abbvie'),
-            ('other', '3rd Partner'),
-            ],
-        default='abbvie',
-        )
+        size=50,
+        translate=True
+    )
 
-    @api.multi
-    @api.depends('name', 'level')
-    def name_get(self):
-        result = []
-        for etype in self:
-            result.append((etype.id, '%s (%s)' % (etype.name, etype.level)))
-        return result
+class partner_bu(models.Model):
+    _name = "partner.bu"
+    _description = 'Business Unit'
+
+    name = fields.Char(
+        string='BU Name',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+@api.model
+def _organizer_get(self):
+    partners = self.env['event.organizer'].search([])
+    return [(partner.id, partner.name) for partner in partners]
+
+# class event_type(models.Model):
+#     _inherit = "event.type"
+
+#     level = fields.Selection(
+#         string='Event Level',
+#         required=True,
+#         readonly=False,
+#         index=False,
+#         help=False,
+#         selection=[
+#             ('abbvie', 'Abbvie'),
+#             ('other', '3rd Partner'),
+#             ],
+#         default='abbvie',
+#         )
+
+#     @api.multi
+#     @api.depends('name', 'level')
+#     def name_get(self):
+#         result = []
+#         for etype in self:
+#             result.append((etype.id, '%s (%s)' % (etype.name, etype.level)))
+#         return result
 
 
 class event_event(models.Model):
@@ -68,9 +98,19 @@ class event_event(models.Model):
         states={'done': [('readonly', True)], 'confirm': [('readonly', True)]}
     )
 
-    name = fields.Char(translate=False)
+    name = fields.Char(string='Subject', translate=False)
 
-    organizer_id = fields.Selection(_organizer_get, string='Organizer',)
+    event_purpose = fields.Selection(
+        string='Event Purpose',
+        required=False,
+        readonly=False,
+        index=False,
+        default=False,
+        help=False,
+        selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness')]
+    )
+
+    organizer = fields.Selection(_organizer_get, string='Sponsored By',)
 
     hotel = fields.One2many(
         string='Hotel',
@@ -166,7 +206,7 @@ class event_event(models.Model):
         string='Language',
         required=True,
         default=lambda self: self.env.user.lang
-    )
+                            )
 
     venue = fields.Char(
         string='Venue',
@@ -183,11 +223,11 @@ class event_event(models.Model):
     @api.model
     def _default_tickets(self):
         try:
-            products = self.env['product.product'].search([('event_ok','=',True)])
+            products = self.env['product.product'].search([('event_ok', '=', True)])
             return [{
                 'product_id': product.id,
                 'price': 0,
-            }  for product  in products ]
+            } for product in products]
         except ValueError:
             return self.env['event.event.ticket']
 
@@ -197,9 +237,8 @@ class event_event(models.Model):
         result = []
         for event in self:
             name = super(event_event, self).name_get()[0][1]
-            result.append((event.id, '[%s] %s ' % (event.event_code, name )))
+            result.append((event.id, '[%s] %s ' % (event.event_code, name)))
         return result
-
 
     _defaults = {
         'show_menu': True,
@@ -208,26 +247,15 @@ class event_event(models.Model):
         'date_tz': 'Asia/Shanghai',
     }
 
-class event_registration(models.Model):
-    _inherit = 'event.registration'
-    _description = 'Nomination'
-
-    event_ticket_id = fields.Many2one(required=True, string="Region")
-    partner_id = fields.Many2one(required=True)
-    venue = fields.Char(
-        string='Venue',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        related='event_id.venue',
-    )
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
-    _description = 'Nomination'
+    _description = 'Seat Quota'
+
+    user_id = fields.Many2one(
+        'res.users', string='Responsible',
+        default=lambda self: self.env.user
+    )
 
     product_id = fields.Many2one(string="Attendee Region")
     deadline = fields.Date(string="Nomination End")
@@ -271,7 +299,7 @@ class event_brand(models.Model):
     #     selection=[('main', 'Main'), ('other', 'Other')]
     # )
 
-class event_department(models.Model):
+class event_hospital_department(models.Model):
     _name = "event.department"
     _description = 'Event Department'
 
@@ -292,7 +320,7 @@ class event_service_type(models.Model):
     _description = 'Service Type'
 
     name = fields.Char(
-        string='Name',
+        string='Type Name',
         required=True,
         readonly=False,
         index=False,
@@ -402,6 +430,13 @@ class event_track_contract(models.Model):
 class event_track(models.Model):
     _inherit = "event.track"
 
+    oversea = fields.Boolean(
+        string='Oversea',
+        required=False,
+        readonly=False,
+        index=False,
+        default=False,
+    )
 
     state = fields.Selection([
         ('draft', 'Proposal'), ('confirmed', 'Confirmed'), ('refused', 'Refused'), ('cancel', 'Cancelled')],
@@ -432,9 +467,11 @@ class event_track(models.Model):
     @api.depends('nbr_hour', 'nbr_minute')
     def _compute_duration(self):
         if self.nbr_hour and self.nbr_minute:
-            self.duration =  float(self.nbr_hour) + float(self.nbr_minute)/60
+            self.duration = float(self.nbr_hour) + float(self.nbr_minute) / 60
+        else:
+            self.duration = 0.0
 
-    duration = fields.Float('Hours', digits=(16, 2), compute= '_compute_duration')
+    duration = fields.Float('Hours', digits=(2, 2), compute='_compute_duration')
 
     event_track_contract = fields.One2many(
         string='service contract',
@@ -472,6 +509,7 @@ class event_track(models.Model):
                 self.partner_name = self.partner_name or contact.name
                 self.partner_email = self.partner_email or contact.email
                 self.partner_phone = self.partner_phone or contact.phone
+                self.oversea = self.oversea or contact.oversea
 
 class event_registration_hotel(models.Model):
     _name = "event.registration.hotel"
@@ -673,13 +711,33 @@ class event_registration_travel(models.Model):
 class event_registration(models.Model):
     _inherit = "event.registration"
 
+    _description = 'Nomination'
+
+    user_id = fields.Many2one(
+        'res.users', string='Responsible',
+        default=lambda self: self.env.user,
+        readonly=False, states={'done': [('readonly', True)]})
+
+    event_ticket_id = fields.Many2one(required=True, string="Region")
+    partner_id = fields.Many2one(required=True)
+    venue = fields.Char(
+        string='Venue',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        related='event_id.venue',
+    )
+
     hotel_budget = fields.Float(
         string='Hotel Budget',
         required=False,
         readonly=False,
         index=False,
         default=1500.0,
-        digits=(16, 2),
+        digits=(4, 2),
         help=False
     )
 
@@ -689,7 +747,17 @@ class event_registration(models.Model):
         readonly=False,
         index=False,
         default=2000.0,
-        digits=(16, 2),
+        digits=(4, 2),
+        help=False
+    )
+
+    sponsorship_amount = fields.Float(
+        string='Sponsorship Amount',
+        required=False,
+        readonly=False,
+        index=False,
+        default=0.0,
+        digits=(4, 2),
         help=False
     )
 
@@ -723,10 +791,20 @@ class event_registration(models.Model):
         limit=None
     )
 
-    @api.multi
-    @api.depends('name', 'event_id')
-    def name_get(self):
-        result = []
-        for attendee in self:
-            result.append((attendee.id, '%s (%s)' % (attendee.name, attendee.event_id.name)))
-        return result
+    # @api.multi
+    # @api.depends('name', 'event_id')
+    # def name_get(self):
+    #     result = []
+    #     for attendee in self:
+    #         result.append((attendee.id, '%s (%s)' % (attendee.name, attendee.event_id.name)))
+    #     return result
+
+    @api.onchange('partner_id')
+    def _onchange_partner(self):
+        if self.partner_id:
+            contact_id = self.partner_id.address_get().get('contact', False)
+            if contact_id:
+                contact = self.env['res.partner'].browse(contact_id)
+                self.name = self.name or contact.name
+                self.email = self.email or contact.email
+                self.phone = self.phone or contact.phone

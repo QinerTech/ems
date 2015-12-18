@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <openerp>
         <data>
+
             <record model="ir.ui.view" id="view_partner_simple_form_extend">
                 <field name="name">res.partner.simplified.form</field>
                 <field name="model">res.partner</field>
@@ -14,22 +15,51 @@
                     </xpath>
                 </field>
             </record>
+
+            <!-- Partner -->
+            <record id="view_partner_tree" model="ir.ui.view">
+                <field name="name">res.partner.tree</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_tree" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='display_name']" position="after">
+                        <field name="parent_id" />
+                        <field name="department" />
+                    </xpath>
+                    <xpath expr="//field[@name='display_name']" position="before">
+                        <field name="code" />
+                    </xpath>
+                </field>
+            </record>
+
             <record model="ir.ui.view" id="view_partner_form_extend">
                 <field name="name">res.partner.form</field>
                 <field name="model">res.partner</field>
                 <field name="inherit_id" ref="base.view_partner_form" />
                 <field name="arch" type="xml">
-                    <xpath expr="//field[@name='function']" position="before">
-                        <field name="team_id" />
-                        <field name="department" attrs="{'invisible': [('is_company','=', True)]}" />
+                    <xpath expr="//field[@name='name']" position="before">
+                        <field name="code" placeholder="Code"/>
+                    </xpath>
+                    <xpath expr="//sheet/group" position="before">
+                        <group>
+                            <group>
+                                <field name="oversea" attrs="{'invisible': [('is_company','=', True)]}" />
+                                <field name="employee" attrs="{'invisible': [('is_company','=', True)]}" />
+                                <field name="speaker" attrs="{'invisible': [('is_company','=', True)]} " />
+                                <field name="hotel" attrs="{'invisible': [('is_company','=', False)]} " />
+                            </group>
+                            <group></group>
+                        </group>
                     </xpath>
                     <xpath expr="//field[@name='function']" position="after">
                         <field name="gender" attrs="{'invisible': [('is_company','=', True)]}" />
                     </xpath>
                     <xpath expr="//field[@name='website']" position="after">
-                        <field name="employee" attrs="{'invisible': [('is_company','=', True)]}" />
-                        <field name="organizer" attrs="{'invisible': [('is_company','=', True)]}" />
-                        <field name="speaker" attrs="{'invisible': [('is_company','=', True)]} "/>
+                        <field name="team_id" />
+                        <field name="user_id" />
+                        <field name="unit" attrs="{'invisible': [('employee','=', False)]}" />
+                        <field name="report_to" attrs="{'invisible': [('employee','=', False)]}" />
+                        <field name="department" attrs="{'invisible': ['|', ('is_company','=', True),('employee','=', True)]}" />
                     </xpath>
                     <xpath expr="//page[@name='sales_purchases']" position="attributes">
                         <attribute name="invisible">True</attribute>
@@ -54,7 +84,8 @@
                 <field name="arch" type="xml">
                     <xpath expr="//filter[@name='supplier']" position="after" >
                         <filter string="Speakers" name="speaker" domain="[('speaker','=',1)]"/>
-                        <filter string="Organizers" name="organizer" domain="[('organizer','=',1)]"/>
+                        <filter string="Employees" name="employee" domain="[('employee','=',1)]"/>
+                        <filter string="Institutions" name="institution" domain="[('is_company','=',1)]"/>
                     </xpath>
                 </field>
             </record>
@@ -65,7 +96,7 @@
                 <field name="res_model">res.partner</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">kanban,tree,form</field>
-                <field name="context">{'search_default_type_company': 1,'default_type_person': 0,'default_type_company': 1}</field>
+                <field name="context">{'search_default_institution': 1,'default_institution':1,'default_type_company':1}</field>
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
             <record id="action_contacts_speaker" model="ir.actions.act_window">
@@ -75,15 +106,6 @@
                 <field name="view_type">form</field>
                 <field name="view_mode">kanban,tree,form</field>
                 <field name="context">{'search_default_speaker': 1,'default_customer': 0,'default_supplier': 1,'default_speaker': 1}</field>
-                <field name="search_view_id" ref="base.view_res_partner_filter" />
-            </record>
-            <record id="action_contacts_organizer" model="ir.actions.act_window">
-                <field name="name">Contacts</field>
-                <field name="type">ir.actions.act_window</field>
-                <field name="res_model">res.partner</field>
-                <field name="view_type">form</field>
-                <field name="view_mode">kanban,tree,form</field>
-                <field name="context">{'search_default_organizer': 1,'default_organizer': 1,'default_supplier': 0,'default_speaker': 0,'default_customer':0}</field>
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
             <record id="action_contacts_employee" model="ir.actions.act_window">
@@ -110,7 +132,6 @@
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
 
-            <menuitem id="contact_menu_organizer" name="Organizers" parent="mail.menu_contacts" action="action_contacts_organizer" sequence="12"/>
 
             <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="13"/>
 
