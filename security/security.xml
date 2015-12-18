@@ -3,35 +3,63 @@
 
     <data noupdate="0">
 
-        <record id="group_event_user" model="res.groups">
-            <field name="name">EMS User</field>
+        <record id="group_event_user_readonly" model="res.groups">
+            <field name="name">Event Viewer</field>
             <field name="category_id" ref="res_roles.module_category_user_roles"/>
             <field name="implied_ids"
-                   eval="[(4, ref('base.group_user')),(4, ref('base.group_partner_manager')),(4, ref('event.group_event_user'))]"/>
+                   eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_event_user_nominator" model="res.groups">
+            <field name="name">Event Nominator</field>
+            <field name="category_id" ref="res_roles.module_category_user_roles"/>
+            <field name="implied_ids"
+                   eval="[(4, ref('group_event_user_readonly'))]"/>
+        </record>
+
+        <record id="group_event_user" model="res.groups">
+            <field name="name">Event Owner</field>
+            <field name="category_id" ref="res_roles.module_category_user_roles"/>
+            <field name="implied_ids"
+                   eval="[(4, ref('group_event_user_nominator')),(4, ref('base.group_partner_manager')),(4, ref('event.group_event_user'))]"/>
         </record>
 
         <record id="group_event_admin" model="res.groups">
             <field name="name">EMS Administrator</field>
             <field name="category_id" ref="res_roles.module_category_user_roles"/>
             <field name="implied_ids"
-                   eval="[(4, ref('base.group_user')),(4, ref('base.group_partner_manager')),(4, ref('event.group_event_manager')),(4, ref('base.group_configuration')), (4, ref('base.group_erp_manager')) ]"/>
+                   eval="[(4, ref('group_event_user')),(4, ref('event.group_event_manager')),(4, ref('base.group_configuration')), (4, ref('base.group_erp_manager')) ]"/>
         </record>
 
         <record id="partner_ems_admin" model="res.partner">
             <field name="name">EMS Admin</field>
             <field name="company_id" ref="base.main_company"/>
             <field name="customer" eval="False"/>
-            <field name="email">ems_admin@yourcompany.example.com</field>
+            <field name="email">partner_ems_admin@yourcompany.example.com</field>
         </record>
 
-        <record id="partner_ems_user" model="res.partner">
-            <field name="name">EMS User</field>
+        <record id="partner_event_user_" model="res.partner">
+            <field name="name">Event Owner</field>
             <field name="company_id" ref="base.main_company"/>
             <field name="customer" eval="False"/>
-            <field name="email">ems_user@yourcompany.example.com</field>
+            <field name="email">partner_event_user_@yourcompany.example.com</field>
         </record>
 
-        <record id="user_event_admin" model="res.users">
+        <record id="partner_event_nominator_" model="res.partner">
+            <field name="name">Event Nominator</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="customer" eval="False"/>
+            <field name="email">partner_event_nominator_@yourcompany.example.com</field>
+        </record>
+
+        <record id="partner_event_viewer_" model="res.partner">
+            <field name="name">Event Viewer</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="customer" eval="False"/>
+            <field name="email">partner_event_viewer_@yourcompany.example.com</field>
+        </record>
+
+        <record id="user_ems_admin_" model="res.users">
             <field name="partner_id" ref="partner_ems_admin"/>
             <field name="login">ems_admin</field>
             <field name="password">admin</field>
@@ -41,14 +69,34 @@ EMS Admin</field>
             <field name="groups_id" eval="[(6,0,[ref('group_event_admin')])]"/>
         </record>
 
-        <record id="user_event_user" model="res.users">
-            <field name="partner_id" ref="partner_ems_user"/>
-            <field name="login">ems_user</field>
-            <field name="password">user</field>
+        <record id="user_event_user_1" model="res.users">
+            <field name="partner_id" ref="partner_event_user_"/>
+            <field name="login">event_user</field>
+            <field name="password">1</field>
             <field name="signature">--
-EMS User</field>
+Event Owner</field>
             <field name="company_id" ref="base.main_company"/>
             <field name="groups_id" eval="[(6,0,[ref('group_event_user')])]"/>
+        </record>
+
+        <record id="user_event_nominator_1" model="res.users">
+            <field name="partner_id" ref="partner_event_nominator_"/>
+            <field name="login">event_nominator</field>
+            <field name="password">1</field>
+            <field name="signature">--
+Event Nominator</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_event_user_nominator')])]"/>
+        </record>
+
+        <record id="user_event_viewer_1" model="res.users">
+            <field name="partner_id" ref="partner_event_viewer_"/>
+            <field name="login">event_viewer</field>
+            <field name="password">1</field>
+            <field name="signature">--
+Event Viewer</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_event_user_readonly')])]"/>
         </record>
 
         <record id="base.user_root" model="res.users">
@@ -98,4 +146,63 @@ EMS User</field>
         </record>
 
     </data>
+
+    <data noupdate="0">
+        <record model="ir.rule" id="event_event_owner">
+            <field name="name">Event owner can edit their event only.</field>
+            <field name="model_id" ref="model_event_event"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('event_profile.group_event_user'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.rule" id="event_ticket_owner">
+            <field name="name">Event owner can edit their event ticket only.</field>
+            <field name="model_id" ref="model_event_event_ticket"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('event_profile.group_event_user'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.rule" id="event_registration_nominator">
+            <field name="name">Event nominator can edit their event registration only.</field>
+            <field name="model_id" ref="model_event_registration"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('event_profile.group_event_user_nominator'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.rule" id="event_track_nominator">
+            <field name="name">Event nominator can edit their event track only.</field>
+            <field name="model_id" ref="model_event_track"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('event_profile.group_event_user_nominator'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.rule" id="partner_nominator">
+            <field name="name">Event nominator can edit their partner only.</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('event_profile.group_event_user_nominator'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+    </data>
+
 </openerp>
