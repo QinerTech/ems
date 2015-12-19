@@ -855,7 +855,7 @@ class event_registration(models.Model):
                 elif contact.employee:
                     dom = "Internal-Audience"
                 elif not contact.employee and not contact.speaker and team:
-                    dom = "%s-%s" % (team, 'Audience')
+                    dom = "%s-%s" % (team.name, 'Audience')
 
                 _logger.info('domain is %s ' %dom)
 
@@ -867,3 +867,6 @@ class event_registration(models.Model):
                     _logger.info('ticket ids is  %s ' %ticket_ids)
                     if ticket_ids:
                         self.event_ticket_id = ticket_ids[0]
+
+                else:
+                    self.event_ticket_id = False
