@@ -17,7 +17,6 @@ class Partner(models.Model):
 
     code = fields.Char(
         string='Code',
-        oldname='ref'
     )
 
     team_id = fields.Many2one(
