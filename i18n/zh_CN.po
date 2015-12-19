@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-18 20:11+0800\n"
-"PO-Revision-Date: 2015-12-18 20:15+0800\n"
+"POT-Creation-Date: 2015-12-20 00:30+0800\n"
+"PO-Revision-Date: 2015-12-20 00:34+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -275,6 +275,7 @@ msgstr "是否参会?"
 #: model:ir.model,name:event_profile.model_event_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
+#: model:ir.model.fields,field_description:event_profile.field_event_track_registration_id
 msgid "Attendee"
 msgstr "出席者"
 
@@ -922,7 +923,7 @@ msgstr "分钟"
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Name"
-msgstr "姓名"
+msgstr "名称"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -942,6 +943,11 @@ msgstr "姓名：________________________日期：____________________"
 #. module: event_profile
 #: selection:event.event,level:0
 msgid "National"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_user_id
+msgid "Nominator"
 msgstr ""
 
 #. module: event_profile
@@ -1053,7 +1059,6 @@ msgstr "合理要求"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_ticket_user_id
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_user_id
 msgid "Responsible"
 msgstr "负责人"
 
@@ -1190,17 +1195,17 @@ msgstr "赞助与会人士的目的"
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_organizer
 msgid "Sponsored By"
-msgstr ""
+msgstr "赞助者"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_sponsorship_amount
 msgid "Sponsorship Amount"
-msgstr ""
+msgstr "赞助金额"
 
 #. module: event_profile
 #: model:ir.actions.report.xml,name:event_profile.report_event_registration_sponsorship_application
 msgid "Sponsorship Application"
-msgstr "赞助申请"
+msgstr "赞助申请表"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
@@ -1470,6 +1475,16 @@ msgid ""
 "会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的"
 "理由："
 "_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+msgid "例如：交通银行南京路支行600028XXXXXXXXXXXX"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+msgid "例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX"
 msgstr ""
 
 #. module: event_profile

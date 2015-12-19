@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-18 01:37+0000\n"
-"PO-Revision-Date: 2015-12-18 01:37+0000\n"
+"POT-Creation-Date: 2015-12-19 16:29+0000\n"
+"PO-Revision-Date: 2015-12-19 16:29+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -270,6 +270,7 @@ msgstr ""
 #: model:ir.model,name:event_profile.model_event_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
+#: model:ir.model.fields,field_description:event_profile.field_event_track_registration_id
 msgid "Attendee"
 msgstr ""
 
@@ -937,6 +938,11 @@ msgid "National"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_user_id
+msgid "Nominator"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Organizer:"
 msgstr ""
@@ -1045,7 +1051,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_ticket_user_id
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_user_id
 msgid "Responsible"
 msgstr ""
 
@@ -1446,6 +1451,16 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的理由：_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+msgid "例如：交通银行南京路支行600028XXXXXXXXXXXX"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+msgid "例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX"
 msgstr ""
 
 #. module: event_profile
