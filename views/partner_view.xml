@@ -40,19 +40,19 @@
                     <xpath expr="//field[@name='name']" position="before">
                         <field name="code" placeholder="Code"/>
                     </xpath>
-<!--                     <xpath expr="//field[@name='customer']" position="replace">
+                    <xpath expr="//group[@name='sale']/field[@name='user_id']" position="replace">
                     </xpath>
-                    <xpath expr="//field[@name='supplier']" position="replace">
-                    </xpath> -->
+                    <xpath expr="//group[@name='sale']/field[@name='customer']" position="replace">
+                    </xpath>
                     <xpath expr="//sheet/group" position="before">
                         <group>
                             <group>
                                 <field name="oversea" attrs="{'invisible': [('is_company','=', True)]}" />
+                                <field name="customer" />
                                 <field name="employee" attrs="{'invisible': [('is_company','=', True)]}" />
                                 <field name="speaker" attrs="{'invisible': [('is_company','=', True)]} " />
                                 <field name="hotel" attrs="{'invisible': [('is_company','=', False)]} " />
-                                <!-- <field name="customer" />
-                                <field name="supplier" /> -->
+                                <!-- <field name="supplier" /> -->
                             </group>
                             <group></group>
                         </group>
@@ -138,13 +138,11 @@
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
 
+            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="12"/>
 
             <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="13"/>
 
             <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="14"/>
-
-            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="15"/>
-
 
         </data>
     </openerp>
