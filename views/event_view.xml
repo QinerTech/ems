@@ -198,7 +198,7 @@
                     <xpath expr="//field[@name='partner_id']" position="replace">
                     </xpath>
                     <xpath expr="//field[@name='name']" position="replace">
-                        <field name='partner_id'  attrs="{'readonly':[('state', '!=', 'draft')]} " domain="[('company_type','=','person')]" />
+                        <field name='partner_id'  attrs="{'readonly':[('state', '!=', 'draft')]} " domain="[('company_type','=','person')]" context="{'event_id': event_id}"/>
                         <field name="name" />
                     </xpath>
                     <xpath expr="//field[@name='event_id']" position="after">
@@ -247,12 +247,13 @@
                         <group>
                             <group>
                                 <field name="speaker_id"  context="{'search_default_speaker':1, 'default_speaker':1}"  />
+                                <field name="registration_id"  context="{ 'search_default_partner_id':speaker_id , 'default_event_id':event_id, 'default_partner_id': speaker_id }  "/>
                                 <field name="partner_name"/>
                                 <field name="oversea" readonly="1"/>
                                 <field name="partner_phone"/>
                                 <field name="partner_email"/>
-                                <field name="identifier_id" password="True"/>
-                                <field name="bank_account" password="True"/>
+                                <field name="identifier_id" password="False" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" groups="event_profile.group_event_user_nominator"/>
+                                <field name="bank_account" password="False" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX" groups="event_profile.group_event_user_nominator"/>
                             </group>
                             <group>
 

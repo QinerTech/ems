@@ -5,6 +5,12 @@ from openerp.tools.translate import _
 from openerp.addons.website.models.website import slug
 
 
+from logging import getLogger
+
+
+_logger = getLogger(__name__)
+
+
 @api.model
 def _lang_get(self):
     languages = self.env['res.lang'].search([])
@@ -430,6 +436,11 @@ class event_track_contract(models.Model):
 class event_track(models.Model):
     _inherit = "event.track"
 
+    user_id = fields.Many2one(
+        'res.users', string='Nominator',
+        default=lambda self: self.env.user
+    )
+
     oversea = fields.Boolean(
         string='Oversea',
         required=False,
@@ -490,6 +501,20 @@ class event_track(models.Model):
 
     speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]")
 
+    registration_id = fields.Many2one(
+        string='Attendee',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='event.registration',
+        domain=[],
+        context={},
+        ondelete='cascade',
+        auto_join=False
+    )
+
     identifier_id = fields.Char(
         string='Identifier ID')
 
@@ -500,16 +525,23 @@ class event_track(models.Model):
     partner_email = fields.Char('Email')
     partner_phone = fields.Char('Phone')
 
+    # @api.onchange('registration_id')
+    # def _onchange_registration_id(self):
+    #     if self.registration_id:
+    #         contact= self.registration_id.partner_id
+    #         if contact:
+    #             self.speaker_id = self.registration_id.partner_id
+
     @api.onchange('speaker_id')
     def _onchange_partner(self):
         if self.speaker_id:
             contact_id = self.speaker_id.address_get().get('contact', False)
             if contact_id:
                 contact = self.env['res.partner'].browse(contact_id)
-                self.partner_name = self.partner_name or contact.name
-                self.partner_email = self.partner_email or contact.email
-                self.partner_phone = self.partner_phone or contact.phone
-                self.oversea = self.oversea or contact.oversea
+                self.partner_name = contact.name
+                self.partner_email = contact.email
+                self.partner_phone = contact.phone
+                self.oversea = contact.oversea
 
 class event_registration_hotel(models.Model):
     _name = "event.registration.hotel"
@@ -714,7 +746,7 @@ class event_registration(models.Model):
     _description = 'Nomination'
 
     user_id = fields.Many2one(
-        'res.users', string='Responsible',
+        'res.users', string='Nominator',
         default=lambda self: self.env.user,
         readonly=False, states={'done': [('readonly', True)]})
 
@@ -799,12 +831,36 @@ class event_registration(models.Model):
     #         result.append((attendee.id, '%s (%s)' % (attendee.name, attendee.event_id.name)))
     #     return result
 
+
+
+
     @api.onchange('partner_id')
     def _onchange_partner(self):
         if self.partner_id:
             contact_id = self.partner_id.address_get().get('contact', False)
             if contact_id:
                 contact = self.env['res.partner'].browse(contact_id)
-                self.name = self.name or contact.name
-                self.email = self.email or contact.email
-                self.phone = self.phone or contact.phone
+                self.name = contact.name
+                self.email = contact.email
+                self.phone = contact.phone
+
+                team = contact.team_id
+
+                dom = ""
+                if contact.speaker and team:
+                    dom = "%s-%s" % (team.name, 'Speaker')
+                elif contact.employee:
+                    dom = "Internal-Audience"
+                elif not contact.employee and not contact.speaker and team:
+                    dom = "%s-%s" % (team, 'Audience')
+
+                _logger.info('domain is %s ' %dom)
+
+                product_ticket = self.env['product.product'].search([('name', '=', dom)])
+                _logger.info('product ticket is  %s ' %product_ticket)
+
+                if product_ticket:
+                    ticket_ids = self.env['event.event.ticket'].search([('product_id', 'in', [product_ticket.id]), ('event_id', '=', self.env.context.get('event_id'))])
+                    _logger.info('ticket ids is  %s ' %ticket_ids)
+                    if ticket_ids:
+                        self.event_ticket_id = ticket_ids[0]
