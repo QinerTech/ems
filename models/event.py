@@ -231,6 +231,7 @@ class event_event(models.Model):
         try:
             products = self.env['product.product'].search([('event_ok', '=', True)])
             return [{
+                'name': product.name,
                 'product_id': product.id,
                 'price': 0,
             } for product in products]
@@ -245,6 +246,11 @@ class event_event(models.Model):
             name = super(event_event, self).name_get()[0][1]
             result.append((event.id, '[%s] %s ' % (event.event_code, name)))
         return result
+
+    @api.multi
+    def write(self, vals):
+        res = super(event_event, self.sudo()).write(vals)
+        return res
 
     _defaults = {
         'show_menu': True,
@@ -830,9 +836,6 @@ class event_registration(models.Model):
     #     for attendee in self:
     #         result.append((attendee.id, '%s (%s)' % (attendee.name, attendee.event_id.name)))
     #     return result
-
-
-
 
     @api.onchange('partner_id')
     def _onchange_partner(self):

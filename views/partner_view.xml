@@ -40,6 +40,10 @@
                     <xpath expr="//field[@name='name']" position="before">
                         <field name="code" placeholder="Code"/>
                     </xpath>
+<!--                     <xpath expr="//field[@name='customer']" position="replace">
+                    </xpath>
+                    <xpath expr="//field[@name='supplier']" position="replace">
+                    </xpath> -->
                     <xpath expr="//sheet/group" position="before">
                         <group>
                             <group>
@@ -47,6 +51,8 @@
                                 <field name="employee" attrs="{'invisible': [('is_company','=', True)]}" />
                                 <field name="speaker" attrs="{'invisible': [('is_company','=', True)]} " />
                                 <field name="hotel" attrs="{'invisible': [('is_company','=', False)]} " />
+                                <!-- <field name="customer" />
+                                <field name="supplier" /> -->
                             </group>
                             <group></group>
                         </group>

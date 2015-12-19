@@ -46,7 +46,7 @@
                     </xpath>
                     <xpath expr="//notebook" position="inside">
 
-                        <page string="Travel Info">
+                        <page string="Travel Info" groups="event_profile.group_event_user,event_profile.group_event_admin">
                             <field name='travel' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='registration' />
@@ -58,7 +58,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Hotel Info">
+                        <page string="Hotel Info"  groups="event_profile.group_event_user,event_profile.group_event_admin">
                             <field name='hotel' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='registration' />
@@ -69,7 +69,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Service Items">
+                        <page string="Service Items"  groups="event_profile.group_event_user,event_profile.group_event_admin">
                             <field name='contract' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='speaker' />
