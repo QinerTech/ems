@@ -21,7 +21,7 @@ class Partner(models.Model):
     )
 
     team_id = fields.Many2one(
-        string='Territory',
+        string='Region',
     )
 
     user_id = fields.Many2one(

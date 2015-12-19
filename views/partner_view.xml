@@ -127,7 +127,7 @@
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
 
-            <menuitem name="Contacts" id="contact_main_menu" sequence="4" web_icon="mail,static/description/icon2.png"  groups="base.group_user,base.group_partner_manager"/>
+            <menuitem name="Contacts" id="contact_main_menu" sequence="70" web_icon="mail,static/description/icon2.png"  groups="base.group_user,base.group_partner_manager"/>
             <menuitem id="mail.menu_contacts" name="Contacts" parent="contact_main_menu"/>
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
