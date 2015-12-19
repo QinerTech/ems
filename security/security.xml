@@ -153,7 +153,7 @@ Event Viewer</field>
             <field name="model_id" ref="model_event_event"/>
             <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
             <field name="groups" eval="[(4, ref('event_profile.group_event_user'))]"/>
-            <field name="perm_read" eval="False"/>
+            <field name="perm_read" eval="True"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="True"/>
             <field name="perm_write" eval="True"/>
