@@ -756,6 +756,17 @@ class event_registration(models.Model):
         readonly=False, states={'done': [('readonly', True)]})
 
     event_ticket_id = fields.Many2one(required=True, string="Region")
+
+    is_speaker = fields.Boolean(
+        string='Is a Speaker',
+        required=False,
+        readonly=False,
+        index=False,
+        default=False,
+        help=False,
+        related='partner_id.speaker',
+    )
+
     partner_id = fields.Many2one(required=True)
     venue = fields.Char(
         string='Venue',
