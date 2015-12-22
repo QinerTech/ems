@@ -294,6 +294,7 @@
 
             <record model="ir.actions.act_window" id="website_event_track.action_event_track">
                 <field name="view_mode">tree,form,graph</field>
+                <field name="context">{1:1}</field>
             </record>
 
             <record model="ir.actions.act_window" id="website_event_track.action_event_track_from_event">
