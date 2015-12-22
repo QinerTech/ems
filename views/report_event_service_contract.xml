@@ -5,7 +5,7 @@
 <template id="report_service_contract_document">
 
         <t t-call="report.external_layout">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.speaker_id.lang})" />
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.registration_id.partner_id.lang})" />
         <div class="page">
             <div class="oe_structure"/>
                 <table border="1" cellpadding="0" cellspacing="0"  style="border:1px solid black;" >
@@ -60,7 +60,7 @@
             <td colspan="3" style="width:485px;height:253px;border:0.5px solid black;">
             <p style="font-size:12px;line-height:10px ">  Service Description:</p>
 
-            <p style="font-size:12px;line-height:10px ">   <span t-field="doc.event_id.name"/>   in  <span t-field="doc.event_id.address_id.city"/>    </p>
+            <p style="font-size:12px;line-height:10px ">   <span t-field="doc.event_id.name"/>   in  <span t-field="doc.event_id.address_id.name"/>    </p>
 
             <p style="font-size:12px;line-height:10px ">  </p>
 
@@ -163,7 +163,7 @@
         </tr>
         <tr  style="border:0.5px solid black;" >
             <td colspan="3" style="width:284px;border:0.5px solid black;">
-            <p style="font-size:12px;line-height:10px ">  <strong>  Service provider sign here</strong>  : <span t-field="doc.speaker_id"/>   </p>
+            <p style="font-size:12px;line-height:10px ">  <strong>  Service provider sign here</strong>  : <span t-field="doc.registration_id.partner_id.name"/>   </p>
             </td>
             <td style="width:284px;border:0.5px solid black;">
             <p style="font-size:12px;line-height:10px ">  Signature:</p>

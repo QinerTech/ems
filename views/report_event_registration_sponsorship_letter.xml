@@ -26,7 +26,7 @@
 
 <p></p>
 
-<p>It's our honor to invite you to attend<strong><u> <span t-field="doc.event_id"/>  on <span t-field="doc.event_id.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' /> ~ <span t-field="doc.event_id.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' /> in <span t-field="doc.event_id.address_id.city"/></u></strong><u> .</u></p>
+<p>It's our honor to invite you to attend<strong><u> <span t-field="doc.event_id"/>  on <span t-field="doc.event_id.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' /> ~ <span t-field="doc.event_id.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' /> in <span t-field="doc.event_id.address_id.name"/></u></strong><u> .</u></p>
 
 <p></p>
 
