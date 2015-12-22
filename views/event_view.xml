@@ -329,8 +329,6 @@
             <field name="name">Event Departments</field>
             <field name="res_model">event.department</field>
         </record>
-        <menuitem name="Departments" id="menu_event_department"
-            action="action_event_department" parent="event.menu_event_configuration"/>
 
  <!-- EVENTS/CONFIGURATION/EVENT department -->
         <record model="ir.ui.view" id="view_event_service_type_form">
@@ -359,8 +357,6 @@
             <field name="name">Event Service Type</field>
             <field name="res_model">event.service.type</field>
         </record>
-        <menuitem name="Service Type" id="menu_event_service_type"
-            action="action_event_service_type" parent="event.menu_event_configuration"/>
 
          <!-- EVENTS/CONFIGURATION/EVENT brand -->
         <record model="ir.ui.view" id="view_event_brand_form">
@@ -392,9 +388,6 @@
             <field name="name">Event Brands</field>
             <field name="res_model">event.brand</field>
         </record>
-        <menuitem name="Brands" id="menu_event_brand"
-            action="action_event_brand" parent="event.menu_event_configuration"/>
-
 
          <!-- EVENTS/CONFIGURATION/EVENT organizer -->
         <record model="ir.ui.view" id="view_event_organizer_form">
@@ -424,9 +417,6 @@
             <field name="res_model">event.organizer</field>
         </record>
 
-        <menuitem id="menu_event_organizer" name="Organizers" parent="event.menu_event_configuration" action="action_event_organizer"/>
-
-
         <record model="ir.ui.view" id="view_partner_bu_form">
             <field name="name">Partner Business Unit</field>
             <field name="model">partner.bu</field>
@@ -454,15 +444,26 @@
             <field name="res_model">partner.bu</field>
         </record>
 
-        <menuitem name="Business Unit" id="menu_partner_bu"
-            action="action_partner_bu" parent="event.menu_event_configuration"/>
-
         <menuitem name="Events Category" id="menu_event_type" action="event.action_event_type" parent="event.menu_event_configuration"/>
+
+        <menuitem name="Service Type" id="menu_event_service_type"
+            action="action_event_service_type" parent="event.menu_event_configuration" sequence="11" />
+
+        <menuitem name="Departments" id="menu_event_department"
+            action="action_event_department" parent="event.menu_event_configuration"  sequence="12"/>
+
+        <menuitem name="Brands" id="menu_event_brand"
+            action="action_event_brand" parent="event.menu_event_configuration"  sequence="13"/>
+
+        <menuitem id="menu_event_organizer" name="Organizers" parent="event.menu_event_configuration" action="action_event_organizer"   sequence="14"/>
+
+        <menuitem name="Business Unit" id="menu_partner_bu"
+            action="action_partner_bu" parent="event.menu_event_configuration"  sequence="15"/>
 
         <menuitem name="Users"
           id="event_menu_users"
           parent="event.menu_event_configuration"
-          action="base.action_res_users"/>
+          action="base.action_res_users"  sequence="16"/>
 
         <record model="ir.ui.menu" id="event.event_main_menu">
            <field name="groups_id"
