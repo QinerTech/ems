@@ -72,7 +72,7 @@
 
             <p style="font-size:12px;line-height:10px ">  Event Schedule: <span t-field="doc.event_id.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  ~ <span t-field="doc.event_id.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  </p>
 
-            <p style="font-size:12px;line-height:10px ">  Organizer: <span t-field="doc.event_id.user_id"/>   </p>
+            <p style="font-size:12px;line-height:10px ">  Organizer: <span t-field="doc.event_id.organizer"/>   </p>
 
             <p style="font-size:12px;line-height:10px ">  Audience:   <t t-foreach="doc.event_id.departments" t-as="l" > <span t-field="l.name"/>,  </t></p>
 
@@ -100,7 +100,7 @@
             <p style="font-size:12px;line-height:10px ">  <strong>  AbbVie Contact</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-            <p style="font-size:12px;line-height:10px ">  <span t-field="doc.event_id.user_id"/>    <span t-field="doc.event_id.user_id.mobile"/>    </p>
+            <p style="font-size:12px;line-height:10px ">  <span t-field="doc.event_id.user_id.name"/>    <span t-field="doc.event_id.user_id.mobile"/>    </p>
             </td>
         </tr>
         <tr  style="border:0.5px solid black;" >
@@ -108,10 +108,12 @@
             <p style="font-size:12px;line-height:10px ">  <strong>  Service Amount</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
- <t t-foreach="doc.event_track_contract" t-as="l" >
+                <t t-set="test_variable" t-value="0"/>
+            <t t-foreach="doc.event_track_contract" t-as="l" >
+                 <t t-set="test_variable" t-value="test_variable+ l.service_fee "/>
+            </t>
+            <p style="font-size:12px;line-height:10px ">  RMB <t t-esc="test_variable"/>   </p>
 
-            <p style="font-size:12px;line-height:10px ">  RMB <span t-field="l.service_fee"/>   for <span t-field="l.service_type"/>   </p>
-        </t>
             </td>
         </tr>
         <tr  style="border:1px solid black;" >
@@ -132,7 +134,7 @@
             <p style="font-size:12px;line-height:10px ">  <strong>  Deadline</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-            <p style="font-size:12px;line-height:10px ">  Effective on Effective date, terminated on <span t-field="doc.event_id.date_end"/>   .</p>
+            <p style="font-size:12px;line-height:10px ">  Effective on Effective date, terminated on <span t-field="doc.event_id.date_end" t-field-options='{"format": "yyyy/MM/dd"}'/>   .</p>
             </td>
         </tr>
         <tr  style="border:0.5px solid black;" >
