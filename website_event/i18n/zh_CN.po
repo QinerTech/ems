@@ -1,25 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * website_event
-# 
-# Translators:
-# fausthuang, 2015
-# fausthuang, 2015
-# jeffery chen fan <jeffery9@gmail.com>, 2015
-# liulixia <liu.lixia@elico-corp.com>, 2015
+# 	* website_event
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo 9.0\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 10:27+0000\n"
-"PO-Revision-Date: 2015-12-14 05:21+0000\n"
-"Last-Translator: jeffery chen fan <jeffery9@gmail.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/odoo/odoo-9/language/zh_CN/)\n"
+"POT-Creation-Date: 2015-12-21 22:57+0000\n"
+"PO-Revision-Date: 2015-12-22 17:14+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
 "Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. module: website_event
 #: code:addons/website_event/controllers/main.py:210
@@ -127,28 +123,28 @@ msgstr "所有活动"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_attendee_details
 msgid "Cancel Registration"
-msgstr "取消登记记录"
+msgstr "取消登记"
 
 #. module: website_event
 #. openerp-web
 #: code:addons/website_event/static/src/js/website.tour.event.js:48
 #, python-format
 msgid "Click <em>Continue</em> to create the event."
-msgstr "点击 <em>继续</em> 创建一个事件."
+msgstr "点击 <em>继续</em> 创建一个活动."
 
 #. module: website_event
 #. openerp-web
 #: code:addons/website_event/static/src/js/website.tour.event.js:33
 #, python-format
 msgid "Click here to create a new event."
-msgstr "点击这儿添加一个新的事件."
+msgstr "点击这儿添加一个新的活动."
 
 #. module: website_event
 #. openerp-web
 #: code:addons/website_event/static/src/js/website.tour.event.js:89
 #, python-format
 msgid "Click here to customize your event further."
-msgstr "点击这里进一步定制您的事件。"
+msgstr "点击这里进一步定制您的活动。"
 
 #. module: website_event
 #. openerp-web
@@ -176,10 +172,8 @@ msgstr "创建活动"
 #. openerp-web
 #: code:addons/website_event/static/src/js/website.tour.event.js:41
 #, python-format
-msgid ""
-"Create a name for your new event and click <em>'Continue'</em>. e.g: "
-"Technical Training"
-msgstr "为您的新事件创建一个名称,然后单击“继续”。比如:技术培训"
+msgid "Create a name for your new event and click <em>'Continue'</em>. e.g: Technical Training"
+msgstr "为您的新活动创建一个名称,然后单击“继续”。比如:技术培训"
 
 #. module: website_event
 #. openerp-web
@@ -204,10 +198,8 @@ msgstr "创建活动"
 
 #. module: website_event
 #: model:ir.model.fields,help:website_event.field_event_event_show_menu
-msgid ""
-"Creates menus Introduction, Location and Register on the page  of the event "
-"on the website."
-msgstr "在网站上的事件页面上创建菜单介绍，地理位置和注册。"
+msgid "Creates menus Introduction, Location and Register on the page  of the event on the website."
+msgstr "在网站上的活动页面上创建菜单介绍，地理位置和登记。"
 
 #. module: website_event
 #. openerp-web
@@ -246,7 +238,7 @@ msgstr "拖动此区块并放在你的活动页面中。"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_complete
 msgid "E-mail"
-msgstr "电子邮件"
+msgstr "邮件"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.view_event_sale_form
@@ -266,7 +258,7 @@ msgstr "活动"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_complete
 msgid "Event Details"
-msgstr "事件详情"
+msgstr "活动详情"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.template_intro
@@ -302,7 +294,7 @@ msgstr "发布的活动"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_template
 msgid "Event registration not yet started."
-msgstr "事件注册还未开始."
+msgstr "活动登记还未开始."
 
 #. module: website_event
 #: model:mail.message.subtype,description:website_event.mt_event_unpublished
@@ -319,7 +311,7 @@ msgstr "活动"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.event_right_country_event
 msgid "Events from Your Country"
-msgstr "来自您国家的事件"
+msgstr "来自您国家的活动"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.country_events
@@ -329,7 +321,7 @@ msgstr "访问者所在国家的活动"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.country_events_list
 msgid "Events:"
-msgstr "事件"
+msgstr "活动"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.event_description_full
@@ -361,7 +353,7 @@ msgstr "让我们浏览的第一步来发布一个新的活动。"
 #: code:addons/website_event/models/event.py:45
 #, python-format
 msgid "Location"
-msgstr "地点"
+msgstr "位置"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_complete
@@ -492,12 +484,12 @@ msgstr "发起者"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_template
 msgid "Register Now"
-msgstr "现在注册"
+msgstr "现在登记"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.404
 msgid "Return to the event list."
-msgstr "返回到事件列表"
+msgstr "返回到活动列表"
 
 #. module: website_event
 #. openerp-web
@@ -549,9 +541,7 @@ msgstr "开始教程"
 #. openerp-web
 #: code:addons/website_event/static/src/js/website.tour.event.js:26
 #, python-format
-msgid ""
-"The <em>Content</em> menu allows you to create new pages, events, menus, "
-"etc."
+msgid "The <em>Content</em> menu allows you to create new pages, events, menus, etc."
 msgstr "这个<em>内容</em>菜单允许你创建新的页面、活动、菜单等等。"
 
 #. module: website_event
@@ -570,7 +560,7 @@ msgstr "本周"
 #: code:addons/website_event/static/src/js/website.tour.event.js:53
 #, python-format
 msgid "This is your new event page. We will edit the event presentation page."
-msgstr "这是您的新事件页面。我们将编辑事件的演示页面。"
+msgstr "这是您的新活动页面。我们将编辑活动的演示页面。"
 
 #. module: website_event
 #: code:addons/website_event/controllers/main.py:50
@@ -602,7 +592,7 @@ msgstr "Twitter主题标签"
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.index
 msgid "Use the top menu <i>'Content'</i> to create your first event."
-msgstr "使用顶部菜单<I>“内容”</ I>创建您的第一个事件。"
+msgstr "使用顶部菜单<I>“内容”</ I>创建您的第一个活动。"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.event_description_full
@@ -670,7 +660,9 @@ msgid ""
 "Write here a quote from one of your attendees.\n"
 "                        It gives confidence in your\n"
 "                        events."
-msgstr "在这里引用一段来自活动参与者的话。\n                        它会给你的活动增加可信任度。"
+msgstr ""
+"在这里引用一段来自活动参与者的话。\n"
+"                        它会给你的活动增加可信任度。"
 
 #. module: website_event
 #: model:ir.ui.view,arch_db:website_event.registration_complete

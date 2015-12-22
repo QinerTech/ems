@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-21 19:16+0000\n"
-"PO-Revision-Date: 2015-12-21 19:16+0000\n"
+"POT-Creation-Date: 2015-12-21 23:11+0000\n"
+"PO-Revision-Date: 2015-12-21 23:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -786,6 +786,7 @@ msgid "Is a Hotel"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_is_speaker
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_speaker
 msgid "Is a Speaker"
 msgstr ""
@@ -1091,6 +1092,7 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_speaker
+#: model:ir.ui.view,arch_db:event_profile.view_registration_search
 msgid "Speaker"
 msgstr ""
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-22 13:08+0800\n"
-"PO-Revision-Date: 2015-12-22 13:13+0800\n"
+"POT-Creation-Date: 2015-12-22 17:03+0800\n"
+"PO-Revision-Date: 2015-12-22 17:03+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -794,6 +794,7 @@ msgid "Is a Hotel"
 msgstr "是酒店"
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_is_speaker
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_speaker
 msgid "Is a Speaker"
 msgstr "是讲者"
@@ -1101,6 +1102,7 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_speaker
+#: model:ir.ui.view,arch_db:event_profile.view_registration_search
 msgid "Speaker"
 msgstr "讲者"
 
@@ -1441,10 +1443,10 @@ msgstr ""
 #~ msgstr "听众"
 
 #~ msgid "Event registration sponsorship hotel"
-#~ msgstr "活动注册赞助酒店"
+#~ msgstr "活动登记赞助酒店"
 
 #~ msgid "Event registration travel"
-#~ msgstr "活动注册差旅"
+#~ msgstr "活动登记差旅"
 
 #~ msgid "Registration"
 #~ msgstr "登记"
