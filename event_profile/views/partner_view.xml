@@ -215,6 +215,10 @@
             </record>
             <menuitem id="contact_menu_city" name="City" parent="contact_menu_config" action="action_country_state_city" sequence="12" />
 
+        <record id="base.action_country_state" model="ir.actions.act_window">
+            <field name="name">State</field>
+        </record>
+
 
         </data>
     </openerp>
