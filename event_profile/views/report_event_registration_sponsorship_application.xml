@@ -22,28 +22,28 @@
     <tbody>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">Requestor</td>
-            <td style="width:100px;border:1px solid black;"><span t-field="doc.user_id.name"/></td>
+            <td style="width:100px;border:2px solid black;">Requestor</td>
+            <td style="width:100px;border:2px solid black;"><span t-field="doc.user_id.name"/></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">Approvor</td>
-            <td style="width:100px;border:1px solid black;"></td>
+            <td style="width:100px;border:2px solid black;">Approvor</td>
+            <td style="width:100px;border:2px solid black;"></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">Event name</td>
-            <td  style="width:100px;border:1px solid black;"><span t-field="doc.name"/></td>
+            <td style="width:100px;border:2px solid black;">Event name</td>
+            <td  style="width:100px;border:2px solid black;"><span t-field="doc.name"/></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">Event Venue</td>
-            <td style="width:100px;border:1px solid black;"><span t-field="doc.venue"/></td>
+            <td style="width:100px;border:2px solid black;">Event Venue</td>
+            <td style="width:100px;border:2px solid black;"><span t-field="doc.venue"/></td>
         </tr>
         <tr height="22">
             <td height="22" style="height:22px;"></td>
-            <td style="width:100px;border:1px solid black;">Event Schedule</td>
-            <td style="width:100px;border:1px solid black;"><span t-field="doc.date_begin" t-field-options='{"format": "yyyy/MM/dd"}'/></td>
+            <td style="width:100px;border:2px solid black;">Event Schedule</td>
+            <td style="width:100px;border:2px solid black;"><span t-field="doc.date_begin" t-field-options='{"format": "yyyy/MM/dd"}'/></td>
         </tr>
     </tbody>
 </table>
@@ -51,41 +51,41 @@
     会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的理由：_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
     </p>
             <br/>
-            <table class="table table-condensed">
+            <table class="table table-condensed" style="border: 1.5px solid black;">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="text-left">Speaker and external Audience name</th>
-                        <th class="text-left">Institution</th>
-                        <th class="text-left">Position</th>
-                        <th class="text-left">Department</th>
-                        <th class="text-left">Sponsor Amount(RMB)</th>
-                        <th class="text-left">Sponsor Reason</th>
+                    <tr style="border: 0.5px solid black;">
+                        <th style="border: 0.5px solid black;">#</th>
+                        <th style="border: 0.5px solid black;" class="text-left">Speaker and external Audience name</th>
+                        <th style="border: 0.5px solid black;" class="text-left">Institution</th>
+                        <th style="border: 0.5px solid black;" class="text-left">Position</th>
+                        <th style="border: 0.5px solid black;" class="text-left">Department</th>
+                        <th style="border: 0.5px solid black;" class="text-left">Sponsor Amount(RMB)</th>
+                        <th style="border: 0.5px solid black;" class="text-left">Sponsor Reason</th>
                     </tr>
                </thead>
                <tbody >
                     <t t-foreach="doc.registration_ids" t-as="l" >
-                        <tr >
-                            <td>
+                        <tr style="border: 0.5px solid black;" >
+                            <td style="border: 0.5px solid black;" >
                                <t t-esc='l_index + 1' />
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;" >
                                <span t-field="l.partner_id.name"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;">
                                <span t-field="l.partner_id.parent_id.name"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;">
                                <span t-field="l.partner_id.function"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;">
                                <span t-field="l.partner_id.department"/>
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;">
                                <span t-field="l.sponsorship_amount"/>
 
                             </td>
-                            <td>
+                            <td style="border: 0.5px solid black;">
                                <span t-field="l.event_id.name"/>
                             </td>
                         </tr>
