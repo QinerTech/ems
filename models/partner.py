@@ -7,10 +7,43 @@ from openerp.addons.website.models.website import slug
 import logging
 _logger = logging.getLogger(__name__)
 
+
+class CountryStateCity(models.Model):
+    _name = 'res.country.state.city'
+    _description = 'City'
+
+    state_id = fields.Many2one(
+        string='State',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='res.country.state',
+        domain=[],
+        context={},
+        auto_join=False
+    )
+
+    name = fields.Char(
+        string='City Name',
+        required=True,
+        readonly=False,
+        index=True,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+    code = fields.Char(string= 'City Code', size=5, required=True)
+
+
 @api.model
 def _partner_bu_get(self):
     bus = self.env['partner.bu'].search([])
-    return [(bu.id, bu.name) for bu in bus]
+    return [(bu.name, bu.name) for bu in bus]
+
 
 class Partner(models.Model):
     _inherit = "res.partner"
@@ -126,5 +159,41 @@ class Partner(models.Model):
                 result.append((partner.id, partner.name))
         return result
 
-class users_view(models.Model):
-    _inherit = 'res.users'
+    city = fields.Many2one(
+        string='City',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='res.country.state.city',
+        domain=[],
+        context={},
+        auto_join=False
+    )
+
+    @api.onchange('city')
+    def onchange_city(self):
+        if self.city:
+            self.state_id = self.city.state_id
+
+from openerp.osv import osv, fields
+
+class res_partner(osv.Model):
+    _inherit = "res.partner"
+
+    _columns = {
+        'type': fields.selection(
+            [('other', 'Address'),
+             ('contact', 'Contact'),
+             ('invoice', 'Invoice address'),
+             ('delivery', 'Shipping address'),
+             ], 'Address Type',
+                )
+    }
+
+    _defaults = {
+
+        'type': 'other',
+
+    }
