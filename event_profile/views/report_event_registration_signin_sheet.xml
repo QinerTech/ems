@@ -28,36 +28,36 @@
 
             <br/>
 
-            <table class="table table-condensed" style="border: 1px solid black;">
+            <table class="table table-condensed" style="border: 1.5px  solid black;">
                 <thead>
-                    <tr style="border: 0.5px solid black;" >
+                    <tr style="border: 0.5px  solid black;" >
                         <th>#</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Region</th>
-                        <th class="text-left" style="border: 0.5px solid black;">City</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Name</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Signature</th>
+                        <th class="text-left" style="border: 0.5px  solid black;">Region</th>
+                        <th class="text-left" style="border: 0.5px  solid black;">City</th>
+                        <th class="text-left" style="border: 0.5px  solid black;">Name</th>
+                        <th class="text-left" style="border: 0.5px  solid black;">Hospital</th>
+                        <th class="text-left" style="border: 0.5px  solid black;">Signature</th>
                     </tr>
                </thead>
                <tbody >
                     <t t-foreach="doc.registration_ids" t-as="l" >
-                        <tr style="border: 0.5px solid black;" >
-                            <td style="border: 0.5px solid black;"  >
+                        <tr style="border: 0.5px  solid black;" >
+                            <td style="border: 0.5px  solid black;"  >
                                <t t-esc='l_index + 1' />
                             </td>
-                            <td style="border: 0.5px solid black;"  >
+                            <td style="border: 0.5px  solid black;"  >
                                <span t-field="l.partner_id.team_id"/>
                             </td>
-                            <td style="border: 0.5px solid black;"  >
+                            <td style="border: 0.5px  solid black;"  >
                                <span t-field="l.partner_id.city"/>
                             </td>
-                            <td style="border: 0.5px solid black;"  >
+                            <td style="border: 0.5px  solid black;"  >
                                <span t-field="l.partner_id.name"/>
                             </td>
-                            <td style="border: 0.5px solid black;"  >
+                            <td style="border: 0.5px  solid black;"  >
                                <span t-field="l.partner_id.parent_id.name"/>
                             </td>
-                            <td ></td>
+                            <td style="border: 0.5px  solid black;"  ></td>
                         </tr>
                     </t>
                 </tbody>

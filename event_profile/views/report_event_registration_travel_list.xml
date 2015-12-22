@@ -28,7 +28,7 @@
 
             <br/>
 
-            <table class="table table-condensed" style="border: 1px solid black;">
+            <table class="table table-condensed" style="border: 1.5px solid black;">
                 <thead>
                     <tr style="border: 0.5px solid black;">
                         <th>#</th>
