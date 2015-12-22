@@ -49,7 +49,7 @@ class partner_bu(models.Model):
 @api.model
 def _organizer_get(self):
     partners = self.env['event.organizer'].search([])
-    return [(partner.id, partner.name) for partner in partners]
+    return [(partner.name, partner.name) for partner in partners]
 
 # class event_type(models.Model):
 #     _inherit = "event.type"
@@ -116,7 +116,14 @@ class event_event(models.Model):
         selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness')]
     )
 
-    organizer = fields.Selection(_organizer_get, string='Sponsored By',)
+    organizer = fields.Selection(_organizer_get, string='Organizer',)
+
+    organizer_id = fields.Many2one(
+        'res.partner', string='Sponsored By',
+        default=lambda self: self.env.user.company_id.partner_id)
+
+    address_id = fields.Many2one( 'res.country.state.city', string='City', default=False)
+    country_id = fields.Many2one('res.country', 'Country',  related='address_id.state_id.country_id', store=True)
 
     hotel = fields.One2many(
         string='Hotel',
@@ -345,7 +352,7 @@ class event_service_type(models.Model):
 @api.model
 def _service_type_get(self):
     svc_types = self.env['event.service.type'].search([])
-    return [(svc_type.id, svc_type.name) for svc_type in svc_types]
+    return [(svc_type.name, svc_type.name) for svc_type in svc_types]
 
 class event_track_contract(models.Model):
     _name = "event.track.contract"
@@ -395,7 +402,7 @@ class event_track_contract(models.Model):
         context={},
         ondelete='cascade',
         auto_join=False,
-        related='event_track.speaker_id',
+        related='event_track.registration_id.partner_id',
         store=True
     )
 
@@ -505,10 +512,10 @@ class event_track(models.Model):
         limit=None
     )
 
-    speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]")
+    # speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]")
 
     registration_id = fields.Many2one(
-        string='Attendee',
+        string='Attendee of Speaker',
         required=True,
         readonly=False,
         index=False,
@@ -531,19 +538,11 @@ class event_track(models.Model):
     partner_email = fields.Char('Email')
     partner_phone = fields.Char('Phone')
 
-    # @api.onchange('registration_id')
-    # def _onchange_registration_id(self):
-    #     if self.registration_id:
-    #         contact= self.registration_id.partner_id
-    #         if contact:
-    #             self.speaker_id = self.registration_id.partner_id
-
-    @api.onchange('speaker_id')
-    def _onchange_partner(self):
-        if self.speaker_id:
-            contact_id = self.speaker_id.address_get().get('contact', False)
-            if contact_id:
-                contact = self.env['res.partner'].browse(contact_id)
+    @api.onchange('registration_id')
+    def _onchange_registration_id(self):
+        if self.registration_id:
+            contact= self.registration_id.partner_id
+            if contact:
                 self.partner_name = contact.name
                 self.partner_email = contact.email
                 self.partner_phone = contact.phone

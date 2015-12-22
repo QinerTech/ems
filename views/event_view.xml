@@ -25,14 +25,16 @@
                     <xpath expr="//field[@name='date_tz']" position="before">
                         <field name="lang" />
                     </xpath>
-                    <xpath expr="//field[@name='address_id']" position="before">
-                        <field name="event_type_id" />
+                    <xpath expr="//field[@name='address_id']" position="replace">
                         <field name="event_purpose"/>
+                        <field name="event_type_id" />
                         <field name="level" />
                         <field name="venue" />
+                        <field name="address_id" options="{ 'no_create':True, 'no_open':True}" />
                     </xpath>
-                    <xpath expr="//field[@name='organizer_id']" position="after">
+                    <xpath expr="//field[@name='organizer_id']" position="replace">
                         <field name="organizer" />
+                        <field name="organizer_id" invisible="1" />
                         <field name="user_id" />
                         <field name="create_date" readonly="1"/>
                         <!-- <field name="create_uid"  readonly="1"/> -->
@@ -198,7 +200,7 @@
                     <xpath expr="//field[@name='partner_id']" position="replace">
                     </xpath>
                     <xpath expr="//field[@name='name']" position="replace">
-                        <field name='partner_id'  attrs="{'readonly':[('state', '!=', 'draft')]} " domain="[('company_type','=','person')]" context="{'event_id': event_id}"/>
+                        <field name='partner_id'  attrs="{'readonly':[('state', '!=', 'draft')]} " domain="[('company_type','=','person')]" context="{'event_id': event_id}"  options="{ 'no_create_edit':True}"/>
                         <field name="name" />
                     </xpath>
                     <xpath expr="//field[@name='event_id']" position="after">
@@ -246,8 +248,8 @@
                     <xpath expr="//sheet/group" position="replace">
                         <group>
                             <group>
-                                <field name="speaker_id"  context="{'search_default_speaker':1, 'default_speaker':1}"  />
-                                <field name="registration_id"  context="{ 'search_default_partner_id':speaker_id , 'default_event_id':event_id, 'default_partner_id': speaker_id }  "/>
+                                <!-- <field name="speaker_id"  context="{'search_default_speaker':1, 'default_speaker':1}"  /> -->
+                                <field name="registration_id"  context="{'default_event_id':event_id }"  options= "{ 'no_create_edit':True}  " />
                                 <field name="partner_name"/>
                                 <field name="oversea" readonly="1"/>
                                 <field name="partner_phone"/>
@@ -292,7 +294,6 @@
 
             <record model="ir.actions.act_window" id="website_event_track.action_event_track">
                 <field name="view_mode">tree,form,graph</field>
-                 <field name="context">{'search_default_event_id': active_id, 'default_event_id': active_id}</field>
             </record>
 
             <record model="ir.actions.act_window" id="website_event_track.action_event_track_from_event">
@@ -464,22 +465,22 @@
 
         <record model="ir.ui.menu" id="event.event_main_menu">
            <field name="groups_id"
-                   eval="[(6,0,[ref('group_event_user_readonly')])]"/>
+                   eval="[(6,0,[ref('base.group_user')])]"/>
         </record>
 
         <record model="ir.ui.menu" id="event.menu_event_event">
            <field name="groups_id"
-                   eval="[(6,0,[ref('group_event_user_readonly')])]"/>
+                   eval="[(6,0,[ref('base.group_user')])]"/>
         </record>
 
         <record model="ir.ui.menu" id="event.menu_action_registration">
            <field name="groups_id"
-                   eval="[(6,0,[ref('group_event_user_readonly')])]"/>
+                   eval="[(6,0,[ref('base.group_user')])]"/>
         </record>
 
         <record model="ir.ui.menu" id="website_event_track.menu_event_track">
            <field name="groups_id"
-                   eval="[(6,0,[ref('base.group_no_one')])]"/>
+                   eval="[(6,0,[ref('base.group_user')])]"/>
         </record>
 
         <record model="ir.ui.menu" id="event.menu_event_global_settings">
