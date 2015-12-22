@@ -1,19 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* website_event_track
+# 	* website_event_track
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-21 22:57+0000\n"
-"PO-Revision-Date: 2015-12-21 22:57+0000\n"
+"PO-Revision-Date: 2015-12-22 19:16+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. module: website_event_track
 #: model:ir.model.fields,field_description:website_event_track.field_event_event_count_sponsor
@@ -27,13 +29,15 @@ msgstr "<b>日期</b><br/>"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.track_view
-msgid "<br/>\n"
+msgid ""
+"<br/>\n"
 "                            <b>Duration</b><br/>"
 msgstr "<BR/><B>持续时间</ B><BR/>"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.track_view
-msgid "<br/>\n"
+msgid ""
+"<br/>\n"
 "                            <b>Location</b><br/>"
 msgstr "<br/><b>位置</b><br/>"
 
@@ -44,7 +48,8 @@ msgstr "<span id=\"search_number\">0</span> 发现"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.event_track_proposal
-msgid "<strong>Lightning Talks</strong>. These are 30 minutes talks on many\n"
+msgid ""
+"<strong>Lightning Talks</strong>. These are 30 minutes talks on many\n"
 "                                    different topics. Most topics are accepted in lightning talks."
 msgstr "<STRONG>闪电会谈</ STRONG>。这是在30分钟内讨论许多不同的话题。大多数话题都可以接受闪电会谈。"
 
@@ -55,7 +60,8 @@ msgstr "<STRONG>参加Twitter</ STRONG>"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.event_track_proposal
-msgid "<strong>Regular Talks</strong>. These are standard talks with slides,\n"
+msgid ""
+"<strong>Regular Talks</strong>. These are standard talks with slides,\n"
 "                                    alocated in slots of 60 minutes."
 msgstr "<strong>正式讨论</strong>. 使用幻灯的，在60分钟内的标准讨论"
 
@@ -82,9 +88,11 @@ msgstr "所有标签"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.event_track_proposal
-msgid "Allow video and audio recording of their\n"
+msgid ""
+"Allow video and audio recording of their\n"
 "                                    presentation, for publishing on our website."
-msgstr "允许视频和音频的录制\n"
+msgstr ""
+"允许视频和音频的录制\n"
 "              介绍，在我们的网站上发布。"
 
 #. module: website_event_track
@@ -259,9 +267,11 @@ msgstr "筛选专场"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.event_track_social
-msgid "Find out what people see and say about this event, \n"
+msgid ""
+"Find out what people see and say about this event, \n"
 "                        and join the conversation."
-msgstr "找出哪些人会对这一活动进行观看、发表看法, \n"
+msgstr ""
+"找出哪些人会对这一活动进行观看、发表看法, \n"
 "             和参加交流。"
 
 #. module: website_event_track
@@ -520,7 +530,8 @@ msgstr "提出"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.track_view
-msgid "Put here the list of documents, like slides of\n"
+msgid ""
+"Put here the list of documents, like slides of\n"
 "                            the presentations. Remove the above t-if when\n"
 "                            it's implemented."
 msgstr "像演示幻灯片这样的文档列表放在这里。当它生效的时候移除上面的t-if。"
@@ -689,9 +700,11 @@ msgstr "这一活动不接受建议。"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.event_track_proposal
-msgid "Timely release of presentation material (slides),\n"
+msgid ""
+"Timely release of presentation material (slides),\n"
 "                                    for publishing on our website."
-msgstr "演示材料的及时发布（幻灯片）,\n"
+msgstr ""
+"演示材料的及时发布（幻灯片）,\n"
 "                 在我们的网站上发布。"
 
 #. module: website_event_track
@@ -792,14 +805,16 @@ msgstr "我们要求发言者接受，他们承诺的协议"
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.event_track_proposal
-msgid "We will accept a broad range of\n"
+msgid ""
+"We will accept a broad range of\n"
 "                                presentations, from reports on academic and\n"
 "                                commercial projects to tutorials and case\n"
 "                                studies. As long as the presentation is\n"
 "                                interesting and potentially useful to the\n"
 "                                audience, it will be considered for\n"
 "                                inclusion in the programme."
-msgstr "我们将接受广泛的\n"
+msgstr ""
+"我们将接受广泛的\n"
 "                 介绍，从学术报告和\n"
 "                 商业项目教程和案例\n"
 "                     研究。只要介绍是\n"
@@ -865,12 +880,12 @@ msgstr "例如鼓舞人心的商务谈判"
 #. module: website_event_track
 #: model:ir.model,name:website_event_track.model_event_sponsor
 msgid "event.sponsor"
-msgstr "活动.发起人"
+msgstr ""
 
 #. module: website_event_track
 #: model:ir.model,name:website_event_track.model_event_sponsor_type
 msgid "event.sponsor.type"
-msgstr "活动.发起人.类型"
+msgstr ""
 
 #. module: website_event_track
 #: model:ir.ui.view,arch_db:website_event_track.view_event_track_form
@@ -887,4 +902,3 @@ msgstr "未发布的"
 #: model:ir.ui.view,arch_db:website_event_track.agenda
 msgid "talks"
 msgstr "演讲"
-
