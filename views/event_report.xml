@@ -8,7 +8,7 @@
             report_type="qweb-pdf"
             file="event.report_registration_signin_sheet"
             name="event_profile.report_registration_signin_sheet"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
             id="report_event_track_contract"
@@ -17,7 +17,7 @@
             report_type="qweb-pdf"
             file="event.report_topic"
             name="event_profile.report_track"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
             id="report_event_registration_travel"
@@ -26,7 +26,7 @@
             report_type="qweb-pdf"
             file="event.report_registration_travel"
             name="event_profile.report_registration_travel"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
             id="report_event_registration_hotel"
@@ -35,7 +35,7 @@
             report_type="qweb-pdf"
             file="event.report_registration_hotel"
             name="event_profile.report_registration_hotel"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
             id="report_event_registration_sponsorship"
@@ -44,7 +44,7 @@
             report_type="qweb-pdf"
             file="event.report_registration_sponsorship"
             name="event_profile.report_registration_sponsorship"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
             id="report_event_service_contract"
@@ -53,7 +53,7 @@
             report_type="qweb-pdf"
             file="event.report_service_contract"
             name="event_profile.report_service_contract"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
             id="report_event_registration_sponsorship_application"
@@ -62,7 +62,7 @@
             report_type="qweb-pdf"
             file="event.report_sponsorship_applicatin"
             name="event_profile.report_sponsorship_applicatin"
-            groups="event_profile.group_event_user"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
 
     </data>
