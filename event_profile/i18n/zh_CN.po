@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-22 17:03+0800\n"
-"PO-Revision-Date: 2015-12-22 17:03+0800\n"
+"PO-Revision-Date: 2015-12-22 19:34+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -108,12 +108,12 @@ msgstr "<strong>  出差及食宿费</strong>"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "<strong>  Contract</strong>"
-msgstr "<strong>  专业服务协议 (“协议”)</strong>"
+msgstr "<strong>  专业服务协议 (“ 协议”)</strong>"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "<strong>  Date and Deadline</strong>"
-msgstr "<strong>  日期 & 期限</strong>"
+msgstr "<strong>  日期 以及 期限</strong>"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -128,7 +128,7 @@ msgstr "<strong>  详情</strong>"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "<strong>  Effective Date</strong>"
-msgstr "<strong> 生效日期</strong>"
+msgstr "<strong>  生效日期</strong>"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -435,7 +435,7 @@ msgstr "客户"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Date:"
-msgstr "日期："
+msgstr "日期:"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
@@ -457,7 +457,7 @@ msgstr "科室"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Department:"
-msgstr "部门："
+msgstr "科室:"
 
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.menu_event_department
@@ -508,7 +508,7 @@ msgstr "部门名称"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Doctor/Professor:"
-msgstr "医生/教授："
+msgstr "医生/教授:"
 
 #. module: event_profile
 #: selection:event.registration.travel,travel_method:0
@@ -641,7 +641,7 @@ msgstr "会议地点"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Event Venue:"
-msgstr "活动地点："
+msgstr "会议地点:"
 
 #. module: event_profile
 #: model:res.groups,name:event_profile.group_event_user_readonly
@@ -1280,7 +1280,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_brand
 msgid "event.brand"
-msgstr "活动品牌"
+msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
