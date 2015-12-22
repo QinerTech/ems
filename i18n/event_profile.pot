@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-19 16:29+0000\n"
-"PO-Revision-Date: 2015-12-19 16:29+0000\n"
+"POT-Creation-Date: 2015-12-21 19:16+0000\n"
+"PO-Revision-Date: 2015-12-21 19:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "\"I confirm that I already got the approval from my related institute or no need to approval on this sponsorship.\""
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_sale_order_count
-msgid "# of Sales Order"
 msgstr ""
 
 #. module: event_profile
@@ -57,7 +52,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_report_to
-#: model:ir.model.fields,field_description:event_profile.field_res_users_report_to
 msgid "1st Line Manager"
 msgstr ""
 
@@ -221,16 +215,6 @@ msgid "AbbVie Employee Name:"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_property_account_payable_id
-msgid "Account Payable"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_property_account_receivable_id
-msgid "Account Receivable"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Address:"
@@ -270,8 +254,12 @@ msgstr ""
 #: model:ir.model,name:event_profile.model_event_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
-#: model:ir.model.fields,field_description:event_profile.field_event_track_registration_id
 msgid "Attendee"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_registration_id
+msgid "Attendee of Speaker"
 msgstr ""
 
 #. module: event_profile
@@ -282,11 +270,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_name
 msgid "BU Name"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_bank_account_count
-msgid "Bank"
 msgstr ""
 
 #. module: event_profile
@@ -323,7 +306,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_partner_bu
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_unit
-#: model:ir.model.fields,field_description:event_profile.field_res_users_unit
 #: model:ir.ui.menu,name:event_profile.menu_partner_bu
 msgid "Business Unit"
 msgstr ""
@@ -340,16 +322,29 @@ msgstr ""
 
 #. module: event_profile
 #: selection:event.event,level:0
+#: model:ir.actions.act_window,name:event_profile.action_country_state_city
+#: model:ir.model,name:event_profile.model_res_country_state_city
+#: model:ir.ui.menu,name:event_profile.contact_menu_city
 #: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
+#: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
 msgid "City"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_code
+msgid "City Code"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_name
+msgid "City Name"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_code
-#: model:ir.model.fields,field_description:event_profile.field_res_users_code
 #: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
 msgid "Code"
 msgstr ""
@@ -362,8 +357,8 @@ msgid "Comments"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_ref_company_ids
-msgid "Companies that refers to partner"
+#: model:ir.ui.menu,name:event_profile.contact_menu_config
+msgid "Configuration"
 msgstr ""
 
 #. module: event_profile
@@ -377,6 +372,12 @@ msgid "Confirm Event"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.menu,name:event_profile.action_menu_contact
+msgid "Contact"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_contacts_contact_
 #: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
 #: model:ir.actions.act_window,name:event_profile.action_contacts_employee
 #: model:ir.actions.act_window,name:event_profile.action_contacts_institution
@@ -391,19 +392,8 @@ msgid "Contract"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_contract_ids
-#: model:ir.model.fields,field_description:event_profile.field_res_users_contracts_count
-msgid "Contracts"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Control Site: CEC - International (CIT DRC)"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_payment_method_count
-msgid "Count Payment Method"
 msgstr ""
 
 #. module: event_profile
@@ -415,6 +405,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_create_uid
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_create_uid
 msgid "Created by"
 msgstr ""
 
@@ -427,17 +418,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_date
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_create_date
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_create_date
 msgid "Created on"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_currency_id
-msgid "Currency id"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_property_payment_term_id
-msgid "Customer Payment Term"
 msgstr ""
 
 #. module: event_profile
@@ -462,7 +444,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_department
-#: model:ir.model.fields,field_description:event_profile.field_res_users_department
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Department"
@@ -510,6 +491,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_display_name
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_display_name
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_display_name
 msgid "Display Name"
 msgstr ""
 
@@ -698,24 +680,13 @@ msgid "Finish Event"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_property_account_position_id
-msgid "Fiscal Position"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_freight
 msgid "Flight/Trian No."
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_gender
-#: model:ir.model.fields,field_description:event_profile.field_res_users_gender
 msgid "Gender"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_has_unreconciled_entries
-msgid "Has unreconciled entries"
 msgstr ""
 
 #. module: event_profile
@@ -765,6 +736,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_id
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_id
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_id
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_id
 msgid "ID"
 msgstr ""
 
@@ -776,6 +748,11 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Identity ID:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.actions.act_window,help:event_profile.action_country_state_city
+msgid "If you are working on the American market, you can manage the different federal states you are working on from here. Each state is attached to one country."
 msgstr ""
 
 #. module: event_profile
@@ -795,7 +772,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.contact_menu_institution
-#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Institutions"
 msgstr ""
 
@@ -805,31 +781,18 @@ msgid "International"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_invoice_ids
-msgid "Invoices"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_hotel
-#: model:ir.model.fields,field_description:event_profile.field_res_users_hotel
 msgid "Is a Hotel"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_speaker
-#: model:ir.model.fields,field_description:event_profile.field_res_users_speaker
 msgid "Is a Speaker"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "It's our honor to invite you to attend"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_issued_total
-#: model:ir.model.fields,field_description:event_profile.field_res_users_journal_item_count
-msgid "Journal Items"
 msgstr ""
 
 #. module: event_profile
@@ -846,12 +809,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract___last_update
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu___last_update
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city___last_update
 msgid "Last Modified on"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_last_website_so_id
-msgid "Last Online Sale Order"
 msgstr ""
 
 #. module: event_profile
@@ -863,6 +822,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_write_uid
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_write_uid
 msgid "Last Updated by"
 msgstr ""
 
@@ -875,17 +835,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_date
 #: model:ir.model.fields,field_description:event_profile.field_partner_bu_write_date
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_write_date
 msgid "Last Updated on"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_last_time_entries_checked
-msgid "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_last_time_entries_checked
-msgid "Latest Invoices & Payments Matching Date"
 msgstr ""
 
 #. module: event_profile
@@ -943,6 +894,11 @@ msgid "Nominator"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_organizer
+msgid "Organizer"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Organizer:"
 msgstr ""
@@ -955,7 +911,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_oversea
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_oversea
-#: model:ir.model.fields,field_description:event_profile.field_res_users_oversea
 msgid "Oversea"
 msgstr ""
 
@@ -969,16 +924,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_partner_bu
 msgid "Partner Business Unit"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_debit_limit
-msgid "Payable Limit"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_payment_method_ids
-msgid "Payment Methods"
 msgstr ""
 
 #. module: event_profile
@@ -1066,11 +1011,6 @@ msgid "Room Type"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_sale_order_ids
-msgid "Sales Order"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_serivce_deliverable
 msgid "Serivce Deliverable"
 msgstr ""
@@ -1151,7 +1091,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_speaker
-#: model:ir.model.fields,field_description:event_profile.field_event_track_speaker_id
 msgid "Speaker"
 msgstr ""
 
@@ -1180,11 +1119,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Sponsor Reason"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_event_organizer
-msgid "Sponsored By"
 msgstr ""
 
 #. module: event_profile
@@ -1224,18 +1158,17 @@ msgid "Start Date"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_state_id
+#: model:ir.ui.menu,name:event_profile.contact_menu_state
+#: model:ir.ui.view,arch_db:event_profile.view_country_state_city_form
+#: model:ir.ui.view,arch_db:event_profile.view_country_state_city_tree
+#: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
+msgid "State"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_brands
 msgid "Supported Brands"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_property_account_position_id
-msgid "The fiscal position will determine taxes and accounts used for the partner."
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_has_unreconciled_entries
-msgid "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
 msgstr ""
 
 #. module: event_profile
@@ -1244,28 +1177,8 @@ msgid "The signing date"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_property_account_payable_id
-msgid "This account will be used instead of the default one as the payable account for the current partner"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_property_account_receivable_id
-msgid "This account will be used instead of the default one as the receivable account for the current partner"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "This event's subject is"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_property_supplier_payment_term_id
-msgid "This payment term will be used instead of the default one for purchase orders and vendor bills"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_property_payment_term_id
-msgid "This payment term will be used instead of the default one for sale orders and customer invoices"
 msgstr ""
 
 #. module: event_profile
@@ -1281,31 +1194,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event_track
 msgid "Topic"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_total_invoiced
-msgid "Total Invoiced"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_debit
-msgid "Total Payable"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_credit
-msgid "Total Receivable"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_credit
-msgid "Total amount this customer owes you."
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_debit
-msgid "Total amount you have to pay to this vendor."
 msgstr ""
 
 #. module: event_profile
@@ -1347,19 +1235,8 @@ msgid "Type Name"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model,name:event_profile.model_res_users
 #: model:ir.ui.menu,name:event_profile.event_menu_users
 msgid "Users"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,help:event_profile.field_res_users_currency_id
-msgid "Utility field to express amount currency"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_users_property_supplier_payment_term_id
-msgid "Vendor Payment Term"
 msgstr ""
 
 #. module: event_profile
