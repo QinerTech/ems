@@ -109,7 +109,7 @@
                     <xpath expr="//filter[@name='supplier']" position="after" >
                         <filter string="Speakers" name="speaker" domain="[('speaker','=',1)]"/>
                         <filter string="Employees" name="employee" domain="[('employee','=',1)]"/>
-                        <filter string="Institutions" name="institution" domain="[('is_company','=',1)]"/>
+                        <!-- <filter string="Institutions" name="institution" domain="[('is_company','=',1)]"/> -->
                     </xpath>
                 </field>
             </record>
@@ -120,7 +120,7 @@
                 <field name="res_model">res.partner</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">kanban,tree,form</field>
-                <field name="context">{'search_default_institution': 1,'default_institution':1,'default_type_company':1}</field>
+                <field name="context">{'search_default_type_company': 1, 'default_type_company':1}</field>
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
             <record id="action_contacts_speaker" model="ir.actions.act_window">
@@ -129,7 +129,7 @@
                 <field name="res_model">res.partner</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">kanban,tree,form</field>
-                <field name="context">{'search_default_speaker': 1,'default_customer': 0,'default_supplier': 1,'default_speaker': 1}</field>
+                <field name="context">{'search_default_speaker': 1,'default_customer': 0,'default_supplier': 1,'default_speaker': 1, 'default_employee': 0}</field>
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
             <record id="action_contacts_employee" model="ir.actions.act_window">
@@ -147,7 +147,17 @@
                 <field name="res_model">res.partner</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">kanban,tree,form</field>
-                <field name="context">{'search_default_customer': 1,'default_customer': 1,'default_supplier': 0,'default_speaker': 0}</field>
+                <field name="context">{'search_default_customer': 1,'default_customer': 1,'default_supplier': 0,'default_speaker': 0, 'default_employee': 0 }</field>
+                <field name="search_view_id" ref="base.view_res_partner_filter" />
+            </record>
+
+            <record id="action_contacts_contact_" model="ir.actions.act_window">
+                <field name="name">Contacts</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">res.partner</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">kanban,tree,form</field>
+                <field name="context">{'search_default_type_person': 1,'default_customer': 0,'default_supplier': 0,'default_speaker': 0, 'default_employee': 0}</field>
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
 
@@ -156,11 +166,13 @@
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
 
-            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="12"/>
+            <menuitem id="action_menu_contact" name="Contact" parent="mail.menu_contacts" action="action_contacts_contact_" sequence="12"/>
 
-            <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="13"/>
+            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="16"/>
 
-            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="14"/>
+            <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="17"/>
+
+            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="18"/>
 
 
             <menuitem id="contact_menu_config" name="Configuration" parent="contact_main_menu" sequence="100"/>
