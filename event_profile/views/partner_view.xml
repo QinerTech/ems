@@ -166,13 +166,13 @@
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
 
-            <menuitem id="action_menu_contact" name="Contact" parent="mail.menu_contacts" action="action_contacts_contact_" sequence="12"/>
+            <menuitem id="action_menu_contact" name="Contact" parent="mail.menu_contacts" action="action_contacts_contact_" sequence="15"/>
 
-            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="16"/>
+            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="14"/>
 
-            <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="17"/>
+            <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="13"/>
 
-            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="18"/>
+            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="12"/>
 
 
             <menuitem id="contact_menu_config" name="Configuration" parent="contact_main_menu" sequence="100"/>
