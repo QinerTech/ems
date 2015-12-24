@@ -146,6 +146,7 @@
             <record id="sequence_event_id" model="ir.sequence">
                 <field name="name">Event Code</field>
                 <field name="code">event.event.code</field>
+                <field name="implementation">no_gap</field>
                 <field name="prefix"></field>
                 <field name="padding">4</field>
                 <field name="number_next">1</field>
