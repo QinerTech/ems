@@ -1,4 +1,6 @@
 id,name,shortcut
+base.res_partner_title_prof,教授,
+base.res_partner_title_doctor,博士,
 contact_title_1,副教授,
 contact_title_2,主任医师,
 contact_title_3,副主任医师,
