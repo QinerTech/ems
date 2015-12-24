@@ -18,7 +18,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">东-Audience</field>
+                <field name="name">东区-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -29,7 +29,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">南-Audience</field>
+                <field name="name">南区-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -40,7 +40,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">西-Audience</field>
+                <field name="name">西区-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -51,7 +51,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">北-Audience</field>
+                <field name="name">北区-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -62,7 +62,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">中-Audience</field>
+                <field name="name">中区-Audience</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -73,7 +73,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">东-Speaker</field>
+                <field name="name">东区-Speaker</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -84,7 +84,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">南-Speaker</field>
+                <field name="name">南区-Speaker</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -95,7 +95,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">西-Speaker</field>
+                <field name="name">西区-Speaker</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -106,7 +106,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">北-Speaker</field>
+                <field name="name">北区-Speaker</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -117,7 +117,7 @@
                 <field name="standard_price">0.0</field>
                 <field name="uom_id" ref="product.product_uom_unit" />
                 <field name="uom_po_id" ref="product.product_uom_unit" />
-                <field name="name">中-Speaker</field>
+                <field name="name">中区-Speaker</field>
                 <field name="categ_id" ref="product.product_category_all" />
                 <field name="type">service</field>
                 <field name="event_type_id" ref="event_sale.event_type" />
@@ -126,19 +126,19 @@
 
         <data>
             <record model="crm.team" id="team_sales_department_1">
-                <field name="name">东</field>
+                <field name="name">东区</field>
             </record>
             <record model="crm.team" id="team_sales_department_2">
-                <field name="name">南</field>
+                <field name="name">南区</field>
             </record>
             <record model="crm.team" id="team_sales_department_3">
-                <field name="name">西</field>
+                <field name="name">西区</field>
             </record>
             <record model="crm.team" id="team_sales_department_4">
-                <field name="name">北</field>
+                <field name="name">北区</field>
             </record>
             <record model="crm.team" id="team_sales_department_5">
-                <field name="name">中</field>
+                <field name="name">中区</field>
             </record>
         </data>
 
