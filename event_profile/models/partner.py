@@ -53,6 +53,20 @@ class partner_hospital_department(models.Model):
         translate=True
     )
 
+class partner_function(models.Model):
+    _name = 'partner.function'
+    _description = u'Partner Job Position'
+
+    name = fields.Char(
+        string='Position Name',
+        required=True,
+        readonly=False,
+        index=True,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
 
 class CountryStateCity(models.Model):
     _name = 'res.country.state.city'
@@ -102,7 +116,7 @@ class Partner(models.Model):
     )
 
     organization_unit = fields.Many2one(
-        string='Hospital Unit',
+        string='Organization Unit',
         required=False,
         readonly=False,
         index=False,
@@ -123,6 +137,20 @@ class Partner(models.Model):
         default=None,
         help=False,
         comodel_name='partner.hospital.unit',
+        domain=[],
+        context={},
+        ondelete='cascade',
+        auto_join=False
+    )
+
+    function = fields.Many2one(
+        string='Job Position',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='partner.function',
         domain=[],
         context={},
         ondelete='cascade',

@@ -44,6 +44,8 @@
                     </xpath>
                     <xpath expr="//group[@name='sale']/field[@name='customer']" position="replace">
                     </xpath>
+                    <xpath expr="//field[@name='title']" position="replace">
+                    </xpath>
                     <xpath expr="//sheet/group" position="before">
                         <group>
                             <group>
@@ -59,7 +61,11 @@
 
                         </group>
                     </xpath>
+                    <xpath expr="//field[@name='function']" position="before">
+                        <field name="title" attrs="{'invisible': [('is_company','=', True)]}" />
+                    </xpath>
                     <xpath expr="//field[@name='function']" position="after">
+                        <field name="hospital_unit" attrs="{'invisible': ['|', ('is_company','=', True),('employee','=', True)]}" />
                         <field name="gender" attrs="{'invisible': [('is_company','=', True)]}" />
                     </xpath>
                     <xpath expr="//field[@name='website']" position="replace">
@@ -68,7 +74,6 @@
                         <field name="user_id" />
                         <field name="organization_unit" attrs="{'invisible': [('employee','=', False)]}" />
                         <field name="report_to" attrs="{'invisible': [('employee','=', False)]}" />
-                        <field name="hospital_unit" attrs="{'invisible': ['|', ('is_company','=', True),('employee','=', True)]}" />
                     </xpath>
                     <xpath expr="//sheet/group/group/div/field[@name='city']" position="replace">
                         <field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" options="{ 'no_create':True ,'no_open': True}" />
@@ -317,6 +322,60 @@
 
         <menuitem name="Hospital Unit" id="menu_event_department"
             action="action_hospital_unit" parent="contact_menu_config"  sequence="16"/>
+
+       <record model="ir.ui.view" id="view_partner_function_form">
+            <field name="name">Job Position</field>
+            <field name="model">partner.function</field>
+            <field name="arch" type="xml">
+                <form string="Job Position">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_partner_function_tree">
+            <field name="name">Job Position</field>
+            <field name="model">partner.function</field>
+            <field name="arch" type="xml">
+                <tree string="Job Position">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_partner_function">
+            <field name="name">Job Position</field>
+            <field name="res_model">partner.function</field>
+        </record>
+
+        <menuitem name="Job Position" id="menu_partner_function"
+            action="action_partner_function" parent="contact_menu_config"  sequence="17"/>
+
+        <record model="ir.ui.view" id="view_partner_title_form">
+            <field name="name">res.partner.title.form</field>
+            <field name="model">res.partner.title</field>
+            <field name="inherit_id" ref="base.view_partner_title_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="replace">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="shortcut"/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </sheet>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem action="base.action_partner_title_contact" id="menu_partner_title_contact" name="Contact Titles" parent="contact_menu_config" sequence="18"/>
 
         </data>
     </openerp>
