@@ -72,7 +72,7 @@
                         <field name="team_id" />
                         <field name="user_id" />
                         <field name="organization_unit" attrs="{'invisible': [('employee','=', False)]}" />
-                        <field name="report_to" attrs="{'invisible': [('employee','=', False)]}" />
+                        <field name="report_to" domain="[('employee','=', True)]" attrs="{'invisible': [('employee','=', False)]}" />
                     </xpath>
                     <xpath expr="//sheet/group/group/div/field[@name='city']" position="replace">
                         <field name="city" invisible="1" />
@@ -115,15 +115,12 @@
                 <field name="inherit_id" ref="base.view_res_partner_filter" />
                 <field name="arch" type="xml">
                     <xpath expr="//filter[@name='supplier']" position="after" >
-                        <filter string="Speakers" name="speaker" domain="[('speaker','=',1)]"/>
                         <filter string="Employees" name="employee" domain="[('employee','=',1)]"/>
+                        <filter string="Speakers" name="speaker" domain="[('speaker','=',1)]"/>
                         <!-- <filter string="Institutions" name="institution" domain="[('is_company','=',1)]"/> -->
                     </xpath>
-                    <xpath expr="//filter[@name='supplier']" position="replace" >
-                        <filter string="Vendors" name="supplier" domain="[('supplier','=',1)]"/>
-                    </xpath>
                     <xpath expr="//filter[@name='customer']" position="replace" >
-                        <filter string="Customers" name="customer" domain="[('customer','=',1)]"/>
+                        <filter string="HCPs" name="customer" domain="[('customer','=',1),('parent_id','!=',False)]"/>
                     </xpath>
                 </field>
             </record>
@@ -156,7 +153,7 @@
                 <field name="search_view_id" ref="base.view_res_partner_filter" />
             </record>
             <record id="action_contacts_customer_" model="ir.actions.act_window">
-                <field name="name">Customers</field>
+                <field name="name">HCPs</field>
                 <field name="type">ir.actions.act_window</field>
                 <field name="res_model">res.partner</field>
                 <field name="view_type">form</field>
@@ -180,14 +177,13 @@
 
             <menuitem id="contact_menu_institution" name="Institutions" parent="mail.menu_contacts" action="action_contacts_institution" sequence="11"/>
 
-            <menuitem id="action_menu_contact" name="Contact" parent="mail.menu_contacts" action="action_contacts_contact_" sequence="15"/>
-
-            <menuitem id="contact_menu_customer" name="Customers" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="14"/>
+            <menuitem id="contact_menu_customer" name="HCPs" parent="mail.menu_contacts" action="action_contacts_customer_" sequence="12"/>
 
             <menuitem id="contact_menu_employee" name="Employees" parent="mail.menu_contacts" action="action_contacts_employee" sequence="13"/>
 
-            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="12"/>
+            <menuitem id="action_menu_contact" name="Contacts" parent="mail.menu_contacts" action="action_contacts_contact_" sequence="14"/>
 
+            <menuitem id="contact_menu_speaker" name="Speakers" parent="mail.menu_contacts" action="action_contacts_speaker" sequence="15"/>
 
             <menuitem id="contact_menu_config" name="Configuration" parent="contact_main_menu" sequence="100"/>
 

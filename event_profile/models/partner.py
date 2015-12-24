@@ -198,7 +198,7 @@ class Partner(models.Model):
     )
 
     report_to = fields.Many2one(
-        string='1st Line Manager',
+        string='Manager',
         required=False,
         readonly=False,
         index=False,
