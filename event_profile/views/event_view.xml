@@ -19,7 +19,7 @@
                     </xpath>
                     <xpath expr="//field[@name='event_type_id']" position="replace">
                     </xpath>
-                    <xpath expr="//field[@name='name']" position="before">
+                    <xpath expr="//sheet/div[1]" position="after">
                         <field name="event_code" placeholder="Event ID" />
                     </xpath>
                     <xpath expr="//field[@name='date_tz']" position="before">
@@ -34,6 +34,7 @@
                     </xpath>
                     <xpath expr="//field[@name='organizer_id']" position="replace">
                         <field name="organizer_id" />
+                        <field name="deadline" />
                         <field name="user_id" />
                         <field name="create_date" readonly="1"/>
                         <!-- <field name="create_uid"  readonly="1"/> -->

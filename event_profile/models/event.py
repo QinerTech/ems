@@ -4,6 +4,8 @@ from openerp import models, fields, api
 from openerp.tools.translate import _
 from openerp.addons.website.models.website import slug
 
+from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT,DEFAULT_SERVER_DATE_FORMAT,DEFAULT_SERVER_TIME_FORMAT
+import datetime
 
 from logging import getLogger
 
@@ -61,11 +63,11 @@ class event_event(models.Model):
 
     event_code = fields.Char(
         string='Event ID',
-        required=True,
-        readonly=False,
+        required=False,
+        readonly=True,
         index=False,
         help=False,
-        size=50,
+        size=4,
         states={'done': [('readonly', True)], 'confirm': [('readonly', True)]}
     )
 
@@ -76,9 +78,9 @@ class event_event(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=False,
+        default='marketing',
         help=False,
-        selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness')]
+        selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness'), ('education','Patients Education')]
     )
 
     organizer_id = fields.Many2one(
@@ -87,6 +89,8 @@ class event_event(models.Model):
 
     address_id = fields.Many2one( 'res.country.state.city', string='City', default=False)
     country_id = fields.Many2one('res.country', 'Country',  related='address_id.state_id.country_id', store=True)
+
+    deadline = fields.Date("Nomination End")
 
     hotel = fields.One2many(
         string='Hotel',
@@ -196,6 +200,11 @@ class event_event(models.Model):
 
     count_tracks = fields.Integer(string='Topics')
 
+    @api.onchange('date_begin')
+    def _onchange_date_begin(self):
+        if self.date_begin:
+            self.deadline = (datetime.datetime.strptime(self.date_begin , DEFAULT_SERVER_DATETIME_FORMAT) +  datetime.timedelta(-9)).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+
     @api.model
     def _default_tickets(self):
         try:
@@ -204,6 +213,7 @@ class event_event(models.Model):
                 'name': product.name,
                 'product_id': product.id,
                 'price': 0,
+                'deadline': self.deadline,
             } for product in products]
         except ValueError:
             return self.env['event.event.ticket']
@@ -220,15 +230,36 @@ class event_event(models.Model):
     @api.multi
     def write(self, vals):
         res = super(event_event, self.sudo()).write(vals)
+        _vals = { }
+        deadline = vals.get('deadline', False)
+        if deadline :
+            _vals['deadline'] =deadline
+            self.env['event.event.ticket'].search([('event_id','=', self.id )]).write(_vals)
+            self.env['event.event.ticket'].write(ticket_ids, _vals )
+
         return res
 
     _defaults = {
+        'event_code': 'New',
         'show_menu': True,
         'show_tracks': True,
         'show_track_proposal': False,
         'date_tz': 'Asia/Shanghai',
     }
 
+    @api.model
+    def create(self, vals):
+        if vals.get('event_code', 'New') == 'New':
+            vals['event_code'] = self.env['ir.sequence'].next_by_code('event.event.code') or 'New'
+
+        return super(event_event, self).create(vals)
+
+    @api.one
+    def copy(self,  default=None):
+        default = dict(default or {})
+        default['event_code'] = self.env['ir.sequence'].next_by_code('event.event.code') or 'New'
+
+        return super(event_event, self).copy(default)
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
@@ -250,11 +281,23 @@ class event_ticket(models.Model):
             result.append((ticket.id, '%s' % (ticket.product_id.name)))
         return result
 
-    _defaults = {
-        'name': 'Audience',
+    @api.model
+    def create(self, vals):
+        event_id = vals.get('event_id', False)
+        _logger.info('in create method, event_id is %s' %event_id)
+        if event_id:
+            vals['deadline'] = self.env['event.event'].browse(event_id).deadline
 
-    }
+        return super(event_ticket, self).create(vals)
 
+    @api.multi
+    def write(self, vals):
+        event_id = vals.get('event_id', False)
+        _logger.info('in write method, event_id is %s' %event_id)
+        if event_id:
+            vals['deadline'] = self.env['event.event'].browse(event_id).deadline
+
+        return super(event_ticket, self).write(vals)
 
 class event_brand(models.Model):
     _name = "event.brand"
