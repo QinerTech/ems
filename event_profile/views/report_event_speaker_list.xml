@@ -37,7 +37,9 @@
                         <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
                         <th class="text-left" style="border: 0.5px solid black;">Department</th>
                         <th class="text-left" style="border: 0.5px solid black;">Position</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Identifier</th>
                         <th class="text-left" style="border: 0.5px solid black;">Bank Account</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Amount</th>
                         <th class="text-left" style="border: 0.5px solid black;">Attended ?</th>
                         <th class="text-left" style="border: 0.5px solid black;">Comments</th>
                     </tr>
@@ -64,8 +66,19 @@
                                <span t-field="l.registration_id.partner_id.function"/>
                             </td>
                             <td style="border: 0.5px solid black;">
+                               <span t-field="l.identifier_id"/>
+                            </td>
+                            <td style="border: 0.5px solid black;">
                                <span t-field="l.bank_account"/>
                             </td>
+                            <td style="border: 0.5px solid black;">
+                                <t t-set="test_variable" t-value="0"/>
+                                <t t-foreach="l.event_track_contract" t-as="p" >
+                                     <t t-set="test_variable" t-value="test_variable+ p.service_fee "/>
+                                </t>
+                                <t t-esc="test_variable"/>
+                            </td>
+
                             <td style="border: 0.5px solid black;">
 
                             </td>
