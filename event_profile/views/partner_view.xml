@@ -111,6 +111,12 @@
                         <filter string="Employees" name="employee" domain="[('employee','=',1)]"/>
                         <!-- <filter string="Institutions" name="institution" domain="[('is_company','=',1)]"/> -->
                     </xpath>
+                    <xpath expr="//filter[@name='supplier']" position="replace" >
+                        <filter string="Vendors" name="supplier" domain="[('supplier','=',1)]"/>
+                    </xpath>
+                    <xpath expr="//filter[@name='customer']" position="replace" >
+                        <filter string="Customers" name="customer" domain="[('customer','=',1)]"/>
+                    </xpath>
                 </field>
             </record>
 
