@@ -270,5 +270,6 @@ class res_partner(osv.Model):
     _defaults = {
 
         'type': 'other',
+        'lang': 'zh_CN'
 
     }
