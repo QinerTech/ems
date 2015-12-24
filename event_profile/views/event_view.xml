@@ -334,7 +334,10 @@
                 <form string="Event Service Type">
                     <sheet>
                         <group>
-                            <field name="name"/>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group></group>
                         </group>
                     </sheet>
                 </form>
@@ -362,9 +365,12 @@
                 <form string="Event Brand">
                     <sheet>
                         <group>
+                            <group>
                             <field name="image_medium"   widget="image"/>
                             <field name="name"/>
                             <!-- <field name="brand_type"/> -->
+                        </group>
+                        <group></group>
                         </group>
                     </sheet>
                 </form>
@@ -412,12 +418,12 @@
 
         <record model="ir.ui.menu" id="event.menu_action_registration">
            <field name="groups_id"
-                   eval="[(6,0,[ref('base.group_user')])]"/>
+                   eval="[(6,0,[ref('base.group_no_one')])]"/>
         </record>
 
         <record model="ir.ui.menu" id="website_event_track.menu_event_track">
            <field name="groups_id"
-                   eval="[(6,0,[ref('base.group_user')])]"/>
+                   eval="[(6,0,[ref('base.group_no_one')])]"/>
         </record>
 
         <record model="ir.ui.menu" id="event.menu_event_global_settings">

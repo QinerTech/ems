@@ -201,15 +201,19 @@
                 <field name="model">res.country.state.city</field>
                 <field name="arch" type="xml">
                     <form string="State City">
-                        <group>
-                            <field name="name" />
-                            <field name="code" />
-                            <field name="state_id" options='{"no_open": True}' />
-                        </group>
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="name" />
+                                    <field name="code" />
+                                    <field name="state_id" options='{"no_open": True}' />
+                                </group>
+                                <group></group>
+                            </group>
+                        </sheet>
                     </form>
                 </field>
             </record>
-
             <record id="action_country_state_city" model="ir.actions.act_window">
                 <field name="name">State City</field>
                 <field name="type">ir.actions.act_window</field>
@@ -218,10 +222,30 @@
                 <field name="view_id" ref="view_country_state_city_tree" />
                 <field name="help">If you are working on the American market, you can manage the different federal states you are working on from here. Each state is attached to one country.</field>
             </record>
-            <menuitem id="contact_menu_city" name="City" parent="contact_menu_config" action="action_country_state_city" sequence="12" />
+            <menuitem id="contact_menu_city" name="Country City" parent="contact_menu_config" action="action_country_state_city" sequence="12" />
 
         <record id="base.action_country_state" model="ir.actions.act_window">
             <field name="name">Country State</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_country_state_form">
+            <field name="name">res.country.state.form</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="replace">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="country_id" options='{"no_open": True}'/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </sheet>
+                </xpath>
+            </field>
         </record>
 
         <record model="ir.ui.view" id="view_organization_unit_form">
@@ -231,9 +255,12 @@
                 <form string="Organization Unit">
                     <sheet>
                         <group>
-                            <field name="code"/>
-                            <field name="name"/>
-                            <field name="parent_id"/>
+                            <group>
+                                <field name="code"/>
+                                <field name="name"/>
+                                <field name="parent_id"/>
+                            </group>
+                            <group></group>
                         </group>
                     </sheet>
                 </form>
@@ -265,7 +292,10 @@
                 <form string="Hospital Unit">
                     <sheet>
                         <group>
-                            <field name="name"/>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group></group>
                         </group>
                     </sheet>
                 </form>
