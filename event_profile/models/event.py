@@ -84,7 +84,7 @@ class event_event(models.Model):
     )
 
     organizer_id = fields.Many2one(
-        'partner.organization.unit', string='Sponsored By',
+        'partner.organization.unit', string='Organizer',
         default=lambda self: self.env.user.partner_id.organization_unit)
 
     address_id = fields.Many2one( 'res.country.state.city', string='City', default=False)
