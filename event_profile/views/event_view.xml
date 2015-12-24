@@ -87,6 +87,28 @@
                 </field>
             </record>
 
+            <record model="ir.ui.view" id="view_event_tree">
+                <field name="name">event.event.tree</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="event.view_event_tree" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='name']" position="before" >
+                        <field name="event_code"/>
+                    </xpath>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="view_event_kanban">
+                <field name="name">event.event.kanban</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="event.view_event_kanban" />
+                <field name="arch" type="xml">
+                    <xpath expr="//kanban/templates//field[@name='name']" position="before" >
+                            <field name="event_code"/>
+                        </xpath>
+                </field>
+            </record>
+
             <record model="ir.ui.view" id="view_event_form_extend_website_event">
                 <field name="name">event.event.website.extend.form</field>
                 <field name="model">event.event</field>
@@ -113,16 +135,30 @@
                             <tree string="Tickets" editable="bottom">
                                 <field name="name"  readonly="1" invisible="True"/>
                                 <field name="product_id" context="{'default_event_ok':1}" options="{ 'limit':25, 'no_quick_create':True, 'no_create_edit':True, 'no_open':True}" />
-                                <field name="deadline"/>
-                                <field name="seats_max"/>
-                                <field name="seats_reserved" readonly="1"/>
-                                <field name="seats_unconfirmed" readonly="1"/>
+                                <field name="deadline" invisible="True" />
+                                <field name="seats_max" sum='Max' />
+                                <field name="seats_reserved" readonly="1" sum='Reserved'/>
+                                <field name="seats_unconfirmed" readonly="1" sum='Unconfirmed' />
                             </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="name"  readonly="1" />
+                                        <field name="deadline" readonly="1" />
+                                        <field name="seats_availability"  readonly="1" />
+                                    </group>
+                                    <group>
+                                        <field name="seats_max" readonly="1" />
+                                        <field name="seats_reserved" readonly="1" />
+                                        <field name="seats_available" readonly="1" />
+                                        <field name="seats_unconfirmed" readonly="1" />
+                                        <field name="seats_used" readonly="1"  />
+                                    </group>
+                                </group>
+                            </form>
                         </field>
                     </xpath>
-                    <xpath expr="//field[@name='product_id']" position="attributes" >
-                        <attribute name="options">{'limit': 25}</attribute>
-                    </xpath>
+
                 </field>
             </record>
 
