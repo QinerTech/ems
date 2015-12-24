@@ -142,7 +142,7 @@
             </record>
         </data>
 
-        <data noupdate="0">
+        <data noupdate="1">
             <record id="sequence_event_id" model="ir.sequence">
                 <field name="name">Event Code</field>
                 <field name="code">event.event.code</field>
