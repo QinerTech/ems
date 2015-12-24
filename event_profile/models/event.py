@@ -245,6 +245,8 @@ class event_event(models.Model):
         'show_tracks': True,
         'show_track_proposal': False,
         'date_tz': 'Asia/Shanghai',
+        'date_begin': lambda *a: (datetime.datetime.now() + datetime.timedelta(days=(10))).strftime('%Y-%m-%d 00:00:00'),
+        'date_end': lambda *a: (datetime.datetime.now() + datetime.timedelta(days=(10))).strftime('%Y-%m-%d 09:00:00'),
     }
 
     @api.model
