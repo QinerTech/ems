@@ -46,7 +46,7 @@
 
 <p>Position:  <span t-field="doc.event_id.user_id.function"/></p>
 
-<p>Department:  <span t-field="doc.event_id.user_id.department"/></p>
+<p>Department:  <span t-field="doc.event_id.user_id.organization_unit"/></p>
 
 <p>AbbVie China</p>
 

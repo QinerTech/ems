@@ -31,6 +31,7 @@
         'views/event_view.xml',
         'views/partner_view.xml',
         'views/event_report.xml',
+        'views/report_layout.xml',
         'views/report_event_registration_signin_sheet.xml',
         'views/report_event_speaker_list.xml',
         'views/report_event_registration_travel_list.xml',

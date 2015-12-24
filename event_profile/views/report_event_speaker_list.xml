@@ -58,7 +58,7 @@
                                <span t-field="l.registration_id.partner_id.parent_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.registration_id.partner_id.department"/>
+                               <span t-field="l.registration_id.partner_id.hospital_unit"/>
                             </td>
                             <td style="border: 0.5px solid black;">
                                <span t-field="l.registration_id.partner_id.function"/>

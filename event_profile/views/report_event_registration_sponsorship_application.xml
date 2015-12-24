@@ -79,7 +79,7 @@
                                <span t-field="l.partner_id.function"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.partner_id.department"/>
+                               <span t-field="l.partner_id.hospital_unit"/>
                             </td>
                             <td style="border: 0.5px solid black;">
                                <span t-field="l.sponsorship_amount"/>
