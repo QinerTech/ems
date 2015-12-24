@@ -33,7 +33,8 @@
                         <field name="address_id" options="{ 'no_create':True, 'no_open':True}" />
                     </xpath>
                     <xpath expr="//field[@name='organizer_id']" position="replace">
-                        <field name="organizer_id" />
+                        <field name="organizer_id" invisible='1'/>
+                        <field name="organization_id" />
                         <field name="deadline" />
                         <field name="user_id" />
                         <field name="create_date" readonly="1"/>
@@ -104,8 +105,19 @@
                 <field name="inherit_id" ref="event.view_event_kanban" />
                 <field name="arch" type="xml">
                     <xpath expr="//kanban/templates//field[@name='name']" position="before" >
-                            <field name="event_code"/>
-                        </xpath>
+                        <field name="event_code"/>
+                    </xpath>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="view_event_calendar">
+                <field name="name">event.event.kanban</field>
+                <field name="model">event.event</field>
+                <field name="inherit_id" ref="event.view_event_calendar" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='name']" position="before" >
+                        <field name="event_code"/>
+                    </xpath>
                 </field>
             </record>
 

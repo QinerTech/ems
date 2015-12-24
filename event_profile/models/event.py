@@ -83,7 +83,7 @@ class event_event(models.Model):
         selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness'), ('education','Patients Education')]
     )
 
-    organizer_id = fields.Many2one(
+    organization_id = fields.Many2one(
         'partner.organization.unit', string='Organizer',
         default=lambda self: self.env.user.partner_id.organization_unit)
 
@@ -235,7 +235,6 @@ class event_event(models.Model):
         if deadline :
             _vals['deadline'] =deadline
             self.env['event.event.ticket'].search([('event_id','=', self.id )]).write(_vals)
-            self.env['event.event.ticket'].write(ticket_ids, _vals )
 
         return res
 
