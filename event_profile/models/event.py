@@ -859,7 +859,7 @@ class event_registration(models.Model):
                 self.email = contact.email
                 self.phone = contact.phone
 
-                team = contact.team_id
+                team = contact.team_id or contact.parent_id.team_id
 
                 dom = ""
                 if contact.speaker and team:
