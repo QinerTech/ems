@@ -26,6 +26,9 @@
     # always loaded
     'data': [
         'data/event_data.xml',
+        'data/event.service.type.csv',
+        'data/partner.function.csv',
+        'data/res.partner.title.csv',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/event_view.xml',
