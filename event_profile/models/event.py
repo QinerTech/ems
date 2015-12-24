@@ -16,41 +16,6 @@ def _lang_get(self):
     languages = self.env['res.lang'].search([])
     return [(language.code, language.name) for language in languages]
 
-class event_organizer(models.Model):
-    _name = "event.organizer"
-    _description = 'Event Organizer'
-
-    name = fields.Char(
-        string='Divison Name',
-        required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        translate=True
-    )
-
-class partner_bu(models.Model):
-    _name = "partner.bu"
-    _description = 'Business Unit'
-
-    name = fields.Char(
-        string='BU Name',
-        required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        translate=True
-    )
-
-@api.model
-def _organizer_get(self):
-    partners = self.env['event.organizer'].search([])
-    return [(partner.name, partner.name) for partner in partners]
-
 # class event_type(models.Model):
 #     _inherit = "event.type"
 
@@ -116,11 +81,9 @@ class event_event(models.Model):
         selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness')]
     )
 
-    organizer = fields.Selection(_organizer_get, string='Organizer',)
-
     organizer_id = fields.Many2one(
-        'res.partner', string='Sponsored By',
-        default=lambda self: self.env.user.company_id.partner_id)
+        'partner.organization.unit', string='Sponsored By',
+        default=lambda self: self.env.user.partner_id.organization_unit)
 
     address_id = fields.Many2one( 'res.country.state.city', string='City', default=False)
     country_id = fields.Many2one('res.country', 'Country',  related='address_id.state_id.country_id', store=True)
@@ -206,9 +169,9 @@ class event_event(models.Model):
         index=False,
         default=None,
         help=False,
-        comodel_name='event.department',
-        relation='event_department_event_rel',
-        column1='department_id',
+        comodel_name='partner.hospital.unit',
+        relation='partner_hospital_unit_event_rel',
+        column1='hospital_unit_id',
         column2='event_id',
         domain=[],
         context={},
@@ -219,7 +182,7 @@ class event_event(models.Model):
         string='Language',
         required=True,
         default=lambda self: self.env.user.lang
-                            )
+    )
 
     venue = fields.Char(
         string='Venue',
@@ -269,7 +232,7 @@ class event_event(models.Model):
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
-    _description = 'Seat Quota'
+    _description = 'Attendee Quota'
 
     user_id = fields.Many2one(
         'res.users', string='Responsible',
@@ -306,33 +269,8 @@ class event_brand(models.Model):
         size=50,
         translate=True
     )
-    # event_id = fields.Many2one('event.event', 'Event', required=True)
+
     image_medium = fields.Binary(string='Logo', store=True, attachment=True)
-    # brand_type = fields.Selection(
-    #     string='Brand Type',
-    #     required=False,
-    #     readonly=False,
-    #     index=False,
-    #     default=False,
-    #     help=False,
-    #     selection=[('main', 'Main'), ('other', 'Other')]
-    # )
-
-class event_hospital_department(models.Model):
-    _name = "event.department"
-    _description = 'Event Department'
-
-    name = fields.Char(
-        string='Name',
-        required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        translate=True
-    )
-
 
 class event_service_type(models.Model):
     _name = "event.service.type"
@@ -412,6 +350,26 @@ class event_track_contract(models.Model):
         required=False,
         readonly=False,
     )
+    service_description = fields.Char(
+        string='Service Description',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+    service_rate = fields.Float(
+        string='Service Rate',
+        required=False,
+        readonly=False,
+        index=False,
+        default=0.0,
+        digits=(4, 2),
+        help=False
+    )
 
     service_fee = fields.Float(
         string='Service Fee',
@@ -419,7 +377,7 @@ class event_track_contract(models.Model):
         readonly=False,
         index=False,
         default=0.0,
-        digits=(16, 2),
+        digits=(4, 2),
         help=False
     )
 
@@ -439,7 +397,7 @@ class event_track_contract(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=None,
+        default=u"促进中国风湿科学学科的进步与发展",
         help=False,
         size=50,
         translate=True
@@ -804,7 +762,7 @@ class event_registration(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=0.0,
+        default=3500.0,
         digits=(4, 2),
         help=False
     )

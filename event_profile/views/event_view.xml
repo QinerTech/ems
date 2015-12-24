@@ -33,8 +33,7 @@
                         <field name="address_id" options="{ 'no_create':True, 'no_open':True}" />
                     </xpath>
                     <xpath expr="//field[@name='organizer_id']" position="replace">
-                        <field name="organizer" />
-                        <field name="organizer_id" invisible="1" />
+                        <field name="organizer_id" />
                         <field name="user_id" />
                         <field name="create_date" readonly="1"/>
                         <!-- <field name="create_uid"  readonly="1"/> -->
@@ -267,19 +266,19 @@
                                 <field name="oversea" readonly="1"/>
                                 <field name="partner_phone"/>
                                 <field name="partner_email"/>
-                                <field name="identifier_id" password="False" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" groups="event_profile.group_event_user_nominator"/>
-                                <field name="bank_account" password="False" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX" groups="event_profile.group_event_user_nominator"/>
+                                <field name="identifier_id" password="True" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
+                                <field name="bank_account" password="True" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX"  />
                             </group>
                             <group>
 
-                                <field name="date"/>
+                                <field name="date" invisible='1'/>
                                 <label for="nbr_hour"/>
                                 <div class="o_row">
                                     <field name="nbr_hour" />:
                                     <field name="nbr_minute" />
                                 </div>
-                                <field name="tag_ids" widget="many2many_tags"/>
                                 <field name="user_id"/>
+                                <field name="tag_ids" widget="many2many_tags"/>
                             </group>
                         </group>
                     </xpath>
@@ -294,6 +293,8 @@
                                 <field name="event_track_contract">
                                     <tree editable="bottom">
                                         <field name="service_type" />
+                                        <field name="service_description" />
+                                        <field name="service_rate" />
                                         <field name="service_fee" />
                                         <field name="serivce_deliverable" />
                                         <field name="resonable_requirement" />
@@ -326,35 +327,6 @@
                  <field name="context">{'search_default_event_id': active_id, 'default_event_id': active_id}</field>
             </record>
 
- <!-- EVENTS/CONFIGURATION/EVENT department -->
-        <record model="ir.ui.view" id="view_event_department_form">
-            <field name="name">Event Department</field>
-            <field name="model">event.department</field>
-            <field name="arch" type="xml">
-                <form string="Event department">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-        <record model="ir.ui.view" id="view_event_department_tree">
-            <field name="name">Event Department</field>
-            <field name="model">event.department</field>
-            <field name="arch" type="xml">
-                <tree string="Event department">
-                    <field name="name"/>
-                </tree>
-            </field>
-        </record>
-        <record model="ir.actions.act_window" id="action_event_department">
-            <field name="name">Event Departments</field>
-            <field name="res_model">event.department</field>
-        </record>
-
- <!-- EVENTS/CONFIGURATION/EVENT department -->
         <record model="ir.ui.view" id="view_event_service_type_form">
             <field name="name">Event Service Type</field>
             <field name="model">event.service.type</field>
@@ -387,7 +359,7 @@
             <field name="name">Event Brand</field>
             <field name="model">event.brand</field>
             <field name="arch" type="xml">
-                <form string="Event brand">
+                <form string="Event Brand">
                     <sheet>
                         <group>
                             <field name="image_medium"   widget="image"/>
@@ -402,7 +374,7 @@
             <field name="name">Event Brand</field>
             <field name="model">event.brand</field>
             <field name="arch" type="xml">
-                <tree string="Event brand">
+                <tree string="Event Brand">
                    <field name="name"/>
                    <!-- <field name="brand_type"/> -->
                 </tree>
@@ -413,76 +385,15 @@
             <field name="res_model">event.brand</field>
         </record>
 
-         <!-- EVENTS/CONFIGURATION/EVENT organizer -->
-        <record model="ir.ui.view" id="view_event_organizer_form">
-            <field name="name">Event Organizer</field>
-            <field name="model">event.organizer</field>
-            <field name="arch" type="xml">
-                <form string="Event brand">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-        <record model="ir.ui.view" id="view_event_organizer_tree">
-            <field name="name">Event Organizer</field>
-            <field name="model">event.organizer</field>
-            <field name="arch" type="xml">
-                <tree string="Event brand">
-                   <field name="name"/>
-                </tree>
-            </field>
-        </record>
-        <record model="ir.actions.act_window" id="action_event_organizer">
-            <field name="name">Event Organizer</field>
-            <field name="res_model">event.organizer</field>
-        </record>
 
-        <record model="ir.ui.view" id="view_partner_bu_form">
-            <field name="name">Partner Business Unit</field>
-            <field name="model">partner.bu</field>
-            <field name="arch" type="xml">
-                <form string="Event brand">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-        <record model="ir.ui.view" id="view_partner_bu_tree">
-            <field name="name">Partner Business Unit</field>
-            <field name="model">partner.bu</field>
-            <field name="arch" type="xml">
-                <tree string="Event brand">
-                   <field name="name"/>
-                </tree>
-            </field>
-        </record>
-        <record model="ir.actions.act_window" id="action_partner_bu">
-            <field name="name">Partner Business Unit</field>
-            <field name="res_model">partner.bu</field>
-        </record>
 
         <menuitem name="Events Category" id="menu_event_type" action="event.action_event_type" parent="event.menu_event_configuration"/>
 
-        <menuitem name="Service Type" id="menu_event_service_type"
-            action="action_event_service_type" parent="event.menu_event_configuration" sequence="11" />
-
-        <menuitem name="Departments" id="menu_event_department"
-            action="action_event_department" parent="event.menu_event_configuration"  sequence="12"/>
-
         <menuitem name="Brands" id="menu_event_brand"
-            action="action_event_brand" parent="event.menu_event_configuration"  sequence="13"/>
+            action="action_event_brand" parent="event.menu_event_configuration"  sequence="11"/>
 
-        <menuitem id="menu_event_organizer" name="Organizers" parent="event.menu_event_configuration" action="action_event_organizer"   sequence="14"/>
-
-        <menuitem name="Business Unit" id="menu_partner_bu"
-            action="action_partner_bu" parent="event.menu_event_configuration"  sequence="15"/>
+        <menuitem name="Service Type" id="menu_event_service_type"
+            action="action_event_service_type" parent="event.menu_event_configuration" sequence="13" />
 
         <menuitem name="Users"
           id="event_menu_users"

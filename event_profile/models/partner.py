@@ -8,6 +8,52 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+class partner_department(models.Model):
+    _name = "partner.organization.unit"
+    _description = 'Organization Unit'
+
+    code = fields.Char(
+        string='Department Code',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+    name = fields.Char(
+        string='Department Name',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+    parent_id = fields.Many2one('partner.organization.unit', string='Parent Organization Unit', select=True, ondelete='cascade')
+
+    child_ids = fields.One2many('partner.organization.unit', 'parent_id', string='Contains')
+
+class partner_hospital_department(models.Model):
+    _name = "partner.hospital.unit"
+    _description = 'Hospital Unit'
+
+    name = fields.Char(
+        string='Name',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+
 class CountryStateCity(models.Model):
     _name = 'res.country.state.city'
     _description = 'City'
@@ -36,13 +82,7 @@ class CountryStateCity(models.Model):
         translate=True
     )
 
-    code = fields.Char(string= 'City Code', size=5, required=True)
-
-
-@api.model
-def _partner_bu_get(self):
-    bus = self.env['partner.bu'].search([])
-    return [(bu.name, bu.name) for bu in bus]
+    code = fields.Char(string='City Code', size=5, required=True)
 
 
 class Partner(models.Model):
@@ -61,21 +101,28 @@ class Partner(models.Model):
         default=lambda self: self.env.user,
     )
 
-    unit = fields.Selection(
-        _partner_bu_get,
-        string='Business Unit',
-        required=False,
-        readonly=False,
-    )
-
-    department = fields.Many2one(
-        string='Department',
+    organization_unit = fields.Many2one(
+        string='Hospital Unit',
         required=False,
         readonly=False,
         index=False,
         default=None,
         help=False,
-        comodel_name='event.department',
+        comodel_name='partner.organization.unit',
+        domain=[],
+        context={},
+        ondelete='cascade',
+        auto_join=False
+    )
+
+    hospital_unit = fields.Many2one(
+        string='Hospital Unit',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='partner.hospital.unit',
         domain=[],
         context={},
         ondelete='cascade',
