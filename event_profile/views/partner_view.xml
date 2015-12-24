@@ -51,7 +51,6 @@
                             <group>
                                 <field name="customer" />
                                 <field name="employee" attrs="{'invisible': [('is_company','=', True)]}" />
-                                <field name="hotel" attrs="{'invisible': [('is_company','=', False)]} " />
                                 <!-- <field name="supplier" /> -->
                             </group>
                             <group>
@@ -76,14 +75,16 @@
                         <field name="report_to" attrs="{'invisible': [('employee','=', False)]}" />
                     </xpath>
                     <xpath expr="//sheet/group/group/div/field[@name='city']" position="replace">
-                        <field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" options="{ 'no_create':True ,'no_open': True}" />
+                        <field name="city" invisible="1" />
+                        <field name="city_id" class="o_address_city" placeholder="City" style="width: 70%%" options='{"no_open": True}' attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
                     </xpath>
                     <xpath expr="//sheet/group/group/div/field[@name='state_id']" position="replace">
                         <field name="state_id" class="o_address_state" placeholder="State" options="{ 'no_create':True ,'no_open': True}" on_change="onchange_state(state_id)" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'zip': zip}" />
                     </xpath>
 
                     <xpath expr="//sheet/notebook/page/field/form/sheet/group/group/div/div/field[@name='city']" position="replace">
-                        <field name="city" placeholder="City" class="o_address_city" options="{ 'no_create':True ,'no_open': True}" />
+                        <field name="city" invisible="1" />
+                        <field name="city_id" class="o_address_city" placeholder="City" style="width: 70%%" options='{"no_open": True}' attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
                     </xpath>
                     <xpath expr="//sheet/notebook/page/field/form/sheet/group/group/div/div/field[@name='state_id']" position="replace">
                         <field name="state_id" class="o_address_state" placeholder="State" options="{ 'no_create':True ,'no_open': True}" on_change="onchange_state(state_id)" context="{'country_id': country_id, 'zip': zip}" />

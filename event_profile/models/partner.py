@@ -175,15 +175,6 @@ class Partner(models.Model):
         help=False
     )
 
-    hotel = fields.Boolean(
-        string='Is a Hotel',
-        required=False,
-        readonly=False,
-        index=False,
-        default=False,
-        help=False
-    )
-
     oversea = fields.Boolean(
         string='Oversea',
         required=False,
@@ -200,6 +191,10 @@ class Partner(models.Model):
         index=False,
         default=False,
         help=False
+    )
+
+    customer = fields.Boolean(
+        string='Is a HCP',
     )
 
     report_to = fields.Many2one(
@@ -234,7 +229,9 @@ class Partner(models.Model):
                 result.append((partner.id, partner.name))
         return result
 
-    city = fields.Many2one(
+    city = fields.Char(invisible=True)
+
+    city_id = fields.Many2one(
         string='City',
         required=False,
         readonly=False,
@@ -247,29 +244,30 @@ class Partner(models.Model):
         auto_join=False
     )
 
-    @api.onchange('city')
-    def onchange_city(self):
-        if self.city:
-            self.state_id = self.city.state_id
+    @api.onchange('city_id')
+    def _change_city(self):
+        if self.city_id:
+            self.city = self.city_id.name
+            self.state_id = self.city_id.state_id
 
-from openerp.osv import osv, fields
+# from openerp.osv import osv, fields
 
-class res_partner(osv.Model):
-    _inherit = "res.partner"
+# class res_partner(osv.Model):
+#     _inherit = "res.partner"
 
-    _columns = {
-        'type': fields.selection(
-            [('other', 'Address'),
-             ('contact', 'Contact'),
-             ('invoice', 'Invoice address'),
-             ('delivery', 'Shipping address'),
-             ], 'Address Type',
-                )
-    }
+#     _columns = {
+#         'type': fields.selection(
+#             [('other', 'Address'),
+#              ('contact', 'Contact'),
+#              ('invoice', 'Invoice address'),
+#              ('delivery', 'Shipping address'),
+#              ], 'Address Type',
+#                 )
+#     }
 
-    _defaults = {
+#     _defaults = {
 
-        'type': 'other',
-        'lang': 'zh_CN'
+#         'type': 'other',
+#         'lang': 'zh_CN'
 
-    }
+#     }
