@@ -228,20 +228,6 @@
 
                     <xpath expr="//sheet" position="inside">
                         <group name="sponsorship" string="Sponsorship Information">
-                            <field name='hotel_budget' invisible='True'/>
-                            <field name='travel_budget' invisible='True'/>
-
-                            <field name='sponsorship_amount' />
-
-                            <field name='hotel'>
-                                <tree editable="bottom">
-                                    <!-- <field name='partner' /> -->
-                                    <field name='hotel_reservation_start_date' />
-                                    <field name='hotel_room' />
-                                    <field name='reversed_days' />
-                                    <!-- <field name='hotel_address'  context="{'search_default_hotel':1, 'default_hotel':1}"/> -->
-                                </tree>
-                            </field>
                             <field name='travel'>
                                 <tree editable="bottom">
                                     <!-- <field name='partner' /> -->
@@ -252,8 +238,23 @@
                                     <field name='freight' />
                                 </tree>
                             </field>
+                            <field name='hotel'>
+                                <tree editable="bottom">
+                                    <!-- <field name='partner' /> -->
+                                    <field name='hotel_reservation_start_date' />
+                                    <field name='hotel_room' />
+                                    <field name='reversed_days' />
+                                    <!-- <field name='hotel_address'  context="{'search_default_hotel':1, 'default_hotel':1}"/> -->
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <field name='hotel_budget' invisible='True' />
+                            <field name='travel_budget' invisible='True' />
+                            <field name='sponsorship_amount' />
                         </group>
                     </xpath>
+
                     <xpath expr="//field[@name='partner_id']" position="replace">
                     </xpath>
                     <xpath expr="//field[@name='name']" position="replace">
