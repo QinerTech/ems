@@ -98,6 +98,19 @@
                     </xpath>
                 </field>
             </record>
+
+            <record model="ir.ui.view" id="view_partner_address_form">
+                <field name="name">res.partner.form.address</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_address_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='city']" position="replace">
+                        <field name="city" invisible="1" />
+                        <field name="city_id" class="o_address_city" placeholder="City" style="width: 70%%" options='{"no_open": True}' />
+                    </xpath>
+                </field>
+            </record>
+
             <record model="ir.ui.view" id="view_partner_property_form_extend">
                 <field name="name">res.partner.property.form.inherit.extend</field>
                 <field name="model">res.partner</field>
