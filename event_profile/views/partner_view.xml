@@ -96,6 +96,24 @@
                     <xpath expr="//page[@name='sales_purchases']" position="attributes">
                         <attribute name="invisible">True</attribute>
                     </xpath>
+                    <div name="button_box" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </div>
+
+                </field>
+            </record>
+
+            <record id="view_emails_partner_info_form" model="ir.ui.view">
+                <field name="name">res.partner.emails.info.inherit</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="mail.view_emails_partner_info_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='message_follower_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='message_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
                 </field>
             </record>
 
@@ -122,18 +140,23 @@
                 </field>
             </record>
 
-           <record id="view_res_partner_filter" model="ir.ui.view">
+            <record id="view_res_partner_filter" model="ir.ui.view">
                 <field name="name">res.partner.select</field>
                 <field name="model">res.partner</field>
                 <field name="inherit_id" ref="base.view_res_partner_filter" />
                 <field name="arch" type="xml">
-                    <xpath expr="//filter[@name='supplier']" position="after" >
-                        <filter string="Employees" name="employee" domain="[('employee','=',1)]"/>
-                        <filter string="Speakers" name="speaker" domain="[('speaker','=',1)]"/>
-                        <!-- <filter string="Institutions" name="institution" domain="[('is_company','=',1)]"/> -->
+                    <xpath expr="//filter[@name='supplier']" position="before">
+                        <filter string="Employees" name="employee" domain="[('employee','=',1), ('type','=','contact')]" />
+                        <filter string="Speakers" name="speaker" domain="[('speaker','=',1), ('type','=','contact') ]" />
                     </xpath>
-                    <xpath expr="//filter[@name='customer']" position="replace" >
-                        <filter string="HCPs" name="customer" domain="[('customer','=',1),('parent_id','!=',False)]"/>
+                    <xpath expr="//filter[@name='customer']" position="replace">
+                        <filter string="HCPs" name="customer" domain="[('customer','=',1),('parent_id','!=',False)]" />
+                    </xpath>
+                    <xpath expr="//filter[@name='type_person']" position="replace">
+                        <filter string="Contacts" name="type_person" domain="[('is_company','=',0)]" />
+                    </xpath>
+                    <xpath expr="//filter[@name='type_company']" position="replace">
+                        <filter string="Institutions" name="type_company" domain="[('is_company','=',1)]" />
                     </xpath>
                 </field>
             </record>
@@ -388,6 +411,12 @@
         </record>
 
         <menuitem action="base.action_partner_title_contact" id="menu_partner_title_contact" name="Contact Titles" parent="contact_menu_config" sequence="18"/>
+
+        <delete  model='ir.values'  search="[('model' , '=', 'res.partner')]">
+        </delete>
+
+        <delete  model="crm.team"  search="[('id' , 'in', [ref('website.salesteam_website_sales'), ref('sales_team.team_sales_department')])]">
+        </delete>
 
         </data>
     </openerp>

@@ -85,6 +85,12 @@
                             </field>
                         </page>
                     </xpath>
+                    <xpath expr="//field[@name='message_follower_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='message_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
                 </field>
             </record>
 
@@ -266,6 +272,12 @@
                         <field name="venue" />
                         <field name="user_id" />
                     </xpath>
+                    <xpath expr="//field[@name='message_follower_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='message_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
                 </field>
             </record>
              <record model="ir.ui.view" id="view_event_registration_tree">
@@ -361,6 +373,13 @@
                                 </field>
                             </page>
                         </notebook>
+                    </xpath>
+
+                    <xpath expr="//field[@name='message_follower_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='message_ids']" position="attributes">
+                        <attribute name="invisible">True</attribute>
                     </xpath>
                 </field>
             </record>
