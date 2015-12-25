@@ -52,26 +52,26 @@
                         <page string="Travel Info" groups="event_profile.group_event_user,event_profile.group_event_admin">
                             <field name='travel' attrs="{'readonly':1}">
                                 <tree editable="bottom">
-                                    <field name='registration' />
-                                    <field name='travel_departure_date' />
-                                    <field name='travel_departure' />
-                                    <field name='travel_destionation' />
-                                    <field name='travel_method' />
-                                    <field name='freight' />
+                                <field name='registration' />
+                                <field name='arrival_date' />
+                                <field name='arrival_departure' />
+                                <field name='arrival_destionation' />
+                                <field name='arrival_method' />
+                                <field name='arrival_freight' invisible='1' />
+                                <field name='arrival_freight_timeslot' invisible='1' />
+                                <field name='return_date' />
+                                <field name='return_departure' />
+                                <field name='return_destionation' />
+                                <field name='return_method' />
+                                <field name='return_freight' invisible='1' />
+                                <field name='return_freight_timeslot' invisible='1'  />
+                                <field name='hotel_reservation_date' />
+                                <field name='hotel_room_type' />
+                                <field name='reversed_days' />
                                 </tree>
                             </field>
                         </page>
-                        <page string="Hotel Info"  groups="event_profile.group_event_user,event_profile.group_event_admin">
-                            <field name='hotel' attrs="{'readonly':1}">
-                                <tree editable="bottom">
-                                    <field name='registration' />
-                                    <field name='hotel_reservation_start_date' />
-                                    <field name='hotel_room' />
-                                    <field name='reversed_days' />
-                                    <!-- <field name='hotel_address'  /> -->
-                                </tree>
-                            </field>
-                        </page>
+
                         <page string="Service Items"  groups="event_profile.group_event_user,event_profile.group_event_admin">
                             <field name='contract' attrs="{'readonly':1}">
                                 <tree editable="bottom">
@@ -233,30 +233,28 @@
                     </xpath>
 
                     <xpath expr="//sheet" position="inside">
+                        <group name="travel" string="Travel Arrangement Information" >
+                        <field name='travel' nolabel='1'>
+                            <tree editable="bottom">
+                                <field name='arrival_date' />
+                                <field name='arrival_departure' />
+                                <field name='arrival_destionation' />
+                                <field name='arrival_method' />
+                                <field name='arrival_freight' invisible='1' />
+                                <field name='arrival_freight_timeslot' invisible='1' />
+                                <field name='return_date' />
+                                <field name='return_departure' />
+                                <field name='return_destionation' />
+                                <field name='return_method' />
+                                <field name='return_freight' invisible='1' />
+                                <field name='return_freight_timeslot' invisible='1' />
+                                <field name='hotel_reservation_date' />
+                                <field name='hotel_room_type' />
+                                <field name='reversed_days' />
+                            </tree>
+                        </field>
+                    </group>
                         <group name="sponsorship" string="Sponsorship Information">
-                            <field name='travel'>
-                                <tree editable="bottom">
-                                    <!-- <field name='partner' /> -->
-                                    <field name='travel_departure_date' />
-                                    <field name='travel_departure' />
-                                    <field name='travel_destionation' />
-                                    <field name='travel_method' />
-                                    <field name='freight' />
-                                </tree>
-                            </field>
-                            <field name='hotel'>
-                                <tree editable="bottom">
-                                    <!-- <field name='partner' /> -->
-                                    <field name='hotel_reservation_start_date' />
-                                    <field name='hotel_room' />
-                                    <field name='reversed_days' />
-                                    <!-- <field name='hotel_address'  context="{'search_default_hotel':1, 'default_hotel':1}"/> -->
-                                </tree>
-                            </field>
-                        </group>
-                        <group>
-                            <field name='hotel_budget' invisible='True' />
-                            <field name='travel_budget' invisible='True' />
                             <field name='sponsorship_amount' />
                         </group>
                     </xpath>
@@ -267,6 +265,8 @@
                         <field name='partner_id'  attrs="{'readonly':[('state', '!=', 'draft')]} " domain="[('company_type','=','person'), ('type','=','contact')]" context="{'event_id': event_id}"  options="{ 'no_create_edit':True}"/>
                         <field name="name" />
                         <field name="is_speaker"  invisible="1"/>
+                        <field name="identifier_id" password="True" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
+                        <field name="bank_account" password="True" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX" attrs="{'invisible':[('is_speaker', '!=', True)]} "   />
                     </xpath>
                     <xpath expr="//field[@name='event_id']" position="after">
                         <field name="venue" />

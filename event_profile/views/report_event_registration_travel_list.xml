@@ -34,13 +34,29 @@
                         <th>#</th>
                         <th class="text-left" style="border: 0.5px solid black;">Region</th>
                         <th class="text-left" style="border: 0.5px solid black;">City</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
                         <th class="text-left" style="border: 0.5px solid black;">Name</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Departure Date</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Departure</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Destination</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Travel Method</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Ticket No</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Gender</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Hospital</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Position</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Mobile</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Idenfifier ID</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Departure</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Destinatio</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Date</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Method</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Flight/Trian No.</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Journey Time</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Departure</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Destinatio</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Date</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Method</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Flight/Trian No.</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Journey Time</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Reponsible</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Reponsible Mobile</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Room Type</th>
+                        <th class="text-left" style="border: 0.5px solid black;">CheckIn Date</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Reserved Days</th>
                         <th class="text-left" style="border: 0.5px solid black;">Comments</th>
                     </tr>
                </thead>
@@ -57,26 +73,79 @@
                                <span t-field="l.partner.city"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.parent_id.name"/>
-                            </td>
-                            <td style="border: 0.5px solid black;"  >
                                <span t-field="l.partner.name"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.travel_departure_date"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />
+                               <span t-field="l.partner.gender"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.travel_departure"/>
+                               <span t-field="l.partner.parent_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.travel_destionation"/>
+                               <span t-field="l.partner.function"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.travel_method"/>
+                               <span t-feld="l.partner.mobile"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.freight"/>
+                               <span t-field="l.registration.identifier_id"/>
                             </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.arrival_departure"  />
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.arrival_destionation"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.arrival_date"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.arrival_method"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.arrival_freight"/>
+                            </td>
+
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.arrival_freight_timeslot"/>
+                            </td>
+
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.return_departure"  />
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.return_destionation"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.return_date"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.return_method"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.return_freight"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.return_freight_timeslot"/>
+                            </td>
+
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.registration.user_id.partner_id.name"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.registration.user_id.partner_id.mobile"/>
+                            </td>
+
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.hotel_room_type"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.hotel_reservation_date"/>
+                            </td>
+                            <td style="border: 0.5px solid black;"  >
+                               <span t-field="l.reversed_days"/>
+                            </td>
+
                             <td style="border: 0.5px solid black;"  >
                             </td>
                         </tr>

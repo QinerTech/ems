@@ -46,16 +46,7 @@
             name="event_profile.report_registration_travel"
             groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
-        <report
-            id="report_event_registration_hotel"
-            string="Hotel Report"
-            model="event.event"
-            report_type="qweb-pdf"
-            paperformat="paperformat_a4_landscapee"
-            file="event.report_registration_hotel"
-            name="event_profile.report_registration_hotel"
-            groups="event_profile.group_event_user,event_profile.group_event_admin"
-        />
+
         <report
             id="report_event_registration_sponsorship"
             string="Sponsorship Letter"

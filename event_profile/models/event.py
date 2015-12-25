@@ -92,21 +92,6 @@ class event_event(models.Model):
 
     deadline = fields.Date("Nomination End")
 
-    hotel = fields.One2many(
-        string='Hotel',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='event.registration.hotel',
-        inverse_name='event',
-        domain=[],
-        context={},
-        auto_join=False,
-        limit=None
-    )
-
     travel = fields.One2many(
         string='Travel',
         required=False,
@@ -550,100 +535,6 @@ class event_track(models.Model):
                 self.partner_phone = contact.phone
                 self.oversea = contact.oversea
 
-class event_registration_hotel(models.Model):
-    _name = "event.registration.hotel"
-    _description = 'registration hotel'
-
-    registration = fields.Many2one(
-        string='Attendee',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='event.registration',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False
-    )
-
-    event = fields.Many2one(
-        string='Event',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='event.event',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False,
-        related='registration.event_id',
-        store=True
-    )
-
-    partner = fields.Many2one(
-        string='Partner',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='res.partner',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False,
-        related='registration.partner_id',
-        store=True
-    )
-
-    hotel_address = fields.Char(
-        string='Hotel',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='res.partner',
-        domain="[('hotel', '=', 'True')]",
-        context={},
-        ondelete='cascade',
-        auto_join=False
-    )
-
-    hotel_room = fields.Selection(
-        [('single', 'Single'), ('standard', 'Standard')],
-        string='Room Type',
-        required=False,
-        readonly=False,
-        index=False,
-        default='single',
-        help=False,
-        size=50,
-        translate=True
-    )
-
-    hotel_reservation_start_date = fields.Date(
-        string='Start Date',
-        required=False,
-        readonly=False,
-        index=False,
-        default=fields.Date.today(),
-        help=False
-    )
-
-    reversed_days = fields.Integer(
-        string='Reserved Days',
-        required=False,
-        readonly=False,
-        index=False,
-        default=1,
-        help=False
-    )
-
 
 class event_registration_travel(models.Model):
     _name = "event.registration.travel"
@@ -696,8 +587,37 @@ class event_registration_travel(models.Model):
         store=True
     )
 
-    travel_method = fields.Selection(
-        string='Travel Method',
+    arrival_date = fields.Date(
+        string='Arrival Date',
+        required=False,
+        readonly=False,
+        index=False,
+        default=fields.Date.today(),
+        help=False
+    )
+
+    arrival_departure = fields.Char(
+        string='Arrival Departure',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+    )
+
+    arrival_destionation = fields.Char(
+        string='Arrival Destination',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+    )
+
+    arrival_method = fields.Selection(
+        string='Arrival Method',
         required=False,
         readonly=False,
         index=False,
@@ -706,8 +626,28 @@ class event_registration_travel(models.Model):
         selection=[('air', 'Air'), ('train', 'Train'), ('bus', 'Bus'), ('drive', 'Drive')]
     )
 
-    travel_departure_date = fields.Datetime(
-        string='Departure Date',
+    arrival_freight = fields.Char(
+        string='Arrival Flight/Trian No.',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=8,
+    )
+
+    arrival_freight_timeslot = fields.Char(
+        string='Arrival Journey Time',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=8,
+    )
+
+    return_date = fields.Date(
+        string='Return Date',
         required=False,
         readonly=False,
         index=False,
@@ -715,8 +655,8 @@ class event_registration_travel(models.Model):
         help=False
     )
 
-    travel_departure = fields.Char(
-        string='Departure',
+    return_departure = fields.Char(
+        string='Return Departure',
         required=False,
         readonly=False,
         index=False,
@@ -725,8 +665,8 @@ class event_registration_travel(models.Model):
         size=50,
     )
 
-    travel_destionation = fields.Char(
-        string='Destination',
+    return_destionation = fields.Char(
+        string='Return Destination',
         required=False,
         readonly=False,
         index=False,
@@ -735,15 +675,63 @@ class event_registration_travel(models.Model):
         size=50,
     )
 
-    freight = fields.Char(
-        string='Flight/Trian No.',
+    return_method = fields.Selection(
+        string='Return Method',
+        required=False,
+        readonly=False,
+        index=False,
+        default='air',
+        help=False,
+        selection=[('air', 'Air'), ('train', 'Train'), ('bus', 'Bus'), ('drive', 'Drive')]
+    )
+
+    return_freight = fields.Char(
+        string='Return Flight/Trian No.',
         required=False,
         readonly=False,
         index=False,
         default=None,
         help=False,
-        size=50,
-        oldname='fleight_ticket_no'
+        size=8,
+    )
+
+    return_freight_timeslot = fields.Char(
+        string='Return Journey Time',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=8,
+    )
+
+    hotel_room_type = fields.Selection(
+        [('single', 'Single'), ('standard', 'Standard')],
+        string='Room Type',
+        required=False,
+        readonly=False,
+        index=False,
+        default='single',
+        help=False,
+        translate=False
+    )
+
+    hotel_reservation_date = fields.Date(
+        string='CheckIn Date',
+        required=False,
+        readonly=False,
+        index=False,
+        default=fields.Date.today(),
+        help=False
+    )
+
+    reversed_days = fields.Integer(
+        string='Reserved Days',
+        required=False,
+        readonly=False,
+        index=False,
+        default=1,
+        help=False
     )
 
 
@@ -770,6 +758,13 @@ class event_registration(models.Model):
     )
 
     partner_id = fields.Many2one(required=True)
+
+    identifier_id = fields.Char(
+        string='Identifier ID')
+
+    bank_account = fields.Char(
+        string='Bank Account')
+
     venue = fields.Char(
         string='Venue',
         required=False,
@@ -826,21 +821,6 @@ class event_registration(models.Model):
         limit=None
     )
 
-    hotel = fields.One2many(
-         string='Hotel',
-         required=False,
-         readonly=False,
-         index=False,
-         default=lambda rec: rec._default_hotel(),
-         help=False,
-         comodel_name='event.registration.hotel',
-         inverse_name='registration',
-         domain=[],
-         context={},
-         auto_join=False,
-         limit=None
-        )
-
     @api.model
     def _get_event_data(self):
         local_dict = {}
@@ -850,7 +830,7 @@ class event_registration(models.Model):
         if event_id:
             event_obj = self.env['event.event'].browse(event_id)
             local_dict['event_id'] = event_id
-            local_dict['datetime_bigin'] = event_obj.date_begin
+            local_dict['datetime_begin'] = event_obj.date_begin
             local_dict['date_arrive'] = (datetime.strptime(event_obj.date_begin, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=-1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
             local_dict['datetime_end'] = datetime.strptime(event_obj.date_end, DEFAULT_SERVER_DATETIME_FORMAT).strftime(DEFAULT_SERVER_DATE_FORMAT)
             local_dict['date_leave'] = (datetime.strptime(event_obj.date_end, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
@@ -860,29 +840,24 @@ class event_registration(models.Model):
         return local_dict
 
     @api.model
-    def _default_hotel(self):
-        _logger.info('enter _default_hotel method ')
-        return [{
-                'hotel_reservation_start_date': self._get_event_data().get('date_arrive', False),
-                'hotel_room': 'single',
-                'reversed_days': self._get_event_data().get('days', 1),
-                }]
-
-    @api.model
     def _default_travel(self):
         _logger.info('enter _default_travel method ')
-        return [{
-                    'travel_departure': '',
-                    'travel_destionation': self._get_event_data().get('place', False),
-                    'travel_departure_date': self._get_event_data().get('date_arrive', False),
-                    'travel_method': 'air',
-                },
+        return [
                 {
-                    'travel_departure': self._get_event_data().get('place', False),
-                    'travel_destionation': '',
-                    'travel_departure_date': self._get_event_data().get('date_leave', False),
-                    'travel_method': 'air',
-                }
+                    'arrival_date': self._get_event_data().get('date_arrive', False),
+                    'arrival_departure': '',
+                    'arrival_destionation': self._get_event_data().get('place', False),
+                    'arrival_method': 'air',
+
+                    'return_date': self._get_event_data().get('date_leave', False),
+                    'return_departure': self._get_event_data().get('place', False),
+                    'return_destionation': '',
+                    'return_method': 'air',
+
+                    'hotel_room_type': 'standard',
+                    'hotel_reservation_date': self._get_event_data().get('date_arrive', False),
+                    'reversed_days': self._get_event_data().get('days', 1),
+                 },
                 ]
 
     # @api.multi
@@ -903,15 +878,12 @@ class event_registration(models.Model):
                 self.email = contact.email
                 self.phone = contact.phone
 
-                self.travel[0]['travel_departure'] = contact.city
-                self.travel[1]['travel_destionation'] = contact.city
+                self.travel['arrival_departure'] = contact.city
+                self.travel['return_destionation'] = contact.city
+                self.travel['hotel_room_type'] = 'standard'
 
-                for t in self.travel:
-                    if t['travel_departure'] == t['travel_destionation']:
-                        t['travel_method'] = 'drive'
-
-                    if t['travel_departure'] != t['travel_destionation']:
-                        t['travel_method'] = 'air'
+                if contact.speaker:
+                    self.travel['hotel_room_type'] = 'single'
 
                 team = contact.team_id or contact.parent_id.team_id
 
