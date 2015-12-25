@@ -4,7 +4,7 @@ from openerp import models, fields, api
 from openerp.tools.translate import _
 from openerp.addons.website.models.website import slug
 
-from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT,DEFAULT_SERVER_DATE_FORMAT,DEFAULT_SERVER_TIME_FORMAT
+from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_TIME_FORMAT
 from datetime import datetime, timedelta
 
 from logging import getLogger
@@ -80,15 +80,15 @@ class event_event(models.Model):
         index=False,
         default='marketing',
         help=False,
-        selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness'), ('education','Patients Education')]
+        selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness'), ('education', 'Patients Education')]
     )
 
     organization_id = fields.Many2one(
         'partner.organization.unit', string='Organizer',
         default=lambda self: self.env.user.partner_id.organization_unit)
 
-    address_id = fields.Many2one( 'res.country.state.city', string='City', default=False)
-    country_id = fields.Many2one('res.country', 'Country',  related='address_id.state_id.country_id', store=True)
+    address_id = fields.Many2one('res.country.state.city', string='City', default=False)
+    country_id = fields.Many2one('res.country', 'Country', related='address_id.state_id.country_id', store=True)
 
     deadline = fields.Date("Nomination End")
 
@@ -186,7 +186,7 @@ class event_event(models.Model):
         string='Language',
         required=True,
         default=lambda self: self.env.user.lang
-    )
+                            )
 
     venue = fields.Char(
         string='Venue',
@@ -203,7 +203,7 @@ class event_event(models.Model):
     @api.onchange('date_begin')
     def _onchange_date_begin(self):
         if self.date_begin:
-            self.deadline = (datetime.strptime(self.date_begin , DEFAULT_SERVER_DATETIME_FORMAT) +  timedelta(-9)).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+            self.deadline = (datetime.strptime(self.date_begin, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(-9)).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
 
     @api.model
     def _default_tickets(self):
@@ -230,11 +230,11 @@ class event_event(models.Model):
     @api.multi
     def write(self, vals):
         res = super(event_event, self.sudo()).write(vals)
-        _vals = { }
+        _vals = {}
         deadline = vals.get('deadline', False)
-        if deadline :
-            _vals['deadline'] =deadline
-            self.env['event.event.ticket'].search([('event_id','=', self.id )]).write(_vals)
+        if deadline:
+            _vals['deadline'] = deadline
+            self.env['event.event.ticket'].search([('event_id', '=', self.id)]).write(_vals)
 
         return res
 
@@ -256,7 +256,7 @@ class event_event(models.Model):
         return super(event_event, self).create(vals)
 
     @api.one
-    def copy(self,  default=None):
+    def copy(self, default=None):
         default = dict(default or {})
         default['event_code'] = self.env['ir.sequence'].next_by_code('event.event.code') or 'New'
 
@@ -285,7 +285,7 @@ class event_ticket(models.Model):
     @api.model
     def create(self, vals):
         event_id = vals.get('event_id', False)
-        _logger.info('in create method, event_id is %s' %event_id)
+        _logger.info('in create method, event_id is %s' % event_id)
         if event_id:
             vals['deadline'] = self.env['event.event'].browse(event_id).deadline
 
@@ -294,7 +294,7 @@ class event_ticket(models.Model):
     @api.multi
     def write(self, vals):
         event_id = vals.get('event_id', False)
-        _logger.info('in write method, event_id is %s' %event_id)
+        _logger.info('in write method, event_id is %s' % event_id)
         if event_id:
             vals['deadline'] = self.env['event.event'].browse(event_id).deadline
 
@@ -543,7 +543,7 @@ class event_track(models.Model):
     @api.onchange('registration_id')
     def _onchange_registration_id(self):
         if self.registration_id:
-            contact= self.registration_id.partner_id
+            contact = self.registration_id.partner_id
             if contact:
                 self.partner_name = contact.name
                 self.partner_email = contact.email
@@ -816,7 +816,7 @@ class event_registration(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default= lambda rec: rec._default_travel(),
+        default=lambda rec: rec._default_travel(),
         help=False,
         comodel_name='event.registration.travel',
         inverse_name='registration',
@@ -831,7 +831,7 @@ class event_registration(models.Model):
          required=False,
          readonly=False,
          index=False,
-         default= lambda rec: rec._default_hotel(),
+         default=lambda rec: rec._default_hotel(),
          help=False,
          comodel_name='event.registration.hotel',
          inverse_name='registration',
@@ -845,17 +845,17 @@ class event_registration(models.Model):
     def _get_event_data(self):
         local_dict = {}
         context = self.env.context
-        event_id =  context.get('active_id', False)
-        _logger.info('enter get_event_data method, event_id is %s'% event_id)
+        event_id = context.get('active_id', False)
+        _logger.info('enter get_event_data method, event_id is %s' % event_id)
         if event_id:
-            event_obj =  self.env['event.event'].browse(event_id)
+            event_obj = self.env['event.event'].browse(event_id)
             local_dict['event_id'] = event_id
             local_dict['datetime_bigin'] = event_obj.date_begin
-            local_dict['date_arrive'] =    (datetime.strptime(event_obj.date_begin , DEFAULT_SERVER_DATETIME_FORMAT)+ timedelta(days=-1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
-            local_dict['datetime_end'] = datetime.strptime(event_obj.date_end , DEFAULT_SERVER_DATETIME_FORMAT).strftime(DEFAULT_SERVER_DATE_FORMAT)
-            local_dict['date_leave'] = (datetime.strptime(event_obj.date_end , DEFAULT_SERVER_DATETIME_FORMAT)+ timedelta(days=1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            local_dict['date_arrive'] = (datetime.strptime(event_obj.date_begin, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=-1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            local_dict['datetime_end'] = datetime.strptime(event_obj.date_end, DEFAULT_SERVER_DATETIME_FORMAT).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            local_dict['date_leave'] = (datetime.strptime(event_obj.date_end, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
             local_dict['place'] = event_obj.address_id.name
-            local_dict['days'] = int((datetime.strptime(local_dict['date_leave'] , DEFAULT_SERVER_DATE_FORMAT) -  datetime.strptime(local_dict['date_arrive'] , DEFAULT_SERVER_DATE_FORMAT) ).days )
+            local_dict['days'] = int((datetime.strptime(local_dict['date_leave'], DEFAULT_SERVER_DATE_FORMAT) - datetime.strptime(local_dict['date_arrive'], DEFAULT_SERVER_DATE_FORMAT)).days)
 
         return local_dict
 
@@ -863,10 +863,10 @@ class event_registration(models.Model):
     def _default_hotel(self):
         _logger.info('enter _default_hotel method ')
         return [{
-                'hotel_reservation_start_date': self._get_event_data().get('date_arrive', False) ,
+                'hotel_reservation_start_date': self._get_event_data().get('date_arrive', False),
                 'hotel_room': 'single',
-                'reversed_days': self._get_event_data().get('days', 1) ,
-            }]
+                'reversed_days': self._get_event_data().get('days', 1),
+                }]
 
     @api.model
     def _default_travel(self):
@@ -875,15 +875,15 @@ class event_registration(models.Model):
                     'travel_departure': '',
                     'travel_destionation': self._get_event_data().get('place', False),
                     'travel_departure_date': self._get_event_data().get('date_arrive', False),
-                    'travel_method': 'air' ,
+                    'travel_method': 'air',
                 },
                 {
                     'travel_departure': self._get_event_data().get('place', False),
                     'travel_destionation': '',
                     'travel_departure_date': self._get_event_data().get('date_leave', False),
-                    'travel_method': 'air' ,
+                    'travel_method': 'air',
                 }
-            ]
+                ]
 
     # @api.multi
     # @api.depends('name', 'event_id')
@@ -923,14 +923,14 @@ class event_registration(models.Model):
                 elif not contact.employee and not contact.speaker and team:
                     dom = "%s-%s" % (team.name, 'Audience')
 
-                _logger.info('domain is %s ' %dom)
+                _logger.info('domain is %s ' % dom)
 
                 product_ticket = self.env['product.product'].search([('name', '=', dom)])
-                _logger.info('product ticket is  %s ' %product_ticket)
+                _logger.info('product ticket is  %s ' % product_ticket)
 
                 if product_ticket:
                     ticket_ids = self.env['event.event.ticket'].search([('product_id', 'in', [product_ticket.id]), ('event_id', '=', self.env.context.get('event_id'))])
-                    _logger.info('ticket ids is  %s ' %ticket_ids)
+                    _logger.info('ticket ids is  %s ' % ticket_ids)
                     if ticket_ids:
                         self.event_ticket_id = ticket_ids[0]
 
