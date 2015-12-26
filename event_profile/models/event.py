@@ -325,8 +325,6 @@ class event_track_contract(models.Model):
     _name = "event.track.contract"
     _description = 'Event Track Contract'
 
-    location_id = fields.Char('Room')
-
     event_track = fields.Many2one(
         string='Topic',
         required=False,
@@ -369,9 +367,11 @@ class event_track_contract(models.Model):
         context={},
         ondelete='cascade',
         auto_join=False,
-        related='event_track.registration_id.partner_id',
         store=True
     )
+
+    bank_account = fields.Char(
+        string='Bank Account')
 
     service_type = fields.Selection(
         _service_type_get,
@@ -432,6 +432,92 @@ class event_track_contract(models.Model):
         translate=True
     )
 
+    @api.model
+    def create(self, values):
+        _logger.info('values is  %s ' % values)
+
+        _logger.info('create contract ....... ')
+        result = super(event_track_contract, self).create(values)
+
+        registrations = self.env['event.registration'].search([('partner_id', '=', values['speaker']), ('event_id', '=', values['event'])])
+        if not registrations and values['speaker']:
+            _logger.info('create registrations !!!')
+
+            vals = {
+                "partner_id": values['speaker'],
+                "event_id": values['event'],
+            }
+
+            event_obj =  self.env['event.event'].browse(values['event'])
+            local_dict = {}
+
+            local_dict['datetime_begin'] = event_obj.date_begin
+            local_dict['date_arrive'] = (datetime.strptime(event_obj.date_begin, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=-1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            local_dict['datetime_end'] = datetime.strptime(event_obj.date_end, DEFAULT_SERVER_DATETIME_FORMAT).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            local_dict['date_leave'] = (datetime.strptime(event_obj.date_end, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=1)).strftime(DEFAULT_SERVER_DATE_FORMAT)
+            local_dict['place'] = event_obj.address_id.name
+            local_dict['days'] = int((datetime.strptime(local_dict['date_leave'], DEFAULT_SERVER_DATE_FORMAT) - datetime.strptime(local_dict['date_arrive'], DEFAULT_SERVER_DATE_FORMAT)).days)
+
+            contact_id = self.env['res.partner'].browse(values['speaker']).address_get().get('contact', False)
+            if contact_id:
+                contact = self.env['res.partner'].browse(contact_id)
+                vals['name'] = contact.name
+                vals['phone'] = contact.phone
+                vals['email'] = contact.email
+                vals['oversea'] = contact.oversea
+
+                travel_dict = {}
+                travel_dict['arrival_date'] = local_dict['date_arrive']
+                travel_dict['arrival_departure'] = contact.city
+                travel_dict['arrival_destionation'] = local_dict['place']
+                travel_dict['return_date'] = local_dict['date_leave']
+                travel_dict['return_departure'] =  local_dict['place']
+                travel_dict['return_destionation'] = contact.city
+                travel_dict['hotel_room_type'] = 'standard'
+                travel_dict['hotel_reservation_date'] = local_dict['date_arrive']
+                travel_dict['reversed_days'] = local_dict['days']
+
+                if contact.speaker:
+                    travel_dict['hotel_room_type'] = 'single'
+
+                team = contact.team_id or contact.parent_id.team_id
+
+                dom = ""
+                if contact.speaker and team:
+                    dom = "%s-%s" % (team.name, 'Speaker')
+                elif contact.employee:
+                    dom = "Internal-Audience"
+                elif not contact.employee and not contact.speaker and team:
+                    dom = "%s-%s" % (team.name, 'Audience')
+
+                _logger.info('domain is %s ' % dom)
+
+                product_ticket = self.env['product.product'].search([('name', '=', dom)])
+                _logger.info('product ticket is  %s ' % product_ticket)
+
+                if product_ticket:
+                    ticket_ids = self.env['event.event.ticket'].search([('product_id', 'in', [product_ticket.id]), ('event_id', '=', values['event'])])
+                    _logger.info('ticket ids is  %s ' % ticket_ids)
+                    if ticket_ids:
+                        vals['event_ticket_id'] = ticket_ids[0].id
+                else:
+                    vals['event_ticket_id'] = False
+
+                _logger.info('registration values is  %s ' % vals)
+
+                reg =  self.env['event.registration'].create(vals)
+
+                travel_dict['registration'] = reg.id
+                _logger.info('travel values is  %s ' % travel_dict)
+
+                travel_obj =  self.env['event.registration.travel'].search([('registration','=',reg.id  )])
+                if travel_obj:
+                    travel_obj.write(travel_dict)
+
+                else:
+                    self.env['event.registration.travel'].create(travel_dict)
+
+        return result
 
 class event_track(models.Model):
     _inherit = "event.track"
@@ -447,13 +533,12 @@ class event_track(models.Model):
         readonly=False,
         index=False,
         default=False,
+        help=False
     )
 
     state = fields.Selection([
         ('draft', 'Proposal'), ('confirmed', 'Confirmed'), ('refused', 'Refused'), ('cancel', 'Cancelled')],
         'Status', default='draft', required=True, copy=False, track_visibility='onchange')
-
-    date = fields.Datetime('Topic Date')
 
     nbr_hour = fields.Integer(
         string='Duration',
@@ -489,7 +574,7 @@ class event_track(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=None,
+        default=lambda self: self._default_contract(),
         help=False,
         comodel_name='event.track.contract',
         inverse_name='event_track',
@@ -499,42 +584,64 @@ class event_track(models.Model):
         limit=None
     )
 
-    # speaker_id = fields.Many2one('res.partner', string='Speaker', required=True, domain="[('speaker', '=', 'True')]")
+    @api.model
+    def _default_contract(self):
 
-    registration_id = fields.Many2one(
-        string='Attendee of Speaker',
-        required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='event.registration',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False
-    )
+        return [
+                {
+                    'speaker': False,
+                    'service_rate': 3000.00,
+                    'service_fee': 3000.00,
+                    'serivce_deliverable': False,
+                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
+                 {
+                    'speaker': False,
+                    'service_rate': 3000.00,
+                    'service_fee': 3000.00,
+                    'serivce_deliverable': False,
+                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
+                    {
+                    'speaker': False,
+                    'service_rate': 3000.00,
+                    'service_fee': 3000.00,
+                    'serivce_deliverable': False,
+                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
+                    {
+                    'speaker': False,
+                    'service_rate': 3000.00,
+                    'service_fee': 3000.00,
+                    'serivce_deliverable': False,
+                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
+                    {
+                    'speaker': False,
+                    'service_rate': 3000.00,
+                    'service_fee': 3000.00,
+                    'serivce_deliverable': False,
+                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
+            ]
 
-    identifier_id = fields.Char(
-        string='Identifier ID')
+    @api.onchange('speaker_ids')
+    def _onchange_speaker_ids(self):
+        _logger.info('enter onchange() ')
 
-    bank_account = fields.Char(
-        string='Bank Account')
+        length = len(self.speaker_ids)
+        _logger.info('length of seaker_ids is %s ' % length)
 
-    partner_name = fields.Char('Name')
-    partner_email = fields.Char('Email')
-    partner_phone = fields.Char('Phone')
+        if length > 0:
+            idx = length
 
-    @api.onchange('registration_id')
-    def _onchange_registration_id(self):
-        if self.registration_id:
-            contact = self.registration_id.partner_id
-            if contact:
-                self.partner_name = contact.name
-                self.partner_email = contact.email
-                self.partner_phone = contact.phone
-                self.oversea = contact.oversea
+            self.event_track_contract[idx]['speaker'] = self.speaker_ids[idx - 1].id
 
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        contact = self.partner_id
+        if contact:
+            self.partner_name = contact.name
+            self.partner_email = contact.email
+            self.partner_phone = contact.phone
+            self.oversea = contact.oversea
+
+            self.event_track_contract[0]['speaker'] = self.partner_id
 
 class event_registration_travel(models.Model):
     _name = "event.registration.travel"
@@ -759,6 +866,15 @@ class event_registration(models.Model):
 
     partner_id = fields.Many2one(required=True)
 
+    oversea = fields.Boolean(
+        string='Oversea',
+        required=False,
+        readonly=True,
+        index=False,
+        default=False,
+        help=False
+    )
+
     identifier_id = fields.Char(
         string='Identifier ID')
 
@@ -857,7 +973,7 @@ class event_registration(models.Model):
                     'hotel_room_type': 'standard',
                     'hotel_reservation_date': self._get_event_data().get('date_arrive', False),
                     'reversed_days': self._get_event_data().get('days', 1),
-                 },
+                    },
                 ]
 
     # @api.multi
