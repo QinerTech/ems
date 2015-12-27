@@ -268,24 +268,12 @@ class Partner(models.Model):
             self.city = self.city_id.name
             self.state_id = self.city_id.state_id
 
-# from openerp.osv import osv, fields
 
-# class res_partner(osv.Model):
-#     _inherit = "res.partner"
+from openerp.osv import osv, fields
 
-#     _columns = {
-#         'type': fields.selection(
-#             [('other', 'Address'),
-#              ('contact', 'Contact'),
-#              ('invoice', 'Invoice address'),
-#              ('delivery', 'Shipping address'),
-#              ], 'Address Type',
-#                 )
-#     }
+class res_partner(osv.Model):
+    _inherit = "res.partner"
 
-#     _defaults = {
-
-#         'type': 'other',
-#         'lang': 'zh_CN'
-
-#     }
+    _defaults = {
+        'lang': 'zh_CN'
+    }
