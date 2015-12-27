@@ -198,7 +198,7 @@ class Partner(models.Model):
     )
 
     bank_account = fields.Char(
-        string='Bank account',
+        string='Bank Account',
         required=False,
         readonly=False,
         index=False,
