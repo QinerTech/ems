@@ -155,4 +155,23 @@
             </record>
         </data>
 
+      <!--   <data>
+
+        <record id="base.cn" model="ir.model.data">
+            <field name="model">res.country</field>
+            <field name="module">base</field>
+            <field name="name">cn</field>
+            <field name="noupdate">False</field>
+        </record>
+    </data> -->
+
+        <data noupdate="0">
+            <record id="base.cn" model="res.country">
+                <field name="name">China</field>
+                <field name="code">cn</field>
+                <field eval="'%(country_name)s%(state_name)s%(city)s%(street)s%(street2)s %(zip)s'" name="address_format" />
+            </record>
+        </data>
+
+
     </openerp>
