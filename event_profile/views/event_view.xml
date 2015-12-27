@@ -15,6 +15,19 @@
                             <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
                         </header>
                     </xpath>
+                    <xpath expr="//button[@name='toggle_active']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//div[@name='button_box']" position="inside">
+                            <button name="%(event_profile.action_event_track_contract_act_window)d"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-file"
+                                help="Contracts for this event">
+                                <field name="contract_count" widget="statinfo" string="Contracts"/>
+                            </button>
+
+                    </xpath>
                     <xpath expr="//field[@name='user_id']" position="replace">
                     </xpath>
                     <xpath expr="//field[@name='event_type_id']" position="replace">
@@ -79,7 +92,7 @@
                                     <field name='event_track' />
                                     <field name='service_type' />
                                     <field name='service_fee' />
-                                    <field name='serivce_deliverable' />
+                                    <field name='service_deliverable' />
                                     <field name='resonable_requirement' />
                                 </tree>
                             </field>
@@ -373,7 +386,7 @@
                                         <field name="service_description" />
                                         <field name="service_rate" />
                                         <field name="service_fee" />
-                                        <field name="serivce_deliverable" />
+                                        <field name="service_deliverable" />
                                         <field name="resonable_requirement" />
                                     </tree>
                                 </field>
@@ -390,12 +403,14 @@
                 </field>
             </record>
 
-             <record model="ir.ui.view" id="view_event_track_tree">
+            <record model="ir.ui.view" id="view_event_track_tree">
             <field name="name">event.track.tree</field>
             <field name="model">event.track</field>
                 <field name="inherit_id" ref="website_event_track.view_event_track_tree" />
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='name']" position="after">
+                        <field name="partner_id"  />
+                        <field name="user_id"  />
                     </xpath>
                 </field>
             </record>
@@ -409,6 +424,113 @@
                 <field name="view_mode">tree,form,graph</field>
                  <field name="context">{'search_default_event_id': active_id, 'default_event_id': active_id}</field>
             </record>
+
+        <!-- VIEWS: "Event Track Contract"
+
+            - Model·········: event.track.contract
+            - _rec_name·····: event.track.contract
+            - Domain········: []
+            - Context·······: {}
+            - Parent menu ··: event.menu_event_main
+            - View priority·: 16    Sequence····: 10
+            - Action help···: There are not any record for event.track.contract
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+        <!-- Tree view for "event.track.contract" -->
+        <record id="view_event_track_contract_tree" model="ir.ui.view">
+            <field name="name">view.event.track.contract.tree</field>
+            <field name="model">event.track.contract</field>
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <tree string="event_track_contract_tree" create="1" delete="1" edit="1">
+                    <field name="event"  />
+                    <field name="event_track" string="Track" />
+                    <field name="speaker"/>
+                    <field name="service_type"/>
+                    <field name="service_description"/>
+                    <field name="service_deliverable"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for "event.track.contract" -->
+        <record id="view_event_track_contract_form" model="ir.ui.view">
+            <field name="name">view.event.track.contract.form</field>
+            <field name="model">event.track.contract</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form string="event_track_contract_form" create="1" delete="1" edit="1">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="event_track" class="oe_edit_only" />
+                            <h1>
+                                <field name="event_track" />
+                            </h1>
+                                <field name="event" />
+                        </div>
+                        <group>
+                            <group>
+                                <field name="speaker" />
+                                <field name="bank_account" password="True"/>
+                                <field name="oversea" readonly='1' />
+                                <field name="service_rate" />
+                                <field name="duration" />
+                                <field name="service_fee" />
+                            </group>
+                            <group>
+                                <field name="service_type" />
+                                <field name="service_description" />
+                                <field name="service_deliverable" />
+                            </group>
+                        </group>
+                        <group>
+                                <field name="resonable_requirement" />
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Search view for "event.track.contract" -->
+        <record id="view_event_track_contract_search" model="ir.ui.view">
+            <field name="name">view.event.track.contract.search</field>
+            <field name="model">event.track.contract</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <search string="event_track_contract_search">
+                    <field name="event"  />
+                    <field name="event_track"  />
+                    <field name="speaker"  />
+                    <!-- ··· -->
+                </search>
+            </field>
+        </record>
+
+        <!-- Main window action for event.track.contract -->
+        <record id="action_event_track_contract_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Event Track Contract</field>
+            <field name="res_model">event.track.contract</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="target">current</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_event': active_id, 'default_event': active_id }</field>
+            <field name="search_view_id" ref="view_event_track_contract_search" />
+            <field name="help">There are not any record for event.track.contract</field>
+        </record>
+
 
         <record model="ir.ui.view" id="view_event_service_type_form">
             <field name="name">Event Service Type</field>

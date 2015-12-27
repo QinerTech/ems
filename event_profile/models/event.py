@@ -51,7 +51,6 @@ class event_event(models.Model):
         required=True,
         readonly=False,
         index=False,
-        help=False,
         selection=[
             ('hospital', 'Hospital'),
             ('city', 'City'),
@@ -66,7 +65,6 @@ class event_event(models.Model):
         required=False,
         readonly=True,
         index=False,
-        help=False,
         size=4,
         states={'done': [('readonly', True)], 'confirm': [('readonly', True)]}
     )
@@ -79,7 +77,6 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default='marketing',
-        help=False,
         selection=[('marketing', 'Promotional'), ('communication', 'Disease Awareness'), ('education', 'Patients Education')]
     )
 
@@ -98,7 +95,6 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.registration.travel',
         inverse_name='event',
         domain=[],
@@ -113,7 +109,6 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.track.contract',
         inverse_name='event',
         domain=[],
@@ -128,7 +123,6 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.brand',
         domain=[],
         context={},
@@ -141,7 +135,6 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.brand',
         relation='event_brand_event_rel',
         column1='brand_id',
@@ -157,7 +150,6 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='partner.hospital.unit',
         relation='partner_hospital_unit_event_rel',
         column1='hospital_unit_id',
@@ -179,11 +171,8 @@ class event_event(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50
     )
-
-    count_tracks = fields.Integer(string='Topics')
 
     @api.onchange('date_begin')
     def _onchange_date_begin(self):
@@ -247,6 +236,20 @@ class event_event(models.Model):
 
         return super(event_event, self).copy(default)
 
+    contract_count = fields.Integer(
+        string='Contract count',
+        required=False,
+        readonly=True,
+        index=False,
+        default=0,
+        compute = '_count_contract'
+    )
+
+    @api.multi
+    def _count_contract(self):
+        for event in self:
+            event.contract_count = len( self.env['event.track.contract'].search( [('event', '=', self.id)]) )
+
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
     _description = 'Attendee Quota'
@@ -294,9 +297,7 @@ class event_brand(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
-        translate=True
     )
 
     image_medium = fields.Binary(string='Logo', store=True, attachment=True)
@@ -311,9 +312,7 @@ class event_service_type(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
-        translate=True
     )
 
 @api.model
@@ -331,7 +330,6 @@ class event_track_contract(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.track',
         domain=[],
         context={},
@@ -345,7 +343,6 @@ class event_track_contract(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.event',
         domain=[],
         context={},
@@ -361,7 +358,6 @@ class event_track_contract(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='res.partner',
         domain=[],
         context={},
@@ -369,6 +365,13 @@ class event_track_contract(models.Model):
         auto_join=False,
         store=True
     )
+
+    oversea = fields.Boolean(
+        string='Oversea',
+        related='speaker.oversea'
+    )
+
+    duration = fields.Float('Hours', digits=(2, 2), related='event_track.duration')
 
     bank_account = fields.Char(
         string='Bank Account')
@@ -385,9 +388,7 @@ class event_track_contract(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
-        translate=True
     )
 
     service_rate = fields.Float(
@@ -397,7 +398,6 @@ class event_track_contract(models.Model):
         index=False,
         default=0.0,
         digits=(4, 2),
-        help=False
     )
 
     service_fee = fields.Float(
@@ -407,30 +407,36 @@ class event_track_contract(models.Model):
         index=False,
         default=0.0,
         digits=(4, 2),
-        help=False
     )
 
-    serivce_deliverable = fields.Char(
+    service_deliverable = fields.Char(
         string='Serivce Deliverable',
         required=False,
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
-        translate=True
     )
 
-    resonable_requirement = fields.Char(
+    resonable_requirement = fields.Text(
         string='Resonable Requirement',
         required=False,
         readonly=False,
         index=False,
         default=u"促进中国风湿科学学科的进步与发展",
-        help=False,
-        size=50,
-        translate=True
     )
+
+    @api.multi
+    @api.depends('event','event_track')
+    def name_get(self):
+        result = []
+        for contract in self:
+            if contract.service_type:
+                result.append((contract.id, '%s - %s [ %s ]' % (contract.event.name, contract.event_track.name, contract.service_type)))
+            else:
+                result.append((contract.id, '%s - %s' % (contract.event.name, contract.event_track.name)))
+
+        return result
 
     @api.model
     def create(self, values):
@@ -533,7 +539,6 @@ class event_track(models.Model):
         readonly=False,
         index=False,
         default=False,
-        help=False
     )
 
     state = fields.Selection([
@@ -546,7 +551,6 @@ class event_track(models.Model):
         readonly=False,
         index=False,
         default=1,
-        help=False
     )
 
     nbr_minute = fields.Selection(
@@ -555,7 +559,6 @@ class event_track(models.Model):
         required=False,
         readonly=False,
         index=False,
-        help=False,
         default='0'
     )
 
@@ -567,7 +570,7 @@ class event_track(models.Model):
         else:
             self.duration = 0.0
 
-    duration = fields.Float('Hours', digits=(2, 2), compute='_compute_duration')
+    duration = fields.Float('Hours', digits=(2, 2), compute='_compute_duration', store=True)
 
     event_track_contract = fields.One2many(
         string='service contract',
@@ -575,7 +578,6 @@ class event_track(models.Model):
         readonly=False,
         index=False,
         default=lambda self: self._default_contract(),
-        help=False,
         comodel_name='event.track.contract',
         inverse_name='event_track',
         domain=[],
@@ -592,31 +594,31 @@ class event_track(models.Model):
                     'speaker': False,
                     'service_rate': 3000.00,
                     'service_fee': 3000.00,
-                    'serivce_deliverable': False,
+                    'service_deliverable': False,
                     'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
                  {
                     'speaker': False,
                     'service_rate': 3000.00,
                     'service_fee': 3000.00,
-                    'serivce_deliverable': False,
+                    'service_deliverable': False,
                     'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
                     {
                     'speaker': False,
                     'service_rate': 3000.00,
                     'service_fee': 3000.00,
-                    'serivce_deliverable': False,
+                    'service_deliverable': False,
                     'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
                     {
                     'speaker': False,
                     'service_rate': 3000.00,
                     'service_fee': 3000.00,
-                    'serivce_deliverable': False,
+                    'service_deliverable': False,
                     'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
                     {
                     'speaker': False,
                     'service_rate': 3000.00,
                     'service_fee': 3000.00,
-                    'serivce_deliverable': False,
+                    'service_deliverable': False,
                     'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
             ]
 
@@ -654,7 +656,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.registration',
         domain=[],
         context={},
@@ -668,7 +669,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='event.event',
         domain=[],
         context={},
@@ -684,7 +684,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         comodel_name='res.partner',
         domain=[],
         context={},
@@ -700,7 +699,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=fields.Date.today(),
-        help=False
     )
 
     arrival_departure = fields.Char(
@@ -709,7 +707,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
     )
 
@@ -719,7 +716,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
     )
 
@@ -729,7 +725,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default='air',
-        help=False,
         selection=[('air', 'Air'), ('train', 'Train'), ('bus', 'Bus'), ('drive', 'Drive')]
     )
 
@@ -739,7 +734,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=8,
     )
 
@@ -749,7 +743,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=8,
     )
 
@@ -759,7 +752,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=fields.Date.today(),
-        help=False
     )
 
     return_departure = fields.Char(
@@ -768,7 +760,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
     )
 
@@ -778,7 +769,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
     )
 
@@ -788,7 +778,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default='air',
-        help=False,
         selection=[('air', 'Air'), ('train', 'Train'), ('bus', 'Bus'), ('drive', 'Drive')]
     )
 
@@ -798,7 +787,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=8,
     )
 
@@ -808,7 +796,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=8,
     )
 
@@ -819,8 +806,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default='single',
-        help=False,
-        translate=False
     )
 
     hotel_reservation_date = fields.Date(
@@ -829,7 +814,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=fields.Date.today(),
-        help=False
     )
 
     reversed_days = fields.Integer(
@@ -838,7 +822,6 @@ class event_registration_travel(models.Model):
         readonly=False,
         index=False,
         default=1,
-        help=False
     )
 
 
@@ -860,7 +843,6 @@ class event_registration(models.Model):
         readonly=False,
         index=False,
         default=False,
-        help=False,
         related='partner_id.speaker',
     )
 
@@ -872,7 +854,6 @@ class event_registration(models.Model):
         readonly=True,
         index=False,
         default=False,
-        help=False
     )
 
     identifier_id = fields.Char(
@@ -887,7 +868,6 @@ class event_registration(models.Model):
         readonly=False,
         index=False,
         default=None,
-        help=False,
         size=50,
         related='event_id.venue',
     )
@@ -899,7 +879,6 @@ class event_registration(models.Model):
         index=False,
         default=1500.0,
         digits=(4, 2),
-        help=False
     )
 
     travel_budget = fields.Float(
@@ -909,7 +888,6 @@ class event_registration(models.Model):
         index=False,
         default=2000.0,
         digits=(4, 2),
-        help=False
     )
 
     sponsorship_amount = fields.Float(
@@ -919,7 +897,6 @@ class event_registration(models.Model):
         index=False,
         default=3500.0,
         digits=(4, 2),
-        help=False
     )
 
     travel = fields.One2many(
@@ -928,7 +905,6 @@ class event_registration(models.Model):
         readonly=False,
         index=False,
         default=lambda rec: rec._default_travel(),
-        help=False,
         comodel_name='event.registration.travel',
         inverse_name='registration',
         domain=[],
