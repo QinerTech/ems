@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-26 17:02+0000\n"
-"PO-Revision-Date: 2015-12-26 17:02+0000\n"
+"POT-Creation-Date: 2015-12-27 16:29+0000\n"
+"PO-Revision-Date: 2015-12-27 16:29+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -246,12 +246,8 @@ msgid "Arrival Departure"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Arrival Destination"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_destionation
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Arrival Destination"
 msgstr ""
 
@@ -307,6 +303,7 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_bank_account
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_bank_account
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_bank_account
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Bank Account"
 msgstr ""
@@ -314,11 +311,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Bank Account:"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_partner_bank_account
-msgid "Bank account"
 msgstr ""
 
 #. module: event_profile
@@ -441,12 +433,13 @@ msgid "Contract count"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+#: model:ir.actions.act_window,name:event_profile.action_event_track_contract_act_window
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_track_contract
 msgid "Contracts"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_track_contract
 msgid "Contracts for this event"
 msgstr ""
 
@@ -652,7 +645,6 @@ msgid "Event Track"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.actions.act_window,name:event_profile.action_event_track_contract_act_window
 #: model:ir.model,name:event_profile.model_event_track_contract
 msgid "Event Track Contract"
 msgstr ""
@@ -798,6 +790,14 @@ msgstr ""
 #. module: event_profile
 #: selection:event.event,level:0
 msgid "International"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_oversea
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_oversea
+#: model:ir.model.fields,field_description:event_profile.field_event_track_oversea
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_oversea
+msgid "Is Oversea"
 msgstr ""
 
 #. module: event_profile
@@ -953,14 +953,6 @@ msgid "Organizer:"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_oversea
-#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_oversea
-#: model:ir.model.fields,field_description:event_profile.field_event_track_oversea
-#: model:ir.model.fields,field_description:event_profile.field_res_partner_oversea
-msgid "Oversea"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_parent_id
 msgid "Parent Organization Unit"
 msgstr ""
@@ -1088,12 +1080,8 @@ msgid "Return Departure"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Return Destination"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_destionation
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Return Destination"
 msgstr ""
 
@@ -1144,6 +1132,11 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_fee
 msgid "Service Fee"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_contract_form
+msgid "Service Info"
 msgstr ""
 
 #. module: event_profile
@@ -1214,6 +1207,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_speaker
 #: model:ir.ui.view,arch_db:event_profile.view_registration_search
 msgid "Speaker"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_contract_form
+msgid "Speaker Info"
 msgstr ""
 
 #. module: event_profile
@@ -1421,11 +1419,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "on"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model,name:event_profile.model_event_registration_hotel
-msgid "registration hotel"
 msgstr ""
 
 #. module: event_profile
