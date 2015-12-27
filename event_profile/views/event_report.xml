@@ -18,6 +18,25 @@
         </record>
 
         <report
+            id="report_event_registration_sponsorship_application"
+            string="Sponsorship Application"
+            model="event.event"
+            report_type="qweb-pdf"
+            file="event.report_sponsorship_applicatin"
+            name="event_profile.report_sponsorship_applicatin"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
+        />
+        <report
+            id="report_event_registration_travel"
+            string="Travel Report"
+            model="event.event"
+            report_type="qweb-pdf"
+            paperformat="paperformat_a4_landscapee"
+            file="event.report_registration_travel"
+            name="event_profile.report_registration_travel"
+            groups="event_profile.group_event_user,event_profile.group_event_admin"
+        />
+        <report
             id="report_event_registration_signin"
             string="Sign-in Sheet"
             model="event.event"
@@ -37,17 +56,6 @@
             groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
-            id="report_event_registration_travel"
-            string="Travel Report"
-            model="event.event"
-            report_type="qweb-pdf"
-            paperformat="paperformat_a4_landscapee"
-            file="event.report_registration_travel"
-            name="event_profile.report_registration_travel"
-            groups="event_profile.group_event_user,event_profile.group_event_admin"
-        />
-
-        <report
             id="report_event_registration_sponsorship"
             string="Sponsorship Letter"
             model="event.registration"
@@ -59,21 +67,11 @@
         <report
             id="report_event_service_contract"
             string="Service Contract"
-            model="event.track"
+            model="event.track.contract"
             report_type="qweb-pdf"
             file="event.report_service_contract"
             name="event_profile.report_service_contract"
             groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
-        <report
-            id="report_event_registration_sponsorship_application"
-            string="Sponsorship Application"
-            model="event.event"
-            report_type="qweb-pdf"
-            file="event.report_sponsorship_applicatin"
-            name="event_profile.report_sponsorship_applicatin"
-            groups="event_profile.group_event_user,event_profile.group_event_admin"
-        />
-
     </data>
 </openerp>

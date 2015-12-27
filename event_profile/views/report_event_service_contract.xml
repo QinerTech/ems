@@ -5,7 +5,7 @@
 <template id="report_service_contract_document">
 
         <t t-call="report.internal_layout">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.registration_id.partner_id.lang})" />
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.speaker.lang})" />
         <div class="page">
             <div class="oe_structure"/>
                 <table border="1" cellpadding="0" cellspacing="0"  style="border:1px solid black;" >
@@ -35,15 +35,15 @@
             <p style="font-size:11px;line-height:12px ">  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  Name and Position: <span t-field="doc.registration_id.partner_id.name"/> <span t-field="doc.registration_id.partner_id.function"/>    </p>
+            <p style="font-size:11px;line-height:12px ">  Name and Position: <span t-field="doc.speaker.name"/> <span t-field="doc.speaker.function"/>    </p>
 
             <p style="font-size:11px;line-height:12px ">  Identity ID: <span t-field="doc.identifier_id"/>   </p>
 
             <p style="font-size:11px;line-height:12px ">  Bank Account: <span t-field="doc.bank_account"/>   </p>
 
-            <p style="font-size:11px;line-height:12px ">  Institute: <span t-field="doc.registration_id.partner_id.parent_name"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  Institute: <span t-field="doc.speaker.parent_id.name"/>   </p>
 
-            <p style="font-size:11px;line-height:12px ">  Address:<span t-field="doc.registration_id.partner_id.parent_id.contact_address"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  Address:<span t-field="doc.speaker.parent_id.contact_address"/>   </p>
             </td>
         </tr>
         <tr  style="border:1px solid black;" >
@@ -60,30 +60,27 @@
             <td colspan="3" style="width:485px;height:253px;border:0.5px solid black;">
             <p style="font-size:11px;line-height:12px ">  Service Description:</p>
             <p style="font-size:11px;line-height:12px ">
-            <t t-foreach="doc.event_track_contract" t-as="l" >
-              <span t-field="l.service_description"/>  in  <span t-field="doc.event_id.address_id.name"/>;
-            </t>
-             </p>
+              <span t-field="doc.service_description"/>  in  <span t-field="doc.event.address_id.name"/> </p>
 
             <p style="font-size:11px;line-height:12px ">  </p>
 
             <p style="font-size:11px;line-height:12px ">  Event Detail: （Pls provide the info below or input as "N/A" ）</p>
 
-            <p style="font-size:11px;line-height:12px ">  Event Name: <span t-field="doc.event_id.name"/>  </p>
+            <p style="font-size:11px;line-height:12px ">  Event Name: <span t-field="doc.event.name"/>  </p>
 
-            <p style="font-size:11px;line-height:12px ">  Event Venue: <span t-field="doc.event_id.venue"/>  </p>
+            <p style="font-size:11px;line-height:12px ">  Event Venue: <span t-field="doc.event.venue"/>  </p>
 
-            <p style="font-size:11px;line-height:12px ">  Event Schedule: <span t-field="doc.event_id.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  ~ <span t-field="doc.event_id.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  </p>
+            <p style="font-size:11px;line-height:12px ">  Event Schedule: <span t-field="doc.event.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  ~ <span t-field="doc.event.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  </p>
 
-            <p style="font-size:11px;line-height:12px ">  Organizer: <span t-field="doc.event_id.organization_id"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  Organizer: <span t-field="doc.event.organization_id"/>   </p>
 
-            <p style="font-size:11px;line-height:12px ">  Audience:   <t t-foreach="doc.event_id.departments" t-as="l" > <span t-field="l.name"/>,  </t></p>
+            <p style="font-size:11px;line-height:12px ">  Audience:   <t t-foreach="doc.event.departments" t-as="l" > <span t-field="l.name"/>,  </t></p>
 
-            <p style="font-size:11px;line-height:12px ">  Planned Event duration: <span t-field="doc.event_id.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  ~ <span t-field="doc.event_id.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  </p>   <p style="font-size:11px;line-height:12px ">  Planned Service duration: <span t-field="doc.duration"/>  Hours</p>
+            <p style="font-size:11px;line-height:12px ">  Planned Event duration: <span t-field="doc.event.date_begin"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  ~ <span t-field="doc.event.date_end"  t-field-options='{"format": "yyyy/MM/dd HH:mm"}' />  </p>   <p style="font-size:11px;line-height:12px ">  Planned Service duration: <span t-field="doc.duration"/>  Hours</p>
  <p style="font-size:11px;line-height:12px ">  Service deliverables: </p>
 
 
-            <p style="font-size:11px;line-height:12px ">  <t t-foreach="doc.event_track_contract" t-as="l" >  <span t-field="l.serivce_deliverable"/>;  </t> </p>
+            <p style="font-size:11px;line-height:12px ">   <span t-field="doc.service_deliverable"/> </p>
 
             </td>
         </tr>
@@ -92,10 +89,7 @@
             <p style="font-size:11px;line-height:12px ">  <strong>  Reasonable Requirements</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
- <t t-foreach="doc.event_track_contract" t-as="l" >
-
-            <p style="font-size:11px;line-height:12px ">  <span t-field="l.resonable_requirement"/>  </p>
-        </t>
+            <p style="font-size:11px;line-height:12px ">  <span t-field="doc.resonable_requirement"/>  </p>
             </td>
         </tr>
         <tr  style="border:0.5px solid black;" >
@@ -103,7 +97,7 @@
             <p style="font-size:11px;line-height:12px ">  <strong>  AbbVie Contact</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  <span t-field="doc.event_id.user_id.name"/>    <span t-field="doc.event_id.user_id.mobile"/>    </p>
+            <p style="font-size:11px;line-height:12px ">  <span t-field="doc.event.user_id.name"/>    <span t-field="doc.event.user_id.mobile"/>    </p>
             </td>
         </tr>
         <tr  style="border:0.5px solid black;" >
@@ -111,11 +105,7 @@
             <p style="font-size:11px;line-height:12px ">  <strong>  Service Amount</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-                <t t-set="test_variable" t-value="0"/>
-            <t t-foreach="doc.event_track_contract" t-as="l" >
-                 <t t-set="test_variable" t-value="test_variable+ l.service_fee "/>
-            </t>
-            <p style="font-size:11px;line-height:12px ">  RMB <t t-esc="test_variable"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  RMB <span t-field="doc.service_fee" />   </p>
 
             </td>
         </tr>
@@ -137,7 +127,7 @@
             <p style="font-size:11px;line-height:12px ">  <strong>  Deadline</strong>  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  Effective on Effective date, terminated on <span t-field="doc.event_id.date_end" t-field-options='{"format": "yyyy/MM/dd"}'/>   .</p>
+            <p style="font-size:11px;line-height:12px ">  Effective on Effective date, terminated on <span t-field="doc.event.date_end" t-field-options='{"format": "yyyy/MM/dd"}'/>   .</p>
             </td>
         </tr>
         <tr  style="border:0.5px solid black;" >
@@ -168,7 +158,7 @@
         </tr>
         <tr  style="border:0.5px solid black;" >
             <td colspan="2" style="width:111px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  <strong>  Service provider sign here</strong>  : <span t-field="doc.registration_id.partner_id.name"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  <strong>  Service provider sign here</strong>  : <span t-field="doc.speaker.name"/>   </p>
             </td>
             <td style="width:457px;border:0.5px solid black;">
             <p style="font-size:11px;line-height:12px ">  Signature:</p>
@@ -178,7 +168,7 @@
         </tr>
         <tr  style="border:0.5px solid black;" >
             <td colspan="2" style="width:111px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  <strong>  AbbVie Sign here</strong>  : <span t-field="doc.event_id.user_id"/>  </p>
+            <p style="font-size:11px;line-height:12px ">  <strong>  AbbVie Sign here</strong>  : <span t-field="doc.event.user_id"/>  </p>
             </td>
             <td style="width:457px;border:0.5px solid black;">
             <p style="font-size:11px;line-height:12px ">  Signature:</p>
@@ -207,7 +197,7 @@
 <template id="report_service_contract">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="event_profile.report_service_contract_document" t-lang="doc.registration_id.partner_id.lang"/>
+            <t t-call="event_profile.report_service_contract_document" t-lang="doc.speaker.lang"/>
         </t>
     </t>
 </template>

@@ -325,7 +325,7 @@ class event_track_contract(models.Model):
     _description = 'Event Track Contract'
 
     event_track = fields.Many2one(
-        string='Topic',
+        string='Track',
         required=False,
         readonly=False,
         index=False,
@@ -375,6 +375,16 @@ class event_track_contract(models.Model):
 
     bank_account = fields.Char(
         string='Bank Account')
+
+    identifier_id = fields.Char(
+        string='Identifier ID',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        size=20,
+    )
+
 
     service_type = fields.Selection(
         _service_type_get,

@@ -197,6 +197,24 @@ class Partner(models.Model):
         string='Is a HCP',
     )
 
+    bank_account = fields.Char(
+        string='Bank account',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        size=50,
+    )
+
+    identifier_id = fields.Char(
+        string='Identifier ID',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        size=20,
+    )
+
     report_to = fields.Many2one(
         string='Manager',
         required=False,
