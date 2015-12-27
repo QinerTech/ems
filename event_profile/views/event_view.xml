@@ -76,7 +76,7 @@
                             </field>
                         </page>
 
-                        <page string="Service Items"  groups="event_profile.group_event_user,event_profile.group_event_admin">
+                        <page string="Service Items"  groups="base.group_no_one">
                             <field name='contract' attrs="{'readonly':1}">
                                 <tree editable="bottom">
                                     <field name='speaker' />
@@ -367,7 +367,7 @@
                     </xpath>
                     <xpath expr="//sheet" position="inside">
                         <notebook>
-                            <page string="Service Items" name="service_items">
+                            <page string="Service Items" name="service_items" >
                                 <field name="event_track_contract">
                                     <tree editable="bottom">
                                         <field name="event"  invisible="1"  />
@@ -466,24 +466,29 @@
                             </h1>
                                 <field name="event" />
                         </div>
-                        <group>
+                        <group string="Speaker Info">
                             <group>
                                 <field name="speaker" />
-                                <field name="bank_account" password="True"/>
                                 <field name="oversea" readonly='1' />
-                                <field name="service_rate" />
-                                <field name="duration" />
-                                <field name="service_fee" />
+                                <field name="identifier_id" />
+                                <field name="bank_account" password="True"/>
                             </group>
+                            <group>
+                            </group>
+                        </group>
+                        <group string="Service Info">
                             <group>
                                 <field name="service_type" />
                                 <field name="service_description" />
                                 <field name="service_deliverable" />
-                            </group>
-                        </group>
-                        <group>
                                 <field name="resonable_requirement" />
                             </group>
+                            <group>
+                                <field name="service_rate" />
+                                <field name="duration" />
+                                <field name="service_fee" />
+                            </group>
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -511,7 +516,7 @@
         <!-- Main window action for event.track.contract -->
         <record id="action_event_track_contract_act_window" model="ir.actions.act_window">
             <field name="type">ir.actions.act_window</field>
-            <field name="name">Event Track Contract</field>
+            <field name="name">Contracts</field>
             <field name="res_model">event.track.contract</field>
             <field name="view_mode">tree,form</field>
             <field name="view_type">form</field>
@@ -519,7 +524,6 @@
             <field name="domain">[]</field>
             <field name="context">{'search_default_event': active_id, 'default_event': active_id }</field>
             <field name="search_view_id" ref="view_event_track_contract_search" />
-            <field name="help">There are not any record for event.track.contract</field>
         </record>
 
         <record model="ir.ui.view" id="view_event_form_extend_track_contract">
