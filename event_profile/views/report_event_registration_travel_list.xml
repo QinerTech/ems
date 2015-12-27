@@ -41,13 +41,13 @@
                         <th class="text-left" style="border: 0.5px solid black;">Mobile</th>
                         <th class="text-left" style="border: 0.5px solid black;">Idenfifier ID</th>
                         <th class="text-left" style="border: 0.5px solid black;">Arrival Departure</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Arrival Destinatio</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Arrival Destination</th>
                         <th class="text-left" style="border: 0.5px solid black;">Arrival Date</th>
                         <th class="text-left" style="border: 0.5px solid black;">Arrival Method</th>
                         <th class="text-left" style="border: 0.5px solid black;">Arrival Flight/Trian No.</th>
                         <th class="text-left" style="border: 0.5px solid black;">Arrival Journey Time</th>
                         <th class="text-left" style="border: 0.5px solid black;">Return Departure</th>
-                        <th class="text-left" style="border: 0.5px solid black;">Return Destinatio</th>
+                        <th class="text-left" style="border: 0.5px solid black;">Return Destination</th>
                         <th class="text-left" style="border: 0.5px solid black;">Return Date</th>
                         <th class="text-left" style="border: 0.5px solid black;">Return Method</th>
                         <th class="text-left" style="border: 0.5px solid black;">Return Flight/Trian No.</th>
