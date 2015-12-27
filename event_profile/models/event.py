@@ -498,7 +498,7 @@ class event_track_contract(models.Model):
 
                 team = contact.team_id or contact.parent_id.team_id
 
-                dom = ""
+                dom = "Internal-Audience"
                 if contact.speaker and team:
                     dom = "%s-%s" % (team.name, 'Speaker')
                 elif contact.employee:
