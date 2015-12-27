@@ -367,7 +367,7 @@ class event_track_contract(models.Model):
     )
 
     oversea = fields.Boolean(
-        string='Oversea',
+        string='Is Oversea',
         related='speaker.oversea'
     )
 
@@ -544,7 +544,7 @@ class event_track(models.Model):
     )
 
     oversea = fields.Boolean(
-        string='Oversea',
+        string='Is Oversea',
         required=False,
         readonly=False,
         index=False,
@@ -860,7 +860,7 @@ class event_registration(models.Model):
     partner_id = fields.Many2one(required=True)
 
     oversea = fields.Boolean(
-        string='Oversea',
+        string='Is Oversea',
         required=False,
         readonly=True,
         index=False,

@@ -176,7 +176,7 @@ class Partner(models.Model):
     )
 
     oversea = fields.Boolean(
-        string='Oversea',
+        string='Is Oversea',
         required=False,
         readonly=False,
         index=False,
