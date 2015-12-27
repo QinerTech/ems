@@ -18,16 +18,7 @@
                     <xpath expr="//button[@name='toggle_active']" position="attributes">
                         <attribute name="invisible">1</attribute>
                     </xpath>
-                    <xpath expr="//div[@name='button_box']" position="inside">
-                            <button name="%(event_profile.action_event_track_contract_act_window)d"
-                                type="action"
-                                class="oe_stat_button"
-                                icon="fa-file"
-                                help="Contracts for this event">
-                                <field name="contract_count" widget="statinfo" string="Contracts"/>
-                            </button>
 
-                    </xpath>
                     <xpath expr="//field[@name='user_id']" position="replace">
                     </xpath>
                     <xpath expr="//field[@name='event_type_id']" position="replace">
@@ -529,6 +520,24 @@
             <field name="context">{'search_default_event': active_id, 'default_event': active_id }</field>
             <field name="search_view_id" ref="view_event_track_contract_search" />
             <field name="help">There are not any record for event.track.contract</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_event_form_extend_track_contract">
+            <field name="name">event.event.extended.form</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_profile.view_event_form_extend_event" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(event_profile.action_event_track_contract_act_window)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-file"
+                        help="Contracts for this event">
+                        <field name="contract_count" widget="statinfo" string="Contracts"/>
+                    </button>
+                </xpath>
+
+            </field>
         </record>
 
 
