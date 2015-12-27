@@ -587,7 +587,7 @@ class event_track(models.Model):
         required=False,
         readonly=False,
         index=False,
-        default=lambda self: self._default_contract(),
+        # default=lambda self: self._default_contract(),
         comodel_name='event.track.contract',
         inverse_name='event_track',
         domain=[],
@@ -634,18 +634,20 @@ class event_track(models.Model):
 
     @api.onchange('speaker_ids')
     def _onchange_speaker_ids(self):
-        _logger.info('enter onchange() ')
+        contract_list = []
 
-        length = len(self.speaker_ids)
-        _logger.info('length of seaker_ids is %s ' % length)
+        for speaker in self.speaker_ids:
+            contract_data = {
+                    'speaker': speaker,
+                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", }
 
-        if length > 0:
-            idx = length
+            contract_list += [contract_data]
 
-            self.event_track_contract[idx]['speaker'] = self.speaker_ids[idx - 1].id
+        self.event_track_contract = contract_list
 
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
+        _logger.info('self.event_track_contract is %s ' %(self.event_track_contract))
         contact = self.partner_id
         if contact:
             self.partner_name = contact.name
@@ -653,7 +655,6 @@ class event_track(models.Model):
             self.partner_phone = contact.phone
             self.oversea = contact.oversea
 
-            self.event_track_contract[0]['speaker'] = self.partner_id
 
 class event_registration_travel(models.Model):
     _name = "event.registration.travel"
