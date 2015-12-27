@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 14:55+0000\n"
-"PO-Revision-Date: 2015-12-24 14:55+0000\n"
+"POT-Creation-Date: 2015-12-26 17:02+0000\n"
+"PO-Revision-Date: 2015-12-26 17:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -48,11 +48,6 @@ msgstr ""
 #. module: event_profile
 #: selection:event.track,nbr_minute:0
 msgid "15"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_partner_report_to
-msgid "1st Line Manager"
 msgstr ""
 
 #. module: event_profile
@@ -171,7 +166,6 @@ msgid "<strong>AbbVie Sponsorship Letter</strong>"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
@@ -179,7 +173,6 @@ msgid "<strong>Start Date:</strong>"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
@@ -187,7 +180,6 @@ msgid "<strong>Subject:</strong>"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
@@ -221,8 +213,14 @@ msgid "Address:"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.registration.travel,travel_method:0
+#: selection:event.registration.travel,arrival_method:0
+#: selection:event.registration.travel,return_method:0
 msgid "Air"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
+msgid "Amount"
 msgstr ""
 
 #. module: event_profile
@@ -233,6 +231,46 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Approvor"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_date
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Arrival Date"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_departure
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Arrival Departure"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Arrival Destinatio"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_destionation
+msgid "Arrival Destination"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_freight
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Arrival Flight/Trian No."
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_freight_timeslot
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Arrival Journey Time"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_arrival_method
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Arrival Method"
 msgstr ""
 
 #. module: event_profile
@@ -252,14 +290,13 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_registration
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_registration
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_registration
 msgid "Attendee"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_track_registration_id
-msgid "Attendee of Speaker"
+#: model:ir.ui.view,arch_db:event_profile.view_event_event_ticket_form
+msgid "Attendee Quota"
 msgstr ""
 
 #. module: event_profile
@@ -268,7 +305,8 @@ msgid "Audience:"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_track_bank_account
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_bank_account
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_bank_account
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Bank Account"
 msgstr ""
@@ -276,6 +314,11 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Bank Account:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_bank_account
+msgid "Bank account"
 msgstr ""
 
 #. module: event_profile
@@ -294,7 +337,8 @@ msgid "Brands"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.registration.travel,travel_method:0
+#: selection:event.registration.travel,arrival_method:0
+#: selection:event.registration.travel,return_method:0
 msgid "Bus"
 msgstr ""
 
@@ -314,12 +358,19 @@ msgid "Cancel Registration"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_hotel_reservation_date
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "CheckIn Date"
+msgstr ""
+
+#. module: event_profile
 #: selection:event.event,level:0
 #: model:ir.model,name:event_profile.model_res_country_state_city
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_city_id
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
+#: model:ir.ui.view,arch_db:event_profile.view_partner_address_form
 #: model:ir.ui.view,arch_db:event_profile.view_partner_form_extend
 msgid "City"
 msgstr ""
@@ -341,7 +392,6 @@ msgid "Code"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Comments"
@@ -363,18 +413,15 @@ msgid "Confirm Event"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.menu,name:event_profile.action_menu_contact
-msgid "Contact"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.menu,name:event_profile.menu_partner_title_contact
 msgid "Contact Titles"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_contacts_contact_
+#: model:ir.ui.menu,name:event_profile.action_menu_contact
 #: model:ir.ui.menu,name:event_profile.contact_main_menu
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Contacts"
 msgstr ""
 
@@ -386,6 +433,21 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_contract
 msgid "Contract"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_contract_count
+msgid "Contract count"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Contracts"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Contracts for this event"
 msgstr ""
 
 #. module: event_profile
@@ -405,7 +467,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_create_uid
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_uid
@@ -418,7 +479,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_create_date
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_create_date
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_create_date
@@ -430,20 +490,8 @@ msgid "Created on"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
-#: model:ir.ui.menu,name:event_profile.contact_menu_customer
-#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "Customers"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Date:"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
-msgid "Days"
 msgstr ""
 
 #. module: event_profile
@@ -473,31 +521,12 @@ msgid "Department:"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_departure
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Departure"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_departure_date
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Departure Date"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_destionation
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Destination"
-msgstr ""
-
-#. module: event_profile
 #: selection:event.event,event_purpose:0
 msgid "Disease Awareness"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_display_name
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_display_name
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_display_name
@@ -514,7 +543,8 @@ msgid "Doctor/Professor:"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.registration.travel,travel_method:0
+#: selection:event.registration.travel,arrival_method:0
+#: selection:event.registration.travel,return_method:0
 msgid "Drive"
 msgstr ""
 
@@ -542,7 +572,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_event
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_event
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_event
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event
 msgid "Event"
@@ -623,6 +652,7 @@ msgid "Event Track"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_event_track_contract_act_window
 #: model:ir.model,name:event_profile.model_event_track_contract
 msgid "Event Track Contract"
 msgstr ""
@@ -663,18 +693,20 @@ msgid "Finish Event"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_freight
-msgid "Flight/Trian No."
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_gender
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Gender"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
+#: model:ir.ui.menu,name:event_profile.contact_menu_customer
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
+msgid "HCPs"
+msgstr ""
+
+#. module: event_profile
 #: selection:event.event,level:0
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
@@ -692,37 +724,18 @@ msgid "Hospital Unit"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_event_hotel
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_address
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
-msgid "Hotel"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_budget
 msgid "Hotel Budget"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
-msgid "Hotel Info"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.actions.report.xml,name:event_profile.report_event_registration_hotel
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
-msgid "Hotel Report"
-msgstr ""
-
-#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_duration
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Hours"
 msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_id
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_id
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_id
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_id
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_id
@@ -734,7 +747,19 @@ msgid "ID"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_track_identifier_id
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Idenfifier ID"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_track_document
+msgid "Identifier"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_identifier_id
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_identifier_id
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_identifier_id
 msgid "Identifier ID"
 msgstr ""
 
@@ -766,17 +791,13 @@ msgstr ""
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_contacts_institution
 #: model:ir.ui.menu,name:event_profile.contact_menu_institution
+#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Institutions"
 msgstr ""
 
 #. module: event_profile
 #: selection:event.event,level:0
 msgid "International"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_res_partner_hotel
-msgid "Is a Hotel"
 msgstr ""
 
 #. module: event_profile
@@ -805,7 +826,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand___last_update
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type___last_update
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract___last_update
@@ -818,7 +838,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_write_uid
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_write_uid
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_uid
@@ -831,7 +850,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_write_date
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_service_type_write_date
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_write_date
@@ -858,6 +876,11 @@ msgid "Male"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_res_partner_report_to
+msgid "Manager"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_inherit_ticket_extend
 msgid "Max"
 msgstr ""
@@ -868,8 +891,12 @@ msgid "Minutes"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Mobile"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_hospital_unit_name
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
@@ -916,11 +943,18 @@ msgid "Organization Unit"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_event_organization_id
+msgid "Organizer"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
 msgid "Organizer:"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_oversea
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_oversea
 #: model:ir.model.fields,field_description:event_profile.field_event_track_oversea
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_oversea
 msgid "Oversea"
@@ -933,7 +967,6 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_res_partner
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_partner
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_partner
 msgid "Partner"
 msgstr ""
@@ -964,6 +997,7 @@ msgid "Pls check to confirm below:"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 #: model:ir.ui.view,arch_db:event_profile.report_track_document
 msgid "Position"
@@ -990,7 +1024,6 @@ msgid "RMB"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_signin_sheet_document
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Region"
@@ -1007,6 +1040,16 @@ msgid "Related Departments"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Reponsible"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Reponsible Mobile"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Requestor"
 msgstr ""
@@ -1017,7 +1060,8 @@ msgid "Reserved"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_reversed_days
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_reversed_days
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Reserved Days"
 msgstr ""
 
@@ -1032,18 +1076,53 @@ msgid "Responsible"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_location_id
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
-msgid "Room"
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_date
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Return Date"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_room
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_departure
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Return Departure"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Return Destinatio"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_destionation
+msgid "Return Destination"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_freight
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Return Flight/Trian No."
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_freight_timeslot
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Return Journey Time"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_return_method
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
+msgid "Return Method"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_hotel_room_type
+#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
 msgid "Room Type"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_serivce_deliverable
+#: model:ir.model.fields,field_description:event_profile.field_event_track_contract_service_deliverable
 msgid "Serivce Deliverable"
 msgstr ""
 
@@ -1127,7 +1206,7 @@ msgid "Sincerely!"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.registration.hotel,hotel_room:0
+#: selection:event.registration.travel,hotel_room_type:0
 msgid "Single"
 msgstr ""
 
@@ -1191,14 +1270,8 @@ msgid "Stamped here"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.registration.hotel,hotel_room:0
+#: selection:event.registration.travel,hotel_room_type:0
 msgid "Standard"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_hotel_hotel_reservation_start_date
-#: model:ir.ui.view,arch_db:event_profile.report_registration_hotel_document
-msgid "Start Date"
 msgstr ""
 
 #. module: event_profile
@@ -1225,13 +1298,13 @@ msgid "The signing date"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
-msgid "This event's subject is"
+#: model:ir.actions.act_window,help:event_profile.action_event_track_contract_act_window
+msgid "There are not any record for event.track.contract"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Ticket No"
+#: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
+msgid "This event's subject is"
 msgstr ""
 
 #. module: event_profile
@@ -1241,11 +1314,13 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_track_contract_event_track
-msgid "Topic"
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_contract_tree
+msgid "Track"
 msgstr ""
 
 #. module: event_profile
-#: selection:event.registration.travel,travel_method:0
+#: selection:event.registration.travel,arrival_method:0
+#: selection:event.registration.travel,return_method:0
 msgid "Train"
 msgstr ""
 
@@ -1256,6 +1331,11 @@ msgid "Travel"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
+msgid "Travel Arrangement Information"
+msgstr ""
+
+#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_budget
 msgid "Travel Budget"
 msgstr ""
@@ -1263,12 +1343,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
 msgid "Travel Info"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.model.fields,field_description:event_profile.field_event_registration_travel_travel_method
-#: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
-msgid "Travel Method"
 msgstr ""
 
 #. module: event_profile
@@ -1290,11 +1364,6 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.menu,name:event_profile.event_menu_users
 msgid "Users"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "Vendors"
 msgstr ""
 
 #. module: event_profile
@@ -1326,6 +1395,21 @@ msgstr ""
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_brand
 msgid "event.brand"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_contract_form
+msgid "event_track_contract_form"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_contract_search
+msgid "event_track_contract_search"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_track_contract_tree
+msgid "event_track_contract_tree"
 msgstr ""
 
 #. module: event_profile
@@ -1384,12 +1468,12 @@ msgid "会议地点：境内___，境外____，如会议地点在中国境外，
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
 msgid "例如：交通银行南京路支行600028XXXXXXXXXXXX"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_track_form_extend
+#: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
 msgid "例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX"
 msgstr ""
 
