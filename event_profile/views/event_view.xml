@@ -12,6 +12,7 @@
                             <button string="Finish Event" name="button_done" states="confirm" type="object" class="oe_highlight" groups="event_profile.group_event_user" />
                             <button string="Set To Draft" name="button_draft" states="cancel,done" type="object" groups="event_profile.group_event_user" />
                             <button string="Cancel Event" name="button_cancel" states="draft,confirm" type="object" groups="event_profile.group_event_user" />
+                            <button string="Download Travel List" name="export_travel_info"   type="object" />
                             <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
                         </header>
                     </xpath>
@@ -307,11 +308,11 @@
             <field name="priority" eval="16" />
             <field name="active" eval="True" />
             <field name="arch" type="xml">
-                <form string="Contract" >
+                <form string="Topic" >
                     <header>
                         <field name="state" widget="statusbar" clickable="True"/>
                     </header>
-                    <sheet string="Contract">
+                    <sheet string="Topic">
                         <div class="oe_button_box" name="button_box">
                         </div>
                         <div class="oe_title">
@@ -379,7 +380,7 @@
         <!-- Main window action for event.topic -->
         <record id="action_event_topic_act_window" model="ir.actions.act_window">
             <field name="type">ir.actions.act_window</field>
-            <field name="name">Contracts</field>
+            <field name="name">Topics</field>
             <field name="res_model">event.topic</field>
             <field name="view_mode">tree,form</field>
             <field name="view_type">form</field>
@@ -398,8 +399,7 @@
                     <button name="%(event_profile.action_event_topic_act_window)d"
                         type="action"
                         class="oe_stat_button"
-                        icon="fa-file"
-                        help="Contracts for this event">
+                        icon="fa-file">
                         <field name="contract_count" widget="statinfo" string="Topics"/>
                     </button>
                 </xpath>

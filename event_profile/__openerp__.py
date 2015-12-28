@@ -22,7 +22,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['res_roles', 'event', 'event_sale', 'web_m2x_options'],
-    'external_dependencies': {'python': []},
+    'external_dependencies': {'python': ['xlwt']},
 
     # always loaded
     'data': [

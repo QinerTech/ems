@@ -8,7 +8,9 @@ from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DA
 from datetime import datetime, timedelta
 
 from logging import getLogger
-
+import base64
+import xlwt
+from StringIO import StringIO
 
 _logger = getLogger(__name__)
 
@@ -17,31 +19,6 @@ _logger = getLogger(__name__)
 def _lang_get(self):
     languages = self.env['res.lang'].search([])
     return [(language.code, language.name) for language in languages]
-
-# class event_type(models.Model):
-#     _inherit = "event.type"
-
-#     level = fields.Selection(
-#         string='Event Level',
-#         required=True,
-#         readonly=False,
-#         index=False,
-#         help=False,
-#         selection=[
-#             ('abbvie', 'Abbvie'),
-#             ('other', '3rd Partner'),
-#             ],
-#         default='abbvie',
-#         )
-
-#     @api.multi
-#     @api.depends('name', 'level')
-#     def name_get(self):
-#         result = []
-#         for etype in self:
-#             result.append((etype.id, '%s (%s)' % (etype.name, etype.level)))
-#         return result
-
 
 class event_event(models.Model):
     _inherit = "event.event"
@@ -225,13 +202,128 @@ class event_event(models.Model):
         readonly=True,
         index=False,
         default=0,
-        compute = '_count_contract'
+        compute='_count_contract'
     )
 
     @api.multi
     def _count_contract(self):
         for event in self:
-            event.contract_count = len( self.env['event.topic'].search( [('event', '=', self.id)]) )
+            event.contract_count = len(self.env['event.topic'].search([('event', '=', self.id)]))
+
+    @api.one
+    def export_travel_info(self):
+
+        data = base64.encodestring(self.from_data(self.registration_ids))
+        attach_vals = {
+             'name': 'travel_list.xls',
+             'datas': data,
+             'datas_fname': 'travel_list.xls',
+             'res_id': self.id
+         }
+
+        existed = self.env['ir.attachment'].search([('name','=','travel_list.xls')])
+        if existed:
+           existed.unlink()
+
+        doc = self.env['ir.attachment'].create(attach_vals)
+
+        web_url = self.env['ir.config_parameter'].get_param('web.base.url')
+        content_url = '/web/content/%s/%s' % (doc.id, 'travel_list.xls')
+        url = web_url + content_url
+
+        _logger.info('doc %s, doc_id is %s, url is %s'  % (doc, doc.id, url))
+
+        return {
+            'type': 'ir.actions.act_url',
+            'url': url,
+            'target': 'self',
+            }
+
+    @api.model
+    def from_data(self, vals):
+        workbook = xlwt.Workbook(encoding='utf-8')
+
+        header_title = xlwt.easyxf("font: bold on,height 400; pattern: pattern solid, fore_colour white;align:horizontal center, indent 1,vertical center")
+
+        content_title = xlwt.easyxf("font: bold on;align:horizontal left;borders: left thin, top  thin,bottom thin, right thin")
+
+        content = xlwt.easyxf("align:horizontal left;borders: left thin, top  thin, bottom thin, right thin")
+
+        worksheet = workbook.add_sheet('sheet1')
+        if (worksheet):
+            #worksheet.insert_bitmap('http://localhost:8069/web/binary/company_logo?db=XLD&amp;company=1', 0, 0)
+            worksheet.write_merge(0, 0, 0, 3, u'行程安排', header_title)
+
+
+            startRow = 5
+
+            worksheet.write(startRow, 1, "#", content_title)
+            worksheet.write(startRow, 2, u"区域", content_title)
+            worksheet.write(startRow, 3, u"城市", content_title)
+            worksheet.write(startRow, 4, u"姓名", content_title)
+            worksheet.write(startRow, 5, u"性别", content_title)
+            worksheet.write(startRow, 6, u"医院", content_title)
+            worksheet.write(startRow, 7, u"职称", content_title)
+            worksheet.write(startRow, 8, u"手机", content_title)
+            worksheet.write(startRow, 9, u"身份证", content_title)
+            worksheet.write(startRow, 10, u"出发城市", content_title)
+            worksheet.write(startRow, 11, u"到达城市", content_title)
+            worksheet.write(startRow, 12, u"出发日期", content_title)
+            worksheet.write(startRow, 13, u"出发方式", content_title)
+            worksheet.write(startRow, 14, u"去程推荐航班", content_title)
+            worksheet.write(startRow, 15, u"去程航班时间", content_title)
+            worksheet.write(startRow, 16, u"出发城市", content_title)
+            worksheet.write(startRow, 17, u"返回城市", content_title)
+            worksheet.write(startRow, 18, u"返回日期", content_title)
+            worksheet.write(startRow, 19, u"返程方式", content_title)
+            worksheet.write(startRow, 20, u"返程推荐航班", content_title)
+            worksheet.write(startRow, 21, u"返程航班时间", content_title)
+            worksheet.write(startRow, 22, u"负责人", content_title)
+            worksheet.write(startRow, 23, u"负责人手机", content_title)
+            worksheet.write(startRow, 24, u"房间类型", content_title)
+            worksheet.write(startRow, 25, u"入住日期", content_title)
+            worksheet.write(startRow, 26, u"预定天数", content_title)
+            worksheet.write(startRow, 27, u"备注", content_title)
+
+            index = 0
+            startRow = 6
+            for val in vals:
+                worksheet.write(startRow + index, 1, index + 1, content)
+                worksheet.write(startRow + index, 2, val.partner_id.team_id.name, content)
+                worksheet.write(startRow + index, 3, val.partner_id.city, content)
+                worksheet.write(startRow + index, 4, val.partner_id.name, content)
+                worksheet.write(startRow + index, 5, val.partner_id.gender, content)
+                worksheet.write(startRow + index, 6, val.partner_id.parent_id.name, content)
+                worksheet.write(startRow + index, 7, val.partner_id.function.name, content)
+                worksheet.write(startRow + index, 8, val.partner_id.mobile, content)
+                worksheet.write(startRow + index, 9, val.partner_id.identifier_id, content)
+                worksheet.write(startRow + index, 10, val.arrival_departure, content)
+                worksheet.write(startRow + index, 11, val.arrival_destionation, content)
+                worksheet.write(startRow + index, 12, val.arrival_date, content)
+                worksheet.write(startRow + index, 13, val.arrival_method, content)
+                worksheet.write(startRow + index, 14, val.arrival_freight, content)
+                worksheet.write(startRow + index, 15, val.arrival_freight_timeslot, content)
+                worksheet.write(startRow + index, 16, val.return_departure, content)
+                worksheet.write(startRow + index, 17, val.return_destionation, content)
+                worksheet.write(startRow + index, 18, val.return_date, content)
+                worksheet.write(startRow + index, 19, val.return_method, content)
+                worksheet.write(startRow + index, 20, val.return_freight, content)
+                worksheet.write(startRow + index, 21, val.return_freight_timeslot, content)
+                worksheet.write(startRow + index, 22, val.user_id.partner_id.name, content)
+                worksheet.write(startRow + index, 23, val.user_id.partner_id.mobile, content)
+                worksheet.write(startRow + index, 24, val.hotel_room_type, content)
+                worksheet.write(startRow + index, 25, val.hotel_reservation_date, content)
+                worksheet.write(startRow + index, 26, val.reversed_days, content)
+                worksheet.write(startRow + index, 27, "", content)
+                index += 1
+
+        fd = StringIO()
+        workbook.save(fd)
+        fd.seek(0)
+        data=fd.read()
+        fd.close()
+        return data
+
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
@@ -403,7 +495,6 @@ class event_topic(models.Model):
         related='partner_id.oversea'
     )
 
-
     identifier_id = fields.Char(
         string='Identifier ID',
         required=True,
@@ -418,7 +509,6 @@ class event_topic(models.Model):
         required=True,
 
         )
-
 
     service_type = fields.Selection(
         _service_type_get,
@@ -471,7 +561,7 @@ class event_topic(models.Model):
     )
 
     @api.multi
-    @api.depends('event','title')
+    @api.depends('event', 'title')
     def name_get(self):
         result = []
         for contract in self:
@@ -498,7 +588,7 @@ class event_topic(models.Model):
                 "event_id": values['event'],
             }
 
-            event_obj =  self.env['event.event'].browse(values['event'])
+            event_obj = self.env['event.event'].browse(values['event'])
             local_dict = {}
 
             local_dict['datetime_begin'] = event_obj.date_begin
@@ -519,7 +609,7 @@ class event_topic(models.Model):
                 vals['arrival_departure'] = contact.city
                 vals['arrival_destionation'] = local_dict['place']
                 vals['return_date'] = local_dict['date_leave']
-                vals['return_departure'] =  local_dict['place']
+                vals['return_departure'] = local_dict['place']
                 vals['return_destionation'] = contact.city
                 vals['hotel_room_type'] = 'standard'
                 vals['hotel_reservation_date'] = local_dict['date_arrive']
@@ -573,7 +663,7 @@ class event_topic(models.Model):
             self.partner_email = contact.email
             self.partner_phone = contact.phone
             self.oversea = contact.oversea
-            self.identifier_id= contact.identifier_id
+            self.identifier_id = contact.identifier_id
             self.bank_account = contact.bank_account
 
 
@@ -782,7 +872,6 @@ class event_registration(models.Model):
         default=1,
     )
 
-
     @api.model
     def _get_event_data(self):
         local_dict = {}
@@ -840,7 +929,7 @@ class event_registration(models.Model):
                 self.email = contact.email
                 self.phone = contact.phone
                 self.oversea = contact.oversea
-                self.identifier_id= contact.identifier_id
+                self.identifier_id = contact.identifier_id
                 self.bank_account = contact.bank_account
 
                 self.arrival_departure = contact.city
