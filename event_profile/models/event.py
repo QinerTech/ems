@@ -89,27 +89,13 @@ class event_event(models.Model):
 
     deadline = fields.Date("Nomination End")
 
-    travel = fields.One2many(
-        string='Travel',
+    topic_ids = fields.One2many(
+        string='Topics',
         required=False,
         readonly=False,
         index=False,
         default=None,
-        comodel_name='event.registration.travel',
-        inverse_name='event',
-        domain=[],
-        context={},
-        auto_join=False,
-        limit=None
-    )
-
-    contract = fields.One2many(
-        string='Contract',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        comodel_name='event.track.contract',
+        comodel_name='event.topic',
         inverse_name='event',
         domain=[],
         context={},
@@ -245,7 +231,7 @@ class event_event(models.Model):
     @api.multi
     def _count_contract(self):
         for event in self:
-            event.contract_count = len( self.env['event.track.contract'].search( [('event', '=', self.id)]) )
+            event.contract_count = len( self.env['event.topic'].search( [('event', '=', self.id)]) )
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
@@ -317,9 +303,9 @@ def _service_type_get(self):
     svc_types = self.env['event.service.type'].search([])
     return [(svc_type.name, svc_type.name) for svc_type in svc_types]
 
-class event_track_contract(models.Model):
-    _name = "event.track.contract"
-    _description = 'Contract'
+class event_topic(models.Model):
+    _name = "event.topic"
+    _description = 'Topic'
 
     name = fields.Char(
         string='Subject',
@@ -331,7 +317,28 @@ class event_track_contract(models.Model):
         size=50,
     )
 
-    user_id = fields.Many2one('res.users', 'Responsible', track_visibility='onchange', default=lambda self: self.env.user)
+    user_id = fields.Many2one('res.users', 'Nominator', track_visibility='onchange', default=lambda self: self.env.user)
+
+    state = fields.Selection([
+        ('draft', 'Proposal'), ('confirmed', 'Confirmed'), ('refused', 'Refused'), ('cancel', 'Cancelled')],
+        'Status', default='draft', required=True, copy=False, track_visibility='onchange')
+
+    nbr_hour = fields.Integer(
+        string='Durations',
+        required=False,
+        readonly=False,
+        index=False,
+        default=1,
+    )
+
+    nbr_minute = fields.Selection(
+        [('0', '00'), ('15', '15'), ('30', '30'), ('45', '45')],
+        string='Minutes',
+        required=False,
+        readonly=False,
+        index=False,
+        default='0'
+    )
 
     event = fields.Many2one(
         string='Event',
@@ -479,8 +486,8 @@ class event_track_contract(models.Model):
     def create(self, values):
         _logger.info('values is  %s ' % values)
 
-        _logger.info('create contract ....... ')
-        result = super(event_track_contract, self).create(values)
+        _logger.info('create topic ....... ')
+        result = super(event_topic, self).create(values)
 
         registrations = self.env['event.registration'].search([('partner_id', '=', values['partner_id']), ('event_id', '=', values['event'])])
         if not registrations and values['partner_id']:
@@ -508,20 +515,18 @@ class event_track_contract(models.Model):
                 vals['phone'] = contact.phone
                 vals['email'] = contact.email
                 vals['oversea'] = contact.oversea
-
-                travel_dict = {}
-                travel_dict['arrival_date'] = local_dict['date_arrive']
-                travel_dict['arrival_departure'] = contact.city
-                travel_dict['arrival_destionation'] = local_dict['place']
-                travel_dict['return_date'] = local_dict['date_leave']
-                travel_dict['return_departure'] =  local_dict['place']
-                travel_dict['return_destionation'] = contact.city
-                travel_dict['hotel_room_type'] = 'standard'
-                travel_dict['hotel_reservation_date'] = local_dict['date_arrive']
-                travel_dict['reversed_days'] = local_dict['days']
+                vals['arrival_date'] = local_dict['date_arrive']
+                vals['arrival_departure'] = contact.city
+                vals['arrival_destionation'] = local_dict['place']
+                vals['return_date'] = local_dict['date_leave']
+                vals['return_departure'] =  local_dict['place']
+                vals['return_destionation'] = contact.city
+                vals['hotel_room_type'] = 'standard'
+                vals['hotel_reservation_date'] = local_dict['date_arrive']
+                vals['reversed_days'] = local_dict['days']
 
                 if contact.speaker:
-                    travel_dict['hotel_room_type'] = 'single'
+                    vals['hotel_room_type'] = 'single'
 
                 team = contact.team_id or contact.parent_id.team_id
 
@@ -546,40 +551,9 @@ class event_track_contract(models.Model):
 
                 _logger.info('registration values is  %s ' % vals)
 
-                reg =  self.env['event.registration'].create(vals)
-
-                travel_dict['registration'] = reg.id
-                _logger.info('travel values is  %s ' % travel_dict)
-
-                travel_obj =  self.env['event.registration.travel'].search([('registration','=',reg.id  )])
-                if travel_obj:
-                    travel_obj.write(travel_dict)
-
-                else:
-                    self.env['event.registration.travel'].create(travel_dict)
+                self.env['event.registration'].create(vals)
 
         return result
-
-    state = fields.Selection([
-        ('draft', 'Proposal'), ('confirmed', 'Confirmed'), ('refused', 'Refused'), ('cancel', 'Cancelled')],
-        'Status', default='draft', required=True, copy=False, track_visibility='onchange')
-
-    nbr_hour = fields.Integer(
-        string='Durations',
-        required=False,
-        readonly=False,
-        index=False,
-        default=1,
-    )
-
-    nbr_minute = fields.Selection(
-        [('0', '00'), ('15', '15'), ('30', '30'), ('45', '45')],
-        string='Minutes',
-        required=False,
-        readonly=False,
-        index=False,
-        default='0'
-    )
 
     @api.multi
     @api.depends('nbr_hour', 'nbr_minute')
@@ -602,52 +576,79 @@ class event_track_contract(models.Model):
             self.identifier_id= contact.identifier_id
             self.bank_account = contact.bank_account
 
-class event_registration_travel(models.Model):
-    _name = "event.registration.travel"
 
-    _description = 'registration travel'
+class event_registration(models.Model):
+    _inherit = "event.registration"
 
-    registration = fields.Many2one(
-        string='Attendee',
+    _description = 'Nomination'
+
+    user_id = fields.Many2one(
+        'res.users', string='Nominator',
+        default=lambda self: self.env.user,
+        readonly=False, states={'done': [('readonly', True)]})
+
+    partner_id = fields.Many2one(required=True)
+
+    event_ticket_id = fields.Many2one(required=True, string="Region")
+
+    is_speaker = fields.Boolean(
+        string='Is a Speaker',
         required=False,
         readonly=False,
         index=False,
-        default=None,
-        comodel_name='event.registration',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False
+        default=False,
+        related='partner_id.speaker'
     )
 
-    event = fields.Many2one(
-        string='Event',
+    oversea = fields.Boolean(
+        string='Is Oversea',
         required=False,
-        readonly=False,
+        readonly=True,
         index=False,
-        default=None,
-        comodel_name='event.event',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False,
-        related='registration.event_id',
-        store=True
+        default=False,
     )
 
-    partner = fields.Many2one(
-        string='Partner',
+    identifier_id = fields.Char(
+        string='Identifier ID')
+
+    bank_account = fields.Char(
+        string='Bank Account')
+
+    venue = fields.Char(
+        string='Venue',
         required=False,
         readonly=False,
         index=False,
         default=None,
-        comodel_name='res.partner',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False,
-        related='registration.partner_id',
-        store=True
+        size=50,
+        related='event_id.venue',
+    )
+
+    hotel_budget = fields.Float(
+        string='Hotel Budget',
+        required=False,
+        readonly=False,
+        index=False,
+        default=1500.0,
+        digits=(4, 2),
+    )
+
+    travel_budget = fields.Float(
+        string='Travel Budget',
+        required=False,
+        readonly=False,
+        index=False,
+        default=2000.0,
+        digits=(4, 2),
+    )
+
+    sponsorship_amount = fields.Float(
+        string='Sponsorship Amount',
+        required=False,
+        readonly=False,
+        index=False,
+        default=3500.0,
+        digits=(4, 2),
     )
 
     arrival_date = fields.Date(
@@ -782,95 +783,6 @@ class event_registration_travel(models.Model):
     )
 
 
-class event_registration(models.Model):
-    _inherit = "event.registration"
-
-    _description = 'Nomination'
-
-    user_id = fields.Many2one(
-        'res.users', string='Nominator',
-        default=lambda self: self.env.user,
-        readonly=False, states={'done': [('readonly', True)]})
-
-    partner_id = fields.Many2one(required=True)
-
-    event_ticket_id = fields.Many2one(required=True, string="Region")
-
-    is_speaker = fields.Boolean(
-        string='Is a Speaker',
-        required=False,
-        readonly=False,
-        index=False,
-        default=False,
-        related='partner_id.speaker'
-    )
-
-
-    oversea = fields.Boolean(
-        string='Is Oversea',
-        required=False,
-        readonly=True,
-        index=False,
-        default=False,
-    )
-
-    identifier_id = fields.Char(
-        string='Identifier ID')
-
-    bank_account = fields.Char(
-        string='Bank Account')
-
-    venue = fields.Char(
-        string='Venue',
-        required=False,
-        readonly=False,
-        index=False,
-        default=None,
-        size=50,
-        related='event_id.venue',
-    )
-
-    hotel_budget = fields.Float(
-        string='Hotel Budget',
-        required=False,
-        readonly=False,
-        index=False,
-        default=1500.0,
-        digits=(4, 2),
-    )
-
-    travel_budget = fields.Float(
-        string='Travel Budget',
-        required=False,
-        readonly=False,
-        index=False,
-        default=2000.0,
-        digits=(4, 2),
-    )
-
-    sponsorship_amount = fields.Float(
-        string='Sponsorship Amount',
-        required=False,
-        readonly=False,
-        index=False,
-        default=3500.0,
-        digits=(4, 2),
-    )
-
-    travel = fields.One2many(
-        string='Travel',
-        required=False,
-        readonly=False,
-        index=False,
-        default=lambda rec: rec._default_travel(),
-        comodel_name='event.registration.travel',
-        inverse_name='registration',
-        domain=[],
-        context={},
-        auto_join=False,
-        limit=None
-    )
-
     @api.model
     def _get_event_data(self):
         local_dict = {}
@@ -931,12 +843,12 @@ class event_registration(models.Model):
                 self.identifier_id= contact.identifier_id
                 self.bank_account = contact.bank_account
 
-                self.travel['arrival_departure'] = contact.city
-                self.travel['return_destionation'] = contact.city
-                self.travel['hotel_room_type'] = 'standard'
+                self.arrival_departure = contact.city
+                self.return_destionation = contact.city
+                self.hotel_room_type = 'standard'
 
                 if contact.speaker:
-                    self.travel['hotel_room_type'] = 'single'
+                    self.hotel_room_type = 'single'
 
                 team = contact.team_id or contact.parent_id.team_id
 

@@ -61,34 +61,34 @@
                     </tr>
                </thead>
                <tbody >
-                    <t t-foreach="doc.travel" t-as="l" >
+                    <t t-foreach="doc.registration_ids" t-as="l" >
                         <tr style="border: 0.5px solid black;">
                             <td style="border: 0.5px solid black;"  >
                                <t t-esc='l_index + 1' />
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.team_id"/>
+                               <span t-field="l.partner_id.team_id"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.city"/>
+                               <span t-field="l.partner_id.city"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.name"/>
+                               <span t-field="l.partner_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.gender"/>
+                               <span t-field="l.partner_id.gender"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.parent_id.name"/>
+                               <span t-field="l.partner_id.parent_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.partner.function"/>
+                               <span t-field="l.partner_id.function"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-feld="l.partner.mobile"/>
+                               <span t-feld="l.partner_id.mobile"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.registration.identifier_id"/>
+                               <span t-field="l.partner_id.identifier_id"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
                                <span t-field="l.arrival_departure"  />
@@ -130,10 +130,10 @@
                             </td>
 
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.registration.user_id.partner_id.name"/>
+                               <span t-field="l.user_id.partner_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;"  >
-                               <span t-field="l.registration.user_id.partner_id.mobile"/>
+                               <span t-field="l.user_id.partner_id.mobile"/>
                             </td>
 
                             <td style="border: 0.5px solid black;"  >

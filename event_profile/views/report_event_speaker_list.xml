@@ -8,7 +8,7 @@
         <t t-set="doc" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
-                <h3>partner_id List</h3>
+                <h3>Speaker List</h3>
                 <row>
                     <div t-if="doc.name" class="col-xs-6">
                         <strong>Subject:</strong>
@@ -45,7 +45,7 @@
                     </tr>
                </thead>
                <tbody >
-                    <t t-foreach="doc.contract" t-as="l" >
+                    <t t-foreach="doc.topic_ids" t-as="l" >
                         <tr style="border: 0.5px solid black;">
                             <td style="border: 0.5px solid black;">
                                <t t-esc='l_index + 1' />
@@ -76,7 +76,7 @@
                             </td>
 <!--                             <td style="border: 0.5px solid black;">
                                 <t t-set="test_variable" t-value="0"/>
-                                <t t-foreach="l.event_track_contract" t-as="p" >
+                                <t t-foreach="l.event_topic" t-as="p" >
                                      <t t-set="test_variable" t-value="test_variable+ p.service_fee "/>
                                 </t>
                                 <t t-esc="test_variable"/>
@@ -86,7 +86,7 @@
 
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.event_track.name"/>
+                               <span t-field="l.name"/>
                                <span t-field="l.service_type"/>
                             </td>
                         </tr>

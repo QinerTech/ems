@@ -62,7 +62,7 @@
             groups="event_profile.group_event_user,event_profile.group_event_admin"
         />
         <report
-            id="report_event_track_contract"
+            id="report_event_topic"
             string="Speaker List"
             model="event.event"
             report_type="qweb-pdf"
@@ -83,7 +83,7 @@
         <report
             id="report_event_service_contract"
             string="Service Contract"
-            model="event.track.contract"
+            model="event.topic"
             report_type="qweb-pdf"
             file="event.report_service_contract"
             name="event_profile.report_service_contract"

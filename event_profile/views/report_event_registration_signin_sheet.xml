@@ -46,7 +46,7 @@
                                <t t-esc='l_index + 1' />
                             </td>
                             <td style="border: 0.5px  solid black;"  >
-                               <span t-field="l.partner_id.team_id or l.partner_id.parent_id.team_id"/>
+                               <span t-field="l.partner_id.team_id"/>
                             </td>
                             <td style="border: 0.5px  solid black;"  >
                                <span t-field="l.partner_id.city"/>

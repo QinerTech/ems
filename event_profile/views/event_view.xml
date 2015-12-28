@@ -51,32 +51,7 @@
                         <field name="brands" widget="many2many_tags"/>
                         <field name="departments" widget="many2many_tags"/>
                     </xpath>
-                    <xpath expr="//notebook" position="inside">
 
-                        <page string="Travel Info" groups="event_profile.group_event_user,event_profile.group_event_admin">
-                            <field name='travel' attrs="{'readonly':1}">
-                                <tree editable="bottom">
-                                <field name='registration' />
-                                <field name='arrival_date' />
-                                <field name='arrival_departure' />
-                                <field name='arrival_destionation' />
-                                <field name='arrival_method' />
-                                <field name='arrival_freight' invisible='1' />
-                                <field name='arrival_freight_timeslot' invisible='1' />
-                                <field name='return_date' />
-                                <field name='return_departure' />
-                                <field name='return_destionation' />
-                                <field name='return_method' />
-                                <field name='return_freight' invisible='1' />
-                                <field name='return_freight_timeslot' invisible='1'  />
-                                <field name='hotel_reservation_date' />
-                                <field name='hotel_room_type' />
-                                <field name='reversed_days' />
-                                </tree>
-                            </field>
-                        </page>
-
-                    </xpath>
                     <xpath expr="//field[@name='message_follower_ids']" position="attributes">
                         <attribute name="invisible">True</attribute>
                     </xpath>
@@ -189,31 +164,41 @@
                     </xpath>
 
                     <xpath expr="//sheet" position="inside">
-                        <group name="travel" string="Travel Arrangement Information" >
-                        <field name='travel' nolabel='1'>
-                            <tree editable="bottom">
+                        <group name="travel" string="Travel Info" >
+                            <group>
                                 <field name='arrival_date' />
                                 <field name='arrival_departure' />
                                 <field name='arrival_destionation' />
                                 <field name='arrival_method' />
-                                <field name='arrival_freight' invisible='1' />
-                                <field name='arrival_freight_timeslot' invisible='1' />
+                                <field name='arrival_freight' />
+                                <field name='arrival_freight_timeslot'/>
+                            </group>
+                            <group>
                                 <field name='return_date' />
                                 <field name='return_departure' />
                                 <field name='return_destionation' />
                                 <field name='return_method' />
-                                <field name='return_freight' invisible='1' />
-                                <field name='return_freight_timeslot' invisible='1' />
+                                <field name='return_freight' />
+                                <field name='return_freight_timeslot'/>
+                            </group>
+
+                        </group>
+
+                        <group name="travel" string="Hotel Info" >
+                            <group>
                                 <field name='hotel_reservation_date' />
-                                <field name='hotel_room_type' />
                                 <field name='reversed_days' />
-                            </tree>
-                        </field>
-                    </group>
-                        <group name="sponsorship" string="Sponsorship Information">
+                            </group>
+                            <group>
+                                <field name='hotel_room_type' />
+                            </group>
+                        </group>
+
+                        <group name="sponsorship" string="Sponsorship Info">
                             <field name='sponsorship_amount' />
                         </group>
                     </xpath>
+
 
                     <xpath expr="//field[@name='partner_id']" position="replace">
                     </xpath>
@@ -283,25 +268,25 @@
 
         <!-- VIEWS: "Event Track Contract"
 
-            - Model·········: event.track.contract
-            - _rec_name·····: event.track.contract
+            - Model·········: event.topic
+            - _rec_name·····: event.topic
             - Domain········: []
             - Context·······: {}
             - Parent menu ··: event.menu_event_main
             - View priority·: 16    Sequence····: 10
-            - Action help···: There are not any record for event.track.contract
+            - Action help···: There are not any record for event.topic
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-        <!-- Tree view for "event.track.contract" -->
-        <record id="view_event_track_contract_tree" model="ir.ui.view">
-            <field name="name">view.event.track.contract.tree</field>
-            <field name="model">event.track.contract</field>
+        <!-- Tree view for "event.topic" -->
+        <record id="view_event_topic_tree" model="ir.ui.view">
+            <field name="name">view.event.topic.tree</field>
+            <field name="model">event.topic</field>
             <field name="type">tree</field>
             <field name="mode">primary</field>
             <field name="priority" eval="16" />
             <field name="active" eval="True" />
             <field name="arch" type="xml">
-                <tree string="event_track_contract_tree" create="1" delete="1" edit="1">
+                <tree string="event_topic_tree" create="1" delete="1" edit="1">
                     <field name="name" />
                     <field name="partner_id"/>
                     <field name="service_type"/>
@@ -313,10 +298,10 @@
             </field>
         </record>
 
-        <!-- Form view for "event.track.contract" -->
-        <record id="view_event_track_contract_form" model="ir.ui.view">
-            <field name="name">view.event.track.contract.form</field>
-            <field name="model">event.track.contract</field>
+        <!-- Form view for "event.topic" -->
+        <record id="view_event_topic_form" model="ir.ui.view">
+            <field name="name">view.event.topic.form</field>
+            <field name="model">event.topic</field>
             <field name="type">form</field>
             <field name="mode">primary</field>
             <field name="priority" eval="16" />
@@ -332,21 +317,25 @@
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only" />
                             <h1>
-                                <field name="name" />
+                                <field name="name"  placeholder="例如：修美乐的应用" />
                             </h1>
                                 <field name="event" />
                         </div>
                         <group string="Speaker Info">
                             <group>
                                 <field name="partner_id" domain="[('speaker','=',True)]" options="{'no_create':True}"/>
-                                <field name="partner_name"/>
-                                <field name="partner_email"/>
-                                <field name="partner_phone"/>
+                                <field name="partner_email" />
+                                <field name="partner_phone" />
+                                <field name="identifier_id" />
+                                <field name="bank_account" password="True" />
                             </group>
                             <group>
                                 <field name="oversea" readonly='1' />
-                                <field name="identifier_id" />
-                                <field name="bank_account" password="True"/>
+                                <label for="nbr_hour"/>
+                                <div class="o_row">
+                                    <field name="nbr_hour"/>:
+                                    <field name="nbr_minute"/>
+                                </div>
                                 <field name="user_id"/>
                             </group>
                         </group>
@@ -359,11 +348,7 @@
                             </group>
                             <group>
                                 <field name="service_rate" />
-                                <label for="nbr_hour" />
-                                <div class="o_row">
-                                    <field name="nbr_hour" />:
-                                    <field name="nbr_minute" />
-                                </div>
+                                <field name="duration" />
                                 <field name="service_fee" />
                             </group>
                         </group>
@@ -373,16 +358,16 @@
         </record>
 
 
-        <!-- Search view for "event.track.contract" -->
-        <record id="view_event_track_contract_search" model="ir.ui.view">
-            <field name="name">view.event.track.contract.search</field>
-            <field name="model">event.track.contract</field>
+        <!-- Search view for "event.topic" -->
+        <record id="view_event_topic_search" model="ir.ui.view">
+            <field name="name">view.event.topic.search</field>
+            <field name="model">event.topic</field>
             <field name="type">search</field>
             <field name="mode">primary</field>
             <field name="priority" eval="16" />
             <field name="active" eval="True" />
             <field name="arch" type="xml">
-                <search string="event_track_contract_search">
+                <search string="event_topic_search">
                     <field name="name"  />
                     <field name="partner_id"  />
                     <field name="event"  />
@@ -391,17 +376,17 @@
             </field>
         </record>
 
-        <!-- Main window action for event.track.contract -->
-        <record id="action_event_track_contract_act_window" model="ir.actions.act_window">
+        <!-- Main window action for event.topic -->
+        <record id="action_event_topic_act_window" model="ir.actions.act_window">
             <field name="type">ir.actions.act_window</field>
             <field name="name">Contracts</field>
-            <field name="res_model">event.track.contract</field>
+            <field name="res_model">event.topic</field>
             <field name="view_mode">tree,form</field>
             <field name="view_type">form</field>
             <field name="target">current</field>
             <field name="domain">[]</field>
             <field name="context">{'search_default_event': active_id, 'default_event': active_id }</field>
-            <field name="search_view_id" ref="view_event_track_contract_search" />
+            <field name="search_view_id" ref="view_event_topic_search" />
         </record>
 
         <record model="ir.ui.view" id="view_event_form_extend_track_contract">
@@ -410,18 +395,17 @@
             <field name="inherit_id" ref="event_profile.view_event_form_extend_event" />
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='button_box']" position="inside">
-                    <button name="%(event_profile.action_event_track_contract_act_window)d"
+                    <button name="%(event_profile.action_event_topic_act_window)d"
                         type="action"
                         class="oe_stat_button"
                         icon="fa-file"
                         help="Contracts for this event">
-                        <field name="contract_count" widget="statinfo" string="Contracts"/>
+                        <field name="contract_count" widget="statinfo" string="Topics"/>
                     </button>
                 </xpath>
 
             </field>
         </record>
-
 
         <record model="ir.ui.view" id="view_event_service_type_form">
             <field name="name">Event Service Type</field>
@@ -486,8 +470,6 @@
             <field name="name">Event Brands</field>
             <field name="res_model">event.brand</field>
         </record>
-
-
 
         <menuitem name="Events Category" id="menu_event_type" action="event.action_event_type" parent="event.menu_event_configuration"/>
 
