@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-28 14:35+0000\n"
-"PO-Revision-Date: 2015-12-28 14:35+0000\n"
+"POT-Creation-Date: 2015-12-28 18:57+0000\n"
+"PO-Revision-Date: 2015-12-28 18:57+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -432,23 +432,8 @@ msgid "Contains"
 msgstr ""
 
 #. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_topic_form
-msgid "Contract"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_contract_count
 msgid "Contract count"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.actions.act_window,name:event_profile.action_event_topic_act_window
-msgid "Contracts"
-msgstr ""
-
-#. module: event_profile
-#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_track_contract
-msgid "Contracts for this event"
 msgstr ""
 
 #. module: event_profile
@@ -538,6 +523,11 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_sponsorship_document
 msgid "Doctor/Professor:"
+msgstr ""
+
+#. module: event_profile
+#: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
+msgid "Download Travel List"
 msgstr ""
 
 #. module: event_profile
@@ -1330,10 +1320,12 @@ msgstr ""
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_topic
+#: model:ir.ui.view,arch_db:event_profile.view_event_topic_form
 msgid "Topic"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.actions.act_window,name:event_profile.action_event_topic_act_window
 #: model:ir.model.fields,field_description:event_profile.field_event_event_topic_ids
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_track_contract
 msgid "Topics"
