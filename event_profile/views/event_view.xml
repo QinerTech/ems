@@ -76,18 +76,6 @@
                             </field>
                         </page>
 
-                        <page string="Service Items"  groups="base.group_no_one">
-                            <field name='contract' attrs="{'readonly':1}">
-                                <tree editable="bottom">
-                                    <field name='partner_id' />
-                                    <field name='name' />
-                                    <field name='service_type' />
-                                    <field name='service_fee' />
-                                    <field name='service_deliverable' />
-                                    <field name='resonable_requirement' />
-                                </tree>
-                            </field>
-                        </page>
                     </xpath>
                     <xpath expr="//field[@name='message_follower_ids']" position="attributes">
                         <attribute name="invisible">True</attribute>
@@ -334,8 +322,13 @@
             <field name="priority" eval="16" />
             <field name="active" eval="True" />
             <field name="arch" type="xml">
-                <form string="event_track_contract_form" create="1" delete="1" edit="1">
-                    <sheet>
+                <form string="Contract" >
+                    <header>
+                        <field name="state" widget="statusbar" clickable="True"/>
+                    </header>
+                    <sheet string="Contract">
+                        <div class="oe_button_box" name="button_box">
+                        </div>
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only" />
                             <h1>
@@ -345,12 +338,16 @@
                         </div>
                         <group string="Speaker Info">
                             <group>
-                                <field name="partner_id" />
+                                <field name="partner_id" domain="[('speaker','=',True)]" options="{'no_create':True}"/>
+                                <field name="partner_name"/>
+                                <field name="partner_email"/>
+                                <field name="partner_phone"/>
+                            </group>
+                            <group>
                                 <field name="oversea" readonly='1' />
                                 <field name="identifier_id" />
                                 <field name="bank_account" password="True"/>
-                            </group>
-                            <group>
+                                <field name="user_id"/>
                             </group>
                         </group>
                         <group string="Service Info">
@@ -362,7 +359,11 @@
                             </group>
                             <group>
                                 <field name="service_rate" />
-                                <field name="duration" />
+                                <label for="nbr_hour" />
+                                <div class="o_row">
+                                    <field name="nbr_hour" />:
+                                    <field name="nbr_minute" />
+                                </div>
                                 <field name="service_fee" />
                             </group>
                         </group>

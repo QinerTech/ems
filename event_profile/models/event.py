@@ -81,10 +81,10 @@ class event_event(models.Model):
     )
 
     organization_id = fields.Many2one(
-        'partner.organization.unit', string='Organizer',
+        'partner.organization.unit', string='Organizer', required=True,
         default=lambda self: self.env.user.partner_id.organization_unit)
 
-    address_id = fields.Many2one('res.country.state.city', string='City', default=False)
+    address_id = fields.Many2one('res.country.state.city', string='City', default=False, required=True)
     country_id = fields.Many2one('res.country', 'Country', related='address_id.state_id.country_id', store=True)
 
     deadline = fields.Date("Nomination End")
@@ -319,22 +319,23 @@ def _service_type_get(self):
 
 class event_track_contract(models.Model):
     _name = "event.track.contract"
-    _description = 'Event Track Contract'
+    _description = 'Contract'
 
     name = fields.Char(
         string='Subject',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
         help=False,
         size=50,
-        translate=True
     )
+
+    user_id = fields.Many2one('res.users', 'Responsible', track_visibility='onchange', default=lambda self: self.env.user)
 
     event = fields.Many2one(
         string='Event',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
@@ -348,7 +349,7 @@ class event_track_contract(models.Model):
 
     partner_id = fields.Many2one(
         string='Speaker',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
@@ -368,7 +369,6 @@ class event_track_contract(models.Model):
         default=None,
         help=False,
         size=50,
-        translate=True
     )
 
     partner_phone = fields.Char(
@@ -379,7 +379,6 @@ class event_track_contract(models.Model):
         default=None,
         help=False,
         size=50,
-        translate=True
     )
 
     partner_email = fields.Char(
@@ -390,7 +389,6 @@ class event_track_contract(models.Model):
         default=None,
         help=False,
         size=50,
-        translate=True
     )
 
     oversea = fields.Boolean(
@@ -401,7 +399,7 @@ class event_track_contract(models.Model):
 
     identifier_id = fields.Char(
         string='Identifier ID',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
@@ -409,7 +407,10 @@ class event_track_contract(models.Model):
     )
 
     bank_account = fields.Char(
-        string='Bank Account')
+        string='Bank Account',
+        required=True,
+
+        )
 
 
     service_type = fields.Selection(
@@ -420,7 +421,7 @@ class event_track_contract(models.Model):
     )
     service_description = fields.Char(
         string='Service Description',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
@@ -429,7 +430,7 @@ class event_track_contract(models.Model):
 
     service_rate = fields.Float(
         string='Service Rate',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=0.0,
@@ -438,7 +439,7 @@ class event_track_contract(models.Model):
 
     service_fee = fields.Float(
         string='Service Fee',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=0.0,
@@ -447,7 +448,7 @@ class event_track_contract(models.Model):
 
     service_deliverable = fields.Char(
         string='Serivce Deliverable',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
@@ -456,7 +457,7 @@ class event_track_contract(models.Model):
 
     resonable_requirement = fields.Text(
         string='Resonable Requirement',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=u"促进中国风湿科学学科的进步与发展",
@@ -527,8 +528,6 @@ class event_track_contract(models.Model):
                 dom = "Internal-Audience"
                 if contact.speaker and team:
                     dom = "%s-%s" % (team.name, 'Speaker')
-                elif contact.employee:
-                    dom = "Internal-Audience"
                 elif not contact.employee and not contact.speaker and team:
                     dom = "%s-%s" % (team.name, 'Audience')
 
@@ -566,7 +565,7 @@ class event_track_contract(models.Model):
         'Status', default='draft', required=True, copy=False, track_visibility='onchange')
 
     nbr_hour = fields.Integer(
-        string='Duration',
+        string='Durations',
         required=False,
         readonly=False,
         index=False,
@@ -600,7 +599,8 @@ class event_track_contract(models.Model):
             self.partner_email = contact.email
             self.partner_phone = contact.phone
             self.oversea = contact.oversea
-
+            self.identifier_id= contact.identifier_id
+            self.bank_account = contact.bank_account
 
 class event_registration_travel(models.Model):
     _name = "event.registration.travel"
@@ -927,6 +927,9 @@ class event_registration(models.Model):
                 self.name = contact.name
                 self.email = contact.email
                 self.phone = contact.phone
+                self.oversea = contact.oversea
+                self.identifier_id= contact.identifier_id
+                self.bank_account = contact.bank_account
 
                 self.travel['arrival_departure'] = contact.city
                 self.travel['return_destionation'] = contact.city
@@ -937,11 +940,9 @@ class event_registration(models.Model):
 
                 team = contact.team_id or contact.parent_id.team_id
 
-                dom = ""
+                dom = "Internal-Audience"
                 if contact.speaker and team:
                     dom = "%s-%s" % (team.name, 'Speaker')
-                elif contact.employee:
-                    dom = "Internal-Audience"
                 elif not contact.employee and not contact.speaker and team:
                     dom = "%s-%s" % (team.name, 'Audience')
 
