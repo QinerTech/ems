@@ -214,9 +214,6 @@ class event_event(models.Model):
 
     _defaults = {
         'event_code': 'New',
-        'show_menu': True,
-        'show_tracks': True,
-        'show_track_proposal': False,
         'date_tz': 'Asia/Shanghai',
         'date_begin': lambda *a: (datetime.now() + timedelta(days=(10))).strftime('%Y-%m-%d 00:00:00'),
         'date_end': lambda *a: (datetime.now() + timedelta(days=(10))).strftime('%Y-%m-%d 09:00:00'),
@@ -324,17 +321,15 @@ class event_track_contract(models.Model):
     _name = "event.track.contract"
     _description = 'Event Track Contract'
 
-    event_track = fields.Many2one(
-        string='Track',
+    name = fields.Char(
+        string='Subject',
         required=False,
         readonly=False,
         index=False,
         default=None,
-        comodel_name='event.track',
-        domain=[],
-        context={},
-        ondelete='cascade',
-        auto_join=False
+        help=False,
+        size=50,
+        translate=True
     )
 
     event = fields.Many2one(
@@ -348,11 +343,10 @@ class event_track_contract(models.Model):
         context={},
         ondelete='cascade',
         auto_join=False,
-        related='event_track.event_id',
         store=True
     )
 
-    speaker = fields.Many2one(
+    partner_id = fields.Many2one(
         string='Speaker',
         required=False,
         readonly=False,
@@ -366,15 +360,44 @@ class event_track_contract(models.Model):
         store=True
     )
 
-    oversea = fields.Boolean(
-        string='Is Oversea',
-        related='speaker.oversea'
+    partner_name = fields.Char(
+        string='Speaker Name',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
     )
 
-    duration = fields.Float('Hours', digits=(2, 2), related='event_track.duration')
+    partner_phone = fields.Char(
+        string='Speaker Phone',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
 
-    bank_account = fields.Char(
-        string='Bank Account')
+    partner_email = fields.Char(
+        string='Speaker Email',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        size=50,
+        translate=True
+    )
+
+    oversea = fields.Boolean(
+        string='Is Oversea',
+        related='partner_id.oversea'
+    )
+
 
     identifier_id = fields.Char(
         string='Identifier ID',
@@ -384,6 +407,9 @@ class event_track_contract(models.Model):
         default=None,
         size=20,
     )
+
+    bank_account = fields.Char(
+        string='Bank Account')
 
 
     service_type = fields.Selection(
@@ -437,14 +463,14 @@ class event_track_contract(models.Model):
     )
 
     @api.multi
-    @api.depends('event','event_track')
+    @api.depends('event','title')
     def name_get(self):
         result = []
         for contract in self:
             if contract.service_type:
-                result.append((contract.id, '%s - %s [ %s ]' % (contract.event.name, contract.event_track.name, contract.service_type)))
+                result.append((contract.id, '%s - %s [ %s ]' % (contract.event.name, contract.name, contract.service_type)))
             else:
-                result.append((contract.id, '%s - %s' % (contract.event.name, contract.event_track.name)))
+                result.append((contract.id, '%s - %s' % (contract.event.name, contract.name)))
 
         return result
 
@@ -455,12 +481,12 @@ class event_track_contract(models.Model):
         _logger.info('create contract ....... ')
         result = super(event_track_contract, self).create(values)
 
-        registrations = self.env['event.registration'].search([('partner_id', '=', values['speaker']), ('event_id', '=', values['event'])])
-        if not registrations and values['speaker']:
+        registrations = self.env['event.registration'].search([('partner_id', '=', values['partner_id']), ('event_id', '=', values['event'])])
+        if not registrations and values['partner_id']:
             _logger.info('create registrations !!!')
 
             vals = {
-                "partner_id": values['speaker'],
+                "partner_id": values['partner_id'],
                 "event_id": values['event'],
             }
 
@@ -474,7 +500,7 @@ class event_track_contract(models.Model):
             local_dict['place'] = event_obj.address_id.name
             local_dict['days'] = int((datetime.strptime(local_dict['date_leave'], DEFAULT_SERVER_DATE_FORMAT) - datetime.strptime(local_dict['date_arrive'], DEFAULT_SERVER_DATE_FORMAT)).days)
 
-            contact_id = self.env['res.partner'].browse(values['speaker']).address_get().get('contact', False)
+            contact_id = self.env['res.partner'].browse(values['partner_id']).address_get().get('contact', False)
             if contact_id:
                 contact = self.env['res.partner'].browse(contact_id)
                 vals['name'] = contact.name
@@ -535,22 +561,6 @@ class event_track_contract(models.Model):
 
         return result
 
-class event_track(models.Model):
-    _inherit = "event.track"
-
-    user_id = fields.Many2one(
-        'res.users', string='Nominator',
-        default=lambda self: self.env.user
-    )
-
-    oversea = fields.Boolean(
-        string='Is Oversea',
-        required=False,
-        readonly=False,
-        index=False,
-        default=False,
-    )
-
     state = fields.Selection([
         ('draft', 'Proposal'), ('confirmed', 'Confirmed'), ('refused', 'Refused'), ('cancel', 'Cancelled')],
         'Status', default='draft', required=True, copy=False, track_visibility='onchange')
@@ -582,72 +592,8 @@ class event_track(models.Model):
 
     duration = fields.Float('Hours', digits=(2, 2), compute='_compute_duration', store=True)
 
-    event_track_contract = fields.One2many(
-        string='service contract',
-        required=False,
-        readonly=False,
-        index=False,
-        # default=lambda self: self._default_contract(),
-        comodel_name='event.track.contract',
-        inverse_name='event_track',
-        domain=[],
-        context={},
-        auto_join=False,
-        limit=None
-    )
-
-    @api.model
-    def _default_contract(self):
-
-        return [
-                {
-                    'speaker': False,
-                    'service_rate': 3000.00,
-                    'service_fee': 3000.00,
-                    'service_deliverable': False,
-                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
-                 {
-                    'speaker': False,
-                    'service_rate': 3000.00,
-                    'service_fee': 3000.00,
-                    'service_deliverable': False,
-                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
-                    {
-                    'speaker': False,
-                    'service_rate': 3000.00,
-                    'service_fee': 3000.00,
-                    'service_deliverable': False,
-                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
-                    {
-                    'speaker': False,
-                    'service_rate': 3000.00,
-                    'service_fee': 3000.00,
-                    'service_deliverable': False,
-                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
-                    {
-                    'speaker': False,
-                    'service_rate': 3000.00,
-                    'service_fee': 3000.00,
-                    'service_deliverable': False,
-                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", },
-            ]
-
-    @api.onchange('speaker_ids')
-    def _onchange_speaker_ids(self):
-        contract_list = []
-
-        for speaker in self.speaker_ids:
-            contract_data = {
-                    'speaker': speaker,
-                    'resonable_requirement': u"促进中国风湿科学学科的进步与发展", }
-
-            contract_list += [contract_data]
-
-        self.event_track_contract = contract_list
-
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
-        _logger.info('self.event_track_contract is %s ' %(self.event_track_contract))
         contact = self.partner_id
         if contact:
             self.partner_name = contact.name
@@ -846,6 +792,8 @@ class event_registration(models.Model):
         default=lambda self: self.env.user,
         readonly=False, states={'done': [('readonly', True)]})
 
+    partner_id = fields.Many2one(required=True)
+
     event_ticket_id = fields.Many2one(required=True, string="Region")
 
     is_speaker = fields.Boolean(
@@ -854,10 +802,9 @@ class event_registration(models.Model):
         readonly=False,
         index=False,
         default=False,
-        related='partner_id.speaker',
+        related='partner_id.speaker'
     )
 
-    partner_id = fields.Many2one(required=True)
 
     oversea = fields.Boolean(
         string='Is Oversea',

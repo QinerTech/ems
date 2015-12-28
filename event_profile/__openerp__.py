@@ -21,7 +21,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['res_roles', 'website_event_sale', 'website_event_track', 'web_m2x_options'],
+    'depends': ['res_roles', 'event', 'event_sale', 'web_m2x_options'],
 
     # always loaded
     'data': [

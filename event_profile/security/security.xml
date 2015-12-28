@@ -122,15 +122,6 @@ Event Viewer</field>
             <field name="perm_read" eval="1"/>
         </record>
 
-        <record model="ir.model.access" id="access_website_menu">
-            <field name="name">group.user.access_website_menu</field>
-            <field name="model_id" ref='website.model_website_menu' />
-            <field name="group_id" ref='base.group_user' />
-            <field name="perm_read" eval="1"/>
-            <field name="perm_create" eval="1"/>
-            <field name="perm_write" eval="1"/>
-        </record>
-
         <record model="ir.model.access" id="base.access_ir_ui_view_group_user">
             <field name="group_id" ref='base.group_user' />
             <field name="perm_read" eval="1"/>
@@ -186,17 +177,6 @@ Event Viewer</field>
         <record model="ir.rule" id="event_registration_nominator">
             <field name="name">Event nominator can edit their event registration only.</field>
             <field name="model_id" ref="model_event_registration"/>
-            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
-            <field name="groups" eval="[(4, ref('event_profile.group_event_user_nominator'))]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="True"/>
-            <field name="perm_write" eval="True"/>
-        </record>
-
-        <record model="ir.rule" id="event_track_nominator">
-            <field name="name">Event nominator can edit their event track only.</field>
-            <field name="model_id" ref="model_event_track"/>
             <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
             <field name="groups" eval="[(4, ref('event_profile.group_event_user_nominator'))]"/>
             <field name="perm_read" eval="True"/>

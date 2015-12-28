@@ -5,7 +5,7 @@
 <template id="report_service_contract_document">
 
         <t t-call="report.internal_layout">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.speaker.lang})" />
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
         <div class="page">
             <div class="oe_structure"/>
                 <table border="1" cellpadding="0" cellspacing="0"  style="border:1px solid black;" >
@@ -35,15 +35,15 @@
             <p style="font-size:11px;line-height:12px ">  </p>
             </td>
             <td colspan="3" style="width:485px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  Name and Position: <span t-field="doc.speaker.name"/> <span t-field="doc.speaker.function"/>    </p>
+            <p style="font-size:11px;line-height:12px ">  Name and Position: <span t-field="doc.partner_id.name"/> <span t-field="doc.partner_id.function"/>    </p>
 
             <p style="font-size:11px;line-height:12px ">  Identity ID: <span t-field="doc.identifier_id"/>   </p>
 
             <p style="font-size:11px;line-height:12px ">  Bank Account: <span t-field="doc.bank_account"/>   </p>
 
-            <p style="font-size:11px;line-height:12px ">  Institute: <span t-field="doc.speaker.parent_id.name"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  Institute: <span t-field="doc.partner_id.parent_id.name"/>   </p>
 
-            <p style="font-size:11px;line-height:12px ">  Address:<span t-field="doc.speaker.parent_id.contact_address"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  Address:<span t-field="doc.partner_id.parent_id.contact_address"/>   </p>
             </td>
         </tr>
         <tr  style="border:1px solid black;" >
@@ -158,7 +158,7 @@
         </tr>
         <tr  style="border:0.5px solid black;" >
             <td colspan="2" style="width:111px;border:0.5px solid black;">
-            <p style="font-size:11px;line-height:12px ">  <strong>  Service provider sign here</strong>  : <span t-field="doc.speaker.name"/>   </p>
+            <p style="font-size:11px;line-height:12px ">  <strong>  Service provider sign here</strong>  : <span t-field="doc.partner_id.name"/>   </p>
             </td>
             <td style="width:457px;border:0.5px solid black;">
             <p style="font-size:11px;line-height:12px ">  Signature:</p>
@@ -197,7 +197,7 @@
 <template id="report_service_contract">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="event_profile.report_service_contract_document" t-lang="doc.speaker.lang"/>
+            <t t-call="event_profile.report_service_contract_document" t-lang="doc.partner_id.lang"/>
         </t>
     </t>
 </template>

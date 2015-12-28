@@ -8,7 +8,7 @@
         <t t-set="doc" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
-                <h3>Speaker List</h3>
+                <h3>partner_id List</h3>
                 <row>
                     <div t-if="doc.name" class="col-xs-6">
                         <strong>Subject:</strong>
@@ -51,22 +51,22 @@
                                <t t-esc='l_index + 1' />
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.speaker.name"/>
+                               <span t-field="l.partner_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.speaker.city"/>
+                               <span t-field="l.partner_id.city"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.speaker.parent_id.name"/>
+                               <span t-field="l.partner_id.parent_id.name"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.speaker.hospital_unit"/>
+                               <span t-field="l.partner_id.hospital_unit"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.speaker.function"/>
+                               <span t-field="l.partner_id.function"/>
                             </td>
                             <td style="border: 0.5px solid black;">
-                               <span t-field="l.speaker.identifier_id"/>
+                               <span t-field="l.partner_id.identifier_id"/>
                             </td>
                             <td style="border: 0.5px solid black;">
                                <span t-field="l.bank_account"/>

@@ -79,8 +79,8 @@
                         <page string="Service Items"  groups="base.group_no_one">
                             <field name='contract' attrs="{'readonly':1}">
                                 <tree editable="bottom">
-                                    <field name='speaker' />
-                                    <field name='event_track' />
+                                    <field name='partner_id' />
+                                    <field name='name' />
                                     <field name='service_type' />
                                     <field name='service_fee' />
                                     <field name='service_deliverable' />
@@ -131,17 +131,7 @@
                 </field>
             </record>
 
-            <record model="ir.ui.view" id="view_event_form_extend_website_event">
-                <field name="name">event.event.website.extend.form</field>
-                <field name="model">event.event</field>
-                <field name="inherit_id" ref="website_event.view_event_sale_form" />
-                <field name="arch" type="xml">
-                    <xpath expr="//button[@name='website_publish_button']" position="replace" > </xpath>
-                    <xpath expr="//field[@name='twitter_hashtag']" position="replace" > </xpath>
-                    <xpath expr="//button[@states='confirm']" position="replace" > </xpath>
-                    <xpath expr="//button[@states='done']" position="replace" > </xpath>
-                </field>
-            </record>
+
 
             <record model="ir.ui.view" id="view_event_form_inherit_ticket_extend">
                 <field name="name">view_event_form_inherit_tichet.extend</field>
@@ -193,33 +183,7 @@
                 </field>
             </record>
 
-            <record model="ir.ui.view" id="view_event_form_website_tracks_extend">
-                <field name="name">Event Tracks</field>
-                <field name="model">event.event</field>
-                <field name="inherit_id" ref="website_event_track.view_event_form" />
-                <field name="arch" type="xml">
-                    <xpath expr="//field[@name='show_menu']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//field[@name='show_tracks']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//field[@name='show_track_proposal']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//label[@for='show_track_proposal']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//label[@for='show_tracks']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//label[@for='show_menu']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//div[@name='button_box']/button[last()]" position="replace">
-                    </xpath>
-                </field>
-            </record>
+
             <record model="ir.ui.view" id="view_event_registration_form">
                 <field name="name">event.registration.form.extended</field>
                 <field name="model">event.registration</field>
@@ -328,93 +292,6 @@
                     </xpath> -->
                 </field>
             </record>
-            <record model="ir.ui.view" id="view_event_track_form_extend">
-                <field name="name">event.track.form.extended</field>
-                <field name="inherit_id" ref="website_event_track.view_event_track_form" />
-                <field name="model">event.track</field>
-                <field name="arch" type="xml">
-                    <xpath expr="//sheet/group" position="replace">
-                        <group>
-                            <group>
-                                <!-- <field name="speaker_id"  context="{'search_default_speaker':1, 'default_speaker':1}"  /> -->
-                                <!-- <field name="registration_id"  domain="[('is_speaker','=',True), ( 'event_id','=', event_id)]"  context="{'search_default_speaker':1, 'default_event_id': event_id}" /> -->
-                                <field name="partner_id"   domain="[('speaker','=',True)]"   context="{'search_default_employee':1} " options="{ 'no_create' : True}" />
-                                <field name="partner_name"/>
-                                <field name="partner_phone"/>
-                                <field name="partner_email"/>
-                                <field name="oversea" readonly="1"/>
-                                <!-- <field name="identifier_id" password="True" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" /> -->
-                                <!-- <field name="bank_account" password="True" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX"  /> -->
-                            </group>
-                            <group>
-                                <field name="speaker_ids" widget="many2many_tags"   domain="[('speaker','=',True)]"   context="{'search_default_speaker':1, 'default_speaker':1}  " options="{ 'no_create' : True}"/>
-
-                                <field name="date" invisible='1'/>
-                                <label for="nbr_hour"/>
-                                <div class="o_row">
-                                    <field name="nbr_hour" />:
-                                    <field name="nbr_minute" />
-                                </div>
-                                <field name="user_id"/>
-                                <field name="tag_ids" widget="many2many_tags"/>
-                            </group>
-                        </group>
-                    </xpath>
-
-                    <xpath expr="//button[@name='website_publish_button']" position="replace" ></xpath>
-                    <xpath expr="//field[@name='name']" position="attributes" >
-                        <attribute name="placeholder">例如：修美乐的应用</attribute>
-                    </xpath>
-                    <xpath expr="//sheet" position="inside">
-                        <notebook>
-                            <page string="Service Items" name="service_items" >
-                                <field name="event_track_contract">
-                                    <tree editable="bottom">
-                                        <field name="event"  invisible="1"  />
-                                        <field name="speaker"  domain="[('speaker','=',True)]" readonly="1" />
-                                        <field name="bank_account"  password="True"  />
-                                        <field name="service_type" />
-                                        <field name="service_description" />
-                                        <field name="service_rate" />
-                                        <field name="service_fee" />
-                                        <field name="service_deliverable" />
-                                        <field name="resonable_requirement" />
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
-                    </xpath>
-
-                    <xpath expr="//field[@name='message_follower_ids']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                    <xpath expr="//field[@name='message_ids']" position="attributes">
-                        <attribute name="invisible">True</attribute>
-                    </xpath>
-                </field>
-            </record>
-
-            <record model="ir.ui.view" id="view_event_track_tree">
-            <field name="name">event.track.tree</field>
-            <field name="model">event.track</field>
-                <field name="inherit_id" ref="website_event_track.view_event_track_tree" />
-                <field name="arch" type="xml">
-                    <xpath expr="//field[@name='name']" position="after">
-                        <field name="partner_id"  />
-                        <field name="user_id"  />
-                    </xpath>
-                </field>
-            </record>
-
-            <record model="ir.actions.act_window" id="website_event_track.action_event_track">
-                <field name="view_mode">tree,form,graph</field>
-                <field name="context">{'search_default_message_needaction': 1}</field>
-            </record>
-
-            <record model="ir.actions.act_window" id="website_event_track.action_event_track_from_event">
-                <field name="view_mode">tree,form,graph</field>
-                 <field name="context">{'search_default_event_id': active_id, 'default_event_id': active_id}</field>
-            </record>
 
         <!-- VIEWS: "Event Track Contract"
 
@@ -437,12 +314,12 @@
             <field name="active" eval="True" />
             <field name="arch" type="xml">
                 <tree string="event_track_contract_tree" create="1" delete="1" edit="1">
-                    <field name="event"  />
-                    <field name="event_track" string="Track" />
-                    <field name="speaker"/>
+                    <field name="name" />
+                    <field name="partner_id"/>
                     <field name="service_type"/>
                     <field name="service_description"/>
                     <field name="service_deliverable"/>
+                    <field name="event"  />
 
                 </tree>
             </field>
@@ -460,15 +337,15 @@
                 <form string="event_track_contract_form" create="1" delete="1" edit="1">
                     <sheet>
                         <div class="oe_title">
-                            <label for="event_track" class="oe_edit_only" />
+                            <label for="name" class="oe_edit_only" />
                             <h1>
-                                <field name="event_track" />
+                                <field name="name" />
                             </h1>
                                 <field name="event" />
                         </div>
                         <group string="Speaker Info">
                             <group>
-                                <field name="speaker" />
+                                <field name="partner_id" />
                                 <field name="oversea" readonly='1' />
                                 <field name="identifier_id" />
                                 <field name="bank_account" password="True"/>
@@ -505,9 +382,9 @@
             <field name="active" eval="True" />
             <field name="arch" type="xml">
                 <search string="event_track_contract_search">
+                    <field name="name"  />
+                    <field name="partner_id"  />
                     <field name="event"  />
-                    <field name="event_track"  />
-                    <field name="speaker"  />
                     <!-- ··· -->
                 </search>
             </field>
@@ -639,22 +516,7 @@
                    eval="[(6,0,[ref('base.group_no_one')])]"/>
         </record>
 
-        <record model="ir.ui.menu" id="website_event_track.menu_event_track">
-           <field name="groups_id"
-                   eval="[(6,0,[ref('base.group_no_one')])]"/>
-        </record>
-
         <record model="ir.ui.menu" id="event.menu_event_global_settings">
-           <field name="groups_id"
-                   eval="[(6,0,[ref('base.group_system')])]"/>
-        </record>
-
-        <record model="ir.ui.menu" id="website.menu_website">
-           <field name="groups_id"
-                   eval="[(6,0,[ref('base.group_system')])]"/>
-        </record>
-
-        <record model="ir.ui.menu" id="website.menu_website_configuration">
            <field name="groups_id"
                    eval="[(6,0,[ref('base.group_system')])]"/>
         </record>
@@ -682,15 +544,5 @@
             <field name="key">web.base.url.freeze</field>
             <field name="value">True</field>
         </record> -->
-    </data>
-
-    <data noupdate="1">
-
-        <delete model="ir.ui.menu" id="website_event_track.menu_event_sponsor_type"/>
-
-        <delete model="ir.actions.report.xml" id="event.report_event_registration_badge"/>
-
-        <delete model="ir.ui.menu" id="website_event_track.menu_event_track_location"/>
-
     </data>
 </openerp>
