@@ -210,7 +210,7 @@ class event_event(models.Model):
         for event in self:
             event.contract_count = len(self.env['event.topic'].search([('event', '=', self.id)]))
 
-    @api.one
+    @api.multi
     def export_travel_info(self):
 
         data = base64.encodestring(self.from_data(self.registration_ids))
