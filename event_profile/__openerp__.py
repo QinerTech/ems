@@ -30,6 +30,7 @@
         'data/event.service.type.csv',
         'data/partner.function.csv',
         'data/res.partner.title.csv',
+        'data/res.partner.hospital.unit.csv',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/event_view.xml',
