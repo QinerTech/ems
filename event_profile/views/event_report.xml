@@ -33,6 +33,22 @@
             <field name="dpi">90</field>
         </record>
 
+        <record id="paperformat_a3_landscape" model="report.paperformat">
+            <field name="name">European A3 Landscape</field>
+            <field name="default" eval="True" />
+            <field name="format">A3</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">15</field>
+            <field name="dpi">90</field>
+        </record>
+
         <report
             id="report_event_registration_sponsorship_application"
             string="Sponsorship Application"
@@ -47,7 +63,7 @@
             string="Travel Report"
             model="event.event"
             report_type="qweb-pdf"
-            paperformat="paperformat_a4_landscapee"
+            paperformat="paperformat_a3_landscape"
             file="event.report_registration_travel"
             name="event_profile.report_registration_travel"
             groups="event_profile.group_event_user,event_profile.group_event_admin"
