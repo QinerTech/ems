@@ -14,6 +14,12 @@ from StringIO import StringIO
 
 _logger = getLogger(__name__)
 
+class product_template(models.Model):
+    _inherit = "product.template"
+
+    name = fields.Char(
+        translate=False
+    )
 
 @api.model
 def _lang_get(self):
@@ -210,7 +216,7 @@ class event_event(models.Model):
         for event in self:
             event.contract_count = len(self.env['event.topic'].search([('event', '=', self.id)]))
 
-    @api.one
+    @api.multi
     def export_travel_info(self):
 
         data = base64.encodestring(self.from_data(self.registration_ids))
