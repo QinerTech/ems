@@ -161,6 +161,8 @@
                     <xpath expr="//filter[@name='type_company']" position="replace">
                         <filter string="Institutions" name="type_company" domain="[('is_company','=',1)]"/>
                     </xpath>
+                    <xpath expr="//filter[@name='inactive']" position="replace">
+                    </xpath>
                     <xpath expr="//group[@name='group_by']" position="replace">
                        <filter name="responsible" string="Responsible" domain="[]" context="{'group_by' : 'user_id'}"/>
                        <filter name="Region" string="Region" domain="[]" context="{'group_by' : 'team_id'}"/>

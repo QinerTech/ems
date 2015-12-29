@@ -431,8 +431,8 @@ msgstr "联系人称谓"
 #: model:ir.ui.menu,name:event_profile.action_menu_contact
 #: model:ir.ui.menu,name:event_profile.contact_main_menu
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "Contacts"
-msgstr "联系人"
+msgid "Alll Contacts"
+msgstr "所有联系人"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_child_ids
@@ -688,8 +688,8 @@ msgstr "性别"
 #: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
 #: model:ir.ui.menu,name:event_profile.contact_menu_customer
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "HCPs"
-msgstr ""
+msgid "Customer"
+msgstr "客户"
 
 #. module: event_profile
 #: selection:event.event,level:0
