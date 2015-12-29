@@ -11946,7 +11946,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_partner_function
 #: model:ir.model.fields,field_description:base.field_res_users_function
 msgid "Job Position"
-msgstr ""
+msgstr "职位"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr
@@ -13038,12 +13038,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_partner_mobile
 #: model:ir.model.fields,field_description:base.field_res_users_mobile
 msgid "Mobile"
-msgstr ""
+msgstr "手机"
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.view_partner_form
 msgid "Mobile:"
-msgstr ""
+msgstr "手机"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_font_mode

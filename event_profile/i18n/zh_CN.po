@@ -431,7 +431,7 @@ msgstr "联系人称谓"
 #: model:ir.ui.menu,name:event_profile.action_menu_contact
 #: model:ir.ui.menu,name:event_profile.contact_main_menu
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "Alll Contacts"
+msgid "All Contacts"
 msgstr "所有联系人"
 
 #. module: event_profile
@@ -688,7 +688,7 @@ msgstr "性别"
 #: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
 #: model:ir.ui.menu,name:event_profile.contact_menu_customer
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "Customer"
+msgid "Customers"
 msgstr "客户"
 
 #. module: event_profile
@@ -787,8 +787,8 @@ msgstr "机构/医院："
 #: model:ir.actions.act_window,name:event_profile.action_contacts_institution
 #: model:ir.ui.menu,name:event_profile.contact_menu_institution
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
-msgid "Institutions"
-msgstr "机构"
+msgid "Hospitals"
+msgstr "医院"
 
 #. module: event_profile
 #: selection:event.event,level:0
@@ -966,7 +966,7 @@ msgstr "合作伙伴"
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_partner_function
-msgid "Partner Job Position"
+msgid "Job Position"
 msgstr "职称"
 
 #. module: event_profile
