@@ -69,7 +69,7 @@
                     </xpath>
                     <xpath expr="//field[@name='website']" position="replace">
                         <field name="website"  invisible="True"/>
-                        <field name="team_id" />
+                        <field name="team_id" options='{"no_open": True, "no_create": True}' />
                         <field name="user_id" />
                         <field name="organization_unit" attrs="{'invisible': [('employee','=', False)]}" />
                         <field name="report_to" domain="[('employee','=', True)]" attrs="{'invisible': [('employee','=', False)]}" />
@@ -289,7 +289,7 @@
         </record>
 
         <record model="ir.ui.view" id="view_organization_unit_form">
-            <field name="name">Organization Unit</field>
+            <field name="name">Business Unit</field>
             <field name="model">partner.organization.unit</field>
             <field name="arch" type="xml">
                 <form string="Organization Unit">
@@ -307,7 +307,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="view_organization_unit_tree">
-            <field name="name">Organization Unit</field>
+            <field name="name">Business Unit</field>
             <field name="model">partner.organization.unit</field>
             <field name="arch" type="xml">
                 <tree string="Organization Unit">
@@ -318,7 +318,7 @@
             </field>
         </record>
         <record model="ir.actions.act_window" id="action_organization_unit">
-            <field name="name">Organization Unit</field>
+            <field name="name">Business Unit</field>
             <field name="res_model">partner.organization.unit</field>
         </record>
 
@@ -415,7 +415,7 @@
         <delete  model='ir.values'  search="[('model' , '=', 'res.partner')]">
         </delete>
 
-        <delete  model="crm.team"  search="[('id' , 'in', [ref('website.salesteam_website_sales'), ref('sales_team.team_sales_department')])]">
+        <delete  model="crm.team"  search="[('id' , 'in', [ref('sales_team.team_sales_department')])]">
         </delete>
 
         </data>
