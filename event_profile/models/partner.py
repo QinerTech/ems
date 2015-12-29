@@ -194,7 +194,7 @@ class Partner(models.Model):
     )
 
     customer = fields.Boolean(
-        string='Is a HCP',
+        string='Is a Customer',
     )
 
     bank_account = fields.Char(
