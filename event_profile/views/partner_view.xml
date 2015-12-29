@@ -50,11 +50,11 @@
                         <group>
                             <group>
                                 <field name="customer" attrs="{'invisible': ['|', ('is_company','=', True), ('employee','=', True)]}"/>
-                                <field name="speaker" attrs="{'invisible': ['|', ('is_company','=', True), ('employee','=', True)]} " />
+                                <field name="employee" attrs="{'invisible': ['|', ('is_company','=', True), ('customer','=', True)]}" />
                                 <!-- <field name="supplier" /> -->
                             </group>
                             <group>
-                                <field name="employee" attrs="{'invisible': ['|', ('is_company','=', True), ('customer','=', True)]}" />
+                                <field name="speaker" attrs="{'invisible': ['|', ('is_company','=', True), ('employee','=', True)]} " />
                                 <field name="oversea" attrs="{'invisible': [('speaker','=', False)]}" />
                             </group>
 
