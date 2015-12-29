@@ -14,6 +14,12 @@ from StringIO import StringIO
 
 _logger = getLogger(__name__)
 
+class product_template(models.Model):
+    _inherit = "product.template"
+
+    name = fields.Char(
+        translate=False
+    )
 
 @api.model
 def _lang_get(self):
