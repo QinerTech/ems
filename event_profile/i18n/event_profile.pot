@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-28 18:57+0000\n"
-"PO-Revision-Date: 2015-12-28 18:57+0000\n"
+"POT-Creation-Date: 2015-12-28 23:44+0000\n"
+"PO-Revision-Date: 2015-12-28 23:44+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -990,6 +990,11 @@ msgid "Position:"
 msgstr ""
 
 #. module: event_profile
+#: model:ir.model,name:event_profile.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: event_profile
 #: selection:event.event,event_purpose:0
 msgid "Promotional"
 msgstr ""
@@ -1421,30 +1426,6 @@ msgid "on"
 msgstr ""
 
 #. module: event_profile
-#: model:product.product,name:event_profile.product_product_event1
-#: model:product.template,name:event_profile.product_product_event1_product_template
-msgid "东区-Audience"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event6
-#: model:product.template,name:event_profile.product_product_event6_product_template
-msgid "东区-Speaker"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event5
-#: model:product.template,name:event_profile.product_product_event5_product_template
-msgid "中区-Audience"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event10
-#: model:product.template,name:event_profile.product_product_event10_product_template
-msgid "中区-Speaker"
-msgstr ""
-
-#. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "会议地点：境内___，境外____，如会议地点在中国境外，请描述选择海外会议地点的理由：_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
 msgstr ""
@@ -1457,41 +1438,5 @@ msgstr ""
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
 msgid "例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event4
-#: model:product.template,name:event_profile.product_product_event4_product_template
-msgid "北区-Audience"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event9
-#: model:product.template,name:event_profile.product_product_event9_product_template
-msgid "北区-Speaker"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event2
-#: model:product.template,name:event_profile.product_product_event2_product_template
-msgid "南区-Audience"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event7
-#: model:product.template,name:event_profile.product_product_event7_product_template
-msgid "南区-Speaker"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event3
-#: model:product.template,name:event_profile.product_product_event3_product_template
-msgid "西区-Audience"
-msgstr ""
-
-#. module: event_profile
-#: model:product.product,name:event_profile.product_product_event8
-#: model:product.template,name:event_profile.product_product_event8_product_template
-msgid "西区-Speaker"
 msgstr ""
 
