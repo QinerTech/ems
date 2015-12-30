@@ -26,6 +26,30 @@ def _lang_get(self):
     languages = self.env['res.lang'].search([])
     return [(language.code, language.name) for language in languages]
 
+class event_type(models.Model):
+    _inherit = "event.type"
+
+    level = fields.Selection(
+        string='Event Level',
+        required=True,
+        readonly=False,
+        index=False,
+        help=False,
+        selection=[
+            ('abbvie', 'Abbvie'),
+            ('other', '3rd Partner'),
+            ],
+        default='abbvie',
+        )
+
+    @api.multi
+    @api.depends('name', 'level')
+    def name_get(self):
+        result = []
+        for etype in self:
+            result.append((etype.id, '%s (%s)' % (etype.name, etype.level)))
+        return result
+
 class event_event(models.Model):
     _inherit = "event.event"
 
