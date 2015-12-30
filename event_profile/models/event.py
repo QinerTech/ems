@@ -560,8 +560,8 @@ class event_topic(models.Model):
         required=True,
         readonly=False,
         index=False,
-        default=0.0,
-        digits=(4, 2),
+        default=None,
+        size=20,
     )
 
     service_fee = fields.Float(
@@ -569,8 +569,8 @@ class event_topic(models.Model):
         required=True,
         readonly=False,
         index=False,
-        default=None,
-        size=50,
+        default=0.0,
+        digits=(4, 2),
     )
 
     service_deliverable = fields.Char(
