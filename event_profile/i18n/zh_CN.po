@@ -534,7 +534,7 @@ msgstr "医生/教授:"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_event
 msgid "Download Travel List"
-msgstr ""
+msgstr "参会信息表下载"
 
 #. module: event_profile
 #: selection:event.registration,arrival_method:0
