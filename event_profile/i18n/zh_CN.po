@@ -928,7 +928,7 @@ msgstr "全国"
 #: model:ir.model.fields,field_description:event_profile.field_event_event_deadline
 #, fuzzy
 msgid "Nomination End"
-msgstr "提名结束"
+msgstr "提名截止"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_registration_user_id
