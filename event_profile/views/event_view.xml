@@ -327,8 +327,8 @@
                                 <field name="partner_id" domain="[('speaker','=',True)]" options="{'no_create':True}"/>
                                 <field name="partner_email" />
                                 <field name="partner_phone" />
-                                <field name="identifier_id" />
-                                <field name="bank_account" password="True" />
+                                <field name="identifier_id" password="True" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
+                                <field name="bank_account" password="True" placeholder="例如：xx银行xx路支行6222XXXXXXXXXXXX" />
                             </group>
                             <group>
                                 <field name="oversea" readonly='1' />
@@ -348,7 +348,7 @@
                                 <field name="resonable_requirement" />
                             </group>
                             <group>
-                                <field name="service_rate" />
+                                <field name="service_rate" placeholder="_______元/________" />
                                 <field name="duration" />
                                 <field name="service_fee" />
                             </group>
