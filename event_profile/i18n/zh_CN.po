@@ -356,7 +356,6 @@ msgstr "取消登记"
 
 #. module: event_profile
 #: selection:event.topic,state:0
-#, fuzzy
 msgid "Cancelled"
 msgstr "已取消"
 
@@ -417,7 +416,6 @@ msgstr "确认活动"
 
 #. module: event_profile
 #: selection:event.topic,state:0
-#, fuzzy
 msgid "Confirmed"
 msgstr "已确认"
 
@@ -467,7 +465,6 @@ msgstr "省"
 #: model:ir.model.fields,field_description:event_profile.field_partner_hospital_unit_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_create_uid
 #: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_create_uid
-#, fuzzy
 msgid "Created by"
 msgstr "创建人"
 
@@ -479,7 +476,6 @@ msgstr "创建人"
 #: model:ir.model.fields,field_description:event_profile.field_partner_hospital_unit_create_date
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_create_date
 #: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_create_date
-#, fuzzy
 msgid "Created on"
 msgstr "创建时间"
 
@@ -716,7 +712,6 @@ msgstr "酒店预算"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_event_registration_form
-#, fuzzy
 msgid "Hotel Info"
 msgstr "酒店信息"
 
@@ -734,7 +729,6 @@ msgstr "小时"
 #: model:ir.model.fields,field_description:event_profile.field_partner_hospital_unit_id
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_id
 #: model:ir.model.fields,field_description:event_profile.field_res_country_state_city_id
-#, fuzzy
 msgid "ID"
 msgstr "ID"
 
@@ -792,7 +786,6 @@ msgstr "医院"
 
 #. module: event_profile
 #: selection:event.event,level:0
-#, fuzzy
 msgid "International"
 msgstr "国际"
 
@@ -862,7 +855,6 @@ msgstr "最后更新时间"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_image_medium
-#, fuzzy
 msgid "Logo"
 msgstr "徽标"
 
@@ -926,7 +918,6 @@ msgstr "全国"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_deadline
-#, fuzzy
 msgid "Nomination End"
 msgstr "提名截止"
 
@@ -1018,7 +1009,6 @@ msgstr ""
 
 #. module: event_profile
 #: selection:event.topic,state:0
-#, fuzzy
 msgid "Proposal"
 msgstr "建议"
 
@@ -1029,7 +1019,6 @@ msgstr ""
 
 #. module: event_profile
 #: selection:event.topic,state:0
-#, fuzzy
 msgid "Refused"
 msgstr "已拒绝"
 
@@ -1041,7 +1030,6 @@ msgstr "区域"
 
 #. module: event_profile
 #: selection:event.event,level:0
-#, fuzzy
 msgid "Regional"
 msgstr "区域"
 
@@ -1317,15 +1305,13 @@ msgstr "城市"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_topic_state
-#, fuzzy
 msgid "Status"
 msgstr "状态"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_topic_name
-#, fuzzy
 msgid "Subject"
-msgstr "主题"
+msgstr "讲题"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_brands
@@ -1350,16 +1336,15 @@ msgstr "入场券"
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_topic
 #: model:ir.ui.view,arch_db:event_profile.view_event_topic_form
-#, fuzzy
 msgid "Topic"
-msgstr "主题"
+msgstr "讲题"
 
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_event_topic_act_window
 #: model:ir.model.fields,field_description:event_profile.field_event_event_topic_ids
 #: model:ir.ui.view,arch_db:event_profile.view_event_form_extend_track_contract
 msgid "Topics"
-msgstr "主题"
+msgstr "讲题"
 
 #. module: event_profile
 #: selection:event.registration,arrival_method:0
