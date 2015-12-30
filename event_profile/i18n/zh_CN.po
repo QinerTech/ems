@@ -501,12 +501,12 @@ msgstr "科室"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_code
-msgid "Department Code"
+msgid "BU Code"
 msgstr "部门代号"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_name
-msgid "Department Name"
+msgid "BU Name"
 msgstr "部门名称"
 
 #. module: event_profile
@@ -956,7 +956,7 @@ msgstr "组织者："
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_parent_id
-msgid "Parent Unit"
+msgid "Parent BU"
 msgstr "上级部门"
 
 #. module: event_profile

@@ -13,7 +13,7 @@ class partner_department(models.Model):
     _description = 'Business Unit'
 
     code = fields.Char(
-        string='Department Code',
+        string='BU Code',
         required=True,
         readonly=False,
         index=False,
@@ -24,7 +24,7 @@ class partner_department(models.Model):
     )
 
     name = fields.Char(
-        string='Department Name',
+        string='BU Name',
         required=True,
         readonly=False,
         index=False,
@@ -34,7 +34,7 @@ class partner_department(models.Model):
         translate=True
     )
 
-    parent_id = fields.Many2one('partner.organization.unit', string='Parent Unit', select=True, ondelete='cascade')
+    parent_id = fields.Many2one('partner.organization.unit', string='Parent BU', select=True, ondelete='set null')
 
     child_ids = fields.One2many('partner.organization.unit', 'parent_id', string='Contains')
 
