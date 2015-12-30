@@ -125,7 +125,7 @@ class Partner(models.Model):
         comodel_name='partner.organization.unit',
         domain=[],
         context={},
-        ondelete='null',
+        ondelete='set null',
         auto_join=False
     )
 
@@ -139,7 +139,7 @@ class Partner(models.Model):
         comodel_name='partner.hospital.unit',
         domain=[],
         context={},
-        ondelete='null',
+        ondelete='set null',
         auto_join=False
     )
 
@@ -153,7 +153,7 @@ class Partner(models.Model):
         comodel_name='partner.function',
         domain=[],
         context={},
-        ondelete='null',
+        ondelete='set null',
         auto_join=False
     )
 
@@ -225,7 +225,7 @@ class Partner(models.Model):
         comodel_name='res.partner',
         domain=[],
         context={},
-        ondelete='null',
+        ondelete='set null',
         auto_join=False
     )
 
