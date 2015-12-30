@@ -304,7 +304,7 @@
             <field name="name">Business Unit</field>
             <field name="model">partner.organization.unit</field>
             <field name="arch" type="xml">
-                <form string="Organization Unit">
+                <form string="Business Unit">
                     <sheet>
                         <group>
                             <group>
@@ -322,7 +322,7 @@
             <field name="name">Business Unit</field>
             <field name="model">partner.organization.unit</field>
             <field name="arch" type="xml">
-                <tree string="Organization Unit">
+                <tree string="Business Unit">
                     <field name="code"/>
                     <field name="name"/>
                     <field name="parent_id"/>

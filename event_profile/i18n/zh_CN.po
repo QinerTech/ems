@@ -941,8 +941,8 @@ msgstr "提名者"
 #: model:ir.model.fields,field_description:event_profile.field_res_partner_organization_unit
 #: model:ir.ui.view,arch_db:event_profile.view_organization_unit_form
 #: model:ir.ui.view,arch_db:event_profile.view_organization_unit_tree
-msgid "Organization Unit"
-msgstr "组织单位"
+msgid "Business Unit"
+msgstr "业务部门"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_organization_id
@@ -956,8 +956,8 @@ msgstr "组织者："
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_parent_id
-msgid "Parent Organization Unit"
-msgstr "组织单位"
+msgid "Parent Unit"
+msgstr "上级部门"
 
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_res_partner
