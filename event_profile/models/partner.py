@@ -10,10 +10,10 @@ _logger = logging.getLogger(__name__)
 
 class partner_department(models.Model):
     _name = "partner.organization.unit"
-    _description = 'Organization Unit'
+    _description = 'Business Unit'
 
     code = fields.Char(
-        string='Department Code',
+        string='BU Code',
         required=True,
         readonly=False,
         index=False,
@@ -24,7 +24,7 @@ class partner_department(models.Model):
     )
 
     name = fields.Char(
-        string='Department Name',
+        string='BU Name',
         required=True,
         readonly=False,
         index=False,
@@ -34,7 +34,7 @@ class partner_department(models.Model):
         translate=True
     )
 
-    parent_id = fields.Many2one('partner.organization.unit', string='Parent Organization Unit', select=True, ondelete='cascade')
+    parent_id = fields.Many2one('partner.organization.unit', string='Parent BU', select=True, ondelete='set null')
 
     child_ids = fields.One2many('partner.organization.unit', 'parent_id', string='Contains')
 
@@ -116,7 +116,7 @@ class Partner(models.Model):
     )
 
     organization_unit = fields.Many2one(
-        string='Organization Unit',
+        string='Business Unit',
         required=False,
         readonly=False,
         index=False,
@@ -125,7 +125,7 @@ class Partner(models.Model):
         comodel_name='partner.organization.unit',
         domain=[],
         context={},
-        ondelete='cascade',
+        ondelete='set null',
         auto_join=False
     )
 
@@ -139,7 +139,7 @@ class Partner(models.Model):
         comodel_name='partner.hospital.unit',
         domain=[],
         context={},
-        ondelete='cascade',
+        ondelete='set null',
         auto_join=False
     )
 
@@ -153,7 +153,7 @@ class Partner(models.Model):
         comodel_name='partner.function',
         domain=[],
         context={},
-        ondelete='cascade',
+        ondelete='set null',
         auto_join=False
     )
 
@@ -225,7 +225,7 @@ class Partner(models.Model):
         comodel_name='res.partner',
         domain=[],
         context={},
-        ondelete='cascade',
+        ondelete='set null',
         auto_join=False
     )
 

@@ -555,7 +555,7 @@ class event_topic(models.Model):
         size=50,
     )
 
-    service_rate = fields.Float(
+    service_rate = fields.Char(
         string='Service Rate',
         required=True,
         readonly=False,
@@ -569,8 +569,8 @@ class event_topic(models.Model):
         required=True,
         readonly=False,
         index=False,
-        default=0.0,
-        digits=(4, 2),
+        default=None,
+        size=50,
     )
 
     service_deliverable = fields.Char(
