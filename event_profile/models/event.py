@@ -995,3 +995,9 @@ class event_registration(models.Model):
     _sql_constraints = [
         ('partner_registration_uniq', 'unique (event_id,partner_id)', 'The partner of the event  must be unique !')
     ]
+
+    @api.one
+    @api.constrains('event_ticket_id')
+    def _check_ticket_out_of_date(self):
+        if self.event_ticket_id.is_expired :
+            raise UserError(_('Ticket is out of date. '))
