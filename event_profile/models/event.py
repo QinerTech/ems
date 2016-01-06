@@ -990,3 +990,8 @@ class event_registration(models.Model):
 
                 else:
                     self.event_ticket_id = False
+
+
+    _sql_constraints = [
+        ('partner_registration_uniq', 'unique (event_id,partner_id)', 'The partner of the event  must be unique !')
+    ]
