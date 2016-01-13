@@ -6,6 +6,7 @@ from openerp.addons.website.models.website import slug
 
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_TIME_FORMAT
 from datetime import datetime, timedelta
+from openerp.exceptions import UserError
 
 from logging import getLogger
 import base64
