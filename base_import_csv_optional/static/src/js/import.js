@@ -52,6 +52,23 @@ openerp.base_import_csv_optional = function (instance) {
                             });
                             return false;
                         });
+                    } else {
+                        if (self.$buttons) {
+                            self.$buttons.remove();
+                        }
+                        self.$buttons = $(QWeb.render("ListView.buttons", {'widget': self}));
+                        if (self.options.$buttons) {
+                            self.$buttons.appendTo(self.options.$buttons);
+                        } else {
+                            self.$el.find('.oe_list_buttons').replaceWith(self.$buttons);
+                        }
+                        self.$buttons.find('.o_list_button_add')
+                                .click(self.proxy('do_add_record'))
+                                .prop('disabled', self.grouped);
+                        self.$buttons.find('.o_list_button_import')
+                                .remove();
+
+                        return false;
                     }
                 });
         }
