@@ -29,11 +29,11 @@ openerp.base_import_csv_optional = function (instance) {
                         } else {
                             self.$el.find('.oe_list_buttons').replaceWith(self.$buttons);
                         }
-                        self.$buttons.find('.oe_list_add')
+                        self.$buttons.find('.o_list_button_add')
                                 .click(self.proxy('do_add_record'))
                                 .prop('disabled', self.grouped);
 
-                        self.$buttons.on('click', '.oe_list_button_import', function () {
+                        self.$buttons.on('click', '.o_list_button_import', function () {
                             self.do_action({
                                 type: 'ir.actions.client',
                                 tag: 'import',
