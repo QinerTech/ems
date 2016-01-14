@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-06 16:56+0800\n"
-"PO-Revision-Date: 2016-01-14 11:10+0800\n"
+"PO-Revision-Date: 2016-01-14 13:58+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -457,7 +457,7 @@ msgstr "联系人称谓"
 #: model:ir.ui.menu,name:event_profile.contact_main_menu
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Contacts"
-msgstr ""
+msgstr "所有联系人"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_partner_organization_unit_child_ids
@@ -509,7 +509,7 @@ msgstr "创建时间"
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.view_res_partner_filter
 msgid "Customer"
-msgstr ""
+msgstr "客户"
 
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_contacts_customer_
@@ -541,7 +541,7 @@ msgstr "所在部门："
 #. module: event_profile
 #: selection:event.event,event_purpose:0
 msgid "Disease Awareness"
-msgstr ""
+msgstr "疾病教育"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_brand_display_name
@@ -671,7 +671,7 @@ msgstr "活动入场券"
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_event_type
 msgid "Event Type"
-msgstr ""
+msgstr "活动类型"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
@@ -813,7 +813,7 @@ msgstr "机构/医院："
 #. module: event_profile
 #: model:ir.actions.act_window,name:event_profile.action_contacts_institution
 msgid "Institutions"
-msgstr ""
+msgstr "机构"
 
 #. module: event_profile
 #: selection:event.event,level:0
@@ -961,7 +961,7 @@ msgstr "提名者"
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_partner_organization_unit
 msgid "Organization Unit"
-msgstr ""
+msgstr "组织部门"
 
 #. module: event_profile
 #: model:ir.model.fields,field_description:event_profile.field_event_event_organization_id
@@ -991,7 +991,7 @@ msgstr "职位"
 #. module: event_profile
 #: selection:event.event,event_purpose:0
 msgid "Patients Education"
-msgstr ""
+msgstr "病人教育"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
@@ -1006,7 +1006,7 @@ msgstr "预计服务时间："
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_sponsorship_applicatin_document
 msgid "Pls check to confirm below:"
-msgstr ""
+msgstr "在接受邀请前请确认以下条款;"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_registration_travel_document
@@ -1028,7 +1028,7 @@ msgstr "职位："
 #. module: event_profile
 #: model:ir.model,name:event_profile.model_product_template
 msgid "Product Template"
-msgstr ""
+msgstr "产品模板"
 
 #. module: event_profile
 #: selection:event.event,event_purpose:0
@@ -1351,7 +1351,7 @@ msgstr "支持品牌"
 #. module: event_profile
 #: sql_constraint:event.registration:0
 msgid "The partner of the event  must be unique !"
-msgstr ""
+msgstr "该活动的合作伙伴必须是唯一的!"
 
 #. module: event_profile
 #: model:ir.ui.view,arch_db:event_profile.report_service_contract_document
