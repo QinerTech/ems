@@ -23,12 +23,12 @@
 ##############################################################################
 {
     'name': 'Optional CSV import',
-    'version': '1.0',
+    'version': '1.1',
     'category': 'Server tools',
-    'summary': 'Group-based permissions for importing CSV files',
-    'license': 'AGPL-3',
+    'summary': 'Group-based permissions for importing CSV files, updated for odoo v9',
+    'license': 'LGPL-3',
     'author': 'Odoo Community Association (OCA), '
-              'Alejandro Santana <alejandrosantana@anubia.es>',
+              'Alejandro Santana <alejandrosantana@anubia.es>','Qiner Tech. <info@qiner.com.cn>'
     'maintainer': 'Odoo Community Association (OCA)',
     'website': 'http://odoo-community.org',
     'depends': [
