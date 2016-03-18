@@ -225,8 +225,8 @@
                         <field name="name" />
                         <field name="is_speaker"  invisible="1"/>
                         <field name='oversea'/>
-                        <field name="identifier_id" password="True" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
-                        <field name="bank_account" password="True" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX" attrs="{'invisible':[('is_speaker', '!=', True)]} "   />
+                        <field name="identifier_id" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
+                        <field name="bank_account" placeholder="例如：交通银行南京路支行600028XXXXXXXXXXXX" attrs="{'invisible':[('is_speaker', '!=', True)]} "   />
                     </xpath>
                     <xpath expr="//field[@name='event_id']" position="after">
                         <field name="venue" />
