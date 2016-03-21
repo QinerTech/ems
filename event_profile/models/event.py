@@ -381,6 +381,9 @@ class event_ticket(models.Model):
 
     product_id = fields.Many2one(string="Attendee Region")
     deadline = fields.Date(string="Nomination End")
+    seats_max  = fields.Integer(
+        help="put 0 to ignore this rule "
+    )
 
     @api.multi
     @api.depends('product_id')
