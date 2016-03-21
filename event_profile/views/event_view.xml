@@ -344,8 +344,8 @@
                                 <field name="partner_id" domain="[('speaker','=',True)]" options="{'no_create':True}"/>
                                 <field name="partner_email" />
                                 <field name="partner_phone" />
-                                <field name="identifier_id" password="True" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
-                                <field name="bank_account" password="True" placeholder="例如：xx银行xx路支行6222XXXXXXXXXXXX" />
+                                <field name="identifier_id" placeholder="例如：身份证320000XXXXXXXXXXXXXXXXX/护照9080XXXXXXXXXXXX" />
+                                <field name="bank_account" placeholder="例如：xx银行xx路支行6222XXXXXXXXXXXX" />
                             </group>
                             <group>
                                 <field name="oversea" readonly='1' />

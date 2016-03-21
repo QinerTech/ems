@@ -360,6 +360,8 @@ class event_event(models.Model):
         for event in self:
             for topic in event.topic_ids:
                 topic.write({'bank_account': 'cleaned', 'identifier_id': 'cleaned'})
+            for registration in event.registration_ids:
+                registration.write({'bank_account': 'cleaned', 'identifier_id': 'cleaned'})
         return True
 
     @api.one
