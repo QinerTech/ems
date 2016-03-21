@@ -568,7 +568,7 @@ class event_topic(models.Model):
         size=50,
     )
 
-    service_rate = fields.Char(
+    service_rate = fields.Integer(
         string='Service Rate',
         required=True,
         readonly=False,
@@ -577,13 +577,14 @@ class event_topic(models.Model):
         size=20,
     )
 
-    service_fee = fields.Float(
-        string='Service Fee',
-        required=True,
+    service_rate_type = fields.Selection(
+        string='Service Rate Type',
+        required=False,
         readonly=False,
         index=False,
-        default=0.0,
-        digits=(4, 2),
+        default='event',
+        help=False,
+        selection=[('hour', 'Hour'), ('event', 'Event')]
     )
 
     service_deliverable = fields.Char(
@@ -697,6 +698,25 @@ class event_topic(models.Model):
             self.duration = 0.0
 
     duration = fields.Float('Hours', digits=(2, 2), compute='_compute_duration', store=True)
+
+    @api.multi
+    @api.depends('service_rate', 'service_rate_type')
+    def _compute_service_fee(self):
+        if self.service_rate_type and self.service_rate_type == 'event' :
+            self.service_fee = self.service_rate
+        elif self.service_rate_type and self.service_rate_type == 'hour' and self.duration :
+            self.service_fee = self.service_rate * self.duration
+        else:
+            self.service_fee = 0.0
+
+    service_fee = fields.Float(
+        string='Service Fee',
+        required=True,
+        digits=(4, 2),
+        compute='_compute_service_fee',
+        store=True
+    )
+
 
     @api.onchange('partner_id')
     def _onchange_partner_id(self):

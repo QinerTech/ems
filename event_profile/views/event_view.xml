@@ -365,7 +365,11 @@
                                 <field name="resonable_requirement" />
                             </group>
                             <group>
-                                <field name="service_rate" placeholder="_______元/________" />
+                                <label for='service_rate' />
+                                    <div class="o_row">
+                                        <field name="service_rate" /> /
+                                        <field name="service_rate_type" />
+                                    </div>
                                 <field name="duration" />
                                 <field name="service_fee" />
                             </group>
