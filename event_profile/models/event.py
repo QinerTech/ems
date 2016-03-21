@@ -613,7 +613,7 @@ class event_topic(models.Model):
             else:
                 result.append((contract.id, '%s - %s' % (contract.event.name, contract.name)))
 
-        return result
+	    return result
 
     @api.model
     def create(self, values):
