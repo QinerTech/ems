@@ -6,7 +6,7 @@ from openerp.addons.website.models.website import slug
 
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_TIME_FORMAT
 from datetime import datetime, timedelta
-from openerp.exceptions import UserError
+from openerp.exceptions import UserError, Warning 
 
 from logging import getLogger
 import base64
@@ -465,20 +465,27 @@ class event_topic(models.Model):
 
     nbr_hour = fields.Integer(
         string='Durations',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
-        default=1,
+        default=0,
     )
 
-    nbr_minute = fields.Selection(
-        [('0', '00'), ('15', '15'), ('30', '30'), ('45', '45')],
+    nbr_minute = fields.Integer(
         string='Minutes',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
-        default='0'
+        default=15
     )
+
+    @api.one
+    @api.constrains('nbr_hour', 'nbr_minute')
+    def _check_duration_limit(self):
+        if self.nbr_hour == 0 and self.nbr_minute < 15: 
+            raise Warning(_("The duration can not less than 15 Minutes ! "))
+        if self.nbr_minute > 60:
+            raise Warning(_("The Minutes can not greater than 60 ! "))
 
     event = fields.Many2one(
         string='Event',
@@ -624,7 +631,6 @@ class event_topic(models.Model):
     @api.model
     def create(self, values):
         _logger.info('values is  %s ' % values)
-
         _logger.info('create topic ....... ')
         result = super(event_topic, self).create(values)
 
