@@ -355,6 +355,18 @@ class event_event(models.Model):
         fd.close()
         return data
 
+    @api.multi
+    def clean_privacy_data(self):
+        for event in self:
+            for topic in event.topic_ids:
+                topic.write({'bank_account': False, 'identifier_id': False})
+        return True
+
+    @api.one
+    def button_done(self):
+        self.clean_privacy_data()
+        super(event_event, self).button_done()
+
 
 class event_ticket(models.Model):
     _inherit = 'event.event.ticket'
