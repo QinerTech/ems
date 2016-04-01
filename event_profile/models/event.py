@@ -722,7 +722,7 @@ class event_topic(models.Model):
 
     service_fee = fields.Float(
         string='Service Fee',
-        required=True,
+        required=False,
         digits=(4, 2),
         compute='_compute_service_fee',
         store=True
