@@ -8,69 +8,29 @@ openerp.base_import_csv_optional = function (instance) {
 
     instance.web.ListView.prototype.defaults.import_enabled = false;
     base_import_csv_optional = instance.web.ListView.include({
-        load_list: function () {
-            var self = this;
-            var Users = new openerp.web.Model('res.users');
+        render_buttons: function () {
 
-            self._super.apply(self, arguments);
+        var self = this;
+        var import_enabled = false;
+        var Users = new openerp.web.Model('res.users');
+        this._super.apply(this, arguments); // Sets this.$buttons
 
-            Users.call('has_group', ['base_import_csv_optional.group_import_csv'])
-                .then(function (result) {
-                    var import_enabled = result;
-                    self.options.import_enabled = import_enabled;
+        Users.call('has_group', ['base_import_csv_optional.group_import_csv']).then(function(result){
+            import_enabled = result;
 
-                    if (import_enabled) {
-                        if (self.$buttons) {
-                            self.$buttons.remove();
-                        }
-                        self.$buttons = $(QWeb.render("ListView.buttons", {'widget': self}));
-                        if (self.options.$buttons) {
-                            self.$buttons.appendTo(self.options.$buttons);
-                        } else {
-                            self.$el.find('.oe_list_buttons').replaceWith(self.$buttons);
-                        }
-                        self.$buttons.find('.o_list_button_add')
-                                .click(self.proxy('do_add_record'))
-                                .prop('disabled', self.grouped);
+        if(!import_enabled) { // Remove import button if it's not enabled for the users, Otherwise the parents will render buttons.
+//Gavin: 20160116, use current instance view to find button and remove
+            self.buttons = instance.web.ListView.buttons;
+            self.$buttons.find('.o_list_button_import').remove();
 
-                        self.$buttons.on('click', '.o_list_button_import', function () {
-                            self.do_action({
-                                type: 'ir.actions.client',
-                                tag: 'import',
-                                params: {
-                                    model: self.dataset.model,
-                                    // self.dataset.get_context() could be a compound?
-                                    // not sure. action's context should be evaluated
-                                    // so safer bet. Odd that timezone & al in it
-                                    // though
-                                    context: self.getParent().action.context
-                                }
-                            }, {
-                                on_reverse_breadcrumb: function () {
-                                    self.reload();
-                                }
-                            });
-                            return false;
-                        });
-                    } else {
-                        if (self.$buttons) {
-                            self.$buttons.remove();
-                        }
-                        self.$buttons = $(QWeb.render("ListView.buttons", {'widget': self}));
-                        if (self.options.$buttons) {
-                            self.$buttons.appendTo(self.options.$buttons);
-                        } else {
-                            self.$el.find('.oe_list_buttons').replaceWith(self.$buttons);
-                        }
-                        self.$buttons.find('.o_list_button_add')
-                                .click(self.proxy('do_add_record'))
-                                .prop('disabled', self.grouped);
-                        self.$buttons.find('.o_list_button_import')
-                                .remove();
+            return false;
 
-                        return false;
-                    }
-                });
         }
+
+        });
+
+
+        return this.$buttons;
+    }
     });
 };
